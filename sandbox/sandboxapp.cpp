@@ -30,7 +30,7 @@ void SandboxApp::startEngine()
     if (rootWindow) {
         removeTitleBar(rootWindow->winId());
     } else {
-        qDebug() << "window is not exists";
+        qDebug() << "Window doesn't exist";
     }
 }
 
