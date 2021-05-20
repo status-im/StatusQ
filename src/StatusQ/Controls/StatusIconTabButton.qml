@@ -40,10 +40,35 @@ TabButton {
 
         Component {
             id: imageIcon
-            StatusRoundedImage {
+            Item {
                 width: 28
                 height: 28
-                image.source: icon.source
+                StatusRoundedImage {
+                    id: statusRoundImage
+                    width: parent.width
+                    height: parent.height
+                    image.source: icon.source
+                }
+                Loader {
+                    sourceComponent: {
+                        if (statusRoundImage.image.status === Image.Loading) {
+                            return statusLoadingIndicator
+                        }
+                        if (statusRoundImage.image.status === Image.Error) {
+                            return letterIdenticon
+                        }
+                    }
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    active: statusRoundImage.image.status === Image.Loading || statusRoundImage.image.status === Image.Error
+                }
+
+                Component {
+                    id: statusLoadingIndicator
+                    StatusLoadingIndicator {
+                        color: Theme.palette.directColor6
+                    }
+                }
             }
         }
 
