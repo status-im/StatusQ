@@ -33,4 +33,5 @@ HEADERS += \
 DISTFILES += \
     ../src/StatusQ/Controls/StatusBaseButton.qml \
     ../src/StatusQ/Controls/StatusButton.qml \
-    ../src/StatusQ/Controls/StatusFlatRoundButton.qml
+    ../src/StatusQ/Controls/StatusFlatRoundButton.qml \
+    ../src/StatusQ/Controls/StatusSwitch.qml
