@@ -3,7 +3,7 @@ import QtGraphicalEffects 1.13
 
 Image {
     property string icon: ""
-    property color color
+    property string color: ""
 
     id: statusIcon
     width: 24
@@ -19,7 +19,7 @@ Image {
     }
 
     ColorOverlay {
-        visible: statusIcon.color !== undefined
+        visible: !!statusIcon.color
         anchors.fill: statusIcon
         source: statusIcon
         color: statusIcon.color
