@@ -95,4 +95,11 @@ GridLayout {
     }
 
     StatusCheckBox {}
+
+    StatusSlider {
+        width: 360
+        from: 0
+        to: 100
+        value: 40
+    }
 }
