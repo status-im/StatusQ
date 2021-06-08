@@ -12,6 +12,8 @@ Rectangle {
     color: Theme.palette.statusAppLayout.backgroundColor
 
     property alias chatInfoButton: statusChatInfoButton
+    property alias menuButton: menuButton
+    property alias notificationButton: notificationButton
     property int notificationCount: 0
 
     property Component popupMenu
@@ -32,9 +34,11 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 12
         onClicked: statusChatToolBar.chatInfoButtonClicked()
+        title: actionButtons.x
     }
 
     Row {
+        id: actionButtons
         anchors.right: parent.right
         anchors.rightMargin: 8
         anchors.verticalCenter: parent.verticalCenter
@@ -52,7 +56,7 @@ Rectangle {
             onClicked: {
                 statusChatToolBar.menuButtonClicked()
                 highlighted = true
-                popupMenuSlot.item.popup()
+                popupMenuSlot.item.popup(actionButtons.x + menuButton.width - popupMenuSlot.item.width, menuButton.height + 4)
             }
         }
 
