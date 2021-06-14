@@ -12,5 +12,6 @@
         <file>NavigationHeader.qml</file>
         <file>ThemeSwitch.qml</file>
         <file>Layout.qml</file>
+        <file>Popups.qml</file>
     </qresource>
 </RCC>
