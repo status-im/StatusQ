@@ -250,7 +250,7 @@ Rectangle {
 
                     StatusChatListCategory {
                         name: "Public"
-
+                        showActionButtons: true
                         chatList.chatListItems.model: demoCommunityChatListItems
                         chatList.selectedChatId: "0"
                         chatList.onChatItemSelected: chatList.selectedChatId = id
@@ -260,6 +260,7 @@ Rectangle {
                     StatusChatListCategory {
                         name: "Development"
 
+                        showActionButtons: true
                         chatList.chatListItems.model: demoCommunityChatListItems
                         chatList.onChatItemSelected: chatList.selectedChatId = id
                         popupMenu: categoryPopupCmp
