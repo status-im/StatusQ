@@ -1,6 +1,8 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 
+import Sandbox 0.1
+
 import StatusQ.Core 0.1
 import StatusQ.Core.Theme 0.1
 import StatusQ.Controls 0.1
@@ -173,24 +175,34 @@ Rectangle {
                     text: "Chat"
                 }
 
-                StatusChatListAndCategories {
+                StatusChatList {
+                    width: parent.width
                     anchors.top: headline.bottom
                     anchors.topMargin: 16
                     anchors.bottom: parent.bottom
-                    width: parent.width
-
-                    chatList.model: demoChatListItems
+                    chatListItems.model: demoChatListItems
                     selectedChatId: "0"
                     onChatItemSelected: selectedChatId = id
-                    onChatItemUnmuted: {
-                        for (var i = 0; i < demoChatListItems.count; i++) {
-                            let item = demoChatListItems.get(i);
-                            if (item.chatId === id) {
-                                demoChatListItems.setProperty(i, "muted", false)
-                            }
-                        }
-                    }
                 }
+
+                /* StatusChatListAndCategories { */
+                /*     anchors.top: headline.bottom */
+                /*     anchors.topMargin: 16 */
+                /*     anchors.bottom: parent.bottom */
+                /*     width: parent.width */
+
+                /*     chatList.model: demoChatListItems */
+                /*     selectedChatId: "0" */
+                /*     onChatItemSelected: selectedChatId = id */
+                /*     onChatItemUnmuted: { */
+                /*         for (var i = 0; i < demoChatListItems.count; i++) { */
+                /*             let item = demoChatListItems.get(i); */
+                /*             if (item.chatId === id) { */
+                /*                 demoChatListItems.setProperty(i, "muted", false) */
+                /*             } */
+                /*         } */
+                /*     } */
+                /* } */
             }
 
             rightPanel: Item {
@@ -480,10 +492,413 @@ Rectangle {
             iconColor: "Orange"
             unreadMessagesCount: 0
         }
+        ListElement {
+            chatId: "0"
+            name: "#status"
+            chatType: StatusChatListItem.Type.PublicChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "blue"
+        }
+        ListElement {
+            chatId: "1"
+            name: "#status-desktop"
+            chatType: StatusChatListItem.Type.PublicChat
+            muted: false
+            hasUnreadMessages: true
+            iconColor: "red"
+            unreadMessagesCount: 1
+        }
+        ListElement {
+            chatId: "2"
+            name: "Amazing Funny Squirrel"
+            chatType: StatusChatListItem.Type.OneToOneChat
+            muted: false
+            hasUnreadMessages: false
+            iconColor: "green"
+            identicon: "https://pbs.twimg.com/profile_images/1369221718338895873/T_5fny6o_400x400.jpg"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "3"
+            name: "Black Ops"
+            chatType: StatusChatListItem.Type.GroupChat
+            muted: false
+            hasUnreadMessages: false
+            iconColor: "purple"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "4"
+            name: "Spectacular Growing Otter"
+            chatType: StatusChatListItem.Type.OneToOneChat
+            muted: true
+            hasUnreadMessages: false
+            iconColor: "Orange"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "0"
+            name: "#status"
+            chatType: StatusChatListItem.Type.PublicChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "blue"
+        }
+        ListElement {
+            chatId: "1"
+            name: "#status-desktop"
+            chatType: StatusChatListItem.Type.PublicChat
+            muted: false
+            hasUnreadMessages: true
+            iconColor: "red"
+            unreadMessagesCount: 1
+        }
+        ListElement {
+            chatId: "2"
+            name: "Amazing Funny Squirrel"
+            chatType: StatusChatListItem.Type.OneToOneChat
+            muted: false
+            hasUnreadMessages: false
+            iconColor: "green"
+            identicon: "https://pbs.twimg.com/profile_images/1369221718338895873/T_5fny6o_400x400.jpg"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "3"
+            name: "Black Ops"
+            chatType: StatusChatListItem.Type.GroupChat
+            muted: false
+            hasUnreadMessages: false
+            iconColor: "purple"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "4"
+            name: "Spectacular Growing Otter"
+            chatType: StatusChatListItem.Type.OneToOneChat
+            muted: true
+            hasUnreadMessages: false
+            iconColor: "Orange"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "0"
+            name: "#status"
+            chatType: StatusChatListItem.Type.PublicChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "blue"
+        }
+        ListElement {
+            chatId: "1"
+            name: "#status-desktop"
+            chatType: StatusChatListItem.Type.PublicChat
+            muted: false
+            hasUnreadMessages: true
+            iconColor: "red"
+            unreadMessagesCount: 1
+        }
+        ListElement {
+            chatId: "2"
+            name: "Amazing Funny Squirrel"
+            chatType: StatusChatListItem.Type.OneToOneChat
+            muted: false
+            hasUnreadMessages: false
+            iconColor: "green"
+            identicon: "https://pbs.twimg.com/profile_images/1369221718338895873/T_5fny6o_400x400.jpg"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "3"
+            name: "Black Ops"
+            chatType: StatusChatListItem.Type.GroupChat
+            muted: false
+            hasUnreadMessages: false
+            iconColor: "purple"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "4"
+            name: "Spectacular Growing Otter"
+            chatType: StatusChatListItem.Type.OneToOneChat
+            muted: true
+            hasUnreadMessages: false
+            iconColor: "Orange"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "0"
+            name: "#status"
+            chatType: StatusChatListItem.Type.PublicChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "blue"
+        }
+        ListElement {
+            chatId: "1"
+            name: "#status-desktop"
+            chatType: StatusChatListItem.Type.PublicChat
+            muted: false
+            hasUnreadMessages: true
+            iconColor: "red"
+            unreadMessagesCount: 1
+        }
+        ListElement {
+            chatId: "2"
+            name: "Amazing Funny Squirrel"
+            chatType: StatusChatListItem.Type.OneToOneChat
+            muted: false
+            hasUnreadMessages: false
+            iconColor: "green"
+            identicon: "https://pbs.twimg.com/profile_images/1369221718338895873/T_5fny6o_400x400.jpg"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "3"
+            name: "Black Ops"
+            chatType: StatusChatListItem.Type.GroupChat
+            muted: false
+            hasUnreadMessages: false
+            iconColor: "purple"
+            unreadMessagesCount: 0
+        }
+        ListElement {
+            chatId: "4"
+            name: "Spectacular Growing Otter"
+            chatType: StatusChatListItem.Type.OneToOneChat
+            muted: true
+            hasUnreadMessages: false
+            iconColor: "Orange"
+            unreadMessagesCount: 0
+        }
     }
 
     ListModel {
         id: demoCommunityChatListItems
+        ListElement {
+            chatId: "0"
+            name: "general"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+        }
+        ListElement {
+            chatId: "1"
+            name: "random"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "public"
+        }
+        ListElement {
+            chatId: "2"
+            name: "watercooler"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "public"
+        }
+        ListElement {
+            chatId: "3"
+            name: "language-design"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "dev"
+        }
+        ListElement {
+            chatId: "0"
+            name: "general"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+        }
+        ListElement {
+            chatId: "1"
+            name: "random"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "public"
+        }
+        ListElement {
+            chatId: "2"
+            name: "watercooler"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "public"
+        }
+        ListElement {
+            chatId: "3"
+            name: "language-design"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "dev"
+        }
+        ListElement {
+            chatId: "0"
+            name: "general"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+        }
+        ListElement {
+            chatId: "1"
+            name: "random"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "public"
+        }
+        ListElement {
+            chatId: "2"
+            name: "watercooler"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "public"
+        }
+        ListElement {
+            chatId: "3"
+            name: "language-design"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "dev"
+        }
+        ListElement {
+            chatId: "0"
+            name: "general"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+        }
+        ListElement {
+            chatId: "1"
+            name: "random"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "public"
+        }
+        ListElement {
+            chatId: "2"
+            name: "watercooler"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "public"
+        }
+        ListElement {
+            chatId: "3"
+            name: "language-design"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "dev"
+        }
+        ListElement {
+            chatId: "0"
+            name: "general"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+        }
+        ListElement {
+            chatId: "1"
+            name: "random"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "public"
+        }
+        ListElement {
+            chatId: "2"
+            name: "watercooler"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "public"
+        }
+        ListElement {
+            chatId: "3"
+            name: "language-design"
+            chatType: StatusChatListItem.Type.CommunityChat
+            muted: false
+            hasUnreadMessages: false
+            hasMention: false
+            unreadMessagesCount: 0
+            iconColor: "orange"
+            categoryId: "dev"
+        }
         ListElement {
             chatId: "0"
             name: "general"

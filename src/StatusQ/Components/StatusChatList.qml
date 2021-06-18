@@ -1,14 +1,15 @@
 import QtQuick 2.13
+import QtQuick.Controls 2.14
 
 import StatusQ.Core 0.1
 import StatusQ.Core.Theme 0.1
 import StatusQ.Components 0.1
 import StatusQ.Controls 0.1
 
-Column {
+ScrollView {
     id: statusChatList
-
-    spacing: 4
+    contentHeight: items.height + 8
+    clip: true
 
     property string categoryId: ""
     property string selectedChatId: ""
@@ -19,28 +20,32 @@ Column {
     signal chatItemSelected(string id)
     signal chatItemUnmuted(string id)
 
-    Repeater {
-        id: statusChatListItems
-        delegate: StatusChatListItem {
-            chatId: model.chatId
-            name: model.name
-            type: model.chatType
-            muted: !!model.muted
-            hasUnreadMessages: !!model.hasUnreadMessages
-            hasMention: !!model.hasMention
-            badge.value: model.unreadMessagesCount || 0
-            selected: model.chatId === statusChatList.selectedChatId
+    Column {
+        id: items
+        spacing: 4
+        Repeater {
+            id: statusChatListItems
+            delegate: StatusChatListItem {
+                chatId: model.chatId
+                name: model.name
+                type: model.chatType
+                muted: !!model.muted
+                hasUnreadMessages: !!model.hasUnreadMessages
+                hasMention: !!model.hasMention
+                badge.value: model.unreadMessagesCount || 0
+                selected: model.chatId === statusChatList.selectedChatId
 
-            icon.color: model.iconColor || ""
-            image.source: model.identicon || ""
+                icon.color: model.iconColor || ""
+                image.source: model.identicon || ""
 
-            onClicked: statusChatList.chatItemSelected(model.chatId)
-            onUnmute: statusChatList.chatItemUnmuted(model.chatId)
-            visible: {
-                if (!!statusChatList.filterFn) {
-                    return statusChatList.filterFn(model, statusChatList.categoryId)
+                onClicked: statusChatList.chatItemSelected(model.chatId)
+                onUnmute: statusChatList.chatItemUnmuted(model.chatId)
+                visible: {
+                    if (!!statusChatList.filterFn) {
+                        return statusChatList.filterFn(model, statusChatList.categoryId)
+                    }
+                    return true
                 }
-                return true
             }
         }
     }
