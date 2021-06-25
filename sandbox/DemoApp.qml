@@ -670,7 +670,7 @@ Rectangle {
         }
         ListElement {
             chatId: "1"
-            name: "#status-desktop"
+            name: "status-desktop"
             chatType: StatusChatListItem.Type.PublicChat
             muted: false
             hasUnreadMessages: true
