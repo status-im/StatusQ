@@ -243,5 +243,6 @@
         <file>src/StatusQ/Components/StatusChatListCategory.qml</file>
         <file>src/StatusQ/Controls/StatusChatListCategoryItemButton.qml</file>
         <file>src/StatusQ/Components/StatusChatList.qml</file>
+        <file>src/StatusQ/Controls/StatusBaseInput.qml</file>
     </qresource>
 </RCC>
