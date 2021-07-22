@@ -148,7 +148,10 @@ Rectangle {
         Item {
             id: statusListItemTitleArea
             anchors.left: iconOrImage.active ? iconOrImage.right : parent.left
+            anchors.right: statusListItemLabel.visible ?
+                statusListItemLabel.left : statusListItemComponentsSlot.left
             anchors.leftMargin: statusListItem.leftPadding
+            anchors.rightMargin: statusListItem.rightPadding
             anchors.verticalCenter: parent.verticalCenter
             height: statusListItemTitle.height + 
               (statusListItemSubTitle.visible ? statusListItemSubTitle.height : 0) +
@@ -157,7 +160,9 @@ Rectangle {
             StatusBaseText {
                 id: statusListItemTitle
                 text: statusListItem.title
+                width: parent.width
                 font.pixelSize: 15
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 color: {
                   switch (statusListItem.type) {
                       case StatusListItem.Type.Primary:
@@ -173,24 +178,28 @@ Rectangle {
             StatusBaseText {
                 id: statusListItemSubTitle
                 anchors.top: statusListItemTitle.bottom
-
+                width: parent.width
                 text: statusListItem.subTitle
                 font.pixelSize: 15
                 color: !statusListItem.tertiaryTitle ? Theme.palette.baseColor1 : Theme.palette.directColor1
                 visible: !!statusListItem.subTitle
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             }
 
             StatusBaseText {
                 id: statusListItemTertiaryTitle
                 anchors.top: statusListItemSubTitle.bottom
+                width: parent.width
                 text: statusListItem.tertiaryTitle
                 color: Theme.palette.baseColor1
                 font.pixelSize: 13
                 visible: !!statusListItem.tertiaryTitle
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             }
         }
 
         StatusBaseText {
+            id: statusListItemLabel
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: statusListItemComponentsSlot.left
             anchors.rightMargin: statusListItemComponentsSlot.width > 0 ? 10 : 0
