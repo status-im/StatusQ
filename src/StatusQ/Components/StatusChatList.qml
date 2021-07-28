@@ -1,4 +1,5 @@
 import QtQuick 2.13
+import QtQml.Models 2.14
 
 import StatusQ.Core 0.1
 import StatusQ.Core.Theme 0.1
@@ -13,7 +14,7 @@ Column {
 
     property string categoryId: ""
     property string selectedChatId: ""
-    property alias chatListItems: statusChatListItems
+    property alias chatListItems: delegateModel
 
     property Component popupMenu
 
@@ -24,14 +25,17 @@ Column {
     signal chatItemSelected(string id)
     signal chatItemUnmuted(string id)
 
+    signal reorder(string cid, int from, int to)
+
     onPopupMenuChanged: {
         if (!!popupMenu) {
             popupMenuSlot.sourceComponent = popupMenu
         }
     }
 
-    Repeater {
-        id: statusChatListItems
+    DelegateModel {
+        id: delegateModel
+
         delegate: StatusChatListItem {
 
             id: statusChatListItem
@@ -43,7 +47,7 @@ Column {
                     profileImage = statusChatList.profileImageFn(model.chatId || model.id) || ""
                 }
             }
-
+            originalOrder: DelegateModel.itemsIndex
             chatId: model.chatId || model.id
             name: !!statusChatList.chatNameFn ? statusChatList.chatNameFn(model) : model.name
             type: model.chatType
@@ -58,6 +62,13 @@ Column {
             icon.color: model.color || ""
             image.isIdenticon: !!!profileImage && !!!model.identityImage && !!model.identicon
             image.source: profileImage || model.identityImage || model.identicon || ""
+            onVisualReorder: {
+                delegateModel.items.move(from, to)
+            }
+
+            onReorder: {
+                statusChatList.reorder(chatId, from, to)
+            }
 
             onClicked: {
                 if (mouse.button === Qt.RightButton && !!statusChatList.popupMenu) {
@@ -95,6 +106,11 @@ Column {
                 return true
             }
         }
+
+    }
+    Repeater {
+        id: statusChatListItems
+        model: delegateModel
     }
 
     Loader {

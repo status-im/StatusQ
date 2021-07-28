@@ -1,4 +1,8 @@
 import QtQuick 2.13
+import QtQml.Models 2.13
+import QtQuick.Controls 2.13 as QC
+import QtGraphicalEffects 1.13
+
 import StatusQ.Core 0.1
 import StatusQ.Core.Theme 0.1
 import StatusQ.Components 0.1
@@ -7,6 +11,8 @@ import StatusQ.Controls 0.1
 Rectangle {
     id: statusChatListItem
 
+    objectName: "chatItem"
+    property int originalOrder: -1
     property string chatId: ""
     property string name: ""
     property alias badge: statusBadge
@@ -23,6 +29,9 @@ Rectangle {
 
     signal clicked(var mouse)
     signal unmute()
+
+    signal visualReorder(int from, int to)
+    signal reorder(int from, int to)
 
     enum Type {
         Unknown0, // 0
@@ -46,13 +55,33 @@ Rectangle {
         return sensor.containsMouse || highlighted ? Theme.palette.statusChatListItem.hoverBackgroundColor : Theme.palette.baseColor4
     }
 
+    opacity: sensor.held ? 0.0 : 1.0
+
+    Behavior on y { NumberAnimation { duration: 350 }}
+
     MouseArea {
         id: sensor
 
         anchors.fill: parent
-        cursorShape: Qt.PointingHandCursor 
+        cursorShape: Qt.PointingHandCursor
         acceptedButtons: Qt.LeftButton | Qt.RightButton
         hoverEnabled: true
+
+        property bool held: false
+
+        drag.target: content.item
+
+        property real startY: 0
+        onMouseYChanged: {
+            if ((startY != mouseY )&& pressed) {
+                held = true
+            }
+        }
+        onPressed: startY = mouseY
+        onReleased: {
+            reorder(statusChatListItem.DelegateModel.itemsIndex, statusChatListItem.DelegateModel.itemsIndex)
+            held = false
+        }
 
         onClicked: statusChatListItem.clicked(mouse)
 
@@ -63,7 +92,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
 
             sourceComponent: !!statusChatListItem.image.source.toString() ?
-                statusRoundedImageCmp : statusLetterIdenticonCmp
+                                 statusRoundedImageCmp : statusLetterIdenticonCmp
         }
 
         Component {
@@ -89,8 +118,8 @@ Rectangle {
                     image.source: statusChatListItem.image.source
                     showLoadingIndicator: true
                     color: statusChatListItem.image.isIdenticon ?
-                        Theme.palette.statusRoundedImage.backgroundColor :
-                        "transparent"
+                               Theme.palette.statusRoundedImage.backgroundColor :
+                               "transparent"
                     border.width: statusChatListItem.image.isIdenticon ? 1 : 0
                     border.color: Theme.palette.directColor7
                 }
@@ -114,27 +143,27 @@ Rectangle {
                 if (statusChatListItem.muted && !sensor.containsMouse && !statusChatListItem.highlighted) {
                     return 0.4
                 }
-                return statusChatListItem.hasMention || 
-                  statusChatListItem.hasUnreadMessages || 
-                  statusChatListItem.selected ||
-                  statusChatListItem.highlighted ||
-                  statusBadge.visible ||
-                  sensor.containsMouse ? 1.0 : 0.7
+                return statusChatListItem.hasMention ||
+                        statusChatListItem.hasUnreadMessages ||
+                        statusChatListItem.selected ||
+                        statusChatListItem.highlighted ||
+                        statusBadge.visible ||
+                        sensor.containsMouse ? 1.0 : 0.7
             }
 
             icon: {
                 switch (statusChatListItem.type) {
-                    case StatusChatListItem.Type.PublicCat:
-                        return Theme.palette.name == "light" ? "tiny/public-chat" : "tiny/public-chat-white"
-                        break;
-                    case StatusChatListItem.Type.GroupChat:
-                        return Theme.palette.name == "light" ? "tiny/group" : "tiny/group-white"
-                        break;
-                    case StatusChatListItem.Type.CommunityChat:
-                        return Theme.palette.name == "light" ? "tiny/channel" : "tiny/channel-white"
-                        break;
-                    default:
-                        return Theme.palette.name == "light" ? "tiny/public-chat" : "tiny/public-chat-white"
+                case StatusChatListItem.Type.PublicCat:
+                    return Theme.palette.name == "light" ? "tiny/public-chat" : "tiny/public-chat-white"
+                    break;
+                case StatusChatListItem.Type.GroupChat:
+                    return Theme.palette.name == "light" ? "tiny/group" : "tiny/group-white"
+                    break;
+                case StatusChatListItem.Type.CommunityChat:
+                    return Theme.palette.name == "light" ? "tiny/channel" : "tiny/channel-white"
+                    break;
+                default:
+                    return Theme.palette.name == "light" ? "tiny/public-chat" : "tiny/public-chat-white"
                 }
             }
         }
@@ -144,30 +173,30 @@ Rectangle {
             anchors.left: statusIcon.visible ? statusIcon.right : identicon.right
             anchors.leftMargin: statusIcon.visible ? 1 : 8
             anchors.right: mutedIcon.visible ? mutedIcon.left :
-                statusBadge.visible ? statusBadge.left : parent.right
+                                               statusBadge.visible ? statusBadge.left : parent.right
             anchors.rightMargin: 6
             anchors.verticalCenter: parent.verticalCenter
 
             text: statusChatListItem.type === StatusChatListItem.Type.PublicChat &&
-                !statusChatListItem.name.startsWith("#") ?
-                "#" + statusChatListItem.name :
-                statusChatListItem.name
+                  !statusChatListItem.name.startsWith("#") ?
+                      "#" + statusChatListItem.name :
+                      statusChatListItem.name
             elide: Text.ElideRight
             color: {
                 if (statusChatListItem.muted && !sensor.containsMouse && !statusChatListItem.highlighted) {
                     return Theme.palette.directColor5
                 }
-                return statusChatListItem.hasMention || 
-                  statusChatListItem.hasUnreadMessages ||
-                  statusChatListItem.selected ||
-                  statusChatListItem.highlighted ||
-                  sensor.containsMouse ||
-                  statusBadge.visible ? Theme.palette.directColor1 : Theme.palette.directColor4
+                return statusChatListItem.hasMention ||
+                        statusChatListItem.hasUnreadMessages ||
+                        statusChatListItem.selected ||
+                        statusChatListItem.highlighted ||
+                        sensor.containsMouse ||
+                        statusBadge.visible ? Theme.palette.directColor1 : Theme.palette.directColor4
             }
             font.weight: !statusChatListItem.muted &&
-              (statusChatListItem.hasMention || 
-              statusChatListItem.hasUnreadMessages ||
-              statusBadge.visible) ? Font.Bold : Font.Medium
+                         (statusChatListItem.hasMention ||
+                          statusChatListItem.hasUnreadMessages ||
+                          statusBadge.visible) ? Font.Bold : Font.Medium
             font.pixelSize: 15
         }
 
@@ -184,7 +213,7 @@ Rectangle {
             MouseArea {
                 id: mutedIconSensor
                 hoverEnabled: true
-                cursorShape: Qt.PointingHandCursor 
+                cursorShape: Qt.PointingHandCursor
                 anchors.fill: parent
                 onClicked: statusChatListItem.unmute()
             }
@@ -207,6 +236,95 @@ Rectangle {
             border.color: color
             visible: statusBadge.value > 0
         }
-
     }
+
+    DropArea {
+        id: dropArea
+        width: sensor.held ? 0 : parent.width
+        height: sensor.held ? 0 : parent.height
+        keys: ["chat"]
+        onEntered: {
+            reorderDelay.start()
+        }
+
+        onDropped: {
+            reorder(drag.source.originalOrder, statusChatListItem.DelegateModel.itemsIndex)
+        }
+
+        Timer {
+            id: reorderDelay
+            interval: 100
+            repeat: false
+            onTriggered: {
+                if (dropArea.containsDrag)
+                    visualReorder(dropArea.drag.source.DelegateModel.itemsIndex, statusChatListItem.DelegateModel.itemsIndex)
+            }
+        }
+    }
+
+    Loader {
+        id:content
+        active: sensor.held
+        sourceComponent: Item {
+            property var globalPosition: getAbsolutePosition(statusChatListItem)
+            parent: QC.Overlay.overlay
+            width: statusChatListItem.width
+            height: statusChatListItem.height
+            Drag.active: sensor.held
+            Drag.hotSpot.x: width / 2
+            Drag.hotSpot.y: height / 2
+            Drag.keys: ["chat"]
+            Drag.source: statusChatListItem
+            Component.onCompleted: {
+                x = globalPosition.x
+                y = globalPosition.y
+            }
+
+            RectangularGlow {
+                anchors.fill: cover
+                color: "#22000000"
+                glowRadius: 8
+                cornerRadius: 8
+            }
+            Rectangle {
+                id: cover
+                anchors.fill: parent
+                color: Theme.palette.baseColor4
+                radius: 8
+
+                Row {
+                    spacing: 6
+                    anchors.left: parent.left
+                    anchors.leftMargin: 8
+                    anchors.verticalCenter: parent.verticalCenter
+                    Loader {
+                        id: iconLoader
+                        anchors.verticalCenter: parent.verticalCenter
+                        sourceComponent: !!statusChatListItem.image.source.toString() ?
+                                             statusRoundedImageCmp : statusLetterIdenticonCmp
+                    }
+
+                    StatusBaseText {
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: cover.width - iconLoader.item.width - 22
+                        text: chatName.text
+                        elide: Text.ElideRight
+                    }
+                }
+            }
+
+            function getAbsolutePosition(node) {
+                var returnPos = {};
+                returnPos.x = 0;
+                returnPos.y = 0;
+                if (node !== undefined && node !== null) {
+                    var parentValue = getAbsolutePosition(node.parent);
+                    returnPos.x = parentValue.x + node.x;
+                    returnPos.y = parentValue.y + node.y;
+                }
+                return returnPos;
+            }
+        }
+    }
+
 }

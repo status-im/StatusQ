@@ -21,6 +21,8 @@ Column {
     property Component chatListPopupMenu
     property Component popupMenu
 
+    signal reorderChat(string categoryId, string chatId, int from, int to)
+
     onPopupMenuChanged: {
         if (!!popupMenu) {
             popupMenuSlot.sourceComponent = popupMenu
@@ -62,6 +64,10 @@ Column {
         }
 
         popupMenu: statusChatListCategory.chatListPopupMenu
+
+        onReorder: function (cid, from, to){
+            statusChatListCategory.reorderChat(categoryId, cid, from, to)
+        }
     }
 
     Loader {

@@ -24,6 +24,7 @@ Item {
     signal chatItemSelected(string id)
     signal chatItemUnmuted(string id)
     signal categoryAddButtonClicked(string id)
+    signal reorderChat(string categoryId, string chatId, int from, int to)
 
     onPopupMenuChanged: {
         if (!!popupMenu) {
@@ -54,7 +55,7 @@ Item {
             StatusChatList {
                 id: statusChatList
                 anchors.horizontalCenter: parent.horizontalCenter
-                visible: !!chatListItems.model && chatListItems.count > 0
+                visible: chatListItems.count > 0
                 selectedChatId: statusChatListAndCategories.selectedChatId
                 onChatItemSelected: statusChatListAndCategories.chatItemSelected(id)
                 onChatItemUnmuted: statusChatListAndCategories.chatItemUnmuted(id)
@@ -62,6 +63,10 @@ Item {
                     return !!!model.categoryId
                 }
                 popupMenu: statusChatListAndCategories.chatListPopupMenu
+
+                onReorder: function (cid, from, to) {
+                    statusChatListAndCategories.reorderChat(categoryId, cid, from, from, to)
+                }
             }
 
             Repeater {
@@ -81,6 +86,9 @@ Item {
 
                     popupMenu: statusChatListAndCategories.categoryPopupMenu
                     chatListPopupMenu: statusChatListAndCategories.chatListPopupMenu
+                    onReorderChat: function (categoryId, chatId, from, to) {
+                        statusChatListAndCategories.reorderChat(categoryId, chatId, from, to)
+                    }
                 }
             }
         }
