@@ -557,6 +557,7 @@ Rectangle {
 
             centerPanel: Item {
                 StatusChatToolBar {
+                    id: statusChatToolBar
                     anchors.top: parent.top
                     width: parent.width
 
@@ -579,6 +580,9 @@ Rectangle {
                 StatusSearchPopup {
                     id: searchPopup
                     searchOptionsPopupMenu: searchPopupMenu
+                    onClosed: {
+                        statusChatToolBar.searchButton.highlighted = false
+                    }
                     onSearchTextChanged: {
                         if (searchPopup.searchText !== "") {
                             searchPopup.loading = true;
