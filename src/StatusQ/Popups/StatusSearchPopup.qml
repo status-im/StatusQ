@@ -69,7 +69,10 @@ StatusModal {
                     color: Theme.palette.directColor1
                 }
             }
-            StatusMenuSeparator { Layout.fillWidth: true }
+            StatusMenuSeparator { 
+                topPadding: 0
+                Layout.fillWidth: true 
+            }
             Item {
                 Layout.preferredWidth: parent.width
                 Layout.preferredHeight: 58
