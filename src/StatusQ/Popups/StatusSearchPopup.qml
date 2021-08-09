@@ -48,10 +48,10 @@ StatusModal {
                 Layout.preferredHeight: 63
                 StatusIcon {
                     id: statusIcon
-                    width: 28
-                    height: 28
+                    width: 40
+                    height: 40
                     anchors.left: parent.left
-                    anchors.leftMargin: 18
+                    anchors.leftMargin: 12
                     anchors.verticalCenter: parent.verticalCenter
                     icon: "search"
                     color: Theme.palette.baseColor1
