@@ -91,60 +91,69 @@ StatusModal {
 
                     contentItem: Item {
                         anchors.fill: parent
-                        RowLayout {
-                            id: contentItemRowLayout
-                            anchors.centerIn: parent
-                            spacing: 2
-                            StatusBaseText {
-                                color: Theme.palette.directColor1
-                                text: "In: "
-                            }
-                            StatusIcon {
-                                Layout.preferredWidth: 16
-                                Layout.preferredHeight: 16
-                                visible: !!root.selectionBadgeIcon
-                                icon: root.selectionBadgeIcon
-                            }
-                            StatusRoundedImage {
-                                implicitWidth: 16
-                                implicitHeight: 16
-                                visible: !!root.selectionBadgeImage
-                                image.source: root.selectionBadgeImage
-                            }
-                            StatusLetterIdenticon {
-                                implicitWidth: 16
-                                implicitHeight: 16
-                                letterSize: 11
-                                visible: ((root.selectionBadgeImage === "") && (root.selectionBadgePrimaryText !== qsTr("Anywhere")))
-                                color: root.selectionBadgeIdenticonColor
-                                name: root.selectionBadgePrimaryText
-                            }
-                            StatusBaseText {
-                                color: Theme.palette.directColor1
-                                text: root.selectionBadgePrimaryText
-                            }
-                            StatusIcon {
-                                Layout.preferredWidth: 14.5
-                                Layout.preferredHeight: 17.5
-                                Layout.alignment: Qt.AlignVCenter
-                                visible: !!root.selectionBadgeSecondaryText
-                                color: Theme.palette.baseColor1
-                                icon: "next"
-                            }
-                            StatusBaseText {
-                                color: Theme.palette.directColor1
-                                visible: !!root.selectionBadgeSecondaryText
-                                text: "#" + root.selectionBadgeSecondaryText
-                            }
-                            StatusIcon {
-                                Layout.preferredWidth: 17.5
-                                Layout.preferredHeight: 14.5
-                                Layout.alignment: Qt.AlignVCenter
-                                icon: "chevron-down"
+
+                        MouseArea {
+                            id: sensor
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            cursorShape: Qt.PointingHandCursor 
+                            onClicked: root.searchOptionsPopupMenu.popup();
+
+                            RowLayout {
+                                id: contentItemRowLayout
+                                anchors.centerIn: parent
+                                spacing: 2
+                                StatusBaseText {
+                                    color: Theme.palette.directColor1
+                                    text: "In: "
+                                }
+                                StatusIcon {
+                                    Layout.preferredWidth: 16
+                                    Layout.preferredHeight: 16
+                                    visible: !!root.selectionBadgeIcon
+                                    icon: root.selectionBadgeIcon
+                                }
+                                StatusRoundedImage {
+                                    implicitWidth: 16
+                                    implicitHeight: 16
+                                    visible: !!root.selectionBadgeImage
+                                    image.source: root.selectionBadgeImage
+                                }
+                                StatusLetterIdenticon {
+                                    implicitWidth: 16
+                                    implicitHeight: 16
+                                    letterSize: 11
+                                    visible: ((root.selectionBadgeImage === "") && (root.selectionBadgePrimaryText !== qsTr("Anywhere")))
+                                    color: root.selectionBadgeIdenticonColor
+                                    name: root.selectionBadgePrimaryText
+                                }
+                                StatusBaseText {
+                                    color: Theme.palette.directColor1
+                                    text: root.selectionBadgePrimaryText
+                                }
+                                StatusIcon {
+                                    Layout.preferredWidth: 14.5
+                                    Layout.preferredHeight: 17.5
+                                    Layout.alignment: Qt.AlignVCenter
+                                    visible: !!root.selectionBadgeSecondaryText
+                                    color: Theme.palette.baseColor1
+                                    icon: "next"
+                                }
+                                StatusBaseText {
+                                    color: Theme.palette.directColor1
+                                    visible: !!root.selectionBadgeSecondaryText
+                                    text: "#" + root.selectionBadgeSecondaryText
+                                }
+                                StatusIcon {
+                                    Layout.preferredWidth: 17.5
+                                    Layout.preferredHeight: 14.5
+                                    Layout.alignment: Qt.AlignVCenter
+                                    icon: "chevron-down"
+                                    color: Theme.palette.baseColor1
+                                }
                             }
                         }
                     }
-                    onClicked: { root.searchOptionsPopupMenu.popup(searchOptionsMenuButton); }
                 }
 
                 StatusFlatRoundButton {
