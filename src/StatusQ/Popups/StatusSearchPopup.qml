@@ -161,6 +161,7 @@ StatusModal {
                     width: 32
                     height: 32
                     anchors.left: searchOptionsMenuButton.right
+                    anchors.leftMargin: 4
                     anchors.verticalCenter: parent.verticalCenter
                     opacity: (root.selectionBadgePrimaryText === qsTr("Anywhere")) ? 0.0 : 1.0
                     visible: (opacity > 0.1)
@@ -217,6 +218,9 @@ StatusModal {
                 StatusLoadingIndicator {
                     anchors.centerIn: parent
                     visible: root.loading
+                    color: Theme.palette.primaryColor1
+                    width: 24
+                    height: 24
                 }
 
                 StatusBaseText {
