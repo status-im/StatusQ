@@ -184,7 +184,7 @@ StatusModal {
                     anchors.fill: parent
                     anchors {
                         leftMargin: 8
-                        rightMargin: 19
+                        rightMargin: 8
                         bottomMargin: 67
                     }
                     visible: (!root.loading && (count > 0))
