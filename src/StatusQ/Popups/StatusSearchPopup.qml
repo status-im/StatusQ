@@ -183,8 +183,8 @@ StatusModal {
                     id: view
                     anchors.fill: parent
                     anchors {
-                        leftMargin: 8
-                        rightMargin: 8
+                        leftMargin: 0
+                        rightMargin: 0
                         bottomMargin: 67
                     }
                     visible: (!root.loading && (count > 0))
@@ -195,6 +195,7 @@ StatusModal {
                         title: model.name
                         statusListItemTitle.color: model.name.startsWith("@") ? Theme.palette.primaryColor1 : Theme.palette.directColor1
                         subTitle: model.content
+                        radius: 0
                         statusListItemSubTitle.height: model.content !== "" ? 20 : 0
                         statusListItemSubTitle.elide: Text.ElideRight
                         statusListItemSubTitle.color: Theme.palette.black
