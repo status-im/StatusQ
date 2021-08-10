@@ -577,7 +577,7 @@ Rectangle {
                 }
                 StatusSearchPopup {
                     id: searchPopup
-                    searchOptionsPopupMenu: searchPopupMenu
+                    searchOptionsPopupMenu: searchOptionsMenu
                     onSearchTextChanged: {
                         if (searchPopup.searchText !== "") {
                             searchPopup.loading = true;
@@ -600,81 +600,78 @@ Rectangle {
                         }
                     }
                 }
-                Component {
-                    id: searchPopupMenu
-                    StatusPopupMenu {
-                        id: searchOptionsMenu
-                        StatusMenuItem {
-                            text: "Anywhere"
-                            onTriggered: {
-                                searchPopup.resetSelectionBadge();
-                                searchPopup.selectionBadgePrimaryText = text;
-                            }
+                StatusPopupMenu {
+                    id: searchOptionsMenu
+                    StatusMenuItem {
+                        text: "Anywhere"
+                        onTriggered: {
+                            searchPopup.resetSelectionBadge();
+                            searchPopup.selectionBadgePrimaryText = text;
                         }
-                        StatusMenuSeparator { }
-                        //Dummy item to keep seperator in right position
-                        MenuItem { implicitHeight: 0.00001 }
-                        Instantiator {
-                            model: models.optionsModel
-                            delegate: subMenus
-                            onObjectAdded: { searchOptionsMenu.insertMenu(index+2, object); }
-                            onObjectRemoved: { searchOptionsMenu.removeMenu(object); }
-                        }
+                    }
+                    StatusMenuSeparator { }
+                    //Dummy item to keep seperator in right position
+                    MenuItem { implicitHeight: 0.00001 }
+                    Instantiator {
+                        model: models.optionsModel
+                        delegate: subMenus
+                        onObjectAdded: { searchOptionsMenu.insertMenu(index+2, object); }
+                        onObjectRemoved: { searchOptionsMenu.removeMenu(object); }
+                    }
 
-                        Component {
-                            id: subMenus
-                            StatusPopupMenu {
-                                id: menu
-                                title: model.title
-                                subMenuItemIcons: [ { source: model.imageSource } ]
-                                Repeater {
-                                    id: menuLoader
-                                    property int currentIndex: -1
-                                    Loader {
-                                        id: subMenuLoader
-                                        sourceComponent: StatusSearchPopupMenuItem {
-                                            text: model.text
-                                            icon.name: model.iconName
-                                            icon.color: model.identiconColor
-                                            image.source: model.imageSource
-                                            image.isIdenticon: model.isIdenticon
-                                            onClicked: {
-                                                menuLoader.currentIndex = index;
-                                                searchPopup.resetSelectionBadge();
-                                                searchPopup.selectionBadgeSecondaryText = model.text.includes("#") ? model.text.split("#")[1] : model.text
-                                                searchPopup.selectionBadgeImage = model.imageSource;
-                                                searchPopup.selectionBadgeIcon = model.iconName;
-                                                searchPopup.selectionBadgeIdenticonColor = model.identiconColor;
-                                                searchOptionsMenu.dismiss();
-                                            }
-                                        }
-                                    }
-                                }
-
-                                Connections {
-                                    target: searchOptionsMenu
-                                    function onMenuItemClicked(menuIndex) {
-                                        if (menuLoader.currentIndex === -1) {
+                    Component {
+                        id: subMenus
+                        StatusPopupMenu {
+                            id: menu
+                            title: model.title
+                            subMenuItemIcons: [ { source: model.imageSource } ]
+                            Repeater {
+                                id: menuLoader
+                                property int currentIndex: -1
+                                Loader {
+                                    id: subMenuLoader
+                                    sourceComponent: StatusSearchPopupMenuItem {
+                                        text: model.text
+                                        icon.name: model.iconName
+                                        icon.color: model.identiconColor
+                                        image.source: model.imageSource
+                                        image.isIdenticon: model.isIdenticon
+                                        onClicked: {
+                                            menuLoader.currentIndex = index;
                                             searchPopup.resetSelectionBadge();
-                                            searchPopup.selectionBadgePrimaryText = searchOptionsMenu.menuAt(menuIndex+2).title;
-                                            //FIXME the image should be set in StatusPopupMenu
-                                            //searchPopup.selectionBadgeImage = searchOptionsMenu.menuAt(menuIndex+2).subMenuItemIcons[index].source;
-                                            //TODO fix error QML StatusPopupMenu: cannot find any window to open popup in.
-                                            searchOptionsMenu.menuAt(menuIndex+2).dismiss();
+                                            searchPopup.selectionBadgeSecondaryText = model.text.includes("#") ? model.text.split("#")[1] : model.text
+                                            searchPopup.selectionBadgeImage = model.imageSource;
+                                            searchPopup.selectionBadgeIcon = model.iconName;
+                                            searchPopup.selectionBadgeIdenticonColor = model.identiconColor;
+                                            searchOptionsMenu.dismiss();
                                         }
                                     }
                                 }
+                            }
 
-                                onAboutToHide: {
-                                    if (menuLoader.currentIndex !== -1) {
-                                        searchPopup.selectionBadgePrimaryText = model.title;
-                                        menuLoader.currentIndex = -1;
+                            Connections {
+                                target: searchOptionsMenu
+                                function onMenuItemClicked(menuIndex) {
+                                    if (menuLoader.currentIndex === -1) {
+                                        searchPopup.resetSelectionBadge();
+                                        searchPopup.selectionBadgePrimaryText = searchOptionsMenu.menuAt(menuIndex+2).title;
+                                        //FIXME the image should be set in StatusPopupMenu
+                                        //searchPopup.selectionBadgeImage = searchOptionsMenu.menuAt(menuIndex+2).subMenuItemIcons[index].source;
+                                        //TODO fix error QML StatusPopupMenu: cannot find any window to open popup in.
+                                        searchOptionsMenu.menuAt(menuIndex+2).dismiss();
                                     }
                                 }
+                            }
 
-                                Component.onCompleted: {
-                                    menuLoader.model = model.subItems;
+                            onAboutToHide: {
+                                if (menuLoader.currentIndex !== -1) {
+                                    searchPopup.selectionBadgePrimaryText = model.title;
+                                    menuLoader.currentIndex = -1;
                                 }
+                            }
+
+                            Component.onCompleted: {
+                                menuLoader.model = model.subItems;
                             }
                         }
                     }

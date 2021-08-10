@@ -24,8 +24,8 @@ StatusModal {
     property string selectionBadgeSecondaryText: ""
     property string selectionBadgeIdenticonColor: ""
     property bool loading
-    property Component searchOptionsPopupMenu
-    property ListModel searchResults: ListModel { }
+    property var searchResults: []
+    property Menu searchOptionsPopupMenu: Menu{}
     function resetSelectionBadge() {
         selectionBadgeIcon = "";
         selectionBadgeImage = "";
@@ -141,12 +141,7 @@ StatusModal {
                             }
                         }
                     }
-                    onClicked: { searchPopupMenuLoader.item.popup(); }
-                }
-
-                Loader {
-                    id: searchPopupMenuLoader
-                    sourceComponent: root.searchOptionsPopupMenu
+                    onClicked: { root.searchOptionsPopupMenu.popup(searchOptionsMenuButton) }
                 }
 
                 StatusFlatRoundButton {
@@ -199,7 +194,7 @@ StatusModal {
                         badge.icon.isLetterIdenticon: model.isLetterIdenticon
                         badge.icon.color: model.badgeIdenticonColor
                     }
-                    section.property: "type"
+                    section.property: "sectionName"
                     section.criteria: ViewSection.FullString
                     section.delegate: StatusBaseText {
                         font.pixelSize: 15
@@ -225,7 +220,6 @@ StatusModal {
     onClosed: {
         root.resetSelectionBadge();
         root.loading = false;
-        contentComponent.searchText = "";
-        root.searchResults.clear();
+        contentComponent.searchText = ""
     }
 }
