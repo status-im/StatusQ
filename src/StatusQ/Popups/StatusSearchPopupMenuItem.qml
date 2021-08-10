@@ -8,6 +8,7 @@ import StatusQ.Core.Theme 0.1
 MenuItem {
     id: root
     implicitHeight: 38
+
     property StatusImageSettings image: StatusImageSettings {
         height: 16
         width: 16
@@ -16,30 +17,43 @@ MenuItem {
     property StatusIconSettings iconSettings: StatusIconSettings {
         height: 16
         width: 16
-        isLetterIdenticon: !!root.image.source
+        isLetterIdenticon: (root.image.source.toString() === ""
+                            && root.iconSettings.name.toString() === "")
         background: StatusIconBackgroundSettings {}
         color: "transparent"
     }
+
     background: Rectangle {
-        color: sensor.hovered ? Theme.palette.statusPopupMenu.hoverBackgroundColor : "transparent"
+        color: root.hovered ? Theme.palette.statusPopupMenu.hoverBackgroundColor : "transparent"
     }
+
     contentItem: RowLayout {
+        anchors.left: parent.left
+        anchors.leftMargin: 12
         StatusIcon {
-            Layout.preferredWidth: root.iconSettings.width
-            Layout.preferredHeight: root.iconSettings.height
+            Layout.preferredWidth: visible ? root.iconSettings.width : 0
+            Layout.preferredHeight: visible ? root.iconSettings.height : 0
             Layout.alignment: Qt.AlignVCenter
-            visible: !!icon
-            icon:  root.icon.name
-            color: root.icon.color
+            visible: root.iconSettings.name.toString() !== ""
+            icon:  root.iconSettings.name
+            color: root.iconSettings.color
         }
         StatusRoundedImage {
-            Layout.preferredWidth: root.image.width
-            Layout.preferredHeight: root.image.height
+            Layout.preferredWidth: visible ? root.image.width : 0
+            Layout.preferredHeight: visible ? root.image.height : 0
             Layout.alignment: Qt.AlignVCenter
-            visible: !!root.image.source
+            visible: root.image.source.toString() !== ""
             image.source: root.image.source
             border.width: root.image.isIdenticon ? 1 : 0
             border.color: Theme.palette.directColor7
+        }
+        StatusLetterIdenticon {
+            width: visible ? root.iconSettings.width : 0
+            height: visible ? root.iconSettings.height : 0
+            visible: root.iconSettings.isLetterIdenticon
+            color: root.iconSettings.color
+            name: root.text
+            letterSize: 11
         }
         StatusBaseText {
             Layout.alignment: Qt.AlignVCenter

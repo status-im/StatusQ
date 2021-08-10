@@ -228,8 +228,12 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
     }
 
     property ListModel optionsModel: ListModel {
-        ListElement { title: "Chat";
+        ListElement {
+            title: "Chat";
             imageSource: "https://pbs.twimg.com/profile_images/1369221718338895873/T_5fny6o_400x400.jpg"
+            iconName: ""
+            identiconColor: ""
+            isIdenticon: false
             subItems: [
                 ListElement {
                     text: "Pascal"
@@ -246,8 +250,13 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
                     identiconColor: ""
                     isIdenticon: true
                 }]}
-        ListElement { title: "Cryptokitties";
-            imageSource: "https://pbs.twimg.com/profile_images/1369221718338895873/T_5fny6o_400x400.jpg"
+        ListElement {
+            title: "Cryptokitties";
+            imageSource: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0Bh
+                                   CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2ImYgiNITTlTdG1nUZ5a92VITQxITFiJmIIjSE0htAYQrMHAAD//+wwFVpz+yqXAAAAAElFTkSuQmCC"
+            iconName: ""
+            identiconColor: ""
+            isIdenticon: true
             subItems: [
                 ListElement {
                     text: "#welcome"
@@ -270,8 +279,12 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
                     identiconColor: ""
                     isIdenticon: false
                 }]}
-        ListElement { title: "Another community";
+        ListElement {
+            title: "Another community";
             imageSource: "";
+            iconName: "chat"
+            identiconColor: ""
+            isIdenticon: false
             subItems: [
                 ListElement {
                     text: "#news"
@@ -280,5 +293,13 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
                     identiconColor: "red"
                     isIdenticon: false
                 }]}
+        ListElement {
+            title: "Test community";
+            imageSource: "";
+            iconName: ""
+            identiconColor: ""
+            isIdenticon: false
+            subItems: []
+        }
     }
 }

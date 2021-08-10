@@ -67,13 +67,17 @@ Menu {
                     }
                     rotation: statusPopupMenuItem.action.iconRotation
                     icon: {
-                        if (statusPopupMenuItem.subMenu) {
-                            return statusPopupMenu.subMenuItemIcons[statusPopupMenuItem.subMenuIndex]
+                        if (statusPopupMenuItem.subMenu && !!statusPopupMenu.subMenuItemIcons[statusPopupMenuItem.subMenuIndex] &&
+                            statusPopupMenu.subMenuItemIcons[statusPopupMenuItem.subMenuIndex].icon.toString() !== "") {
+                            return statusPopupMenu.subMenuItemIcons[statusPopupMenuItem.subMenuIndex].icon;
+                        } else if (!!statusPopupMenuItem.action && statusPopupMenuItem.action.icon.name !== "") {
+                            return statusPopupMenuItem.action.icon.name;
+                        } else if (statusPopupMenuItem.action.iconSettings.name !== "") {
+                            return statusPopupMenuItem.action.iconSettings.name;
+                        } else {
+                            return "";
                         }
-                        return  statusPopupMenuItem.action.icon.name ||
-                                statusPopupMenuItem.action.iconSettings.name;
                     }
-
                     color: {
                         let c = statusPopupMenuItem.action.iconSettings.color ||
                             statusPopupMenuItem.action.icon.color

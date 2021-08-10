@@ -575,15 +575,16 @@ Rectangle {
                         root.showRightPanel = !root.showRightPanel;
                     }
                 }
+
                 StatusSearchPopup {
                     id: searchPopup
-                    searchOptionsPopupMenu: searchOptionsMenu
+                    searchOptionsPopupMenu: searchPopupMenu
                     onSearchTextChanged: {
                         if (searchPopup.searchText !== "") {
                             searchPopup.loading = true;
                             searchModelSimTimer.start();
                         } else {
-                            searchPopup.searchResults.clear();
+                            searchPopup.searchResults = [];
                             searchModelSimTimer.stop();
                         }
                     }
@@ -601,7 +602,7 @@ Rectangle {
                     }
                 }
                 StatusPopupMenu {
-                    id: searchOptionsMenu
+                    id: searchPopupMenu
                     StatusMenuItem {
                         text: "Anywhere"
                         onTriggered: {
@@ -614,26 +615,60 @@ Rectangle {
                     MenuItem { implicitHeight: 0.00001 }
                     Instantiator {
                         model: models.optionsModel
-                        delegate: subMenus
-                        onObjectAdded: { searchOptionsMenu.insertMenu(index+2, object); }
-                        onObjectRemoved: { searchOptionsMenu.removeMenu(object); }
+                        delegate: Loader {
+                            sourceComponent: (!!model.subItems && model.subItems.count > 0) ? subMenus : subMenuItemComponent
+                            onLoaded: {
+                                if (!!model.subItems && model.subItems.count > 0)  {
+                                    item.title = model.title;
+                                    item.parentIndex = index;
+                                    item.subItemsModel = model.subItems;
+                                    searchPopupMenu.subMenuItemIcons = [{
+                                                    source: model.imageSource,
+                                                    icon: model.iconName,
+                                                    isIdenticon: model.isIdenticon,
+                                                    identiconColor: model.identiconColor
+                                                   }];
+                                    searchPopupMenu.insertMenu(index+2, item);
+                                } else {
+                                    item.text = model.title;
+                                    item.iconSettings.name = model.iconName;
+                                    item.iconSettings.color = model.identiconColor;
+                                    item.image.source = model.imageSource;
+                                    item.image.isIdenticon = model.isIdenticon;
+                                    searchPopupMenu.insertItem(index+2, item);
+                                }
+                            }
+                        }
+                        onObjectRemoved: { searchPopupMenu.removeMenu(object); }
+                    }
+
+                    Component {
+                        id: subMenuItemComponent
+                        StatusSearchPopupMenuItem {
+                            onClicked: {
+                                searchPopup.resetSelectionBadge();
+                                searchPopup.selectionBadgePrimaryText = text;
+                            }
+                        }
                     }
 
                     Component {
                         id: subMenus
                         StatusPopupMenu {
                             id: menu
-                            title: model.title
-                            subMenuItemIcons: [ { source: model.imageSource } ]
+                            property int parentIndex
+                            property var subItemsModel
+                            property alias menuTitle: menu.title
                             Repeater {
                                 id: menuLoader
+                                model: menu.subItemsModel
                                 property int currentIndex: -1
                                 Loader {
                                     id: subMenuLoader
                                     sourceComponent: StatusSearchPopupMenuItem {
                                         text: model.text
-                                        icon.name: model.iconName
-                                        icon.color: model.identiconColor
+                                        iconSettings.name: model.iconName
+                                        iconSettings.color: model.identiconColor
                                         image.source: model.imageSource
                                         image.isIdenticon: model.isIdenticon
                                         onClicked: {
@@ -643,35 +678,31 @@ Rectangle {
                                             searchPopup.selectionBadgeImage = model.imageSource;
                                             searchPopup.selectionBadgeIcon = model.iconName;
                                             searchPopup.selectionBadgeIdenticonColor = model.identiconColor;
-                                            searchOptionsMenu.dismiss();
+                                            searchPopupMenu.dismiss();
                                         }
-                                    }
-                                }
-                            }
-
-                            Connections {
-                                target: searchOptionsMenu
-                                function onMenuItemClicked(menuIndex) {
-                                    if (menuLoader.currentIndex === -1) {
-                                        searchPopup.resetSelectionBadge();
-                                        searchPopup.selectionBadgePrimaryText = searchOptionsMenu.menuAt(menuIndex+2).title;
-                                        //FIXME the image should be set in StatusPopupMenu
-                                        //searchPopup.selectionBadgeImage = searchOptionsMenu.menuAt(menuIndex+2).subMenuItemIcons[index].source;
-                                        //TODO fix error QML StatusPopupMenu: cannot find any window to open popup in.
-                                        searchOptionsMenu.menuAt(menuIndex+2).dismiss();
                                     }
                                 }
                             }
 
                             onAboutToHide: {
                                 if (menuLoader.currentIndex !== -1) {
-                                    searchPopup.selectionBadgePrimaryText = model.title;
+                                    searchPopup.selectionBadgePrimaryText = menu.menuTitle;
                                     menuLoader.currentIndex = -1;
                                 }
                             }
 
-                            Component.onCompleted: {
-                                menuLoader.model = model.subItems;
+                            Connections {
+                                target: searchPopupMenu
+                                function onMenuItemClicked(menuIndex) {
+                                    if (menuLoader.currentIndex === -1) {
+                                        searchPopup.resetSelectionBadge();
+                                        searchPopup.selectionBadgePrimaryText = searchPopupMenu.menuAt(menuIndex+2).title;
+                                        //FIXME the image should be set in StatusPopupMenu
+                                        //searchPopup.selectionBadgeImage = searchOptionsMenu.menuAt(menuIndex+2).subMenuItemIcons[index].source;
+                                        //TODO fix error QML StatusPopupMenu: cannot find any window to open popup in.
+                                        searchPopupMenu.dismiss();
+                                    }
+                                }
                             }
                         }
                     }
