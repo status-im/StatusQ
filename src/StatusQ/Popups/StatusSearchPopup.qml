@@ -24,6 +24,7 @@ StatusModal {
     property string selectionBadgeSecondaryText: ""
     property string selectionBadgeIdenticonColor: ""
     property string noResultsLabel: "No results"
+    property alias searchOptionsMenuButton: searchOptionsMenuButton
     property bool loading
     property Menu searchOptionsPopupMenu: Menu { }
     property var searchResults: [ ]
@@ -84,6 +85,9 @@ StatusModal {
                     anchors.verticalCenter: parent.verticalCenter
                     implicitWidth: (contentItemRowLayout.width + 24)
                     implicitHeight: 32
+
+                    property string label: "In"
+
                     background: Rectangle {
                         anchors.fill: parent
                         color: Theme.palette.baseColor2
@@ -106,7 +110,7 @@ StatusModal {
                                 spacing: 2
                                 StatusBaseText {
                                     color: Theme.palette.directColor1
-                                    text: "In: "
+                                    text: searchOptionsMenuButton.label + ": "
                                 }
                                 StatusIcon {
                                     Layout.preferredWidth: 16
