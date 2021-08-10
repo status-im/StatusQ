@@ -30,7 +30,7 @@ Rectangle {
     signal clicked(var mouse)
     signal unmute()
 
-    signal visualReorder(int from, int to)
+    signal visualReorder(int from, int to, int order)
     signal reorder(int from, int to)
 
     enum Type {
@@ -73,13 +73,19 @@ Rectangle {
 
         property real startY: 0
         onMouseYChanged: {
-            if ((startY != mouseY )&& pressed) {
+            if ( (Math.abs(startY - mouseY) > 5 ) && pressed) {
                 held = true
             }
         }
         onPressed: startY = mouseY
+        onPressAndHold: {
+            held = true
+        }
+
         onReleased: {
-            reorder(statusChatListItem.DelegateModel.itemsIndex, statusChatListItem.DelegateModel.itemsIndex)
+            if (held) {
+                reorder(statusChatListItem.originalOrder, statusChatListItem.originalOrder)
+            }
             held = false
         }
 
@@ -177,10 +183,10 @@ Rectangle {
             anchors.rightMargin: 6
             anchors.verticalCenter: parent.verticalCenter
 
-            text: statusChatListItem.type === StatusChatListItem.Type.PublicChat &&
+            text: originalOrder + (statusChatListItem.type === StatusChatListItem.Type.PublicChat &&
                   !statusChatListItem.name.startsWith("#") ?
                       "#" + statusChatListItem.name :
-                      statusChatListItem.name
+                      statusChatListItem.name)
             elide: Text.ElideRight
             color: {
                 if (statusChatListItem.muted && !sensor.containsMouse && !statusChatListItem.highlighted) {
@@ -256,8 +262,10 @@ Rectangle {
             interval: 100
             repeat: false
             onTriggered: {
-                if (dropArea.containsDrag)
-                    visualReorder(dropArea.drag.source.DelegateModel.itemsIndex, statusChatListItem.DelegateModel.itemsIndex)
+                if (dropArea.containsDrag) {
+                    dropArea.drag.source.originalOrder = statusChatListItem.originalOrder
+                    visualReorder(dropArea.drag.source.DelegateModel.itemsIndex, statusChatListItem.DelegateModel.itemsIndex, statusChatListItem.originalOrder)
+                }
             }
         }
     }
@@ -309,6 +317,7 @@ Rectangle {
                         width: cover.width - iconLoader.item.width - 22
                         text: chatName.text
                         elide: Text.ElideRight
+                        color: Theme.palette.directColor5
                     }
                 }
             }

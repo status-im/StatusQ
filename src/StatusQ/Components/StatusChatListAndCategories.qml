@@ -65,7 +65,7 @@ Item {
                 popupMenu: statusChatListAndCategories.chatListPopupMenu
 
                 onReorder: function (cid, from, to) {
-                    statusChatListAndCategories.reorderChat(categoryId, cid, from, from, to)
+                    statusChatListAndCategories.reorderChat(categoryId, cid, from, to)
                 }
             }
 

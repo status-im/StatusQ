@@ -47,7 +47,7 @@ Column {
                     profileImage = statusChatList.profileImageFn(model.chatId || model.id) || ""
                 }
             }
-            originalOrder: DelegateModel.itemsIndex
+            originalOrder: model.position
             chatId: model.chatId || model.id
             name: !!statusChatList.chatNameFn ? statusChatList.chatNameFn(model) : model.name
             type: model.chatType
