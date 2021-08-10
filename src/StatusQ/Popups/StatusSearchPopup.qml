@@ -23,6 +23,7 @@ StatusModal {
     property string selectionBadgePrimaryText: ""
     property string selectionBadgeSecondaryText: ""
     property string selectionBadgeIdenticonColor: ""
+    property string noResultsLabel: "No results"
     property bool loading
     property Menu searchOptionsPopupMenu: Menu { }
     property var searchResults: [ ]
@@ -234,7 +235,7 @@ StatusModal {
 
                 StatusBaseText {
                     anchors.centerIn: parent
-                    text: qsTr("No results")
+                    text: root.noResultsLabel
                     color: Theme.palette.baseColor1
                     font.pixelSize: 13
                     visible: ((inputText.text !== "") && (view.count === 0) && !root.loading)
