@@ -209,10 +209,18 @@ StatusModal {
                     }
                     section.property: "sectionName"
                     section.criteria: ViewSection.FullString
-                    section.delegate: StatusBaseText {
-                        font.pixelSize: 15
-                        color: Theme.palette.baseColor1
-                        text: section
+                    section.delegate: Item {
+                        height: 34
+                        width: view.width
+                        StatusBaseText {
+                            font.pixelSize: 15
+                            color: Theme.palette.baseColor1
+                            text: section
+                            anchors.left: parent.left
+                            anchors.leftMargin: 16
+                            anchors.bottom: parent.bottom
+                            anchors.bottomMargin: 4
+                        }
                     }
                 }
                 StatusLoadingIndicator {
