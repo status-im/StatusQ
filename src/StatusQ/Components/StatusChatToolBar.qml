@@ -17,6 +17,8 @@ Rectangle {
     property alias membersButton: membersButton
     property alias searchButton: searchButton
     property int notificationCount: 0
+    // Used to understand if the tooltip is in the corner of the screen
+    property bool isCorner: true
 
     property Component popupMenu
 
@@ -166,7 +168,7 @@ Rectangle {
                 text: "Activity"
                 orientation: StatusToolTip.Orientation.Bottom
                 y: parent.height + 12
-                arrow.x: width - (parent.width-4)
+                cornerToolTip: isCorner
             }
         }
 

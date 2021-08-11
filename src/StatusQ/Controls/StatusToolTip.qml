@@ -13,6 +13,7 @@ ToolTip {
         Right
     }
 
+    property bool cornerToolTip: false
     property int maxWidth: 800
     property int orientation: StatusToolTip.Orientation.Top
     property alias arrow: arrow
@@ -41,7 +42,7 @@ ToolTip {
             radius: 1
             x: {
                 if (orientation === StatusToolTip.Orientation.Top || orientation === StatusToolTip.Orientation.Bottom) {
-                    return statusToolTipBackground.width / 2 - width / 2
+                    return cornerToolTip ? (statusToolTip.x + statusToolTip.width) : (statusToolTipBackground.width / 2 - arrow.width / 2)
                 }
                 if (orientation === StatusToolTip.Orientation.Left) {
                     return statusToolTipContentBackground.width - (width / 2) - 8
