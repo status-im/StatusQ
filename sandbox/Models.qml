@@ -202,29 +202,29 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
             badgeSecondaryText: "";
             badgeIdenticonColor: "";
             isLetterIdenticon: false }
+        ListElement { name: "core-ui"; sectionName: "Channels"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
+        ListElement { name: "carmen eth"; sectionName: "Chat"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
         ListElement { name: "core"; sectionName: "Channels"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
         ListElement { name: "communities-phase3"; sectionName: "Channels"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
-        ListElement { name: "core-ui"; sectionName: "Channels"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
-        ListElement { name: "desktop"; sectionName: "Channels"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
-        ListElement { name: "Crocodile Vanilla Bird"; sectionName: "Chat"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
-        ListElement { name: "carmen eth"; sectionName: "Chat"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
-        ListElement { name: "CryptoKitties"; sectionName: "Communities"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
-        ListElement { name: "MyCommunity"; sectionName: "Communities"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
         ListElement { name: "Foo"; sectionName: "Communities"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
+        ListElement { name: "Crocodile Vanilla Bird"; sectionName: "Chat"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
+        ListElement { name: "CryptoKitties"; sectionName: "Communities"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
+        ListElement { name: "desktop"; sectionName: "Channels"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
+        ListElement { name: "MyCommunity"; sectionName: "Communities"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
     }
     property var searchResultsB: ListModel {
+        ListElement { name: "CryptoKitties"; sectionName: "Communities"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
         ListElement { name: "@Ant"; sectionName: "Messages"; time: "11:43 AM"; content: "<font color='#4360DF'>@John</font>, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum ";
             badgeImage: "";
             badgePrimaryText: "CryptoKities";
             badgeSecondaryText: "#design";
             badgeIdenticonColor: "pink"; isLetterIdenticon: true }
         ListElement { name: "support"; sectionName: "Channels"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
-        ListElement { name: "desktop-ui"; sectionName: "Channels"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
+        ListElement { name: "CryptoRangers"; sectionName: "Communities"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
         ListElement { name: "climate-change"; sectionName: "Chat"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
         ListElement { name: "food"; sectionName: "Chat"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: "pink"; isLetterIdenticon: true }
-        ListElement { name: "CryptoKitties"; sectionName: "Communities"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
-        ListElement { name: "CryptoRangers"; sectionName: "Communities"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
         ListElement { name: "Foo"; sectionName: "Communities"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: "orange"; isLetterIdenticon: true }
+        ListElement { name: "desktop-ui"; sectionName: "Channels"; time: ""; content: ""; badgeImage: ""; badgePrimaryText: ""; badgeSecondaryText: ""; badgeIdenticonColor: ""; isLetterIdenticon: false }
     }
 
     property ListModel optionsModel: ListModel {

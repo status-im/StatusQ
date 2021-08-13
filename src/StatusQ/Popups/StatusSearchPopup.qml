@@ -33,6 +33,23 @@ StatusModal {
         searchSelectionButton.secondaryText = "";
     }
 
+    onSearchResultsChanged: {
+        var curIndexes = [...Array(searchResults.count)].map((v,i) => i);
+        curIndexes.sort((a,b) => searchResults.get(a).sectionName.localeCompare(searchResults.get(b).sectionName));
+        var sorted = 0;
+        while ((sorted < curIndexes.length) && (sorted === curIndexes[sorted])) {
+            sorted++;
+        }
+        if (sorted === curIndexes.length) {
+            return;
+        }
+        for (let i = sorted; i < curIndexes.length; i++) {
+            searchResults.move(curIndexes[i], searchResults.count - 1, 1);
+            searchResults.insert(curIndexes[i], { } );
+        }
+        searchResults.remove(sorted, curIndexes.length - sorted);
+    }
+
     content: Item {
         width: parent.width
         height: root.height
