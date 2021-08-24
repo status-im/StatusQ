@@ -9,8 +9,8 @@ Rectangle {
 
     implicitWidth: identicon.width + 
         Math.max(
-          statusChatInfoButtonTitle.anchors.leftMargin + statusChatInfoButtonTitle.width,
-          statusChatInfoButtonTitle.anchors.leftMargin + statusChatInfoButtonSubTitle.width
+          statusChatInfoButtonTitle.anchors.leftMargin + statusChatInfoButtonTitle.implicitWidth,
+          statusChatInfoButtonTitle.anchors.leftMargin + statusChatInfoButtonSubTitle.implicitWidth
         ) + 8
     implicitHeight: 48
 
@@ -103,6 +103,9 @@ Rectangle {
             anchors.left: identicon.right
             anchors.leftMargin: 8
             anchors.right: parent.right
+            implicitWidth: statusIcon.width +
+                           chatName.implicitWidth + chatName.anchors.leftMargin +
+                           mutedIcon.width + mutedIcon.anchors.leftMargin
             height: chatName.height
 
             StatusIcon {
@@ -184,6 +187,8 @@ Rectangle {
             anchors.top: statusChatInfoButtonTitle.bottom
             visible: !!statusChatInfoButton.subTitle || statusChatInfoButton.pinnedMessagesCount > 0
             height: visible ? chatType.height : 0
+
+            implicitWidth: chatType.implicitWidth
 
             StatusBaseText {
                 id: chatType
