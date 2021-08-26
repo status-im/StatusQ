@@ -2,6 +2,7 @@ import QtQuick 2.14
 import QtQml.Models 2.14
 import QtQuick.Controls 2.14 as QC
 
+import StatusQ.Core.Utils 0.1
 import StatusQ.Components 0.1
 import StatusQ.Popups 0.1
 
@@ -29,18 +30,6 @@ Item {
     signal chatItemReordered(string categoryId, string chatId, int from, int to)
     signal chatListCategoryReordered(string categoryId, int from, int to)
     signal categoryAddButtonClicked(string id)
-
-    function getAbsolutePosition(node) {
-        var returnPos = {};
-        returnPos.x = 0;
-        returnPos.y = 0;
-        if (node !== undefined && node !== null) {
-            var parentValue = getAbsolutePosition(node.parent);
-            returnPos.x = parentValue.x + node.x;
-            returnPos.y = parentValue.y + node.y;
-        }
-        return returnPos;
-    }
 
     onPopupMenuChanged: {
         if (!!popupMenu) {
@@ -175,7 +164,7 @@ Item {
                         id: draggedListCategoryLoader
                         active: draggable.chatListCategory.dragActive
                         sourceComponent: StatusChatListCategory {
-                            property var globalPosition: statusChatListAndCategories.getAbsolutePosition(draggable)
+                            property var globalPosition: Utils.getAbsolutePosition(draggable)
                             parent: QC.Overlay.overlay
 
                             dragSensor.cursorShape: draggable.chatListCategory.dragSensor.cursorShape
