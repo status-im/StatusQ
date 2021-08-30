@@ -211,11 +211,11 @@ Item {
                  !statusBaseInput.multiline &&
                  edit.activeFocus
         anchors.right: parent.right
-        anchors.rightMargin: 11
+        anchors.rightMargin: 1
         anchors.verticalCenter: parent.verticalCenter
         type: StatusFlatRoundButton.Type.Secondary
-        width: 14
-        height: 14
+        width: 40
+        height: 40
         icon.name: "clear"
         icon.width: 14
         icon.height: 14
