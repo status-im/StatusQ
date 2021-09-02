@@ -6,19 +6,22 @@ import StatusQ.Core 0.1
 import StatusQ.Core.Theme 0.1
 
 TabButton {
-    id: control
+    id: statusSwitchTabButton
+
     contentItem: Item {
         height: 36
         MouseArea {
             id: sensor
             hoverEnabled: true
             anchors.fill: parent
-            cursorShape: control.hovered ? Qt.PointingHandCursor : Qt.ArrowCursor
-            onClicked: control.checked = true
+
+            cursorShape: Qt.PointingHandCursor
+            onPressed: mouse.accepted = false
+            onReleased: mouse.accepted = false
 
             StatusBaseText {
                 id: label
-                text: control.text
+                text: statusSwitchTabButton.text
                 color: Theme.palette.primaryColor1
                 font.weight: Font.Medium
                 font.pixelSize: 15
@@ -32,16 +35,12 @@ TabButton {
         id: controlBackground
         implicitHeight: 36
         implicitWidth: 148
-        color: control.checked ? 
+        color: statusSwitchTabButton.checked ?
             Theme.palette.statusSwitchTab.backgroundColor :
             "transparent"
         radius: 8
         layer.enabled: true
         layer.effect: DropShadow {
-            width: controlBackground.width
-            height: controlBackground.height
-            x: controlBackground.x
-            source: controlBackground
             horizontalOffset: 0
             verticalOffset: 0
             radius: 10

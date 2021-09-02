@@ -10,13 +10,13 @@ GridLayout {
     rowSpacing: 5
 
     StatusSwitchTabBar {
-        StatusSwitchTab {
+        StatusSwitchTabButton {
             text: "Swap"
         }
-        StatusSwitchTab {
+        StatusSwitchTabButton {
             text: "Swap & Send"
         }
-        StatusSwitchTab {
+        StatusSwitchTabButton {
             text: "Send"
         }
     }
