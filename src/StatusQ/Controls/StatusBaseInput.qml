@@ -52,6 +52,8 @@ Item {
         name: ""
     }
 
+    signal keyReleased()
+
     implicitWidth: 448
     implicitHeight: multiline ? Math.max(edit.implicitHeight + topPadding + bottomPadding, 44) : 44
 
@@ -160,6 +162,10 @@ Item {
                     } else {
                         event.accepted = true
                     }
+                }
+
+                Keys.onReleased: {
+                    statusBaseInput.keyReleased();
                 }
 
                 onTextChanged: {
