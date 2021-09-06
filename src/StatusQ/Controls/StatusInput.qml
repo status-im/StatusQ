@@ -30,22 +30,43 @@ Item {
     property int charLimit: 0
     property string errorMessage: ""
     property list<StatusValidator> validators
+    property bool dirty: false
+    property int validationMode: StatusInput.ValidationMode.OnlyWhenDirty
+    enum ValidationMode {
+        OnlyWhenDirty, // validates input only after it has become dirty
+        Always // validates input even before it has become dirty
+    }
 
     property var errors: ({})
 
     function validate() {
+        if (!dirty && validationMode === StatusInput.ValidationMode.OnlyWhenDirty) {
+            return
+        }
+        statusBaseInput.valid = true
         if (validators.length) {
             for (let idx in validators) {
-                let result = validators[idx].validate(statusBaseInput.text)
+                let validator = validators[idx]
+                let result = validator.validate(statusBaseInput.text)
 
                 if (typeof result === "boolean" && result) {
-                    statusBaseInput.valid = true
+                    statusBaseInput.valid = statusBaseInput.valid && true
+                    delete errors[validator.name]
                 } else {
                     if (!errors) {
                         errors = {}
                     }
-                    errors[validators[idx].name] = result
-                    statusBaseInput.valid = false
+                    result.error = validator.error
+                    errors[validator.name] = result
+                    statusBaseInput.valid = statusBaseInput.valid && false
+                }
+            }
+            if (errors){
+                let errs = Object.values(errors)
+                if (errs && errs[0]) {
+                    errorMessage.text = errs[0].error || root.errorMessage;
+                } else {
+                    errorMessage.text = ""
                 }
             }
         }
@@ -107,7 +128,10 @@ Item {
         anchors.leftMargin: 16
         anchors.rightMargin: 16
         maximumLength: root.charLimit
-        onTextChanged: root.validate()
+        onTextChanged: {
+            root.dirty = true
+            root.validate()
+        }
 
         Keys.forwardTo: [root]
     }
@@ -123,11 +147,11 @@ Item {
         anchors.leftMargin: 16
 
         height: visible ? implicitHeight : 0
-        visible: !!root.errorMessage && !statusBaseInput.valid
+        visible: !!text && !statusBaseInput.valid
 
         font.pixelSize: 12
         color: Theme.palette.dangerColor1
-        text: root.errorMessage
+
 
         horizontalAlignment: Text.AlignRight
         wrapMode: Text.WordWrap
