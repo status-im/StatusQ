@@ -4,7 +4,7 @@ import StatusQ.Core.Utils 0.1
 StatusValidator {
     name: "address"
 
-    error: qsTr("Please enter a valid address")
+    errorMessage: "Please enter a valid address"
 
     validate: function (t) {
         // TODO: Add ENS name resolution and validation a la

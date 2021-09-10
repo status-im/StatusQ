@@ -30,7 +30,6 @@ Item {
     property int charLimit: 0
     property string errorMessage: ""
     property list<StatusValidator> validators
-    property bool dirty: false
     property int validationMode: StatusInput.ValidationMode.OnlyWhenDirty
     enum ValidationMode {
         OnlyWhenDirty, // validates input only after it has become dirty
@@ -40,7 +39,7 @@ Item {
     property var errors: ({})
 
     function validate() {
-        if (!dirty && validationMode === StatusInput.ValidationMode.OnlyWhenDirty) {
+        if (!statusBaseInput.dirty && validationMode === StatusInput.ValidationMode.OnlyWhenDirty) {
             return
         }
         statusBaseInput.valid = true
@@ -128,10 +127,7 @@ Item {
         anchors.leftMargin: 16
         anchors.rightMargin: 16
         maximumLength: root.charLimit
-        onTextChanged: {
-            root.dirty = true
-            root.validate()
-        }
+        onTextChanged: root.validate()
 
         Keys.forwardTo: [root]
     }

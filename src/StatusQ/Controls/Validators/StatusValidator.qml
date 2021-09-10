@@ -4,7 +4,7 @@ QtObject {
     id: statusValidator
 
     property string name: ""
-    property string error: "invalid input"
+    property string errorMessage: "invalid input"
 
     property var validate: function (value) {
         return true

@@ -3,14 +3,13 @@ import StatusQ.Controls 0.1
 StatusValidator {
 
     property int minLength: 0
-    property string fieldName: "value"
 
     name: "minLength"
 
-    error: {
+    errorMessage: {
         minLength === 1 ?
-            qsTr("You need to enter a %1").arg(fieldName) :
-            qsTr("Value has to be at least %1 characters long").arg(minLength)
+            "Please enter a value" :
+            `Value is ${errors.address.actual} characters, but must be at least ${minLength}.`
     }
 
     validate: function (value) {
