@@ -24,6 +24,7 @@ Item {
 
     property alias input: statusBaseInput
     property alias valid: statusBaseInput.valid
+    property alias pending: statusBaseInput.pending
     property alias text: statusBaseInput.text
     property string label: ""
     property string secondaryLabel: ""
@@ -32,13 +33,18 @@ Item {
     property real leftPadding: 16
     property real rightPadding: 16
     property list<StatusValidator> validators
+    property list<StatusValidator> asyncValidators
     property int validationMode: StatusInput.ValidationMode.OnlyWhenDirty
+
+    property var pendingValidators: []
+
     enum ValidationMode {
         OnlyWhenDirty, // validates input only after it has become dirty
         Always // validates input even before it has become dirty
     }
 
     property var errors: ({})
+    property var asyncErrors: ({})
 
     function reset() {
         statusBaseInput.valid = false
@@ -78,6 +84,40 @@ Item {
                 }
             }
         }
+
+        if (asyncValidators.length && !Object.values(errors).length) {
+            root.pending = true
+            for (let idx in asyncValidators) {
+                let asyncValidator = asyncValidators[idx]
+                if (pendingValidators.indexOf(asyncValidator.name) == -1) {
+                    asyncValidator.input = root
+                    pendingValidators.push(asyncValidator.name)
+                    asyncValidator.validate(statusBaseInput.text)
+                }
+            }
+        }
+    }
+
+    function updateValidity(validatorName, result) {
+        if (!asyncErrors) {
+            asyncErrors = {}
+        }
+
+        if (typeof result === "boolean" && result) {
+            if (asyncErrors[validatorName] !== undefined) {
+                delete asyncErrors[validatorName]
+            }
+            errorMessage.text = ""
+        } else {
+            asyncErrors[validatorName] = result
+            for (let idx in asyncValidators) {
+                errorMessage.text = asyncValidators[idx].errorMessage || root.errorMessage
+                break;
+            }
+        }
+        pendingValidators = pendingValidators.filter(v => v !== validatorName)
+        root.pending = pendingValidators.length > 0
+        root.valid = Object.values(asyncErrors).length == 0
     }
 
     Component.onCompleted: validate()
