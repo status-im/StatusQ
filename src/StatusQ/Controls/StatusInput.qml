@@ -1,6 +1,7 @@
 import QtQuick 2.14
 
 import StatusQ.Core 0.1
+import StatusQ.Core.Backpressure 1.0
 import StatusQ.Core.Theme 0.1
 import StatusQ.Controls 0.1
 import StatusQ.Controls.Validators 0.1
@@ -33,8 +34,9 @@ Item {
     property real leftPadding: 16
     property real rightPadding: 16
     property list<StatusValidator> validators
-    property list<StatusValidator> asyncValidators
+    property list<StatusAsyncValidator> asyncValidators
     property int validationMode: StatusInput.ValidationMode.OnlyWhenDirty
+    property string validatedValue
 
     property var pendingValidators: []
 
@@ -50,7 +52,7 @@ Item {
         statusBaseInput.valid = false
         statusBaseInput.pristine = true
         statusBaseInput.text = ""
-        errorMessage = ""
+        root.errorMessage = ""
     }
 
     function validate() {
@@ -86,19 +88,21 @@ Item {
         }
 
         if (asyncValidators.length && !Object.values(errors).length) {
-            root.pending = true
             for (let idx in asyncValidators) {
                 let asyncValidator = asyncValidators[idx]
-                if (pendingValidators.indexOf(asyncValidator.name) == -1) {
-                    asyncValidator.input = root
-                    pendingValidators.push(asyncValidator.name)
-                    asyncValidator.validate(statusBaseInput.text)
-                }
+                asyncValidator.validationComplete.connect(function (value, valid) {
+                    updateAsyncValidity(asyncValidator.name, value, valid)
+                })
+                root.pending = true
+                pendingValidators.push(asyncValidator.name)
+                asyncValidator.asyncOperationInternal(statusBaseInput.text)
             }
+        } else if (!asyncValidators.length && !Object.values(errors).length) {
+            root.validatedValue = root.text
         }
     }
 
-    function updateValidity(validatorName, result) {
+    function updateAsyncValidity(validatorName, value, result) {
         if (!asyncErrors) {
             asyncErrors = {}
         }
@@ -108,6 +112,7 @@ Item {
                 delete asyncErrors[validatorName]
             }
             errorMessage.text = ""
+            root.validatedValue = value
         } else {
             asyncErrors[validatorName] = result
             for (let idx in asyncValidators) {
