@@ -1,5 +1,6 @@
 import QtQuick 2.13
 
+import StatusQ.Core.Utils 0.1
 import StatusQ.Components 0.1
 import StatusQ.Popups 0.1
 
@@ -8,6 +9,7 @@ Column {
 
     spacing: 0
     opacity: dragged ? 0.5 : 1
+    property string uuid: Utils.uuid()
 
     objectName: "chatListCategory"
     property int originalOrder: -1
@@ -64,6 +66,7 @@ Column {
 
     StatusChatList {
         id: statusChatList
+        uuid: statusChatListCategory.uuid
         anchors.horizontalCenter: parent.horizontalCenter
         visible: statusChatListCategory.opened
         categoryId: statusChatListCategory.categoryId

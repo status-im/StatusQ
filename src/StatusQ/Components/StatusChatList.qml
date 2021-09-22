@@ -11,8 +11,10 @@ import StatusQ.Controls 0.1
 Column {
     id: statusChatList
 
-    spacing: 4
+    spacing: 0
     width: 288
+
+    property string uuid: Utils.uuid()
 
     property string categoryId: ""
     property string selectedChatId: ""
@@ -29,7 +31,7 @@ Column {
 
     signal chatItemSelected(string id)
     signal chatItemUnmuted(string id)
-    signal chatItemReordered(string id, int from, int to)
+    signal chatItemReordered(string categoryId, string id, int from, int to)
 
     onPopupMenuChanged: {
         if (!!popupMenu) {
@@ -43,7 +45,17 @@ Column {
         delegate: Item {
             id: draggable
             width: statusChatListItem.width
-            height: statusChatListItem.height
+            /* height: dragSensor.active ? 0 : statusChatListItem.height + 4 */
+            height: {
+                if (dropArea.containsDrag) {
+                    if (dropArea.drag.source.chatListItem.chatId == statusChatListItem.chatId) {
+                        return statusChatListItem.height + 4
+                    }
+                    return (statusChatListItem.height + 4 ) * 2
+                } else {
+                    return statusChatListItem.height + 4
+                }
+            }
 
             property alias chatListItem: statusChatListItem
 
@@ -57,7 +69,12 @@ Column {
             MouseArea {
                 id: dragSensor
 
-                anchors.fill: parent
+                anchors.topMargin: 2
+                anchors.bottomMargin: 2
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                anchors.left: parent.left
+                anchors.right: parent.right
                 cursorShape: active ? Qt.ClosedHandCursor : Qt.PointingHandCursor
                 hoverEnabled: true
                 pressAndHoldInterval: 150
@@ -75,12 +92,17 @@ Column {
                     startY = mouseY
                     startX = mouseX
                 }
+
+                onActiveChanged: {
+                    if (!active) {
+                        draggable.height = statusChatListItem.height + 4
+                    }
+                }
                 onPressAndHold: active = true
                 onReleased: {
-                    if (active) {
-                        statusChatList.chatItemReordered(statusChatListItem.chatId, statusChatListItem.originalOrder, statusChatListItem.originalOrder)
-                    }
                     active = false
+                    statusChatList.chatItemReordered(statusChatListItem.newCategoryId, statusChatListItem.chatId, statusChatListItem.originalOrder, statusChatListItem.newOrder)
+                    /* console.log("RELEASING! ", statusChatListItem.originalOrder, draggedListItemLoader.item.newPosition) */
                 }
                 onMouseYChanged: {
                     if ((Math.abs(startY - mouseY) > 1) && pressed) {
@@ -97,8 +119,24 @@ Column {
 
                     id: statusChatListItem
 
+                    property string chatListId: statusChatList.uuid
                     property string profileImage: ""
+                    property var newOrder: model.position
+                    property var newCategoryId: model.categoryId
 
+                    anchors.centerIn: parent
+                    anchors.verticalCenterOffset: {
+                        if (dropArea.containsDrag) {
+                            return dropArea.drag.y <= dropArea.height/2 ? 
+                                  (statusChatListItem.height+4) / 2 : 
+                                  -(statusChatListItem.height+4) / 2
+                        }
+                        return 0
+                    }
+                    /* Behavior on anchors.verticalCenterOffset { */
+                    /*     enabled: dropArea.containsDrag */
+                    /*     NumberAnimation { duration: 100 } */
+                    /* } */
                     opacity: dragSensor.active ? 0.0 : 1.0
                     Component.onCompleted: {
                         if (typeof statusChatList.profileImageFn === "function") {
@@ -159,12 +197,17 @@ Column {
 
             DropArea {
                 id: dropArea
-                width: dragSensor.active ? 0 : parent.width
-                height: dragSensor.active ? 0 : parent.height
-                keys: ["chat-item-category-" + statusChatListItem.categoryId]
+                width: parent.width
+                height: parent.height
+                /* keys: ["chat-item-category-" + statusChatListItem.categoryId] */
+                keys: ["chat-item"]
 
                 onEntered: reorderDelay.start()
-                onDropped: statusChatList.chatItemReordered(statusChatListItem.chatId, drag.source.originalOrder, statusChatListItem.DelegateModel.itemsIndex)
+                onExited: {
+                    if (drag.source.chatListItem.chatId == statusChatListItem.chatId) {
+                        draggable.height = 0
+                    }
+                }
 
                 Timer {
                     id: reorderDelay
@@ -172,8 +215,16 @@ Column {
                     repeat: false
                     onTriggered: {
                         if (dropArea.containsDrag) {
-                            dropArea.drag.source.chatListItem.originalOrder = statusChatListItem.originalOrder
-                            delegateModel.items.move(dropArea.drag.source.DelegateModel.itemsIndex, draggable.DelegateModel.itemsIndex)
+                            let newOrder = statusChatListItem.originalOrder
+                            /* if (dropArea.drag.source.chatListItem.categoryId !== statusChatListItem.categoryId) { */
+                            /*     if (dropArea.drag.y <= dropArea.height/2) { */
+                            /*         if (newOrder > 0) { */
+                            /*             newOrder = newOrder - 1 */
+                            /*         } */
+                            /*     } */
+                            /* } */
+                            dropArea.drag.source.chatListItem.newOrder = newOrder
+                            dropArea.drag.source.chatListItem.newCategoryId = statusChatListItem.categoryId
                         }
                     }
                 }
@@ -183,13 +234,15 @@ Column {
                 id: draggedListItemLoader
                 active: dragSensor.active
                 sourceComponent: StatusChatListItem {
+                    property string chatListId: draggable.chatListItem.chatListId
                     property var globalPosition: Utils.getAbsolutePosition(draggable)
                     parent: QC.Overlay.overlay
                     sensor.cursorShape: dragSensor.cursorShape
                     Drag.active: dragSensor.active
                     Drag.hotSpot.x: width / 2
                     Drag.hotSpot.y: height / 2
-                    Drag.keys: ["chat-item-category-" + categoryId]
+                    /* Drag.keys: ["chat-item-category-" + categoryId] */
+                    Drag.keys: ["chat-item"]
                     Drag.source: draggable
 
                     Component.onCompleted: {

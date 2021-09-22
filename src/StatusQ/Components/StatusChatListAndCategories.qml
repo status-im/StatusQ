@@ -142,7 +142,7 @@ Item {
                         chatList.selectedChatId: statusChatListAndCategories.selectedChatId
                         chatList.onChatItemSelected: statusChatListAndCategories.chatItemSelected(id)
                         chatList.onChatItemUnmuted: statusChatListAndCategories.chatItemUnmuted(id)
-                        chatList.onChatItemReordered: statusChatListAndCategories.chatItemReordered(model.categoryId, id, from, to)
+                        chatList.onChatItemReordered: statusChatListAndCategories.chatItemReordered(categoryId, id, from, to)
                         chatList.draggableItems: statusChatListAndCategories.draggableItems
 
                         popupMenu: statusChatListAndCategories.categoryPopupMenu
@@ -155,7 +155,9 @@ Item {
                         height: draggable.chatListCategory.dragActive ? 0 : parent.height
                         keys: ["chat-category"]
 
-                        onEntered: reorderDelay.start()
+                        onEntered: {
+                            reorderDelay.start()
+                        }
                         onDropped: statusChatListAndCategories.chatListCategoryReordered(statusChatListCategory.categoryId, drag.source.originalOrder, statusChatListCategory.DelegateModel.itemsIndex)
 
                         Timer {
@@ -168,6 +170,13 @@ Item {
                                     delegateModel.items.move(dropArea.drag.source.DelegateModel.itemsIndex, draggable.DelegateModel.itemsIndex)
                                 }
                             }
+                        }
+
+                        Rectangle {
+                            color: "red"
+                            opacity: 0.1
+                            anchors.fill: parent
+                            visible: dropArea.containsDrag
                         }
                     }
 
