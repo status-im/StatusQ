@@ -171,13 +171,6 @@ Item {
                                 }
                             }
                         }
-
-                        Rectangle {
-                            color: "red"
-                            opacity: 0.1
-                            anchors.fill: parent
-                            visible: dropArea.containsDrag
-                        }
                     }
 
                     Loader {

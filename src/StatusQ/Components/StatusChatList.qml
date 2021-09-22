@@ -100,8 +100,10 @@ Column {
                 }
                 onPressAndHold: active = true
                 onReleased: {
+                    if (active) {
+                        statusChatList.chatItemReordered(statusChatListItem.newCategoryId, statusChatListItem.chatId, statusChatListItem.originalOrder, statusChatListItem.newOrder)
+                    }
                     active = false
-                    statusChatList.chatItemReordered(statusChatListItem.newCategoryId, statusChatListItem.chatId, statusChatListItem.originalOrder, statusChatListItem.newOrder)
                     /* console.log("RELEASING! ", statusChatListItem.originalOrder, draggedListItemLoader.item.newPosition) */
                 }
                 onMouseYChanged: {
@@ -125,6 +127,7 @@ Column {
                     property var newCategoryId: model.categoryId
 
                     anchors.centerIn: parent
+                    /* anchors.horizontalCenter: parent.horizontalCenter */
                     anchors.verticalCenterOffset: {
                         if (dropArea.containsDrag) {
                             return dropArea.drag.y <= dropArea.height/2 ? 
@@ -146,7 +149,7 @@ Column {
                     originalOrder: model.position
                     chatId: model.chatId || model.id
                     categoryId: model.categoryId || ""
-                    name: !!statusChatList.chatNameFn ? statusChatList.chatNameFn(model) : model.name
+                    name: (!!statusChatList.chatNameFn ? statusChatList.chatNameFn(model) : model.name) + " POSITION: " + statusChatListItem.newOrder
                     type: model.chatType
                     muted: !!model.muted
                     hasUnreadMessages: !!model.hasUnreadMessages || model.unviewedMessagesCount > 0
@@ -216,13 +219,13 @@ Column {
                     onTriggered: {
                         if (dropArea.containsDrag) {
                             let newOrder = statusChatListItem.originalOrder
-                            /* if (dropArea.drag.source.chatListItem.categoryId !== statusChatListItem.categoryId) { */
-                            /*     if (dropArea.drag.y <= dropArea.height/2) { */
-                            /*         if (newOrder > 0) { */
-                            /*             newOrder = newOrder - 1 */
-                            /*         } */
-                            /*     } */
-                            /* } */
+                            if (dropArea.drag.source.chatListItem.categoryId !== statusChatListItem.categoryId) {
+                                if (dropArea.drag.y <= dropArea.height/2) {
+                                    if (newOrder > 0) {
+                                        newOrder = newOrder - 1
+                                    }
+                                }
+                            }
                             dropArea.drag.source.chatListItem.newOrder = newOrder
                             dropArea.drag.source.chatListItem.newCategoryId = statusChatListItem.categoryId
                         }
