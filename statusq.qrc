@@ -249,6 +249,7 @@
         <file>src/StatusQ/Controls/StatusBaseInput.qml</file>
         <file>src/StatusQ/Controls/StatusChatListCategoryItemButton.qml</file>
         <file>src/StatusQ/Components/StatusChatList.qml</file>
+        <file>src/StatusQ/Components/StatusChatListDropIndicator.qml</file>
         <file>src/StatusQ/Popups/statusModal/StatusImageWithTitle.qml</file>
         <file>src/StatusQ/Popups/statusModal/StatusModalFooter.qml</file>
         <file>src/StatusQ/Popups/statusModal/StatusModalHeader.qml</file>
