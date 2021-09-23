@@ -142,7 +142,14 @@ Item {
                         chatList.selectedChatId: statusChatListAndCategories.selectedChatId
                         chatList.onChatItemSelected: statusChatListAndCategories.chatItemSelected(id)
                         chatList.onChatItemUnmuted: statusChatListAndCategories.chatItemUnmuted(id)
-                        chatList.onChatItemReordered: statusChatListAndCategories.chatItemReordered(categoryId, id, from, to)
+                        chatList.onChatItemReordered: {
+                            console.log("REORDERING CHAT ITEM:")
+                            console.log("FROM CATEGORY: ", model.categoryId)
+                            console.log("TO: ", categoryId)
+                            console.log("FROM POSITION: ", from)
+                            console.log("TO POSITION: ", to)
+                            statusChatListAndCategories.chatItemReordered(categoryId, id, from, to)
+                        }
                         chatList.draggableItems: statusChatListAndCategories.draggableItems
 
                         popupMenu: statusChatListAndCategories.categoryPopupMenu
