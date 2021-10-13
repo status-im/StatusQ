@@ -155,6 +155,11 @@ StatusWindow {
                         }
                         StatusListSectionHeadline { text: "StatusQ.Components" }
                         StatusNavigationListItem { 
+                            title: "StatusAddress"
+                            selected: page.sourceComponent == statusAddressPageComponent
+                            onClicked: page.sourceComponent = statusAddressPageComponent
+                        }
+                        StatusNavigationListItem { 
                             title: "List Items"
                             selected: page.sourceComponent == listItemsComponent
                             onClicked: page.sourceComponent = listItemsComponent
@@ -259,6 +264,11 @@ StatusWindow {
     Component {
         id: listItemsComponent
         ListItems {}
+    }
+
+    Component {
+        id: statusAddressPageComponent
+        StatusAddressPage {}
     }
 
     Component {
