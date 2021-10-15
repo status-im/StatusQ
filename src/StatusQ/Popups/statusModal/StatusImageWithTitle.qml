@@ -75,6 +75,8 @@ Row {
 
             Rectangle {
                 id: editAvatarIcon
+
+                objectName: "editAvatarImage"
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: -3
