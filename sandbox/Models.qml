@@ -333,4 +333,109 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
                     isIdenticon: false
                 }]}
     }
+
+    //    App Section Types:
+    //    chat: 0
+    //    community: 1
+    //    wallet: 2
+    //    browser: 3
+    //    timeline: 4
+    //    nodeManagement: 5
+    //    profileSettings: 6
+    //    apiDocumentation: 100
+    //    demoApp: 101
+
+    property ListModel mainAppSectionsModel: ListModel {
+        ListElement {
+            sectionId: "mainApp"
+            sectionType: 100
+            name: "API Documentation"
+            active: true
+            image: ""
+            icon: "edit"
+            color: ""
+            hasNotification: false
+            notificationsCount: 0
+        }
+        ListElement {
+            sectionId: "demoApp"
+            sectionType: 101
+            name: "Demo Application"
+            active: false
+            image: ""
+            icon: "status"
+            color: ""
+            hasNotification: false
+            notificationsCount: 0
+        }
+    }
+
+    property ListModel demoAppSectionsModel: ListModel {
+        ListElement {
+            sectionId: "chat"
+            sectionType: 0
+            name: "Chat"
+            active: true
+            image: ""
+            icon: "chat"
+            color: ""
+            hasNotification: false
+            notificationsCount: 0
+        }
+        ListElement {
+            sectionId: "0x123456789"
+            sectionType: 1
+            name: "Status Community"
+            active: false
+            image: "https://assets.brandfetch.io/51a495de903c46a.png"
+            icon: ""
+            color: ""
+            hasNotification: false
+            notificationsCount: 0
+        }
+        ListElement {
+            sectionId: "wallet"
+            sectionType: 2
+            name: "Wallet"
+            active: false
+            image: ""
+            icon: "wallet"
+            color: ""
+            hasNotification: false
+            notificationsCount: 0
+        }
+        ListElement {
+            sectionId: "browser"
+            sectionType: 3
+            name: "Browser"
+            active: false
+            image: ""
+            icon: "bigger/browser"
+            color: ""
+            hasNotification: false
+            notificationsCount: 0
+        }
+        ListElement {
+            sectionId: "timeline"
+            sectionType: 4
+            name: "Timeline"
+            active: false
+            image: ""
+            icon: "bigger/status-update"
+            color: ""
+            hasNotification: false
+            notificationsCount: 0
+        }
+        ListElement {
+            sectionId: "profile"
+            sectionType: 6
+            name: "Profile"
+            active: false
+            image: ""
+            icon: "bigger/settings"
+            color: ""
+            hasNotification: true
+            notificationsCount: 0
+        }
+    }
 }
