@@ -93,6 +93,13 @@ StatusModal {
                     font.pixelSize: 28
                     font.family: Theme.palette.baseFont.name
                     color: Theme.palette.directColor1
+                    Keys.onEnterPressed: {
+                                                event.accepted = false
+                                        }
+                                        Keys.onReturnPressed: {
+                                                event.accepted = false
+                                        }
+
                 }
             }
             StatusMenuSeparator { 
