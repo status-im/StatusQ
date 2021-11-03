@@ -93,12 +93,10 @@ StatusModal {
                     font.pixelSize: 28
                     font.family: Theme.palette.baseFont.name
                     color: Theme.palette.directColor1
-                    Keys.onEnterPressed: {
-                                                event.accepted = false
-                                        }
-                                        Keys.onReturnPressed: {
-                                                event.accepted = false
-                                        }
+                    Keys.onPressed: {
+                    if (event.key === Qt.Key_Enter || event.key === Qt.Key_Return)
+                      event.accepted = true
+                    }
 
                 }
             }
