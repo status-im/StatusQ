@@ -124,35 +124,21 @@ Column {
 
                     sensor.cursorShape: dragSensor.cursorShape
                     onClicked: {
+                        statusChatListItem.highlighted = true;
+                        statusChatList.chatItemSelected(model.chatId || model.id);
                         if (mouse.button === Qt.RightButton && !!statusChatList.popupMenu) {
-                            statusChatListItem.highlighted = true
-
-                            let originalOpenHandler = popupMenuSlot.item.openHandler
-                            let originalCloseHandler = popupMenuSlot.item.closeHandler
-
-                            popupMenuSlot.item.openHandler = function () {
-                                if (!!originalOpenHandler) {
-                                    originalOpenHandler((model.chatId || model.id))
-                                }
-                            }
+                            let originalCloseHandler = popupMenuSlot.item.closeHandler;
 
                             popupMenuSlot.item.closeHandler = function () {
                                 if (statusChatListItem) {
-                                    statusChatListItem.highlighted = false
+                                    statusChatListItem.highlighted = false;
                                 }
                                 if (!!originalCloseHandler) {
-                                    originalCloseHandler()
+                                    originalCloseHandler();
                                 }
                             }
-
-                            let p = statusChatListItem.mapToItem(statusChatList, mouse.x, mouse.y)
-
-                            popupMenuSlot.item.popup(p.x + 4, p.y + 6)
-                            popupMenuSlot.item.openHandler = originalOpenHandler
-                            return
-                        }
-                        if (!statusChatListItem.selected) {
-                            statusChatList.chatItemSelected(model.chatId || model.id)
+                            let p = statusChatListItem.mapToItem(statusChatList, mouse.x, mouse.y);
+                            popupMenuSlot.item.popup(p.x + 4, p.y + 6);
                         }
                     }
                     onUnmute: statusChatList.chatItemUnmuted(model.chatId || model.id)
