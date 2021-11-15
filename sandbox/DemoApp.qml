@@ -324,9 +324,7 @@ Rectangle {
                     StatusChatList {
                         anchors.horizontalCenter: parent.horizontalCenter
 
-                        chatListItems.model: models.demoChatListItems
-                        selectedChatId: "0"
-                        onChatItemSelected: selectedChatId = id
+                        model: models.demoChatListItems
                         onChatItemUnmuted: {
                             for (var i = 0; i < models.demoChatListItems.count; i++) {
                                 let item = models.demoChatListItems.get(i);
@@ -494,11 +492,8 @@ Rectangle {
 
                         draggableItems: true
                         draggableCategories: false
-                        chatList.model: models.demoCommunityChatListItems
-                        categoryList.model: models.demoCommunityCategoryItems
-
+                        model: models.demoCommunityChatListItems
                         showCategoryActionButtons: true
-                        onChatItemSelected: selectedChatId = id
 
                         categoryPopupMenu: StatusPopupMenu {
 
