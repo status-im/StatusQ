@@ -193,9 +193,7 @@ GridLayout {
         id: banner
         width: 360
         topPadding: 20
-        backgroundColor: Theme.palette.primaryColor3
-        bordersColor: Theme.palette.primaryColor2
-        fontColor: Theme.palette.primaryColor1
+        type: StatusBanner.Type.Danger
         statusText: "Banner"
     }
 }
