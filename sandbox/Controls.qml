@@ -188,4 +188,14 @@ GridLayout {
         to: 100
         value: 40
     }
+
+    StatusBanner {
+        id: banner
+        width: 360
+        topPadding: 20
+        backgroundColor: Theme.palette.primaryColor3
+        bordersColor: Theme.palette.primaryColor2
+        fontColor: Theme.palette.primaryColor1
+        statusText: "Banner"
+    }
 }
