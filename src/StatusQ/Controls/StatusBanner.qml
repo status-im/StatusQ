@@ -14,49 +14,23 @@ Column {
 
     // "private" properties
     QtObject {
-           id: pProp
+           id: d
            property color backgroundColor
            property color bordersColor
            property color fontColor
     }
 
     enum Type {
-        None, // 0
-        Info, // 1
-        Danger, // 2
-        Success, // 3
-        Warning // 4
-    }
-
-    function setBannerBackgroundColor() {
-        if(statusBanner.type === StatusBanner.Type.Info) {
-            pProp.backgroundColor = Theme.palette.primaryColor3
-            pProp.bordersColor = Theme.palette.primaryColor2
-            pProp.fontColor = Theme.palette.primaryColor1
-        }
-        else if(statusBanner.type === StatusBanner.Type.Danger) {
-            pProp.backgroundColor = Theme.palette.dangerColor3
-            pProp.bordersColor = Theme.palette.dangerColor2
-            pProp.fontColor = Theme.palette.dangerColor1
-        }
-        else if(statusBanner.type === StatusBanner.Type.Success) {
-            pProp.backgroundColor = Theme.palette.successColor2
-            pProp.bordersColor = Theme.palette.successColor3
-            pProp.fontColor = Theme.palette.successColor1
-        }
-        else if(statusBanner.type === StatusBanner.Type.Warning) {
-            pProp.backgroundColor = Theme.palette.pinColor3
-            pProp.bordersColor = Theme.palette.pinColor2
-            pProp.fontColor = Theme.palette.pinColor1
-        }
-    }
-
-    onTypeChanged: setBannerBackgroundColor()
+        Info, // 0
+        Danger, // 1
+        Success, // 2
+        Warning // 3
+    }    
 
     // Component definition
     Rectangle {
         id: topDiv
-        color: pProp.bordersColor
+        color: d.bordersColor
         height: 1
         width: parent.width
     }
@@ -65,7 +39,7 @@ Column {
         id: box
         width: parent.width
         height: statusBanner.statusBannerHeight
-        color: pProp.backgroundColor
+        color: d.backgroundColor
 
         StatusBaseText {
             id: statusTxt
@@ -74,14 +48,46 @@ Column {
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: statusBanner.textPixels
             text: statusBanner.statusText
-            color: pProp.fontColor
+            color: d.fontColor
         }
     }
 
     Rectangle {
         id: bottomDiv
-        color: pProp.bordersColor
+        color: d.bordersColor
         height: 1
         width: parent.width
     }
+
+    // Behavior
+    states: [
+        State {
+            name: "Info"
+            when: statusBanner.type === StatusBanner.Type.Info
+            PropertyChanges { target: d; backgroundColor: Theme.palette.primaryColor3}
+            PropertyChanges { target: d; bordersColor: Theme.palette.primaryColor2}
+            PropertyChanges { target: d; fontColor: Theme.palette.primaryColor1}
+        },
+        State {
+            name: "Danger"
+            when: statusBanner.type === StatusBanner.Type.Danger
+            PropertyChanges { target: d; backgroundColor: Theme.palette.dangerColor3}
+            PropertyChanges { target: d; bordersColor: Theme.palette.dangerColor2}
+            PropertyChanges { target: d; fontColor: Theme.palette.dangerColor1}
+        },
+        State {
+            name: "Success"
+            when: statusBanner.type === StatusBanner.Type.Success
+            PropertyChanges { target: d; backgroundColor: Theme.palette.successColor2}
+            PropertyChanges { target: d; bordersColor: Theme.palette.successColor3}
+            PropertyChanges { target: d; fontColor: Theme.palette.successColor1}
+        },
+        State {
+            name: "Warning"
+            when: statusBanner.type === StatusBanner.Type.Warning
+            PropertyChanges { target: d; backgroundColor: Theme.palette.pinColor3}
+            PropertyChanges { target: d; bordersColor: Theme.palette.pinColor2}
+            PropertyChanges { target: d; fontColor: Theme.palette.pinColor1}
+        }
+    ]
 }
