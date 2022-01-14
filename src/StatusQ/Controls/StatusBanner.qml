@@ -62,28 +62,24 @@ Column {
     // Behavior
     states: [
         State {
-            name: "Info"
             when: statusBanner.type === StatusBanner.Type.Info
             PropertyChanges { target: d; backgroundColor: Theme.palette.primaryColor3}
             PropertyChanges { target: d; bordersColor: Theme.palette.primaryColor2}
             PropertyChanges { target: d; fontColor: Theme.palette.primaryColor1}
         },
         State {
-            name: "Danger"
             when: statusBanner.type === StatusBanner.Type.Danger
             PropertyChanges { target: d; backgroundColor: Theme.palette.dangerColor3}
             PropertyChanges { target: d; bordersColor: Theme.palette.dangerColor2}
             PropertyChanges { target: d; fontColor: Theme.palette.dangerColor1}
         },
         State {
-            name: "Success"
             when: statusBanner.type === StatusBanner.Type.Success
             PropertyChanges { target: d; backgroundColor: Theme.palette.successColor2}
-            PropertyChanges { target: d; bordersColor: Theme.palette.successColor3}
+            PropertyChanges { target: d; bordersColor: Theme.palette.successColor2}
             PropertyChanges { target: d; fontColor: Theme.palette.successColor1}
         },
         State {
-            name: "Warning"
             when: statusBanner.type === StatusBanner.Type.Warning
             PropertyChanges { target: d; backgroundColor: Theme.palette.pinColor3}
             PropertyChanges { target: d; bordersColor: Theme.palette.pinColor2}
