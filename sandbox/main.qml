@@ -227,6 +227,11 @@ StatusWindow {
                             selected: viewLoader.source.toString().includes(title)
                             onClicked: mainPageView.page("StatusExpandableSettingsItem");
                         }
+                        StatusNavigationListItem {
+                            title: "StatusPasswordStrengthIndicator"
+                            selected: viewLoader.source.toString().includes(title)
+                            onClicked: mainPageView.page(title);
+                        }
                         StatusListSectionHeadline { text: "StatusQ.Popup" }
                         StatusNavigationListItem { 
                             title: "StatusPopupMenu"
