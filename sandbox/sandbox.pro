@@ -23,6 +23,8 @@ SOURCES += \
 
 TARGET = sandboxapp
 
+DESTDIR = $$PWD/bin
+
 macx {
     CONFIG -= app_bundle
     OBJECTIVE_SOURCES += \
@@ -59,8 +61,6 @@ ios {
 
 RESOURCES += qml.qrc \
             $$PWD/../statusq.qrc
-
-DESTDIR = $$PWD/bin
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
