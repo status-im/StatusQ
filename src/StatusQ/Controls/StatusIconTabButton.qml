@@ -10,6 +10,7 @@ TabButton {
 
     property string name: ""
     property bool highlighted: false
+    property color hoveredColor:  Theme.palette.primaryColor1
 
     implicitWidth: 40
     implicitHeight: 40
@@ -30,7 +31,7 @@ TabButton {
             icon.height: statusIconTabButton.icon.height
             icon.width: statusIconTabButton.icon.width
             icon.name: statusIconTabButton.icon.name
-            icon.color: (statusIconTabButton.hovered || highlighted || statusIconTabButton.checked) ? Theme.palette.primaryColor1 : statusIconTabButton.icon.color
+            icon.color: (statusIconTabButton.hovered || highlighted || statusIconTabButton.checked) ? statusIconTabButton.hoveredColor : statusIconTabButton.icon.color
             icon.isLetterIdenticon: statusIconTabButton.name !== "" && !statusIconTabButton.icon.source.toString()
             icon.letterSize: 15
             name: statusIconTabButton.name
