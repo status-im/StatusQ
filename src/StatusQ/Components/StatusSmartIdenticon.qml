@@ -24,9 +24,9 @@ Loader {
     }
 
     property StatusIdenticonRingSettings ringSettings: StatusIdenticonRingSettings {
-        totalRingUnits: 1
         initalAngleRad: 0
         ringPxSize: 1.5
+        distinctiveColors: Theme.palette.identiconRingColors
     }
 
     sourceComponent: statusSmartIdenticon.icon.isLetterIdenticon ? letterIdenticon :
