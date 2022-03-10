@@ -2,6 +2,7 @@ import QtQuick 2.14
 
 import QtQuick.Controls 2.14 as QC
 
+import StatusQ.Components 0.1
 import StatusQ.Controls 0.1
 import StatusQ.Core 0.1
 import StatusQ.Core.Theme 0.1
@@ -55,9 +56,13 @@ Item {
         height: 24
         name: ""
         color: Theme.palette.baseColor1
+        emoji: ""
+        letterSize: 14
     }
 
     property Item component
+
+    signal emojiClicked()
 
     onClearableChanged: {
         if (clearable && !component) {
@@ -109,6 +114,20 @@ Item {
                 edit.forceActiveFocus()
             }
 
+            StatusSmartIdenticon {
+                id: emoji
+                anchors.left: parent.left
+                anchors.leftMargin: 10
+                anchors.verticalCenter: parent.verticalCenter
+                width: 30
+                height: 30
+                icon.color: statusBaseInput.icon.color
+                icon.letterSize: statusBaseInput.icon.letterSize
+                icon.emoji: statusBaseInput.icon.emoji
+                visible: !!statusBaseInput.icon.emoji
+                onEmojiClicked: statusBaseInput.emojiClicked()
+            }
+
             StatusIcon {
                 id: statusIcon
                 anchors.topMargin: 10
@@ -129,7 +148,7 @@ Item {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.left: (statusIcon.visible && statusBaseInput.leftIcon) ?
-                              statusIcon.right : parent.left
+                              statusIcon.right : emoji.visible ? emoji.right: parent.left
                 anchors.right: {
                     if (!!statusBaseInput.component) {
                         return statusBaseInputComponentSlot.left

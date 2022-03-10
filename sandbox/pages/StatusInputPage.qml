@@ -130,4 +130,14 @@ Column {
         input.minimumHeight: 80
         input.maximumHeight: 200
     }
+
+    StatusInput {
+        label: "Input with emoji icon"
+        input.placeholderText: "Enter Name"
+        input.icon.emoji: "😁"
+        input.icon.color: "blue"
+        onEmojiClicked: {
+            // launch emoji popup
+        }
+    }
 }

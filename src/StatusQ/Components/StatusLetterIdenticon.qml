@@ -12,6 +12,8 @@ Rectangle {
     property int letterSize: 21
     property int charCount: 1
 
+    signal clicked()
+
     color: Theme.palette.miscColor5
     width: 40
     height: 40
@@ -21,7 +23,10 @@ Rectangle {
         id: identiconText
         text: {
             if (emoji) {
-                return Emoji.parse(emoji)
+                if(Utils.isHtml(emoji))
+                    return emoji
+                else
+                    return Emoji.parse(emoji)
             }
             return (((statusLetterIdenticon.name.charAt(0) === "#")
                 || (statusLetterIdenticon.name.charAt(0) === "@") ?
@@ -31,8 +36,20 @@ Rectangle {
         font.weight: Font.Bold
         font.pixelSize: statusLetterIdenticon.letterSize
         color: Qt.rgba(255, 255, 255, 0.7)
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        anchors.alignWhenCentered: false
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
+    }
+
+    MouseArea {
+        cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+        anchors.fill: parent
+        hoverEnabled: true
+        enabled: !!statusLetterIdenticon.emoji
+        onClicked: statusLetterIdenticon.clicked()
     }
 }
 

@@ -8,7 +8,6 @@ Loader {
 
     property string name: ""
     property int charCount: 1
-    property string emoji: ""
     property int dZ: 100
 
     // Badge color properties must be set if badgeItem.visible = true
@@ -29,6 +28,8 @@ Loader {
         initalAngleRad: 0
         ringPxSize: 1.5
     }
+
+    signal emojiClicked()
 
     sourceComponent: statusSmartIdenticon.icon.isLetterIdenticon ? letterIdenticon :
                      !!statusSmartIdenticon.image.source.toString() ? roundedImage :
@@ -85,9 +86,10 @@ Loader {
             height: statusSmartIdenticon.icon.height
             color: statusSmartIdenticon.icon.color
             name: statusSmartIdenticon.name
-            emoji: statusSmartIdenticon.emoji
+            emoji: statusSmartIdenticon.icon.emoji
             letterSize: statusSmartIdenticon.icon.letterSize
             charCount: statusSmartIdenticon.charCount
+            onClicked: emojiClicked()
         }
     }
 

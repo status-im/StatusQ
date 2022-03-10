@@ -40,6 +40,8 @@ Item {
 
     property var pendingValidators: []
 
+    signal emojiClicked()
+
     enum ValidationMode {
         OnlyWhenDirty, // validates input only after it has become dirty
         Always // validates input even before it has become dirty
@@ -189,6 +191,7 @@ Item {
         onTextChanged: root.validate()
 
         Keys.forwardTo: [root]
+        onEmojiClicked: root.emojiClicked()
     }
 
     StatusBaseText {
