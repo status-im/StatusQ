@@ -51,7 +51,7 @@ Item {
     property var asyncErrors: ({})
 
     function reset() {
-        statusBaseInput.valid = false
+        statusBaseInput.valid = true
         statusBaseInput.pristine = true
         statusBaseInput.text = ""
         root.errorMessage = ""
