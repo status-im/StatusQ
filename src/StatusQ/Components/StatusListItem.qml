@@ -32,6 +32,7 @@ Rectangle {
         rotation: 0
         isLetterIdenticon: false
         letterSize: 21
+        charactersLen: 1
         color: isLetterIdenticon ? background.color : type === StatusListItem.Type.Danger ?
             Theme.palette.dangerColor1 : Theme.palette.primaryColor1
         background: StatusIconBackgroundSettings {
