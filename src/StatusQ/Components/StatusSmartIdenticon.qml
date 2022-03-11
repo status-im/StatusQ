@@ -29,8 +29,6 @@ Loader {
         ringPxSize: 1.5
     }
 
-    signal emojiClicked()
-
     sourceComponent: statusSmartIdenticon.icon.isLetterIdenticon ? letterIdenticon :
                      !!statusSmartIdenticon.image.source.toString() ? roundedImage :
                      !!statusSmartIdenticon.icon.name.toString() ? roundedIcon : letterIdenticon
@@ -89,7 +87,6 @@ Loader {
             emoji: statusSmartIdenticon.icon.emoji
             letterSize: statusSmartIdenticon.icon.letterSize
             charCount: statusSmartIdenticon.charCount
-            onClicked: emojiClicked()
         }
     }
 

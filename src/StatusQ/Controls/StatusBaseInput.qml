@@ -50,6 +50,7 @@ Item {
     property bool dirty: false
     property bool pending: false
     property bool leftIcon: true
+    property bool isIconSelectable: false
 
     property StatusIconSettings icon: StatusIconSettings {
         width: 24
@@ -58,11 +59,16 @@ Item {
         color: Theme.palette.baseColor1
         emoji: ""
         letterSize: 14
+        background: StatusIconBackgroundSettings {
+            width: 30
+            height: 30
+            color: Theme.palette.indirectColor1
+        }
     }
 
     property Item component
 
-    signal emojiClicked()
+    signal iconClicked()
 
     onClearableChanged: {
         if (clearable && !component) {
@@ -119,13 +125,22 @@ Item {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 anchors.verticalCenter: parent.verticalCenter
-                width: 30
-                height: 30
+                icon.width: !statusBaseInput.icon.emoji ? 20 : 30
+                icon.height: !statusBaseInput.icon.emoji ? 20 : 30
+                icon.background: statusBaseInput.icon.background
                 icon.color: statusBaseInput.icon.color
                 icon.letterSize: statusBaseInput.icon.letterSize
                 icon.emoji: statusBaseInput.icon.emoji
-                visible: !!statusBaseInput.icon.emoji
-                onEmojiClicked: statusBaseInput.emojiClicked()
+                icon.name: !statusBaseInput.icon.emoji ? statusBaseInput.icon.name : ""
+                visible: (!!statusBaseInput.icon.emoji || !!statusBaseInput.icon.name) && statusBaseInput.isIconSelectable
+                MouseArea {
+                    cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
+                    acceptedButtons: Qt.LeftButton | Qt.RightButton
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    enabled: emoji.visible
+                    onClicked: statusBaseInput.iconClicked()
+                }
             }
 
             StatusIcon {
@@ -140,7 +155,7 @@ Item {
                 width: statusBaseInput.icon.width
                 height: statusBaseInput.icon.height
                 color: statusBaseInput.icon.color
-                visible: !!statusBaseInput.icon.name
+                visible: !!statusBaseInput.icon.name && !statusBaseInput.isIconSelectable
             }
 
             Flickable {
