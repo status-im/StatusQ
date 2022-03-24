@@ -17,6 +17,8 @@ Item {
     property ListModel inputList: ListModel { }
     property ListModel filteredList: ListModel { }
     signal doneInsertingWord(string word)
+    signal keyPressed(var event)
+    signal editClicked()
 
     onActiveFocusChanged: {
         if (root.activeFocus) {
@@ -56,6 +58,12 @@ Item {
             } else {
                 seedSuggestionsList.model = 0;
             }
+        }
+        onKeyPressed: {
+            root.keyPressed(event);
+        }
+        onEditClicked: {
+            root.editClicked();
         }
     }
 
