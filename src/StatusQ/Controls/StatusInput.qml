@@ -107,8 +107,6 @@ Item {
     property var pendingValidators: []
 
     signal iconClicked()
-    signal keyPressed(var event)
-    signal editClicked()
 
     /*!
        \qmltype ValidationMode
@@ -292,12 +290,6 @@ Item {
 
         Keys.forwardTo: [root]
         onIconClicked: root.iconClicked()
-        onKeyPressed: {
-            root.keyPressed(event);
-        }
-        onEditChanged: {
-            root.editClicked();
-        }
     }
 
     StatusBaseText {
