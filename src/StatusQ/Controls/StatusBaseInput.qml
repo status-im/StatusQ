@@ -306,6 +306,7 @@ Item {
                 root.editClicked()
             }
             RowLayout {
+                spacing: 10
                 anchors {
                     fill: parent
                     leftMargin: root.leftPadding
@@ -471,8 +472,8 @@ Item {
         StatusSmartIdenticon {
             id: identicon
 
-            icon.width: !root.icon.emoji ? 20 : 30
-            icon.height: !root.icon.emoji ? 20 : 30
+            icon.width: !root.icon.emoji ? 20 : 24
+            icon.height: !root.icon.emoji ? 20 : 24
             icon.background: root.icon.background
             icon.color: root.icon.color
             icon.letterSize: root.icon.letterSize
