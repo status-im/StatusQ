@@ -12,26 +12,18 @@ Rectangle {
     property string emojiSize: Emoji.size.small
     property int letterSize: 21
     property int charactersLen: 1
-    readonly property string emojiId: Emoji.iconId(emoji, emojiSize) || ""
 
     color: Theme.palette.miscColor5
     width: 40
     height: 40
     radius: width / 2
 
-    Image {
-        id: emojiImage
-        
+    StatusEmoji {
         visible: root.emoji
         anchors.centerIn: parent
         width: Math.round(parent.width / 2)
         height: Math.round(parent.height / 2)
-        sourceSize.width: width
-        sourceSize.height: height
-        fillMode: Image.PreserveAspectFit
-        mipmap: true
-        antialiasing: true
-        source: root.emojiId ? `../../assets/twemoji/svg/${root.emojiId}.svg` : ""
+        emojiId: Emoji.iconId(root.emoji, root.emojiSize) || ""
     }
     
     StatusBaseText {
