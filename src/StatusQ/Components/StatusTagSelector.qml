@@ -60,8 +60,8 @@ Item {
     id: root
 
     implicitWidth: 448
-    implicitHeight: (104 + contactsLabel.height + contactsLabel.anchors.topMargin + (userListView.model.count * 64)) > root.maxHeight ? root.maxHeight :
-                    (104 + contactsLabel.height + contactsLabel.anchors.topMargin + (userListView.model.count * 64))
+    implicitHeight: (104 + contactsLabel.height + contactsLabel.anchors.topMargin + (userListView.count * 64)) > root.maxHeight ? root.maxHeight :
+                    (104 + contactsLabel.height + contactsLabel.anchors.topMargin + (userListView.count * 64))
 
     /*!
         \qmlproperty real StatusTagSelector::maxHeight
@@ -152,7 +152,7 @@ Item {
     function sortModel(inputModel) {
         sortedList.clear();
         if (text !== "") {
-            for (var i = 0; i < inputModel.count; i++ ) {
+            for (var i = 0; i < inputModel.count; i++) {
                 var entry = inputModel.get(i);
                 if (entry.name.toLowerCase().includes(text.toLowerCase()) &&
                     !find(namesModel, function(item) { return item.name === entry.name })) {
@@ -371,10 +371,10 @@ Item {
                 userName: model.name
                 chatKey: root.compressedKeyGetter(model.publicId)
                 trustIndicator: model.trustIndicator
-                isMutualContact: model.isMutualContact
-                image.source: model.icon
-                image.isIdenticon: model.isIdenticon
-                isOnline: model.onlineStatus
+                isMutualContact: !!model.isMutualContact
+                image.source: !!model.icon ? model.icon : ""
+                image.isIdenticon: !!model.isIdenticon
+                isOnline: !!model.onlineStatus
                 statusListItemIcon.badge.border.color: sensor.containsMouse ? Theme.palette.baseColor2 : Theme.palette.baseColor4
                 ringSettings.ringSpecModel: root.ringSpecModelGetter(publicId)
                 color: (sensor.containsMouse || highlighted) ? Theme.palette.baseColor2 : "transparent"
