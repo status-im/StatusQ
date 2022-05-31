@@ -30,7 +30,6 @@ Rectangle {
         height: statusRoundImage.height
         fillMode: Image.PreserveAspectFit
         anchors.centerIn: parent
-        cache: false
 
         onSourceChanged: {
             if (sourceSize.width < width || sourceSize.height < height) {
