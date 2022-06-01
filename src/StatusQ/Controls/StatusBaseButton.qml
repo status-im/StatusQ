@@ -102,8 +102,8 @@ Rectangle {
 
         cursorShape: loading ? Qt.ArrowCursor
                              : Qt.PointingHandCursor
-        hoverEnabled: !loading
-        enabled: !loading
+        hoverEnabled: true
+        enabled: !loading && statusBaseButton.enabled
 
 
         Loader {
