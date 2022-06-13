@@ -90,7 +90,20 @@ QtObject {
     property color miscColor11
     property color miscColor12
 
-    property var userCustomizationColors: []
+    property var userCustomizationColors: [
+        getColor('black', 0.8),
+        getColor('grey'),
+        getColor('blue2'),
+        getColor('purple'),
+        getColor('cyan'),
+        getColor('violet'),
+        getColor('red2'),
+        getColor('yellow'),
+        getColor('green2'),
+        getColor('moss'),
+        getColor('brown'),
+        getColor('brown2'),
+    ]
 
     property var identiconRingColors: []
 
