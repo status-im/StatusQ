@@ -6,8 +6,8 @@ import StatusQ.Core.Theme 0.1
 
 Item {
     id: root
-    width: 800
-    height: 100
+    width: Theme.dp(800)
+    height: Theme.dp(100)
 
     //Simulate animation between steps
     property bool stepsCompleted: false
@@ -44,7 +44,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         color: Theme.palette.directColor1
         text: "Press Ctrl+R to run the animation"
-        font.pixelSize: 17
+        font.pixelSize: Theme.dp(17)
     }
 
     SequentialAnimation {
@@ -91,9 +91,9 @@ Item {
 
     StatusWizardStepper {
         id: wizardStepper
-        width: (parent.width - 50)
+        width: (parent.width - Theme.dp(50))
         anchors.top: indicLabel.bottom
-        anchors.topMargin: 16
+        anchors.topMargin: Theme.dp(16)
         anchors.horizontalCenter: parent.horizontalCenter
         stepsModel: stepsListModel
     }

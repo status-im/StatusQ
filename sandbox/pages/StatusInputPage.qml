@@ -9,7 +9,7 @@ import StatusQ.Controls.Validators 0.1
 import Sandbox 0.1
 
 Column {
-    spacing: 8
+    spacing: Theme.dp(8)
 
     StatusInput {
         input.placeholderText: "Placeholder"
@@ -58,17 +58,17 @@ Column {
     }
 
     Item {
-        implicitWidth: 480
-        implicitHeight: 82
+        implicitWidth: Theme.dp(480)
+        implicitHeight: Theme.dp(82)
         z: 100000
         StatusSeedPhraseInput {
             id: statusSeedInput
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height
-            textEdit.input.anchors.leftMargin: 16
-            textEdit.input.anchors.rightMargin: 16
-            textEdit.input.anchors.topMargin: 11
+            textEdit.input.anchors.leftMargin: Theme.dp(16)
+            textEdit.input.anchors.rightMargin: Theme.dp(16)
+            textEdit.input.anchors.topMargin: Theme.dp(11)
             textEdit.label: "Input with drop down selection list"
             leftComponentText: "1"
             inputList: ListModel {
@@ -97,8 +97,8 @@ Column {
     StatusInput {
         label: "StatusInput"
         secondaryLabel: "with right icon"
-        input.icon.width: 15
-        input.icon.height: 11
+        input.icon.width: Theme.dp(15)
+        input.icon.height: Theme.dp(11)
         input.icon.name: text !== "" ? "checkmark" : ""
         input.leftIcon: false
     }
@@ -107,7 +107,7 @@ Column {
         label: "Label"
         secondaryLabel: "secondary label"
         input.placeholderText: "Placeholder"
-        input.implicitHeight: 56
+        input.implicitHeight: Theme.dp(56)
     }
 
     StatusInput {
@@ -148,7 +148,7 @@ Column {
         input.placeholderText: "Input width component (right side)"
         input.rightComponent: StatusIcon {
             icon: "cancel"
-            height: 16
+            height: Theme.dp(16)
             color: Theme.palette.dangerColor1
         }
     }
@@ -162,14 +162,14 @@ Column {
     StatusInput {
         input.multiline: true
         input.placeholderText: "Multiline with static height"
-        input.implicitHeight: 100
+        input.implicitHeight: Theme.dp(100)
     }
 
     StatusInput {
         input.multiline: true
         input.placeholderText: "Multiline with max/min"
-        input.minimumHeight: 80
-        input.maximumHeight: 200
+        input.minimumHeight: Theme.dp(80)
+        input.maximumHeight: Theme.dp(200)
     }
 
     StatusInput {
@@ -200,6 +200,7 @@ Column {
     StatusInput {
         label: "Input with inline token selector"
         input.leftComponent: StatusTokenInlineSelector {
+            anchors.verticalCenter: parent.verticalCenter
             tokens: [{amount: 0.1, token: "ETH"},
                      {amount: 10, token: "SNT"},
                      {amount: 15, token: "MANA"}]

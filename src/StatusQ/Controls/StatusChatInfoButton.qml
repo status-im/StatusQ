@@ -11,20 +11,20 @@ Rectangle {
                    Math.max(
                        statusChatInfoButtonTitle.anchors.leftMargin + statusChatInfoButtonTitle.implicitWidth,
                        statusChatInfoButtonTitle.anchors.leftMargin + statusChatInfoButtonSubTitle.implicitWidth
-                       ) + 8
-    implicitHeight: 48
+                       ) + Theme.dp(8)
+    implicitHeight: Theme.dp(48)
 
     property string title: ""
     property string subTitle: ""
     property bool muted: false
     property int pinnedMessagesCount: 0
     property StatusImageSettings image: StatusImageSettings {
-        width: 36
-        height: 36
+        width: Theme.dp(36)
+        height: Theme.dp(36)
     }
     property StatusIconSettings icon: StatusIconSettings {
-        width: 36
-        height: 36
+        width: Theme.dp(36)
+        height: Theme.dp(36)
         charactersLen: 2
     }
     property alias ringSettings: identicon.ringSettings
@@ -48,7 +48,7 @@ Rectangle {
         CommunityChat // 6
     }
 
-    radius: 8
+    radius: Theme.dp(8)
     color: sensor.enabled && sensor.containsMouse ? Theme.palette.baseColor2 : "transparent"
 
     MouseArea {
@@ -62,7 +62,7 @@ Rectangle {
         StatusSmartIdenticon {
             id: identicon
             anchors.left: parent.left
-            anchors.leftMargin: 4
+            anchors.leftMargin: Theme.dp(4)
             anchors.verticalCenter: parent.verticalCenter
             image: statusChatInfoButton.image
             icon: statusChatInfoButton.icon
@@ -72,9 +72,9 @@ Rectangle {
         Item {
             id: statusChatInfoButtonTitle
             anchors.top: identicon.top
-            anchors.topMargin: statusChatInfoButtonSubTitle.visible ? 0 : 8
+            anchors.topMargin: statusChatInfoButtonSubTitle.visible ? 0 : Theme.dp(8)
             anchors.left: identicon.right
-            anchors.leftMargin: 8
+            anchors.leftMargin: Theme.dp(8)
 
             width: Math.min(parent.width - anchors.leftMargin
                             - identicon.width - identicon.anchors.leftMargin,
@@ -84,16 +84,16 @@ Rectangle {
             implicitWidth: statusIcon.width + chatName.anchors.leftMargin + chatName.implicitWidth
                            + mutedDelta
 
-            property real mutedDelta: mutedIcon.visible ? mutedIcon.width + 8 : 0
+            property real mutedDelta: mutedIcon.visible ? mutedIcon.width + Theme.dp(8) : 0
 
             StatusIcon {
                 id: statusIcon
                 anchors.top: parent.top
-                anchors.topMargin: -2
+                anchors.topMargin: -Theme.dp(2)
                 anchors.left: parent.left
 
                 visible: statusChatInfoButton.type !== StatusChatInfoButton.Type.OneToOneChat
-                width: visible ? 14 : 0
+                width: visible ? Theme.dp(14) : 0
                 color: statusChatInfoButton.muted ? Theme.palette.baseColor1 : Theme.palette.directColor1
                 icon: {
                     switch (statusChatInfoButton.type) {
@@ -129,7 +129,7 @@ Rectangle {
                           "#" + statusChatInfoButton.title :
                           statusChatInfoButton.title
                 color: statusChatInfoButton.muted ? Theme.palette.directColor5 : Theme.palette.directColor1
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 font.weight: Font.Medium
             }
 
@@ -137,10 +137,10 @@ Rectangle {
                 objectName: "mutedIcon"
                 id: mutedIcon
                 anchors.left: chatName.right
-                anchors.leftMargin: 4
+                anchors.leftMargin: Theme.dp(4)
                 anchors.top: chatName.top
-                anchors.topMargin: -2
-                width: 13
+                anchors.topMargin: -Theme.dp(2)
+                width: Theme.dp(13)
                 icon: "tiny/muted"
                 color: mutedIconSensor.containsMouse ? Theme.palette.directColor1 : Theme.palette.baseColor1
                 visible: statusChatInfoButton.muted
@@ -158,7 +158,7 @@ Rectangle {
                     text: "Unmute"
                     visible: mutedIconSensor.containsMouse
                     orientation: StatusToolTip.Orientation.Bottom
-                    y: parent.height + 12
+                    y: parent.height + Theme.dp(12)
                 }
             }
         }
@@ -170,10 +170,10 @@ Rectangle {
             visible: !!statusChatInfoButton.subTitle || statusChatInfoButton.pinnedMessagesCount > 0
             height: visible ? chatType.height : 0
             width: Math.min(parent.width - statusChatInfoButtonTitle.anchors.leftMargin
-                            - identicon.width - identicon.anchors.leftMargin - 8,
+                            - identicon.width - identicon.anchors.leftMargin - Theme.dp(8),
                             implicitWidth)
 
-            implicitWidth: chatType.implicitWidth + pinIconDelta + 8
+            implicitWidth: chatType.implicitWidth + pinIconDelta + Theme.dp(8)
 
 
             property real pinIconDelta: pinIcon.visible ? pinIcon.width + pinIcon.anchors.leftMargin
@@ -184,7 +184,7 @@ Rectangle {
                 id: chatType
                 text: statusChatInfoButton.subTitle
                 color: Theme.palette.baseColor1
-                font.pixelSize: 12
+                font.pixelSize: Theme.dp(12)
                 width: Math.min(parent.width - (pinIcon.visible ? divider.width + divider.anchors.leftMargin + pinIcon.width + pinIcon.anchors.leftMargin : 0),
                                 implicitWidth)
                 onLinkActivated: statusChatInfoButton.linkActivated(link)
@@ -192,11 +192,11 @@ Rectangle {
 
             Rectangle {
                 id: divider
-                height: 12
-                width: 1
+                height: Theme.dp(12)
+                width: Theme.dp(1)
                 color: Theme.palette.directColor7
                 anchors.left: chatType.right
-                anchors.leftMargin: 4
+                anchors.leftMargin: Theme.dp(4)
                 anchors.verticalCenter: chatType.verticalCenter
                 visible: !!chatType.text && pinIcon.visible
             }
@@ -205,9 +205,9 @@ Rectangle {
                 id: pinIcon
 
                 anchors.left: divider.visible ? divider.right : parent.left
-                anchors.leftMargin: -2
+                anchors.leftMargin: -Theme.dp(2)
                 anchors.verticalCenter: chatType.verticalCenter
-                height: 14
+                height: Theme.dp(14)
                 visible: statusChatInfoButton.pinnedMessagesCount > 0
                 icon: "pin"
                 color: Theme.palette.baseColor1
@@ -215,12 +215,12 @@ Rectangle {
 
             StatusBaseText {
                 anchors.left: pinIcon.right
-                anchors.leftMargin: -6
+                anchors.leftMargin: -Theme.dp(6)
                 anchors.verticalCenter: pinIcon.verticalCenter
 
-                width: 14
+                width: Theme.dp(14)
                 text: statusChatInfoButton.pinnedMessagesCount
-                font.pixelSize: 12
+                font.pixelSize: Theme.dp(12)
                 font.underline: pinCountSensor.containsMouse
                 visible: pinIcon.visible
                 color: pinCountSensor.containsMouse ? Theme.palette.directColor1 : Theme.palette.baseColor1

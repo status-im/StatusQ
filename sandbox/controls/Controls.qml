@@ -9,22 +9,22 @@ import Sandbox 0.1
 
 GridLayout {
     columns: 1
-    columnSpacing: 5
-    rowSpacing: 5
+    columnSpacing: Theme.dp(5)
+    rowSpacing: Theme.dp(5)
 
     StatusSelectableText {
         color: Theme.palette.baseColor1
         text: "This is a multiline paragraph that can be selected and copied. A paragraph is a group of words put together to form a group that is usually longer than a sentence. Paragraphs are often made up of several sentences. There are usually between three and eight sentences. Paragraphs can begin with an indentation (about five spaces), or by missing a line out, and then starting again."
-        font.pixelSize: 15
-        width: 300
+        font.pixelSize: Theme.dp(15)
+        width: Theme.dp(300)
         multiline: true
     }
 
     StatusSelectableText {
         color: Theme.palette.baseColor1
         text: "<p>This is a selectable link in rich text format to test <a href='www.google.com'>www.google.com</a></p>"
-        font.pixelSize: 15
-        width: 200
+        font.pixelSize: Theme.dp(15)
+        width: Theme.dp(200)
     }
 
     StatusIconTabButton {
@@ -57,21 +57,21 @@ GridLayout {
             visible: parent.hovered
             text: "Right"
             orientation: StatusToolTip.Orientation.Right
-            x: parent.width + 16
+            x: parent.width + Theme.dp(16)
             y: parent.height / 2 - height / 2 + 4
         }
         StatusToolTip {
             visible: parent.hovered
             text: "Bottom"
             orientation: StatusToolTip.Orientation.Bottom
-            y: parent.height + 12
+            y: parent.height + Theme.dp(12)
         }
         StatusToolTip {
             visible: parent.hovered
             text: "Left"
             orientation: StatusToolTip.Orientation.Left
-            x: -parent.width /2 -8
-            y: parent.height / 2 - height / 2 + 4
+            x: -parent.width /2 - Theme.dp(8)
+            y: parent.height / 2 - height / 2 + Theme.dp(4)
         }
     }
 
@@ -95,7 +95,7 @@ GridLayout {
         tooltip.text: "Profile"
         badge.value: 0
         badge.visible: true
-        badge.anchors.leftMargin:-16
+        badge.anchors.leftMargin:-Theme.dp(16)
     }
 
     StatusNavBarTabButton {
@@ -131,8 +131,8 @@ GridLayout {
     }
 
     Item {
-        implicitWidth: 100
-        implicitHeight: 48
+        implicitWidth: Theme.dp(100)
+        implicitHeight: Theme.dp(48)
         StatusChatInfoButton {
             title: "Iuri Matias elided"
             subTitle: "Contact"
@@ -141,13 +141,13 @@ GridLayout {
             type: StatusChatInfoButton.Type.OneToOneChat
             muted: true
             pinnedMessagesCount: 1
-            width: 100
+            width: Theme.dp(100)
         }
     }
 
     Item {
-        implicitWidth: 100
-        implicitHeight: 48
+        implicitWidth: Theme.dp(100)
+        implicitHeight: Theme.dp(48)
         StatusChatInfoButton {
             title: "Iuri Matias big not elided"
             subTitle: "Contact"
@@ -156,7 +156,7 @@ GridLayout {
             type: StatusChatInfoButton.Type.OneToOneChat
             muted: true
             pinnedMessagesCount: 1
-            width: 400
+            width: Theme.dp(400)
         }
     }
 
@@ -183,26 +183,26 @@ GridLayout {
     }
 
     StatusSlider {
-        width: 360
+        width: Theme.dp(360)
         from: 0
         to: 100
         value: 40
     }
 
     StatusLabeledSlider {
-        width: 360
+        width: Theme.dp(360)
         model: [ qsTr("XS"), qsTr("S"), qsTr("M"), qsTr("L"), qsTr("XL"), qsTr("XXL")]
     }
 
     StatusLabeledSlider {
-        width: 360
+        width: Theme.dp(360)
         model: [ qsTr("50%"), qsTr("100%"), qsTr("150%"), qsTr("200%")]
     }
 
     StatusBanner {
         id: banner
-        width: 360
-        topPadding: 20
+        width: Theme.dp(360)
+        topPadding: Theme.dp(20)
         type: StatusBanner.Type.Danger
         statusText: "Banner"
     }

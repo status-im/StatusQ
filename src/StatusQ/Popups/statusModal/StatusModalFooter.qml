@@ -15,7 +15,7 @@ Rectangle {
     property list<StatusBaseButton> rightButtons
     property bool showFooter: true
 
-    radius: 8
+    radius: Theme.dp(8)
 
     color: Theme.palette.statusModal.backgroundColor
 
@@ -31,27 +31,27 @@ Rectangle {
         }
     }
 
-    implicitHeight: rootLayout.implicitHeight + 30
+    implicitHeight: rootLayout.implicitHeight + Theme.dp(30)
 
     RowLayout {
         id: rootLayout
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.leftMargin: 16
-        anchors.rightMargin: 18
+        anchors.leftMargin: Theme.dp(16)
+        anchors.rightMargin: Theme.dp(18)
 
         Row {
             id: leftButtonsLayout
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
             visible: statusModalFooter.showFooter
 
-            spacing: 16
+            spacing: Theme.dp(16)
         }
 
         Item {
             Layout.fillWidth: true
-            implicitHeight: 1
+            implicitHeight: Theme.dp(1)
         }
 
         Row {
@@ -59,7 +59,7 @@ Rectangle {
             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
             visible: statusModalFooter.showFooter
 
-            spacing: 16
+            spacing: Theme.dp(16)
         }
     }
 

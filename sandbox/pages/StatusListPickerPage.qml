@@ -11,14 +11,14 @@ import "../demoapp/data" 1.0
 GridLayout {
     id: root
     columns: 1
-    rowSpacing: 150
+    rowSpacing: Theme.dp(150)
 
     GridLayout {
         Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
         rows: 4
         columns: 2
-        rowSpacing: 170
-        columnSpacing: 150
+        rowSpacing: Theme.dp(170)
+        columnSpacing: Theme.dp(150)
         z: 100
         StatusListPicker {
             id: languagePicker
@@ -56,15 +56,15 @@ GridLayout {
     StatusBaseText {
         id: pageDesc
         Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-        height: 100
-        width: 500
+        height: Theme.dp(100)
+        width: Theme.dp(500)
         text: "4 different configurations for the `StatusListPicker` component:\n
     * Single selection. \n
     * Single selection but dynamically changed to multiple selection (model provides multiple selected items).\n
     * Multiple selection.\n
     * Multiple selection and displayed name is the symbol + shortName\n"
         color: Theme.palette.baseColor1
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
     }
 
     // Outsite area

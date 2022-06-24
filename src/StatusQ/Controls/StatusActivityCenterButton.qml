@@ -32,13 +32,13 @@ StatusFlatRoundButton {
     property alias unreadNotificationsCount: statusBadge.value
 
     icon.name: "notification"
-    icon.height: 21
+    icon.height: Theme.dp(21)
     type: StatusFlatRoundButton.Type.Secondary
 
     // initializing the tooltip
     tooltip.text: qsTr("Activity")
     tooltip.orientation: StatusToolTip.Orientation.Bottom
-    tooltip.y: parent.height + 12
+    tooltip.y: parent.height + Theme.dp(12)
 
     StatusBadge {
         id: statusBadge
@@ -46,17 +46,17 @@ StatusFlatRoundButton {
         visible: value > 0
         anchors.top: parent.top
         anchors.left: parent.right
-        anchors.topMargin: -3
+        anchors.topMargin: -Theme.dp(3)
         anchors.leftMargin: {
-            if (statusBadge.value > 99) {
-                return -22
+            if (statusBadge.value > Theme.dp(99)) {
+                return -Theme.dp(22)
             }
-            if (statusBadge.value > 9) {
-                return -21
+            if (statusBadge.value > Theme.dp(9)) {
+                return -Theme.dp(21)
             }
-            return -18
+            return -Theme.dp(18)
         }
-        border.width: 2
+        border.width: Theme.dp(2)
         border.color: parent.hovered ? Theme.palette.baseColor2 : Theme.palette.statusAppLayout.backgroundColor
     }
 }

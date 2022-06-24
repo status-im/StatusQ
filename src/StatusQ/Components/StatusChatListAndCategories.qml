@@ -6,6 +6,7 @@ import StatusQ.Core.Utils 0.1
 import StatusQ.Components 0.1
 import StatusQ.Popups 0.1
 import StatusQ.Core 0.1
+import StatusQ.Core.Theme 0.1
 
 Item {
     id: statusChatListAndCategories
@@ -64,7 +65,7 @@ Item {
 
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 4
+            spacing: Theme.dp(4)
 
             StatusChatList {
                 id: statusChatList

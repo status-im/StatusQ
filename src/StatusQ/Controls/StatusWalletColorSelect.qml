@@ -15,22 +15,22 @@ Item {
     property bool enabled: true
 
     height: childrenRect.height
-    implicitWidth: 480
+    implicitWidth: Theme.dp(480)
 
     StatusBaseText {
         id: label
         text: control.label
         anchors.left: parent.left
         anchors.top: parent.top
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
         color: control.enabled ? Theme.palette.directColor1 : Theme.palette.baseColor1
     }
 
     RowLayout {
         id: colors
-        spacing: 6
+        spacing: Theme.dp(6)
         anchors.top: label.bottom
-        anchors.topMargin: 8
+        anchors.topMargin: Theme.dp(8)
         anchors.left: parent.left
         anchors.right: parent.right
         Repeater {

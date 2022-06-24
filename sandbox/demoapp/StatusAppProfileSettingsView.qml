@@ -16,14 +16,14 @@ StatusAppTwoPanelLayout {
         StatusNavigationPanelHeadline {
             id: profileHeadline
             anchors.top: parent.top
-            anchors.topMargin: 16
+            anchors.topMargin: Theme.dp(16)
             anchors.horizontalCenter: parent.horizontalCenter
             text: "Profile"
         }
 
         ScrollView {
             anchors.top: profileHeadline.bottom
-            anchors.topMargin: 16
+            anchors.topMargin: Theme.dp(16)
             anchors.bottom: parent.bottom
             width: parent.width
 
@@ -34,7 +34,7 @@ StatusAppTwoPanelLayout {
             Column {
                 id: profileMenuItems
                 anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 4
+                spacing: Theme.dp(4)
 
                 Repeater {
                     model: Models.demoProfileGeneralMenuItems
@@ -56,7 +56,7 @@ StatusAppTwoPanelLayout {
 
                 Item {
                     id: invisibleSeparator
-                    height: 16
+                    height: Theme.dp(16)
                     width: parent.width
                 }
 

@@ -9,7 +9,7 @@ import StatusQ.Popups 0.1
 import StatusQ.Core.Utils 0.1
 
 Column {
-    spacing: 20
+    spacing: Theme.dp(20)
 
     StatusButton {
         text: "Simple modal"
@@ -144,11 +144,11 @@ Column {
 
         headerActionButton: StatusFlatRoundButton {
             type: StatusFlatRoundButton.Type.Secondary
-            width: 32
-            height: 32
+            width: Theme.dp(32)
+            height: Theme.dp(32)
 
-            icon.width: 20
-            icon.height: 20
+            icon.width: Theme.dp(20)
+            icon.height: Theme.dp(20)
             icon.name: "info"
         }
 
@@ -193,17 +193,17 @@ Column {
         contentItem: StatusBaseText {
             anchors.centerIn: parent
             text: "Some text content"
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             color: Theme.palette.directColor1
         }
 
         headerActionButton: StatusFlatRoundButton {
             type: StatusFlatRoundButton.Type.Secondary
-            width: 32
-            height: 32
+            width: Theme.dp(32)
+            height: Theme.dp(32)
 
-            icon.width: 20
-            icon.height: 20
+            icon.width: Theme.dp(20)
+            icon.height: Theme.dp(20)
             icon.name: "info"
         }
     }
@@ -218,7 +218,7 @@ Column {
             id: text
             anchors.centerIn: parent
             text: "Some text content"
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             color: Theme.palette.directColor1
         }
 
@@ -243,7 +243,7 @@ Column {
         contentItem: StatusBaseText {
             anchors.centerIn: parent
             text: "Some text content"
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             color: Theme.palette.directColor1
         }
 
@@ -269,7 +269,7 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
         contentItem: StatusBaseText {
             anchors.centerIn: parent
             text: "Some text content"
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             color: Theme.palette.directColor1
         }
 
@@ -296,7 +296,7 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
         contentItem: StatusBaseText {
             anchors.centerIn: parent
             text: "Some text content"
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             color: Theme.palette.directColor1
         }
 
@@ -323,7 +323,7 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
         contentItem: StatusBaseText {
             anchors.centerIn: parent
             text: "Some text content"
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             color: Theme.palette.directColor1
         }
 
@@ -374,29 +374,29 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
         showFooter: false
         showAdvancedHeader: true
         showAdvancedFooter: true
-        height: 200
+        height: Theme.dp(200)
         advancedHeaderComponent: Rectangle {
             width: parent.width
-            height: 50
+            height: Theme.dp(50)
             color: Theme.palette.baseColor1
-            border.width: 1
+            border.width: Theme.dp(1)
             StatusBaseText {
                 anchors.centerIn: parent
                 text: "Add any header here"
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 color: Theme.palette.directColor1
             }
 
         }
         advancedFooterComponent: Rectangle {
             width: parent.width
-            height: 50
+            height: Theme.dp(50)
             color: Theme.palette.baseColor1
-            border.width: 1
+            border.width: Theme.dp(1)
             StatusBaseText {
                 anchors.centerIn: parent
                 text: "Add any footer here"
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 color: Theme.palette.directColor1
             }
 
@@ -406,7 +406,7 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
     StatusModal {
         id: floatingHeaderModal
         anchors.centerIn: parent
-        height: 200
+        height: Theme.dp(200)
         showHeader: false
         showFooter: false
         showAdvancedHeader: true
@@ -417,14 +417,14 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
             delegate: Rectangle {
                 width: button.width
                 height: button.height
-                radius: 8
+                radius: Theme.dp(8)
                 visible: visibleIndices.includes(index)
                 StatusButton {
                     id: button
-                    topPadding: 8
+                    topPadding: Theme.dp(8)
                     bottomPadding: 0
-                    implicitHeight: 32
-                    defaultLeftPadding: 4
+                    implicitHeight: Theme.dp(32)
+                    defaultLeftPadding: Theme.dp(4)
                     text: name
                     icon.emoji: !!emoji ? emoji: ""
                     icon.emojiSize: Emoji.size.middle
@@ -437,7 +437,7 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
                 }
             }
             popupMenuDelegate: StatusListItem {
-                implicitWidth: 272
+                implicitWidth: Theme.dp(272)
                 title: name
                 onClicked: floatingHeader.itemSelected(index)
                 visible: !visibleIndices.includes(index)

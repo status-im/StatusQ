@@ -61,7 +61,7 @@ Item {
         \qmlproperty real StatusTagSelector::maxHeight
         This property holds the maximum height of the component.
     */
-    property real maxHeight: (488 + contactsLabel.height + contactsLabel.anchors.topMargin) //default min
+    property real maxHeight: (Theme.dp(488) + contactsLabel.height + contactsLabel.anchors.topMargin) //default min
     /*!
         \qmlproperty alias StatusTagSelector::textEdit
         This property holds a reference to the TextEdit component.
@@ -210,7 +210,7 @@ Item {
                                                                                 suggestionsContainer.anchors.topMargin + suggestionsContainer.anchors.bottomMargin +
                                                                                 2 * bgRect.anchors.margins +
                                                                                 userListView.anchors.topMargin + userListView.anchors.bottomMargin +
-                                                                                (userListView.model.count * 64): 0
+                                                                                (userListView.count * 64): 0
 
         function orderNamesModel() {
             if(root.orderByReadonly) {
@@ -224,7 +224,7 @@ Item {
         }
     }
 
-    implicitWidth: 448
+    implicitWidth: Theme.dp(448)
     implicitHeight: (tagSelectorRect.height + d.suggestionContainerHeight) > root.maxHeight ? root.maxHeight : (tagSelectorRect.height + d.suggestionContainerHeight)
 
     onOrderByReadonlyChanged: { d.orderNamesModel() }
@@ -236,26 +236,27 @@ Item {
     Rectangle {
         id: tagSelectorRect
         width: parent.width
-        height: 44
-        radius: 8
+        height: Theme.dp(44)
+        radius: Theme.dp(8)
         color: Theme.palette.baseColor2
         RowLayout {
             anchors.fill: parent
-            anchors.leftMargin: 16
-            anchors.rightMargin: 16
-            spacing: 8
+            anchors.leftMargin: Theme.dp(16)
+            anchors.rightMargin: Theme.dp(16)
+            spacing: Theme.dp(8)
             StatusBaseText {
-                Layout.preferredWidth: 22
+                Layout.preferredWidth: Theme.dp(22)
                 Layout.alignment: Qt.AlignVCenter
+                font.pixelSize: Theme.dp(15)
                 color: Theme.palette.baseColor1
                 text: root.toLabelText
-                visible: (parent.width>22)
+                visible: (parent.width>Theme.dp(22))
             }
 
             ScrollView {
-                Layout.preferredWidth: (parent.width - 177) > 0 ? ((namesList.contentWidth > (parent.width - 177)) ?
-                                       (parent.width - 177) : namesList.contentWidth) : 0
-                implicitHeight: 30
+                Layout.preferredWidth: (parent.width - Theme.dp(177)) > 0 ? ((namesList.contentWidth > (parent.width - Theme.dp(177))) ?
+                                       (parent.width - Theme.dp(177)) : namesList.contentWidth) : 0
+                implicitHeight: Theme.dp(30)
                 Layout.alignment: Qt.AlignVCenter
                 visible: (namesList.count > 0)
                 contentWidth: namesList.contentWidth
@@ -267,7 +268,7 @@ Item {
                     anchors.fill: parent
                     model: namesModel
                     orientation: ListView.Horizontal
-                    spacing: 8
+                    spacing: Theme.dp(8)
                     function scrollToEnd() {
                         if (contentWidth > width) {
                             contentX = contentWidth;
@@ -294,12 +295,12 @@ Item {
                 focus: true
                 color: Theme.palette.directColor1
                 clip: true
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 wrapMode: TextEdit.NoWrap
                 font.family: Theme.palette.baseFont.name
                 Layout.fillWidth: true
-                Layout.preferredHeight: 44
-                visible: (parent.width>22)
+                Layout.preferredHeight: Theme.dp(44)
+                visible: (parent.width>Theme.dp(22))
                 Keys.onPressed: {
                     if ((event.key === Qt.Key_Backspace || event.key === Qt.Key_Escape)
                             && getText(cursorPosition, (cursorPosition-1)) === ""
@@ -321,9 +322,9 @@ Item {
             StatusBaseText {
                 id: warningTextLabel
                 visible: (namesModel.count === root.nameCountLimit)
-                Layout.preferredWidth: visible ? 120 : 0
+                Layout.preferredWidth: visible ? Theme.dp(120) : 0
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                font.pixelSize: 10
+                font.pixelSize: Theme.dp(10)
                 color: Theme.palette.dangerColor1
                 text: root.nameCountLimit + " " + root.warningText
             }
@@ -332,11 +333,11 @@ Item {
 
     StatusBaseText {
         id: contactsLabel
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
         anchors.left: parent.left
-        anchors.leftMargin: 8
+        anchors.leftMargin: Theme.dp(8)
         anchors.top: tagSelectorRect.bottom
-        anchors.topMargin: visible ? 32 : 0
+        anchors.topMargin: visible ? Theme.dp(32) : 0
         height: visible ? contentHeight : 0
         visible: (root.sortedList.count === 0)
         color: Theme.palette.baseColor1
@@ -345,31 +346,31 @@ Item {
 
     Control {
         id: suggestionsContainer
-        width: 360
+        width: Theme.dp(360)
         anchors {
             top: (root.sortedList.count > 0) ? tagSelectorRect.bottom : contactsLabel.bottom
-            topMargin: 8//Style.current.halfPadding
+            topMargin: Theme.dp(8)//Style.current.halfPadding
             bottom: parent.bottom
-            bottomMargin: 16//Style.current.padding
+            bottomMargin: Theme.dp(16)//Style.current.padding
         }
         clip: true
         visible: (!root.showSortedListOnlyWhenText && ((root.sortedList.count > 0) || (edit.text === ""))) ||
                  ((edit.text !== "") && (root.sortedList.count > 0))
         x: ((root.namesModel.count > 0) && (root.sortedList.count > 0) && ((edit.x + 8) <= (root.width - suggestionsContainer.width)))
-           ? (edit.x + 8) : 0
+           ? (edit.x + Theme.dp(8)) : 0
         background: Rectangle {
             id: bgRect
             anchors.fill: parent
-            anchors.margins: 8
+            anchors.margins: Theme.dp(8)
             visible: (root.sortedList.count > 0)
             color: Theme.palette.statusPopupMenu.backgroundColor
-            radius: 8
+            radius: Theme.dp(8)
             layer.enabled: true
             layer.effect: DropShadow {
                 source: bgRect
                 horizontalOffset: 0
-                verticalOffset: 4
-                radius: 12
+                verticalOffset: Theme.dp(4)
+                radius: Theme.dp(12)
                 samples: 25
                 spread: 0.2
                 color: Theme.palette.dropShadow
@@ -379,9 +380,9 @@ Item {
             id: userListView
             anchors {
                 fill: parent
-                topMargin: 16
-                leftMargin: 8
-                rightMargin: 8
+                topMargin: Theme.dp(16)
+                leftMargin: Theme.dp(8)
+                rightMargin: Theme.dp(8)
             }
             ScrollBar.vertical: ScrollBar {
                 policy: ScrollBar.AsNeeded
@@ -392,10 +393,10 @@ Item {
             }
             delegate: StatusMemberListItem {
                 anchors.left: parent.left
-                anchors.leftMargin: bgRect.visible ? 8 : 0
+                anchors.leftMargin: bgRect.visible ? Theme.dp(8) : 0
                 anchors.right: parent.right
-                anchors.rightMargin: bgRect.visible ? 8 : 0
-                height: visible ? 64 : 0
+                anchors.rightMargin: bgRect.visible ? Theme.dp(8) : 0
+                height: visible ? Theme.dp(64) : 0
                 visible: {
                     for (let i = 0; i < namesModel.count; i++) {
                         if (namesModel.get(i).pubKey === model.pubKey) {

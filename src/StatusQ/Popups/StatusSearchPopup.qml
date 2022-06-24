@@ -11,7 +11,7 @@ import StatusQ.Popups 0.1
 
 StatusModal {
     id: root
-    width: 700
+    width: Theme.dp(700)
     height: (!!searchResults && (searchResults.count >= 0) && (searchText !== "")) ? (((searchResults.count < 5)) ? 560 : 770) : 142 //970
     anchors.centerIn: parent
     showHeader: false
@@ -82,10 +82,10 @@ StatusModal {
                 Layout.preferredHeight: 63
                 StatusIcon {
                     id: statusIcon
-                    width: 40
-                    height: 40
+                    width: Theme.dp(40)
+                    height: Theme.dp(40)
                     anchors.left: parent.left
-                    anchors.leftMargin: 12
+                    anchors.leftMargin: Theme.dp(12)
                     anchors.verticalCenter: parent.verticalCenter
                     icon: "search"
                     color: Theme.palette.baseColor1
@@ -94,14 +94,14 @@ StatusModal {
                 StatusBaseInput {
                     id: inputText
                     anchors.left: statusIcon.right
-                    anchors.leftMargin: 15
+                    anchors.leftMargin: Theme.dp(15)
                     anchors.right: parent.right
-                    anchors.rightMargin: 8
+                    anchors.rightMargin: Theme.dp(8)
                     anchors.verticalCenter: parent.verticalCenter
                     focus: true
-                    font.pixelSize: 28
-                    topPadding: 5 //smaller padding to handle bigger font
-                    bottomPadding: 5
+                    font.pixelSize: Theme.dp(28)
+                    topPadding: Theme.dp(5) //smaller padding to handle bigger font
+                    bottomPadding: Theme.dp(5)
                     clearable: true
                     showBackground: false
                     font.family: Theme.palette.baseFont.name
@@ -118,7 +118,7 @@ StatusModal {
             }
             Item {
                 Layout.preferredWidth: parent.width
-                Layout.preferredHeight: 58
+                Layout.preferredHeight: Theme.dp(58)
                 Button {
                     id: searchOptionsMenuButton
 
@@ -130,16 +130,16 @@ StatusModal {
                     property string primaryText: ""
                     property string secondaryText: ""
                     property StatusIconSettings iconSettings: StatusIconSettings {
-                        width: 16
-                        height: 16
+                        width: Theme.dp(16)
+                        height: Theme.dp(16)
                         name: ""
                         isLetterIdenticon: false
-                        letterSize: charactersLen > 1 ? 8 : 11
+                        letterSize: Theme.dp(charactersLen > 1 ? 8 : 11)
                     }
 
                     property StatusImageSettings image: StatusImageSettings {
-                        width: 16
-                        height: 16
+                        width: Theme.dp(16)
+                        height: Theme.dp(16)
                         source: ""
                         isIdenticon: false
                     }
@@ -147,16 +147,16 @@ StatusModal {
                     property alias ringSettings: identicon.ringSettings
 
                     anchors.left: parent.left
-                    anchors.leftMargin: 16
+                    anchors.leftMargin: Theme.dp(16)
                     anchors.verticalCenter: parent.verticalCenter
 
                     implicitWidth: (contentItemRowLayout.width + 24)
-                    implicitHeight: 32
+                    implicitHeight: Theme.dp(32)
 
                     background: Rectangle {
                         anchors.fill: parent
                         color: Theme.palette.baseColor2
-                        radius: 8
+                        radius: Theme.dp(8)
                     }
 
                     contentItem: Item {
@@ -172,7 +172,7 @@ StatusModal {
                             RowLayout {
                                 id: contentItemRowLayout
                                 anchors.centerIn: parent
-                                spacing: 2
+                                spacing: Theme.dp(2)
                                 StatusBaseText {
                                     color: Theme.palette.directColor1
                                     text: searchOptionsMenuButton.prefixText + ": "
@@ -181,8 +181,8 @@ StatusModal {
 
                                 StatusSmartIdenticon {
                                     id: identicon
-                                    Layout.preferredWidth: active ? 16 : 0
-                                    Layout.preferredHeight: 16
+                                    Layout.preferredWidth: active ? Theme.dp(16) : 0
+                                    Layout.preferredHeight: Theme.dp(16)
                                     image: searchOptionsMenuButton.image
                                     icon: searchOptionsMenuButton.iconSettings
                                     name: searchOptionsMenuButton.primaryText
@@ -198,16 +198,16 @@ StatusModal {
                                     font.weight: Font.Medium
                                 }
                                 StatusIcon {
-                                    Layout.preferredWidth: 14.5
-                                    Layout.preferredHeight: 17.5
+                                    Layout.preferredWidth: Theme.dp(14)
+                                    Layout.preferredHeight: Theme.dp(18)
                                     Layout.alignment: Qt.AlignVCenter
                                     visible: !!searchOptionsMenuButton.secondaryText
                                     color: Theme.palette.baseColor1
                                     icon: "next"
                                 }
                                 StatusIcon {
-                                    Layout.preferredWidth: 17.5
-                                    Layout.preferredHeight: 17.5
+                                    Layout.preferredWidth: Theme.dp(18)
+                                    Layout.preferredHeight: Theme.dp(18)
                                     Layout.alignment: Qt.AlignVCenter
                                     visible: !!searchOptionsMenuButton.secondaryText
                                     color: Theme.palette.directColor1
@@ -220,8 +220,8 @@ StatusModal {
                                     font.weight: Font.Medium
                                 }
                                 StatusIcon {
-                                    Layout.preferredWidth: 17.5
-                                    Layout.preferredHeight: 14.5
+                                    Layout.preferredWidth: Theme.dp(18)
+                                    Layout.preferredHeight: Theme.dp(14)
                                     Layout.alignment: Qt.AlignVCenter
                                     icon: "chevron-down"
                                     color: Theme.palette.directColor1
@@ -233,18 +233,18 @@ StatusModal {
 
                 StatusFlatRoundButton {
                     id: closeButton
-                    width: 32
-                    height: 32
+                    width: Theme.dp(32)
+                    height: Theme.dp(32)
                     anchors.left: searchOptionsMenuButton.right
-                    anchors.leftMargin: 4
+                    anchors.leftMargin: Theme.dp(4)
                     anchors.verticalCenter: parent.verticalCenter
                     opacity: (searchOptionsMenuButton.primaryText === defaultSearchLocationText) ? 0.0 : 1.0
                     visible: (opacity > 0.1)
                     type: StatusFlatRoundButton.Type.Secondary
                     icon.name: "close"
                     icon.color: Theme.palette.directColor1
-                    icon.width: 20
-                    icon.height: 20
+                    icon.width: Theme.dp(20)
+                    icon.height: Theme.dp(20)
                     onClicked: { root.resetSearchSelection(); }
                 }
             }
@@ -260,7 +260,7 @@ StatusModal {
                     anchors {
                         leftMargin: 0
                         rightMargin: 0
-                        bottomMargin: 67
+                        bottomMargin: Theme.dp(67)
                     }
                     visible: (!root.loading && (count > 0))
                     model: root.searchResults
@@ -302,16 +302,16 @@ StatusModal {
                     section.property: "sectionName"
                     section.criteria: ViewSection.FullString
                     section.delegate: Item {
-                        height: 34
+                        height: Theme.dp(34)
                         width: view.width
                         StatusBaseText {
-                            font.pixelSize: 15
+                            font.pixelSize: Theme.dp(15)
                             color: Theme.palette.baseColor1
                             text: section
                             anchors.left: parent.left
-                            anchors.leftMargin: 16
+                            anchors.leftMargin: Theme.dp(16)
                             anchors.bottom: parent.bottom
-                            anchors.bottomMargin: 4
+                            anchors.bottomMargin: Theme.dp(4)
                         }
                     }
                 }
@@ -319,15 +319,15 @@ StatusModal {
                     anchors.centerIn: parent
                     visible: root.loading
                     color: Theme.palette.primaryColor1
-                    width: 24
-                    height: 24
+                    width: Theme.dp(24)
+                    height: Theme.dp(24)
                 }
 
                 StatusBaseText {
                     anchors.centerIn: parent
                     text: root.noResultsLabel
                     color: Theme.palette.baseColor1
-                    font.pixelSize: 13
+                    font.pixelSize: Theme.dp(13)
                     visible: ((inputText.text !== "") && (view.count === 0) && !root.loading)
                 }
             }

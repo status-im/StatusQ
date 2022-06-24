@@ -9,7 +9,7 @@ import StatusQ.Popups 0.1
 MenuItem {
     id: statusPopupMenuItem
     implicitWidth: parent ? parent.width : 0
-    implicitHeight: action.enabled ? 38 : 0
+    implicitHeight: action.enabled ? Theme.dp(38) : 0
 
     property int subMenuIndex
     property var statusPopupMenu: null
@@ -28,14 +28,14 @@ MenuItem {
     Component {
         id: indicatorComponent
         Item {
-            implicitWidth: 24
-            implicitHeight: 24
+            implicitWidth: Theme.dp(24)
+            implicitHeight: Theme.dp(24)
             StatusIcon {
                 anchors.centerIn: parent
                 width: {
                     let width = statusPopupMenuItem.action && statusPopupMenuItem.action.icon.width ||
                         statusPopupMenuItem.action.iconSettings && statusPopupMenuItem.action.iconSettings.width
-                    return !!width ? width : 18
+                    return !!width ? width : Theme.dp(18)
                 }
                 rotation: !!statusPopupMenuItem.action.iconRotation ? statusPopupMenuItem.action.iconRotation : 0
                 icon: {
@@ -72,19 +72,19 @@ MenuItem {
     Component {
         id: statusLetterIdenticonCmp
         Item {
-            implicitWidth: 24
-            implicitHeight: 24
+            implicitWidth: Theme.dp(24)
+            implicitHeight: Theme.dp(24)
 
             StatusLetterIdenticon {
                 anchors.centerIn: parent
-                width: 16
-                height: 16
+                width: Theme.dp(16)
+                height: Theme.dp(16)
                 color: {
                     let subMenuItemIcon = statusPopupMenu.subMenuItemIcons[statusPopupMenuItem.subMenuIndex]
                     return subMenuItemIcon && subMenuItemIcon.color ? subMenuItemIcon.color : statusPopupMenuItem.action.iconSettings.background.color
                 }
                 name: statusPopupMenuItem.text
-                letterSize: 11
+                letterSize: Theme.dp(11)
             }
         }
     }
@@ -93,8 +93,8 @@ MenuItem {
         id: statusRoundImageCmp
 
         Item {
-            implicitWidth: 24
-            implicitHeight: 24
+            implicitWidth: Theme.dp(24)
+            implicitHeight: Theme.dp(24)
             StatusRoundedImage {
                 anchors.centerIn: parent
                 width: statusPopupMenuItem.action.image.width
@@ -124,7 +124,7 @@ MenuItem {
         }
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
-        anchors.leftMargin: 8
+        anchors.leftMargin: Theme.dp(8)
         active: {
             if (enabled) {
                 let hasIconSettings = !!statusPopupMenuItem.action.icon.name ||
@@ -142,8 +142,8 @@ MenuItem {
     contentItem: StatusBaseText {
         anchors.left: statusPopupMenuItem.indicator.right
         anchors.right: arrowIcon.visible ? arrowIcon.left : arrowIcon.right
-        anchors.rightMargin: 8
-        anchors.leftMargin: 4
+        anchors.rightMargin: Theme.dp(8)
+        anchors.leftMargin: Theme.dp(4)
 
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignVCenter
@@ -167,8 +167,8 @@ MenuItem {
         id: arrowIcon
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
-        anchors.rightMargin: 8
-        height: 16
+        anchors.rightMargin: Theme.dp(8)
+        height: Theme.dp(16)
         visible: statusPopupMenuItem.subMenu
         icon: "next"
         color: Theme.palette.directColor1

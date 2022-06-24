@@ -19,8 +19,8 @@ Rectangle {
     }
 
     property StatusIconSettings icon: StatusIconSettings {
-        width: 24
-        height: 24
+        width: Theme.dp(24)
+        height: Theme.dp(24)
     }
 
     property bool loading: false
@@ -33,28 +33,28 @@ Rectangle {
     property alias text: label.text
     property alias font: label.font
 
-    property real defaultLeftPadding: size === StatusBaseButton.Size.Large ? 24 : 12
-    property real defaultRightPadding: size === StatusBaseButton.Size.Large ? 24 : 12
+    property real defaultLeftPadding: Theme.dp(size === StatusBaseButton.Size.Large ? 24 : 12)
+    property real defaultRightPadding: Theme.dp(size === StatusBaseButton.Size.Large ? 24 : 12)
     property real defaultTopPadding: {
         switch (size) {
             case StatusBaseButton.Size.Tiny:
-              return 5
+              return Theme.dp(5)
             case StatusBaseButton.Size.Small:
-              return 10
+              return Theme.dp(10)
             case StatusBaseButton.Size.Large:
             default:
-              return 11
+              return Theme.dp(11)
         }
     }
     property real defaultBottomPadding: {
         switch (size) {
             case StatusBaseButton.Size.Tiny:
-              return 5
+              return Theme.dp(5)
             case StatusBaseButton.Size.Small:
-              return 10
+              return Theme.dp(10)
             case StatusBaseButton.Size.Large:
             default:
-              return 11
+              return Theme.dp(11)
         }
     }
 
@@ -84,7 +84,7 @@ Rectangle {
     implicitWidth: sensor.width
     implicitHeight: sensor.height
 
-    radius: size !== StatusBaseButton.Size.Tiny ? 8 : 6
+    radius: Theme.dp(size !== StatusBaseButton.Size.Tiny ? 8 : 6)
 
     color: {
         if (statusBaseButton.enabled)
@@ -123,7 +123,7 @@ Rectangle {
             anchors.left: parent.left
             anchors.leftMargin: statusBaseButton.leftPadding
             anchors.verticalCenter: parent.verticalCenter
-            spacing: 4
+            spacing: Theme.dp(4)
             StatusIcon {
                 id: statusIcon
                 width: statusBaseButton.icon.width
@@ -146,7 +146,7 @@ Rectangle {
                 id: label
                 opacity: !loading
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: size === StatusBaseButton.Size.Large ? 15 : 13 // by design
+                font.pixelSize: Theme.dp(size === StatusBaseButton.Size.Large ? 15 : 13) // by design
 
                 color: d.textColor
             } // Text

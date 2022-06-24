@@ -8,8 +8,8 @@ import StatusQ.Core.Theme 0.1
 Rectangle {
     id: statusAppLayout
 
-    implicitWidth: 900
-    implicitHeight: 600
+    implicitWidth: Theme.dp(900)
+    implicitHeight: Theme.dp(600)
 
     color: Theme.palette.statusAppLayout.backgroundColor
     
@@ -37,7 +37,7 @@ Rectangle {
         Item {
             id: appNavBarSlot
             height: statusAppLayout.height
-            width: 78
+            width: Theme.dp(78)
         }
 
         Item {

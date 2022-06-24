@@ -30,16 +30,16 @@ StatusModal {
         hexInput.text = color.toString();
     }
 
-    width: 680
-    implicitHeight: 820
+    width: Theme.dp(680)
+    implicitHeight: Theme.dp(820)
 
     contentItem: ScrollView {
         id: scroll
         width: parent.width
-        topPadding: 30
-        leftPadding: 20
-        rightPadding: 20
-        bottomPadding: 20
+        topPadding: Theme.dp(30)
+        leftPadding: Theme.dp(20)
+        rightPadding: Theme.dp(20)
+        bottomPadding: Theme.dp(20)
         contentHeight: column.height
 
         ScrollBar.vertical.policy: ScrollBar.AsNeeded
@@ -50,7 +50,7 @@ StatusModal {
         ColumnLayout {
             id: column
             width: scroll.width - scroll.leftPadding - scroll.rightPadding
-            spacing: 12
+            spacing: Theme.dp(12)
 
             StatusColorSpace {
                 id: colorSpace
@@ -73,7 +73,7 @@ StatusModal {
                 // TODO: editingFinished() signal instead of this crutch
                 property bool locked: false
 
-                implicitWidth: 256
+                implicitWidth: Theme.dp(256)
                 validators: [
                     StatusRegularExpressionValidator {
                         regularExpression: /^#(?:[0-9a-fA-F]{3}){1,2}$/
@@ -95,28 +95,28 @@ StatusModal {
 
             StatusBaseText {
                 text: qsTr("Preview")
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
             }
 
             Rectangle {
-                implicitHeight: 48
-                radius: 10
+                implicitHeight: Theme.dp(48)
+                radius: Theme.dp(10)
                 color: root.color
                 Layout.fillWidth: true
 
                 StatusBaseText {
                     id: preview
-                    x: 16
-                    y: 16
+                    x: Theme.dp(16)
+                    y: Theme.dp(16)
                     text: root.color.toString()
                     color: Theme.palette.white
-                    font.pixelSize: 15
+                    font.pixelSize: Theme.dp(15)
                 }
             }
 
             StatusBaseText {
                 text: qsTr("Standart colours")
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
             }
 
             StatusColorSelectorGrid {

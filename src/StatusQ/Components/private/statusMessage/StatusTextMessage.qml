@@ -28,7 +28,7 @@ Item {
         selectionColor: Theme.palette.primaryColor3
         color: Theme.palette.directColor1
         font.family: Theme.palette.baseFont.name
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
         textFormat: Text.RichText
         wrapMode: Text.Wrap
         readOnly: true
@@ -72,11 +72,11 @@ Item {
         id: showMoreLoader
         active: _internal.veryLongChatText
         anchors.top: chatText.bottom
-        anchors.topMargin: -10
+        anchors.topMargin: -Theme.dp(10)
         anchors.horizontalCenter: parent.horizontalCenter
         sourceComponent: StatusRoundButton {
-            implicitWidth: 24
-            implicitHeight: 24
+            implicitWidth: Theme.dp(24)
+            implicitHeight: Theme.dp(24)
             type: StatusRoundButton.Type.Secondary
             icon.name: _internal.readMore ? "chevron-up":  "chevron-down"
             onClicked: {

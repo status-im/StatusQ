@@ -2,6 +2,7 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14
 
 import StatusQ.Controls 0.1
+import StatusQ.Core.Theme 0.1
 
 Item {
     id: themeSwitchWrapper
@@ -19,11 +20,11 @@ Item {
 
         Row {
             id: themeSwitch
-            spacing: 2
+            spacing: Theme.dp(2)
 
             Text {
                 text: "🌤"
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 anchors.verticalCenter: parent.verticalCenter
             }
 
@@ -35,13 +36,13 @@ Item {
                     text: "Toggle Theme"
                     visible: sensor.containsMouse
                     orientation: StatusToolTip.Orientation.Bottom
-                    y: themeSwitchWrapper.y + 16
+                    y: themeSwitchWrapper.y + Theme.dp(16)
                 }
             }
 
             Text {
                 text: "🌙"
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 anchors.verticalCenter: parent.verticalCenter
             }
         }

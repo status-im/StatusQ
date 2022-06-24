@@ -2,6 +2,7 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.14
 
+import StatusQ.Core.Theme 0.1
 import StatusQ.Components 0.1
 
 import Sandbox 0.1
@@ -14,7 +15,7 @@ Column {
     }
 
     Item {
-        width: 200
+        width: Theme.dp(200)
         height: childrenRect.height
         StatusAddress {
             text: "0x9ce0056c5fc6bb9459a4dcfa35eaad8c1fee5ce9"

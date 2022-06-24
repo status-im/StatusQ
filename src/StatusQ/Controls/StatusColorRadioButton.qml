@@ -9,18 +9,18 @@ RadioButton {
     property string radioButtonColor: ""
     property string selectionColor: StatusColors.colors['white']
 
-    implicitWidth: 48
-    implicitHeight: 48
+    implicitWidth: Theme.dp(48)
+    implicitHeight: Theme.dp(48)
 
     indicator: Rectangle {
-        implicitWidth: 48
-        implicitHeight: 48
+        implicitWidth: Theme.dp(48)
+        implicitHeight: Theme.dp(48)
         radius: width/2
         color: radioButtonColor
 
         Rectangle {
-            width: 20
-            height: 20
+            width: Theme.dp(20)
+            height: Theme.dp(20)
             radius: width/2
             color: selectionColor
             border.color: StatusColors.colors['grey3']

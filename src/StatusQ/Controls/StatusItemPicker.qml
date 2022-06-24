@@ -95,7 +95,7 @@ Rectangle {
     QtObject {
         id: d
 
-        property int minShortNameWidth: 50
+        property int minShortNameWidth: Theme.dp(50)
 
         function availableTextWidth() {
              return root.width - imageItem.width - row.spacing - shortNameItem.anchors.rightMargin - selector.width - selector.anchors.rightMargin - 24/*Margin between both texts*/
@@ -105,9 +105,9 @@ Rectangle {
     Row {
         id: row
         anchors.left: parent.left
-        anchors.leftMargin: 18
+        anchors.leftMargin: Theme.dp(18)
         anchors.verticalCenter: parent.verticalCenter
-        spacing: 8
+        spacing: Theme.dp(8)
 
         StatusIcon {
             id: imageItem
@@ -126,7 +126,7 @@ Rectangle {
                    dummyNameItem.width
             text: root.name
             color: Theme.palette.directColor1
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             clip: true
             elide: Text.ElideRight
         }
@@ -135,7 +135,7 @@ Rectangle {
             id: dummyNameItem
             visible: false
             text: root.name
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
         }
     }
 
@@ -145,11 +145,11 @@ Rectangle {
                d.minShortNameWidth :
                d.availableTextWidth() - nameItem.width
         anchors.right: selector.left
-        anchors.rightMargin: 10
+        anchors.rightMargin: Theme.dp(10)
         anchors.verticalCenter: parent.verticalCenter
         text: root.shortName
         color: Theme.palette.baseColor1
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
         clip: true
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignRight
@@ -160,7 +160,7 @@ Rectangle {
         id: selector
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: 18
+        anchors.rightMargin: Theme.dp(18)
         sourceComponent: root.selectorType === StatusItemPicker.SelectorType.RadioButton ? radioBtn : checkbox
     }
 

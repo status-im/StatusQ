@@ -37,7 +37,7 @@ Item {
 
     id: wizardWrapper
     width: parent.width
-    height: 56
+    height: Theme.dp(56)
     /*!
        \qmlproperty ListModel StatusWizardStepper::stepsModel
         This property represents all steps and their descriptions as provided by the user.
@@ -54,18 +54,18 @@ Item {
         delegate: Item {
             id: wrapperItem
             width: (index === 0) ? descriptionLabel.contentWidth : (wizardWrapper.width / repeat.count)
-            height: 56
+            height: Theme.dp(56)
             onXChanged: {
                 //as x changes while delegates are created, direct assignment doesn't work
-                x = (index === (repeat.count-1)) ? (width+32) : (label.width/2) + 8
+                x = (index === (repeat.count-1)) ? (width+Theme.dp(32)) : (label.width/2) + Theme.dp(8)
             }
             StatusProgressBar {
                 id: barBorder
-                width: visible ? (parent.width - (label.width/2 + 24)) : 0
-                height: visible ? 8 : 0
+                width: visible ? (parent.width - (label.width/2 + Theme.dp(24))) : 0
+                height: visible ? Theme.dp(8) : 0
                 visible: (index > 0)
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.verticalCenterOffset: -12
+                anchors.verticalCenterOffset: -Theme.dp(12)
                 from: 0
                 to: wizardWrapper.maxDuration
                 value: loadingTime
@@ -76,22 +76,22 @@ Item {
             Item {
                 id: label
                 width: descriptionLabel.contentWidth
-                height: 56
+                height: Theme.dp(56)
                 anchors.left: (index > 0) ? barBorder.right : parent.left
-                anchors.leftMargin: (index > 0) ? -((width/2) - 24) : 0
+                anchors.leftMargin: (index > 0) ? -((width/2) - Theme.dp(24)) : 0
                 Rectangle {
-                    width: 32
-                    height: 32
+                    width: Theme.dp(32)
+                    height: Theme.dp(32)
                     anchors.horizontalCenter: parent.horizontalCenter
                     radius: width/2
                     color: stepCompleted ? Theme.palette.primaryColor1 : "transparent"
                     border.color: (stepCompleted && (barBorder.visible ? (barBorder.value === barBorder.to) : true))
                                   ? "transparent" : Theme.palette.primaryColor1
-                    border.width: 2
+                    border.width: Theme.dp(2)
                     StatusBaseText {
                         anchors.centerIn: parent
                         text: index+1
-                        font.pixelSize: 17
+                        font.pixelSize: Theme.dp(17)
                         color: (stepCompleted && (barBorder.visible ? (barBorder.value === barBorder.to) : true))
                                ? Theme.palette.indirectColor1 : Theme.palette.primaryColor1
                     }
@@ -101,7 +101,7 @@ Item {
                     anchors.bottom: parent.bottom
                     text: description
                     color: Theme.palette.directColor1
-                    font.pixelSize: 13
+                    font.pixelSize: Theme.dp(13)
                 }
             }
         }

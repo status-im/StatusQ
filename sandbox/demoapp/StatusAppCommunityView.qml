@@ -63,7 +63,7 @@ StatusAppThreePanelLayout {
             id: scrollView
 
             anchors.top: statusChatInfoToolBar.bottom
-            anchors.topMargin: 8
+            anchors.topMargin: Theme.dp(8)
             anchors.bottom: parent.bottom
             width: leftPanel.width
 
@@ -73,7 +73,7 @@ StatusAppThreePanelLayout {
             StatusChatListAndCategories {
                 id: communityCategories
                 width: leftPanel.width
-                height: implicitHeight > (leftPanel.height - 64) ? implicitHeight + 8 : leftPanel.height - 64
+                height: implicitHeight > (leftPanel.height - Theme.dp(64)) ? implicitHeight + Theme.dp(8) : leftPanel.height - Theme.dp(64)
 
                 draggableItems: true
                 draggableCategories: false
@@ -248,21 +248,21 @@ StatusAppThreePanelLayout {
             anchors.topMargin:16
             anchors.left: parent.left
             anchors.leftMargin: 16
-            opacity: (rightPanel.width > 50) ? 1.0 : 0.0
+            opacity: (rightPanel.width > Theme.dp(50)) ? 1.0 : 0.0
             visible: (opacity > 0.1)
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             text: qsTr("Members")
         }
 
         ListView {
             anchors.top: titleText.bottom
-            anchors.topMargin: 16
+            anchors.topMargin: Theme.dp(16)
             anchors.left: parent.left
-            anchors.leftMargin: 8
+            anchors.leftMargin: Theme.dp(8)
             anchors.right: parent.right
-            anchors.rightMargin: 8
+            anchors.rightMargin: Theme.dp(8)
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 16
+            anchors.bottomMargin: Theme.dp(16)
             boundsBehavior: Flickable.StopAtBounds
             model: Models.membersListModel
             delegate: StatusMemberListItem {

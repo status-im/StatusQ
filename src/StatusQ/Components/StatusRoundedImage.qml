@@ -10,8 +10,8 @@ Rectangle {
 
     property alias image: image
 
-    implicitWidth: 40
-    implicitHeight: 40
+    implicitWidth: Theme.dp(40)
+    implicitHeight: Theme.dp(40)
     color: "transparent"
     radius: width / 2
     layer.enabled: true

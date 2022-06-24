@@ -35,7 +35,7 @@ Item {
             id: primaryDisplayName
             font.family: Theme.palette.baseFont.name
             font.weight: Font.Medium
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             font.underline: mouseArea.containsMouse
             readOnly: true
             wrapMode: Text.WordWrap
@@ -62,14 +62,14 @@ Item {
             id: secondaryDisplayName
             Layout.alignment: Qt.AlignVCenter
             color: Theme.palette.baseColor1
-            font.pixelSize: 10
+            font.pixelSize: Theme.dp(10)
             text: secondaryName
             visible: !!text
         }
         StatusBaseText {
             id: dotSeparator1
             Layout.fillHeight: true
-            font.pixelSize: 10
+            font.pixelSize: Theme.dp(10)
             color: Theme.palette.baseColor1
             text: "."
             visible: secondaryDisplayName.visible
@@ -77,8 +77,8 @@ Item {
         StatusBaseText {
             id: tertiaryDetailText
             Layout.alignment: Qt.AlignVCenter
-            Layout.maximumWidth: 58
-            font.pixelSize: 10
+            Layout.maximumWidth: Theme.dp(58)
+            font.pixelSize: Theme.dp(10)
             elide: Text.ElideMiddle
             color: Theme.palette.baseColor1
             text: tertiaryDetail
@@ -86,7 +86,7 @@ Item {
         StatusBaseText {
             id: dotSeparator2
             Layout.fillHeight: true
-            font.pixelSize: 10
+            font.pixelSize: Theme.dp(10)
             color: Theme.palette.baseColor1
             text: "."
             visible: tertiaryDetailText.visible

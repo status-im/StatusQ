@@ -29,20 +29,20 @@ Column {
 
     signal colorSelected(color color)
 
-    spacing: 16
+    spacing: Theme.dp(16)
 
     StatusBaseText {
         id: title
         verticalAlignment: Text.AlignVCenter
-        font.pixelSize: 13
+        font.pixelSize: Theme.dp(13)
         color: Theme.palette.baseColor1
     }
 
     Grid {
         id: grid
         columns: 6
-        rowSpacing: 16
-        columnSpacing: 32
+        rowSpacing: Theme.dp(16)
+        columnSpacing: Theme.dp(32)
         Repeater {
             model: root.model
             delegate: StatusColorRadioButton {

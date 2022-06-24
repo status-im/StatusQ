@@ -10,11 +10,11 @@ import StatusQ.Layout 0.1
 import StatusQ.Popups 0.1
 
 Column {
-    spacing: 10
+    spacing: Theme.dp(10)
 
     StatusChatToolBar {
         toolbarComponent: chatInfoButton1
-        width: 518
+        width: Theme.dp(518)
 
         Component {
             id: chatInfoButton1
@@ -31,7 +31,7 @@ Column {
 
     StatusChatToolBar {
         toolbarComponent: chatInfoButton2
-        width: 518
+        width: Theme.dp(518)
 
         Component {
             id: chatInfoButton2
@@ -51,7 +51,7 @@ Column {
     StatusChatToolBar {
         notificationCount: 1
         toolbarComponent: chatInfoButton3
-        width: 518
+        width: Theme.dp(518)
 
         Component {
             id: chatInfoButton3
@@ -70,7 +70,7 @@ Column {
     StatusChatToolBar {
         notificationCount: 1
         toolbarComponent: tagSelector
-        width: 518
+        width: Theme.dp(518)
 
         Component {
             id: tagSelector
@@ -107,6 +107,8 @@ Column {
         Button {
             id: btn
             text: "Append"
+            width: Theme.dp(100)
+            height: Theme.dp(40)
             onClicked: {
                 buttons.append({
                     name: "Test community",
@@ -142,7 +144,7 @@ Column {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
             }
         }
 
@@ -185,7 +187,7 @@ Column {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
             }
 
             communityNavBarButton: StatusNavBarTabButton {
@@ -199,7 +201,7 @@ Column {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
 
                 popupMenu: StatusPopupMenu {
 
@@ -224,7 +226,7 @@ Column {
                     StatusMenuItem {
                         text: qsTr("Leave Community")
                         icon.name: "arrow-right"
-                        icon.width: 14
+                        icon.width: Theme.dp(14)
                         iconRotation: 180
                         type: StatusMenuItem.Type.Danger
                     }
@@ -270,7 +272,7 @@ Column {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
             }
 
             communityNavBarButton: StatusNavBarTabButton {
@@ -284,7 +286,7 @@ Column {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
 
                 popupMenu: StatusPopupMenu {
 
@@ -309,8 +311,8 @@ Column {
                     StatusMenuItem {
                         text: qsTr("Leave Community")
                         icon.name: "arrow-right"
-                        icon.width: 14
-                        iconRotation: 180
+                        icon.width: Theme.dp(14)
+                        iconRotation: Theme.dp(180)
                         type: StatusMenuItem.Type.Danger
                     }
                 }
@@ -360,7 +362,7 @@ Column {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
             }
 
             communityNavBarButton: StatusNavBarTabButton {
@@ -374,7 +376,7 @@ Column {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
 
                 popupMenu: StatusPopupMenu {
 
@@ -399,8 +401,8 @@ Column {
                     StatusMenuItem {
                         text: qsTr("Leave Community")
                         icon.name: "arrow-right"
-                        icon.width: 14
-                        iconRotation: 180
+                        icon.width: Theme.dp(14)
+                        iconRotation: Theme.dp(180)
                         type: StatusMenuItem.Type.Danger
                     }
                 }
@@ -455,7 +457,7 @@ Column {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
             }
 
             communityNavBarButton: StatusNavBarTabButton {
@@ -469,7 +471,7 @@ Column {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
 
                 popupMenu: StatusPopupMenu {
 
@@ -494,15 +496,13 @@ Column {
                     StatusMenuItem {
                         text: qsTr("Leave Community")
                         icon.name: "arrow-right"
-                        icon.width: 14
-                        iconRotation: 180
+                        icon.width: Theme.dp(14)
+                        iconRotation: Theme.dp(180)
                         type: StatusMenuItem.Type.Danger
                     }
                 }
             }
         }
-
-
     }
 }
 

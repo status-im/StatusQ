@@ -17,8 +17,8 @@ Item {
 
     signal clicked(var mouse)
 
-    implicitWidth: 40
-    implicitHeight: 40
+    implicitWidth: Theme.dp(40)
+    implicitHeight: Theme.dp(40)
 
     MouseArea {
         id: sensor
@@ -43,8 +43,8 @@ Item {
             visible: root.highlighted || sensor.containsMouse
             width: statusIcon.width
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 2
-            radius: 1
+            height: Theme.dp(2)
+            radius: Theme.dp(1)
             color: Theme.palette.primaryColor1
             anchors.bottom: parent.bottom
         }

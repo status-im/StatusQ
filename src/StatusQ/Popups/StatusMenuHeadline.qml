@@ -9,14 +9,14 @@ MenuSeparator {
     property string text
     height: visible && enabled ? implicitHeight : 0
     contentItem: Item {
-        implicitWidth: 176
-        implicitHeight: 16
+        implicitWidth: Theme.dp(176)
+        implicitHeight: Theme.dp(16)
         StatusBaseText {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
-            anchors.leftMargin: 12
+            anchors.leftMargin: Theme.dp(12)
             color: Theme.palette.baseColor1
-            font.pixelSize: 12
+            font.pixelSize: Theme.dp(12)
             text: root.text
         }
     }

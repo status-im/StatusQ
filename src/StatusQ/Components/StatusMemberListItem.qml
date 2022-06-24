@@ -104,7 +104,7 @@ StatusListItem {
 
         // Short keychat composition:
         function composeShortKeyChat(pubKey) {
-            return pubKey.substring(0, 5) + "..." + pubKey.substring(pubKey.length - 3)
+            return pubKey.substring(0, 5) + "..." + pubKey.substring(pubKey.length - Theme.dp(3))
         }
     }
 
@@ -119,25 +119,25 @@ StatusListItem {
         } 
     }
     subTitle: d.composeSubtitile()
-    statusListItemSubTitle.font.pixelSize: 10
+    statusListItemSubTitle.font.pixelSize: Theme.dp(10)
     icon.isLetterIdenticon: !root.image.source.toString()
     statusListItemIcon.badge.visible: true
     statusListItemIcon.badge.color: root.status === 1 ? Theme.palette.successColor1 : Theme.palette.baseColor1 // FIXME
     color: sensor.containsMouse ? Theme.palette.baseColor2 : Theme.palette.baseColor4
 
     // Default sizes / positions by design
-    implicitWidth: 256
-    implicitHeight: Math.max(56, statusListItemTitleArea.height + leftPadding)
-    leftPadding: 8
-    image.width: 32
-    image.height: 32
-    icon.width: 32
-    icon.height: 32
+    implicitWidth: Theme.dp(256)
+    implicitHeight: Math.max(Theme.dp(56), statusListItemTitleArea.height + leftPadding)
+    leftPadding: Theme.dp(8)
+    image.width: Theme.dp(32)
+    image.height: Theme.dp(32)
+    icon.width: Theme.dp(32)
+    icon.height: Theme.dp(32)
     statusListItemIcon.anchors.verticalCenter: sensor.verticalCenter
     statusListItemIcon.anchors.top: undefined
-    statusListItemIcon.badge.border.width: 2
-    statusListItemIcon.badge.implicitHeight: 12 // 8 px + 2 px * 2 borders
-    statusListItemIcon.badge.implicitWidth: 12 // 8 px + 2 px * 2 borders
+    statusListItemIcon.badge.border.width: Theme.dp(2)
+    statusListItemIcon.badge.implicitHeight: Theme.dp(12) // 8 px + 2 px * 2 borders
+    statusListItemIcon.badge.implicitWidth: Theme.dp(12) // 8 px + 2 px * 2 borders
     components: [
         StatusIcon {
             anchors.verticalCenter: parent.verticalCenter

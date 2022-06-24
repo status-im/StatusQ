@@ -1,5 +1,7 @@
 import QtQuick 2.14
 
+import StatusQ.Core.Theme 0.1
+
 QtObject {
     property string title
     property string subTitle
@@ -9,14 +11,14 @@ QtObject {
     property bool editable: false
     property Component popupMenu
     property StatusImageSettings image: StatusImageSettings {
-        width: 40
-        height: 40
+        width: Theme.dp(40)
+        height: Theme.dp(40)
         isIdenticon: false
     }
 
     property StatusIconSettings icon: StatusIconSettings {
-        width: 40
-        height: 40
+        width: Theme.dp(40)
+        height: Theme.dp(40)
         isLetterIdenticon: false
     }
 }

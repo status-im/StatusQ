@@ -4,11 +4,11 @@ import StatusQ.Core.Theme 0.1
 
 TabBar {
     id: statusSwitchTabBar
-    padding: 1
+    padding: Theme.dp(1)
 
     background: Rectangle {
-        implicitHeight: 36
+        implicitHeight: Theme.dp(36)
         color: Theme.palette.statusSwitchTab.barBackgroundColor
-        radius: 8
+        radius: Theme.dp(8)
     }
 }

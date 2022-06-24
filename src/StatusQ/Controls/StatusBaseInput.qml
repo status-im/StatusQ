@@ -153,22 +153,22 @@ Item {
         \qmlproperty real StatusBaseInput::leftPadding
         This property sets the leftComponentLoader's left padding.
     */
-    property real leftPadding: leftComponentLoader.item ? 8 : 16
+    property real leftPadding: Theme.dp(leftComponentLoader.item ? 8 : 16)
     /*!
         \qmlproperty real StatusBaseInput::rightPadding
         This property sets the right padding.
     */
-    property real rightPadding: 16
+    property real rightPadding: Theme.dp(16)
     /*!
         \qmlproperty real StatusBaseInput::topPadding
         This property sets the top padding.
     */
-    property real topPadding: 12
+    property real topPadding: Theme.dp(12)
     /*!
         \qmlproperty alias StatusBaseInput::bottomPadding
         This property sets the bottom padding.
     */
-    property real bottomPadding: 12
+    property real bottomPadding: Theme.dp(12)
     /*!
         \qmlproperty var StatusBaseInput::tabNavItem
         This property sets the tab key navigation item.
@@ -232,15 +232,15 @@ Item {
         This property holds a set of settings for the icon of the StatusBaseInput.
     */
     property StatusIconSettings icon: StatusIconSettings {
-        width: 24
-        height: 24
+        width: Theme.dp(24)
+        height: Theme.dp(24)
         name: ""
         color: Theme.palette.baseColor1
         emoji: ""
-        letterSize: emoji ? 11 : 14
+        letterSize: Theme.dp(emoji ? 11 : 14)
         background: StatusIconBackgroundSettings {
-            width: 30
-            height: 30
+            width: Theme.dp(30)
+            height: Theme.dp(30)
             color: Theme.palette.indirectColor1
         }
     }
@@ -277,10 +277,10 @@ Item {
     */
     signal editClicked()
 
-    implicitWidth: 448
+    implicitWidth: Theme.dp(448)
     implicitHeight: multiline ? Math.min(Math.max(
                                     (edit.implicitHeight + topPadding + bottomPadding),
-                                    44, root.minimumHeight), root.maximumHeight) : 44
+                                    Theme.dp(44), root.minimumHeight), root.maximumHeight) : Theme.dp(44)
 
     Rectangle {
         id: background
@@ -293,7 +293,7 @@ Item {
                                          maximumHeight) : parent.height
         color: root.showBackground ? Theme.palette.baseColor2
                                               : "transparent"
-        radius: 8
+        radius: Theme.dp(8)
 
         clip: true
 
@@ -324,7 +324,7 @@ Item {
                 root.editClicked()
             }
             RowLayout {
-                spacing: 10
+                spacing: Theme.dp(10)
                 anchors {
                     fill: parent
                     leftMargin: root.leftPadding
@@ -335,6 +335,8 @@ Item {
 
                 Loader {
                     id: leftComponentLoader
+                    width: item ? item.width : 0
+                    height: item ? item.height : 0
                     sourceComponent: {
                         if (root.leftComponent) return root.leftComponent
                         if (!root.leftIcon) return undefined
@@ -385,7 +387,7 @@ Item {
                         selectionColor: Theme.palette.primaryColor2
                         selectedTextColor: color
                         focus: true
-                        font.pixelSize: 15
+                        font.pixelSize: Theme.dp(15)
                         font.family: Theme.palette.baseFont.name
                         color: Theme.palette.directColor1
                         wrapMode: root.multiline ? Text.WrapAtWordBoundaryOrAnywhere : TextEdit.NoWrap
@@ -424,9 +426,9 @@ Item {
 
                         cursorDelegate: Rectangle {
                             color: Theme.palette.primaryColor1
-                            implicitWidth: 2
-                            implicitHeight: 22
-                            radius: 1
+                            implicitWidth: Theme.dp(2)
+                            implicitHeight: Theme.dp(22)
+                            radius: Theme.dp(1)
                             visible: edit.cursorVisible
 
                             SequentialAnimation on visible {
@@ -442,7 +444,7 @@ Item {
                             visible: (edit.text.length === 0)
                             anchors.fill: parent
                             verticalAlignment: parent.verticalAlignment
-                            font.pixelSize: 15
+                            font.pixelSize: Theme.dp(15)
                             elide: StatusBaseText.ElideRight
                             font.family: Theme.palette.baseFont.name
                             color: root.enabled ? Theme.palette.baseColor1 : Theme.palette.directColor6
@@ -472,11 +474,11 @@ Item {
             visible: edit.text.length != 0 && root.clearable && !root.multiline
                      && edit.activeFocus
             type: StatusFlatRoundButton.Type.Secondary
-            width: 24
-            height: 24
+            width: Theme.dp(24)
+            height: Theme.dp(24)
             icon.name: "clear"
-            icon.width: 16
-            icon.height: 16
+            icon.width: Theme.dp(16)
+            icon.height: Theme.dp(16)
             icon.color: Theme.palette.baseColor1
             onClicked: {
                 edit.clear()
@@ -490,8 +492,8 @@ Item {
         StatusSmartIdenticon {
             id: identicon
 
-            icon.width: 24
-            icon.height: 24
+            icon.width: Theme.dp(24)
+            icon.height: Theme.dp(24)
             icon.background: root.icon.background
             icon.color: root.icon.color
             icon.letterSize: root.icon.letterSize

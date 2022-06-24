@@ -13,18 +13,18 @@ Loader {
     property alias badge: statusBadge
 
     property StatusIconSettings icon: StatusIconSettings {
-        width: 40
-        height: 40
+        width: Theme.dp(40)
+        height: Theme.dp(40)
     }
 
     property StatusImageSettings image: StatusImageSettings {
-        width: 40
-        height: 40
+        width: Theme.dp(40)
+        height: Theme.dp(40)
     }
 
     property StatusIdenticonRingSettings ringSettings: StatusIdenticonRingSettings {
         initalAngleRad: 0
-        ringPxSize: Math.max(1.5, statusSmartIdenticon.image.width / 24.0)
+        ringPxSize: Math.max(1.5, statusSmartIdenticon.image.width / Theme.dp(24.0))
         distinctiveColors: Theme.palette.identiconRingColors
     }
 
@@ -103,9 +103,9 @@ Loader {
         visible: false
         anchors.bottom: statusSmartIdenticon.bottom
         anchors.right: statusSmartIdenticon.right
-        border.width: 3
-        implicitHeight: 15
-        implicitWidth: 15
+        border.width: Theme.dp(3)
+        implicitHeight: Theme.dp(15)
+        implicitWidth: Theme.dp(15)
         z: statusSmartIdenticon.dZ
     }
 }

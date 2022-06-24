@@ -198,7 +198,7 @@ QC.Popup {
 
     parent: QC.Overlay.overlay
 
-    width: 480
+    width: Theme.dp(480)
     // implicitHeight: headerImpl.implicitHeight + contentItem.implicitHeight + footerImpl.implicitHeight
 
     padding: 0
@@ -207,7 +207,7 @@ QC.Popup {
     leftPadding: padding
     rightPadding: padding
 
-    margins: 64
+    margins: Theme.dp(64)
 
     modal: true
 
@@ -217,7 +217,7 @@ QC.Popup {
 
     background: Rectangle {
         color: Theme.palette.statusModal.backgroundColor
-        radius: 8
+        radius: Theme.dp(8)
 
         Spares.StatusModalHeader {
             id: headerImpl
@@ -243,7 +243,7 @@ QC.Popup {
         Loader {
             id: advancedHeader
             anchors.top: parent.top
-            anchors.topMargin: hasFloatingButtons ? -18 - height : 0
+            anchors.topMargin: hasFloatingButtons ? -Theme.dp(18) - height : 0
             width: visible ? parent.width : 0
             active: statusModal.showAdvancedHeader
         }

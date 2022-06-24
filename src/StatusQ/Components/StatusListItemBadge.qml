@@ -14,13 +14,13 @@ Control {
     property string secondaryText: ""
 
     property StatusImageSettings image: StatusImageSettings {
-        height: 16
-        width: 16
+        height: Theme.dp(16)
+        width: Theme.dp(16)
         isIdenticon: false
     }
     property StatusIconSettings icon: StatusIconSettings {
-        height: 16
-        width: 16
+        height: Theme.dp(16)
+        width: Theme.dp(16)
         isLetterIdenticon: false
         background: StatusIconBackgroundSettings {}
         color: "transparent"
@@ -29,31 +29,31 @@ Control {
     background: Rectangle {
         anchors.fill: parent
         color: "transparent"
-        radius: 11
+        radius: Theme.dp(11)
         border.color: Theme.palette.directColor7
     }
 
     contentItem: Item {
         id: contentItem
-        width: (contentItemRow.width + 10)
+        width: (contentItemRow.width + Theme.dp(10))
         height: parent.height
         RowLayout {
             id: contentItemRow
             anchors.centerIn: parent
             anchors.horizontalCenterOffset: -spacing
-            spacing: 2
+            spacing: Theme.dp(2)
             StatusRoundedImage {
                 implicitWidth: root.image.width
                 implicitHeight: root.image.height
                 visible: !root.icon.isLetterIdenticon
                 image.source: root.image.source
                 border.color: Theme.palette.baseColor1
-                border.width: root.image.isIdenticon ? 1 : 0
+                border.width: root.image.isIdenticon ? Theme.dp(1) : 0
             }
             StatusLetterIdenticon {
                 implicitWidth: root.icon.width
                 implicitHeight: root.icon.width
-                letterSize: 11
+                letterSize: Theme.dp(11)
                 visible: root.icon.isLetterIdenticon
                 color: root.icon.color
                 name: root.primaryText

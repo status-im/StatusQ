@@ -9,7 +9,7 @@ import StatusQ.Popups 0.1
 
 import Sandbox 0.1
 Column {
-    spacing: 8
+    spacing: Theme.dp(8)
 
     StatusSelect {
         id: select

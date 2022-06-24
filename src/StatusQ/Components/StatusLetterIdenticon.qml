@@ -10,12 +10,12 @@ Rectangle {
     property string name
     property string emoji
     property string emojiSize: Emoji.size.small
-    property int letterSize: 21
+    property int letterSize: Theme.dp(21)
     property int charactersLen: 1
 
     color: Theme.palette.miscColor5
-    width: 40
-    height: 40
+    width: Theme.dp(40)
+    height: Theme.dp(40)
     radius: width / 2
 
     StatusEmoji {

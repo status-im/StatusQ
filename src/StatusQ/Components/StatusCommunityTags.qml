@@ -2,6 +2,7 @@ import QtQuick 2.14
 
 import StatusQ.Core 0.1
 import StatusQ.Controls 0.1
+import StatusQ.Core.Theme 0.1
 
 Item {
     id: root
@@ -28,7 +29,7 @@ Item {
             }
             return Math.min(parent.width, itemsWidth);
         }
-        spacing: 10
+        spacing: Theme.dp(10)
 
         Repeater {
             id: repeater
@@ -38,7 +39,7 @@ Item {
                 name: model.name
                 visible: (root.showOnlySelected ? model.selected : !model.selected) &&
                          (filterString == 0 || name.toUpperCase().indexOf(filterString.toUpperCase()) !== -1)
-                width: visible ? implicitWidth : -10
+                width: visible ? implicitWidth : -Theme.dp(10)
                 height: visible ? implicitHeight : 0
                 removable: root.showOnlySelected && root.active
                 onClicked: root.clicked(model)

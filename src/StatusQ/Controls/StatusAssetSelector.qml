@@ -18,8 +18,8 @@ Item {
     }
     // Define this in the usage to get balance in currency selected by user
     property var getCurrencyBalanceString: function (currencyBalance) { return "" }
-    implicitWidth: 86
-    implicitHeight: 32
+    implicitWidth: Theme.dp(86)
+    implicitHeight: Theme.dp(32)
 
     function resetInternal() {
         assets = null
@@ -40,17 +40,17 @@ Item {
         bgColorHover: Theme.palette.directColor8
         model: root.assets
         caretRightMargin: 0
-        select.radius: 6
+        select.radius: Theme.dp(6)
         select.height: root.height
-        selectMenu.width: 342
+        selectMenu.width: Theme.dp(342)
         selectedItemComponent: Item {
             anchors.fill: parent
             StatusRoundedImage {
                 id: iconImg
                 anchors.left: parent.left
-                anchors.leftMargin: 4
-                width: 24
-                height: 24
+                anchors.leftMargin: Theme.dp(4)
+                width: Theme.dp(24)
+                height: Theme.dp(24)
                 anchors.verticalCenter: parent.verticalCenter
                 image.onStatusChanged: {
                     if (iconImg.image.status === Image.Error) {
@@ -61,10 +61,10 @@ Item {
             StatusBaseText {
                 id: selectedTextField
                 anchors.left: iconImg.right
-                anchors.leftMargin: 4
+                anchors.leftMargin: Theme.dp(4)
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 15
-                height: 22
+                font.pixelSize: Theme.dp(15)
+                height: Theme.dp(22)
                 verticalAlignment: Text.AlignVCenter
                 color: Theme.palette.directColor1
             }
@@ -80,11 +80,11 @@ Item {
             property bool isLastItem: index === assets.rowCount() - 1
 
             width: parent.width
-            height: 72
+            height: Theme.dp(72)
             StatusRoundedImage {
                 id: iconImg
                 anchors.left: parent.left
-                anchors.leftMargin: 16
+                anchors.leftMargin: Theme.dp(16)
                 anchors.verticalCenter: parent.verticalCenter
                 image.source: root.tokenAssetSourceFn(symbol.toUpperCase())
                 image.onStatusChanged: {
@@ -95,31 +95,31 @@ Item {
             }
             Column {
                 anchors.left: iconImg.right
-                anchors.leftMargin: 12
+                anchors.leftMargin: Theme.dp(12)
                 anchors.verticalCenter: parent.verticalCenter
 
                 StatusBaseText {
                     text: symbol.toUpperCase()
-                    font.pixelSize: 15
+                    font.pixelSize: Theme.dp(15)
                     color: Theme.palette.directColor1
                 }
 
                 StatusBaseText {
                     text: name
                     color: Theme.palette.baseColor1
-                    font.pixelSize: 15
+                    font.pixelSize: Theme.dp(15)
                 }
             }
             Column {
                 anchors.right: parent.right
-                anchors.rightMargin: 16
+                anchors.rightMargin: Theme.dp(16)
                 anchors.verticalCenter: parent.verticalCenter
                 StatusBaseText {
-                    font.pixelSize: 15
+                    font.pixelSize: Theme.dp(15)
                     text: parseFloat(totalBalance).toFixed(4) + " " + symbol
                 }
                 StatusBaseText {
-                    font.pixelSize: 15
+                    font.pixelSize: Theme.dp(15)
                     anchors.right: parent.right
                     text: getCurrencyBalanceString(totalCurrencyBalance)
                     color: Theme.palette.baseColor1

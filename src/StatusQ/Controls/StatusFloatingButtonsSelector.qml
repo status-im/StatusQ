@@ -85,8 +85,8 @@ Row {
         popupMenu.close()
     }
 
-    height: 32
-    spacing: 12
+    height: Theme.dp(32)
+    spacing: Theme.dp(12)
     clip: true
 
     Repeater {
@@ -97,19 +97,19 @@ Row {
     Rectangle {
         width: button.width
         height: button.height
-        radius: 8
+        radius: Theme.dp(8)
         visible: floatingButtons.model.count > 3
         StatusButton {
             id: button
-            implicitHeight: 32
-            topPadding: 8
+            implicitHeight: Theme.dp(32)
+            topPadding: Theme.dp(8)
             bottomPadding: 0
-            defaultLeftPadding: 4
-            defaultRightPadding: 4
+            defaultLeftPadding: Theme.dp(4)
+            defaultRightPadding: Theme.dp(4)
             normalColor: "transparent"
             icon.name: "more"
             icon.background.color: "transparent"
-            onClicked: popupMenu.popup(parent.x, y + height + 8)
+            onClicked: popupMenu.popup(parent.x, y + height + Theme.dp(8))
         }
     }
 

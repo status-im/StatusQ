@@ -1,6 +1,7 @@
 import QtQuick 2.14
 
 import StatusQ.Components 0.1
+import StatusQ.Core.Theme 0.1
 
 Item {
     id: root
@@ -9,7 +10,7 @@ Item {
     Column {
         id: toastArea
         anchors.centerIn: parent
-        spacing: 8
+        spacing: Theme.dp(8)
         Repeater {
             id: toastRepeater
             width: parent.width

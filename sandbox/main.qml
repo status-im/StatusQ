@@ -13,15 +13,14 @@ import StatusQ.Controls 0.1
 import StatusQ.Components 0.1
 import StatusQ.Layout 0.1
 import StatusQ.Platform 0.1
+import StatusQ.Core.Utils 0.1
 
 import "demoapp/data" 1.0
 
 StatusWindow {
     id: rootWindow
-    width: Qt.platform.os == "ios" || Qt.platform.os == "android" ? Screen.width
-                                                                  :  1224
-    height: Qt.platform.os == "ios" || Qt.platform.os == "android" ? Screen.height
-                                                                   :840
+    width: Theme.screenWidth
+    height: Theme.screenHeight
     visible: true
     title: qsTr("StatusQ Documentation App")
 
@@ -59,6 +58,11 @@ StatusWindow {
         }
     }
 
+    readonly property real scaleRatio: Math.min(rootWindow.width / Theme.screenWidth, rootWindow.height / Theme.screenHeight)
+    onScaleRatioChanged: {
+        Theme.scaleFactor = scaleRatio;
+    }
+
     StatusAppLayout {
         id: appLayout
         anchors.fill: parent
@@ -81,7 +85,7 @@ StatusWindow {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
                 onClicked: {
                     stackView.clear()
                     if(model.sectionType === appSectionType.apiDocumentation)
@@ -106,9 +110,9 @@ StatusWindow {
 
         ThemeSwitch {
             anchors.top: parent.top
-            anchors.topMargin: 32
+            anchors.topMargin: Theme.dp(32)
             anchors.right: parent.right
-            anchors.rightMargin: 32
+            anchors.rightMargin: Theme.dp(32)
             lightThemeEnabled: storeSettings.lightTheme
             onLightThemeEnabledChanged: {
                 Theme.palette = lightThemeEnabled ? rootWindow.darkTheme : rootWindow.lightTheme
@@ -138,13 +142,13 @@ StatusWindow {
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     anchors.horizontalCenter: parent.horizontalCenter
-                    contentHeight: navigation.height + 56
+                    contentHeight: navigation.height + Theme.dp(56)
                     contentWidth: navigation.width
                     clip: true
                     Column {
                         id: navigation
                         anchors.top: parent.top
-                        anchors.topMargin: 48
+                        anchors.topMargin: Theme.dp(48)
                         anchors.horizontalCenter: parent.horizontalCenter
                         spacing: 0
 
@@ -338,7 +342,7 @@ StatusWindow {
                 ScrollView {
                     visible: !storeSettings.fillPage
                     anchors.fill: parent
-                    anchors.topMargin: 64
+                    anchors.topMargin: Theme.dp(64)
                     contentHeight: (pageWrapper.height + pageWrapper.anchors.topMargin) * rootWindow.factor
                     contentWidth: (pageWrapper.width * rootWindow.factor)
                     clip: true
@@ -367,7 +371,7 @@ StatusWindow {
                 Loader {
                     active: storeSettings.fillPage
                     anchors.fill: parent
-                    anchors.topMargin: 64
+                    anchors.topMargin: Theme.dp(64)
                     visible: storeSettings.fillPage
                     clip: true
 
@@ -411,12 +415,12 @@ StatusWindow {
                 id: platformSwitch
                 anchors.left: demoApp.left
                 anchors.bottom: demoApp.top
-                anchors.bottomMargin: 20
-                spacing: 2
+                anchors.bottomMargin: Theme.dp(20)
+                spacing: Theme.dp(2)
 
                 Text {
                     text: "OSX"
-                    font.pixelSize: 15
+                    font.pixelSize: Theme.dp(15)
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
@@ -432,7 +436,7 @@ StatusWindow {
 
                 Text {
                     text: "Win"
-                    font.pixelSize: 15
+                    font.pixelSize: Theme.dp(15)
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
@@ -444,8 +448,8 @@ StatusWindow {
                 anchors.fill: demoApp
                 source: demoApp
                 horizontalOffset: 0
-                verticalOffset: 5
-                radius: 20
+                verticalOffset: Theme.dp(5)
+                radius: Theme.dp(20)
                 samples: 20
                 color: "#22000000"
             }
@@ -455,7 +459,7 @@ StatusWindow {
     StatusMacTrafficLights {
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.margins: 13
+        anchors.margins: Theme.dp(13)
 
         visible: Qt.platform.os == "osx"
 

@@ -130,13 +130,13 @@ Rectangle {
 
     QtObject {
         id: d
-        property int cardWidth: 335
-        property int bannerHeigth: 64
-        property int cardHeigth: 190
-        property int totalHeigth: 230
-        property int margins: 12
-        property int bannerRadius: 20
-        property int cardRadius: 16
+        property int cardWidth: Theme.dp(335)
+        property int bannerHeigth: Theme.dp(64)
+        property int cardHeigth: Theme.dp(190)
+        property int totalHeigth: Theme.dp(230)
+        property int margins: Theme.dp(12)
+        property int bannerRadius: Theme.dp(20)
+        property int cardRadius: Theme.dp(16)
         property color cardColor: Theme.palette.indirectColor1
         property color fontColor: Theme.palette.directColor1
         property color loadingColor1: Theme.palette.baseColor5
@@ -168,8 +168,8 @@ Rectangle {
     layer.effect: DropShadow {
         source: root
         horizontalOffset: 0
-        verticalOffset: 2
-        radius: sensor.containsMouse ? 30 : d.bannerRadius
+        verticalOffset: Theme.dp(2)
+        radius: sensor.containsMouse ? Theme.dp(30) : d.bannerRadius
         samples: 25
         spread: 0
         color: sensor.containsMouse ? Theme.palette.backdropColor : Theme.palette.dropShadow
@@ -207,10 +207,10 @@ Rectangle {
     Rectangle {
         z: content.z + 1
         anchors.top: parent.top
-        anchors.topMargin: 16
+        anchors.topMargin: Theme.dp(16)
         anchors.left: parent.left
-        anchors.leftMargin: 12
-        width: 48
+        anchors.leftMargin: Theme.dp(12)
+        width: Theme.dp(48)
         height: width
         radius: width / 2
         color: root.loaded ? d.cardColor : d.loadingColor1
@@ -218,7 +218,7 @@ Rectangle {
         StatusRoundedImage {
             visible: root.loaded
             anchors.centerIn: parent
-            width: parent.width - 4
+            width: parent.width - Theme.dp(4)
             height: width
             image.source: root.logo
             color: "transparent"
@@ -231,7 +231,7 @@ Rectangle {
         z: banner.z + 1
         visible: root.loaded
         anchors.top: parent.top
-        anchors.topMargin: 40
+        anchors.topMargin: Theme.dp(40)
         width: d.cardWidth
         height: d.cardHeigth
         color: d.cardColor
@@ -241,27 +241,27 @@ Rectangle {
         Rectangle {
             visible: root.isPrivate
             anchors.top: parent.top
-            anchors.topMargin: 8
+            anchors.topMargin: Theme.dp(8)
             anchors.right: parent.right
             anchors.rightMargin: anchors.topMargin
-            width: 48
-            height: 24
+            width: Theme.dp(48)
+            height: Theme.dp(24)
             color: d.loadingColor2
-            radius: 200
+            radius: Theme.dp(200)
             StatusIcon {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.leftMargin: 6
                 anchors.left: parent.left
                 icon: "tiny/unlocked"
-                width: 16
-                height: 16
+                width: Theme.dp(16)
+                height: Theme.dp(16)
                 color: Theme.palette.baseColor1
             }
             StatusRoundedImage {
-                anchors.rightMargin: 2
+                anchors.rightMargin: Theme.dp(2)
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                width: 20
+                width: Theme.dp(20)
                 height: width
                 image.source: root.tokenLogo
                 color: "transparent"
@@ -270,24 +270,24 @@ Rectangle {
         // Community info
         ColumnLayout {
             anchors.fill: parent
-            anchors.topMargin: 32
+            anchors.topMargin: Theme.dp(32)
             anchors.leftMargin: d.margins
             anchors.rightMargin: d.margins
             anchors.bottomMargin: d.margins
             clip: true
-            spacing: 6
+            spacing: Theme.dp(6)
             StatusBaseText {
                 Layout.alignment: Qt.AlignVCenter
                 text: root.name
                 font.weight: Font.Bold
-                font.pixelSize: 19
+                font.pixelSize: Theme.dp(19)
                 color: d.fontColor
             }
             StatusBaseText {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 text: root.description
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 lineHeight: 1.2
                 color: d.fontColor
                 maximumLineCount: 2
@@ -298,48 +298,48 @@ Rectangle {
         }
         ColumnLayout {
             anchors.fill: parent
-            anchors.topMargin: 116
+            anchors.topMargin: Theme.dp(116)
             anchors.leftMargin: d.margins
             anchors.rightMargin: d.margins
             anchors.bottomMargin: d.margins
             clip: true
-            spacing: 18
+            spacing: Theme.dp(18)
             Row {
                 Layout.alignment: Qt.AlignVCenter
-                spacing: 20
+                spacing: Theme.dp(20)
                 // Members
                 Row {
                     height: membersTxt.height
-                    spacing: 4
+                    spacing: Theme.dp(4)
                     StatusIcon {
                         anchors.verticalCenter: parent.verticalCenter
                         icon: "tiny/members"
-                        width: 16
-                        height: 16
+                        width: Theme.dp(16)
+                        height: Theme.dp(16)
                     }
                     StatusBaseText {
                         id: membersTxt
                         Layout.alignment: Qt.AlignVCenter
                         text: d.numberFormat(root.members)
-                        font.pixelSize: 15
+                        font.pixelSize: Theme.dp(15)
                         color: d.fontColor
                     }
                 }
                 // Active users:
                 Row {
                     height: activeUsersTxt.height
-                    spacing: 4
+                    spacing: Theme.dp(4)
                     StatusIcon {
                         anchors.verticalCenter: parent.verticalCenter
                         icon: "tiny/flash"
-                        width: 14
-                        height: 14
+                        width: Theme.dp(14)
+                        height: Theme.dp(14)
                     }
                     StatusBaseText {
                         id: activeUsersTxt
                         Layout.alignment: Qt.AlignVCenter
                         text: d.numberFormat(root.activeUsers)
-                        font.pixelSize: 15
+                        font.pixelSize: Theme.dp(15)
                         color: d.fontColor
                     }
                 }
@@ -349,7 +349,7 @@ Rectangle {
                 visible: root.categories.count > 0
                 Layout.alignment: Qt.AlignVCenter
                 Layout.fillWidth: true
-                spacing: 8
+                spacing: Theme.dp(8)
                 clip: true
 
                 Repeater {
@@ -357,16 +357,16 @@ Rectangle {
                     delegate: StatusListItemTag {
                         border.color: Theme.palette.baseColor2
                         color: "transparent"
-                        height: 24
-                        radius: 20
+                        height: Theme.dp(24)
+                        radius: Theme.dp(20)
                         closeButtonVisible: false
                         icon.emoji: model.emoji
-                        icon.height: 24
+                        icon.height: Theme.dp(24)
                         icon.width: icon.height
                         icon.color: "transparent"
                         icon.isLetterIdenticon: true
                         title: model.name
-                        titleText.font.pixelSize: 13
+                        titleText.font.pixelSize: Theme.dp(13)
                         titleText.color: d.fontColor
                     }
                 }
@@ -378,7 +378,7 @@ Rectangle {
     Rectangle {
         visible: !root.loaded
         anchors.top: parent.top
-        anchors.topMargin: 40
+        anchors.topMargin: Theme.dp(40)
         width: d.cardWidth
         height: d.cardHeigth
         color: d.cardColor
@@ -386,48 +386,48 @@ Rectangle {
         clip: true
         Rectangle {
             anchors.top: parent.top
-            anchors.topMargin: 8
+            anchors.topMargin: Theme.dp(8)
             anchors.right: parent.right
             anchors.rightMargin: anchors.topMargin
-            width: 48
-            height: 24
+            width: Theme.dp(48)
+            height: Theme.dp(24)
             color: d.loadingColor2
-            radius: 200
+            radius: Theme.dp(200)
         }
         ColumnLayout {
             anchors.fill: parent
-            anchors.topMargin: 32
+            anchors.topMargin: Theme.dp(32)
             anchors.margins: d.margins
             clip: true
-            spacing: 9
+            spacing: Theme.dp(9)
             Rectangle {
-                width: 84
-                height: 16
+                width: Theme.dp(84)
+                height: Theme.dp(16)
                 color: d.loadingColor1
-                radius: 5
+                radius: Theme.dp(5)
             }
             Rectangle {
-                width: 311
-                height: 16
+                width: Theme.dp(311)
+                height: Theme.dp(16)
                 color: d.loadingColor1
-                radius: 5
+                radius: Theme.dp(5)
             }
             Rectangle {
-                width: 271
-                height: 16
+                width: Theme.dp(271)
+                height: Theme.dp(16)
                 color: d.loadingColor1
-                radius: 5
+                radius: Theme.dp(5)
             }
             Row {
-                Layout.topMargin: 22 - 9
-                spacing: 16
+                Layout.topMargin: Theme.dp(13)
+                spacing: Theme.dp(16)
                 Repeater {
                     model: 2
                     delegate: Row {
-                        spacing: 4
+                        spacing: Theme.dp(4)
                         Rectangle {
-                            width: 14
-                            height: 14
+                            width: Theme.dp(14)
+                            height: Theme.dp(14)
                             color: d.loadingColor1
                             radius: width / 2
                         }
@@ -441,16 +441,16 @@ Rectangle {
                 }
             }
             Row {
-                Layout.topMargin: 21 - 9
-                spacing: 8
+                Layout.topMargin: Theme.dp(12)
+                spacing: Theme.dp(8)
                 Repeater {
                     model: 3
                     delegate:
                     Rectangle {
-                        width: 76
-                        height: 24
+                        width: Theme.dp(76)
+                        height: Theme.dp(24)
                         color: d.loadingColor2
-                        radius: 20
+                        radius: Theme.dp(20)
                     }
                 }
             }

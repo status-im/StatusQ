@@ -5,8 +5,8 @@ import StatusQ.Components 0.1
 StatusListItem {
     id: statusContactRequestsListItem
 
-    implicitHeight: 64
-    implicitWidth: 288
+    implicitHeight: Theme.dp(64)
+    implicitWidth: Theme.dp(288)
 
     color: sensor.containsMouse ? Theme.palette.baseColor2 : "transparent"
 
@@ -17,7 +17,7 @@ StatusListItem {
             visible:  statusContactRequestsListItem.requestsCount > 0
             value: statusContactRequestsListItem.requestsCount
             anchors.verticalCenter: parent.verticalCenter
-            border.width: 4
+            border.width: Theme.dp(4)
             border.color: color
         },
         StatusIcon {

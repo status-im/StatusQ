@@ -22,12 +22,12 @@ Rectangle {
     property int notificationsCount: 0
     property bool muted: false
     property StatusImageSettings image: StatusImageSettings {
-        width: 24
-        height: 24
+        width: Theme.dp(24)
+        height: Theme.dp(24)
     }
     property StatusIconSettings icon: StatusIconSettings {
-        width: 24
-        height: 24
+        width: Theme.dp(24)
+        height: Theme.dp(24)
         color: Theme.palette.miscColor5
         emoji: ""
         charactersLen: root.type === StatusChatListItem.Type.OneToOneChat ? 2 : 1
@@ -53,10 +53,10 @@ Rectangle {
         CommunityChat // 6
     }
 
-    implicitWidth: 288
-    implicitHeight: 40
+    implicitWidth: Theme.dp(288)
+    implicitHeight: Theme.dp(40)
 
-    radius: 8
+    radius: Theme.dp(8)
 
     color: {
         if (selected) {
@@ -93,10 +93,10 @@ Rectangle {
         StatusIcon {
             id: statusIcon
             anchors.left: identicon.right
-            anchors.leftMargin: 8
+            anchors.leftMargin: Theme.dp(8)
             anchors.verticalCenter: parent.verticalCenter
 
-            width: 14
+            width: Theme.dp(14)
             visible: root.type !== StatusChatListItem.Type.OneToOneChat
             opacity: {
                 if (root.muted && !hoverHander.hovered && !root.highlighted) {
@@ -133,7 +133,7 @@ Rectangle {
             anchors.leftMargin: statusIcon.visible ? 1 : 8
             anchors.right: mutedIcon.visible ? mutedIcon.left :
                                                statusBadge.visible ? statusBadge.left : parent.right
-            anchors.rightMargin: 6
+            anchors.rightMargin: Theme.dp(6)
             anchors.verticalCenter: parent.verticalCenter
 
             text: (root.type === StatusChatListItem.Type.PublicChat &&
@@ -158,7 +158,7 @@ Rectangle {
                           root.notificationsCount > 0 ||
                           root.highlightWhenCreated ||
                           statusBadge.visible) ? Font.Bold : Font.Medium
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
         }
 
         StatusIcon {
@@ -166,7 +166,7 @@ Rectangle {
             anchors.right: statusBadge.visible ? statusBadge.left : parent.right
             anchors.rightMargin: 8
             anchors.verticalCenter: parent.verticalCenter
-            width: 14
+            width: Theme.dp(14)
             opacity: mutedIconSensor.containsMouse ? 1.0 : 0.2
             icon: Theme.palette.name === "light" ? "tiny/muted" : "tiny/muted-white"
             visible: root.muted
@@ -190,10 +190,10 @@ Rectangle {
 
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            anchors.rightMargin: 8
+            anchors.rightMargin: Theme.dp(8)
 
             color: root.muted ? Theme.palette.primaryColor2 : Theme.palette.primaryColor1
-            border.width: 4
+            border.width: Theme.dp(4)
             border.color: color
             value: root.notificationsCount
             visible: root.notificationsCount > 0

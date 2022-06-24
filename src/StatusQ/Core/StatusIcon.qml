@@ -1,5 +1,6 @@
 import QtQuick 2.13
 import QtGraphicalEffects 1.13
+import StatusQ.Core.Theme 0.1
 
 Image {
     property string icon: ""

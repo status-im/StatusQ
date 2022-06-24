@@ -2,6 +2,7 @@ import QtQuick 2.13
 import StatusQ.Components 0.1
 import StatusQ.Controls 0.1
 import StatusQ.Popups 0.1
+import StatusQ.Core.Theme 0.1
     
 StatusIconTabButton {
     id: statusNavBarTabButton 
@@ -22,8 +23,8 @@ StatusIconTabButton {
         visible: statusNavBarTabButton.hovered && !!statusTooltip.text
         delay: 50
         orientation: StatusToolTip.Orientation.Right
-        x: statusNavBarTabButton.width + 16
-        y: statusNavBarTabButton.height / 2 - height / 2 + 4
+        x: statusNavBarTabButton.width + Theme.dp(16)
+        y: statusNavBarTabButton.height / 2 - height / 2 + Theme.dp(4)
     }
 
     StatusBadge {
@@ -32,15 +33,15 @@ StatusIconTabButton {
         anchors.top: parent.top
         anchors.left: parent.right
         anchors.leftMargin: {
-            if (statusBadge.value > 99) {
-                return -22
+            if (statusBadge.value > Theme.dp(99)) {
+                return -Theme.dp(22)
             }
-            if (statusBadge.value > 9) {
-                return -21
+            if (statusBadge.value > Theme.dp(9)) {
+                return -Theme.dp(21)
             }
-            return -18
+            return -Theme.dp(18)
         }
-        anchors.topMargin: 4
+        anchors.topMargin: Theme.dp(4)
     }
 
     MouseArea {

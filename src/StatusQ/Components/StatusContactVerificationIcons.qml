@@ -15,8 +15,8 @@ Row {
         width: dummyImage.width
         height: dummyImage.height
         background: StatusIconBackgroundSettings {
-            width: 10
-            height: 10
+            width: Theme.dp(10)
+            height: Theme.dp(10)
             color: Theme.palette.primaryColor1
         }
         // Only used to get implicit width and height from the actual image
@@ -33,8 +33,8 @@ Row {
         width: dummyImage.width
         height: dummyImage.height
         background: StatusIconBackgroundSettings {
-            width: 10
-            height: 10
+            width: Theme.dp(10)
+            height: Theme.dp(10)
             color: root.trustIndicator === StatusContactVerificationIcons.TrustedType.Verified ? Theme.palette.primaryColor1 : Theme.palette.dangerColor1
         }
         // Only used to get implicit width and height from the actual image
@@ -50,7 +50,7 @@ Row {
         Untrustworthy //2
     }
 
-    spacing: 4
+    spacing: Theme.dp(4)
     visible: root.isMutualContact || (root.trustIndicator !== StatusContactVerificationIcons.TrustedType.None)
 
     StatusRoundIcon {

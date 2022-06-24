@@ -1,14 +1,16 @@
 import QtQuick 2.13
 import StatusQ.Core 0.1
 
+import StatusQ.Core.Theme 0.1
 
 Image {
     id: root
 
     property string emojiId: ""
 
-    width: 14
-    height: 14
+    width: Theme.dp(14)
+    height: Theme.dp(14)
+
     sourceSize.width: width
     sourceSize.height: height
 

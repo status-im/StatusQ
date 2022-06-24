@@ -1,10 +1,11 @@
 import QtQuick.Layouts 1.14
 import StatusQ.Controls 0.1
+import StatusQ.Core.Theme 0.1
 
 GridLayout {
     columns: 1
-    columnSpacing: 5
-    rowSpacing: 5
+    columnSpacing: Theme.dp(5)
+    rowSpacing: Theme.dp(5)
 
     StatusPasswordStrengthIndicator {
         id: veryweakPw

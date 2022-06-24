@@ -7,10 +7,10 @@ import StatusQ.Core 0.1
 import StatusQ.Core.Theme 0.1
 import StatusQ.Controls 0.1
 import StatusQ.Popups 0.1
-
+import StatusQ.Core.Utils 0.1
 
 Column {
-    spacing: 8
+    spacing: Theme.dp(8)
 
     StatusAccountSelector {
         id: accountSelector

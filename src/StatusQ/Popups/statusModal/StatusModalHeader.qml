@@ -27,9 +27,9 @@ Rectangle {
     signal close
 
     implicitHeight: visible? Math.max(closeButton.height, imageWithTitle.implicitHeight) + 32 : 0
-    implicitWidth: 480
+    implicitWidth: Theme.dp(480)
 
-    radius: 16
+    radius: Theme.dp(16)
 
     color: Theme.palette.statusModal.backgroundColor
 
@@ -56,7 +56,7 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.right: actionButtonLoader.left
-        anchors.leftMargin: 16
+        anchors.leftMargin: Theme.dp(16)
 
         editable: statusModalHeader.editable
         titleElide: statusModalHeader.titleElide
@@ -78,25 +78,25 @@ Rectangle {
         id: actionButtonLoader
         objectName: "actionButtonloader"
         anchors.right: closeButton.visible ? closeButton.left : parent.right
-        anchors.rightMargin: 8
+        anchors.rightMargin: Theme.dp(8)
         anchors.top: parent.top
-        anchors.topMargin: 16
+        anchors.topMargin: Theme.dp(16)
     }
 
     StatusFlatRoundButton {
         id: closeButton
         objectName: "headerClosebutton"
         anchors.right: parent.right
-        anchors.rightMargin: 20
+        anchors.rightMargin: Theme.dp(20)
         anchors.top: parent.top
-        anchors.topMargin: 16
-        width: 32
-        height: 32
+        anchors.topMargin: Theme.dp(16)
+        width: Theme.dp(32)
+        height: Theme.dp(32)
         type: StatusFlatRoundButton.Type.Secondary
         icon.name: "close"
         icon.color: Theme.palette.directColor1
-        icon.width: 20
-        icon.height: 20
+        icon.width: Theme.dp(20)
+        icon.height: Theme.dp(20)
         visible: statusModalHeader.hasCloseButton
 
         onClicked: statusModalHeader.close()

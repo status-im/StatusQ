@@ -69,13 +69,13 @@ Item {
        \qmlproperty int StatusPinInput::circleSpacing
        This property allows you to customize spacing between pin circles. The default value is 16 pixels.
     */
-    property int circleSpacing: 16
+    property int circleSpacing: Theme.dp(16)
 
     /*!
        \qmlproperty int StatusPinInput::circleDiameter
        This property allows you to customize pin circle diameter. The default value is 16 pixels.
     */
-    property int circleDiameter: 16
+    property int circleDiameter: Theme.dp(16)
 
     QtObject {
         id: d

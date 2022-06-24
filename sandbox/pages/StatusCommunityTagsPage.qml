@@ -27,9 +27,9 @@ Item {
     ColumnLayout {
         id: column
         anchors.centerIn: parent
-        width: 600
-        height: 500
-        spacing: 20
+        width: Theme.dp(600)
+        height: Theme.dp(500)
+        spacing: Theme.dp(20)
 
         StatusInput {
             id: tagsFilter
@@ -55,14 +55,14 @@ Item {
         RowLayout {
             StatusBaseText {
                 text: qsTr("Selected tags")
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 Layout.fillWidth: true
             }
 
             StatusBaseText {
                 text: cntSelectedTags + "/" + maxSelectedTags
                 color: Theme.palette.baseColor1
-                font.pixelSize: 13
+                font.pixelSize: Theme.dp(13)
             }
         }
 

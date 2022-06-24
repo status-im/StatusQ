@@ -20,26 +20,26 @@ StatusAppThreePanelLayout {
         StatusNavigationPanelHeadline {
             id: headline
             anchors.top: parent.top
-            anchors.topMargin: 16
+            anchors.topMargin: Theme.dp(16)
             anchors.horizontalCenter: parent.horizontalCenter
             text: "Chat"
         }
 
         RowLayout {
             id: searchInputWrapper
-            width: 288
+            width: Theme.dp(288)
             height: searchInput.height
             anchors.top: headline.bottom
-            anchors.topMargin: 16
+            anchors.topMargin: Theme.dp(16)
             anchors.horizontalCenter: parent.horizontalCenter
 
             StatusBaseInput {
                 id: searchInput
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignVCenter
-                implicitHeight: 36
-                topPadding: 8
-                bottomPadding: 8
+                implicitHeight: Theme.dp(36)
+                topPadding: Theme.dp(8)
+                bottomPadding: Theme.dp(8)
                 placeholderText: "Search"
                 icon.name: "search"
             }
@@ -58,9 +58,9 @@ StatusAppThreePanelLayout {
 
         Column {
             anchors.top: searchInputWrapper.bottom
-            anchors.topMargin: 16
+            anchors.topMargin: Theme.dp(16)
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 8
+            spacing: Theme.dp(8)
 
             StatusContactRequestsIndicatorListItem {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -174,7 +174,7 @@ StatusAppThreePanelLayout {
                 StatusMenuItem {
                     text: "Leave Chat"
                     icon.name: "arrow-right"
-                    icon.width: 14
+                    icon.width: Theme.dp(14)
                     iconRotation: 180
                     type: StatusMenuItem.Type.Danger
                 }

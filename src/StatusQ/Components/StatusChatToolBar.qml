@@ -13,7 +13,7 @@ Item {
     property alias membersButton: membersButton
     property alias searchButton: searchButton
 
-    property int padding: 8
+    property int padding: Theme.dp(8)
     property int notificationCount: 0
     property Component popupMenu
     property var toolbarComponent
@@ -24,8 +24,8 @@ Item {
     signal membersButtonClicked()
     signal searchButtonClicked()
 
-    implicitWidth: 518
-    implicitHeight: 60
+    implicitWidth: Theme.dp(518)
+    implicitHeight: Theme.dp(60)
 
     onPopupMenuChanged: {
         if (!!popupMenu) {
@@ -55,8 +55,8 @@ Item {
 
             StatusFlatRoundButton {
                 id: searchButton
-                width: 32
-                height: 32
+                width: Theme.dp(32)
+                height: Theme.dp(32)
                 icon.name: "search"
                 type: StatusFlatRoundButton.Type.Secondary
                 onClicked: statusChatToolBar.searchButtonClicked()
@@ -64,13 +64,13 @@ Item {
                 // initializing the tooltip
                 tooltip.text: qsTr("Search")
                 tooltip.orientation: StatusToolTip.Orientation.Bottom
-                tooltip.y: parent.height + 12
+                tooltip.y: parent.height + Theme.dp(12)
             }
 
             StatusFlatRoundButton {
                 id: membersButton
-                width: 32
-                height: 32
+                width: Theme.dp(32)
+                height: Theme.dp(32)
                 icon.name: "group-chat"
                 type: StatusFlatRoundButton.Type.Secondary
                 onClicked: statusChatToolBar.membersButtonClicked()
@@ -83,8 +83,8 @@ Item {
 
             StatusFlatRoundButton {
                 id: menuButton
-                width: 32
-                height: 32
+                width: Theme.dp(32)
+                height: Theme.dp(32)
                 icon.name: "more"
                 type: StatusFlatRoundButton.Type.Secondary
                 visible: !!statusChatToolBar.popupMenu
@@ -93,7 +93,7 @@ Item {
                 tooltip.visible: !!tooltip.text && menuButton.hovered && !popupMenuSlot.item.opened
                 tooltip.text: qsTr("More")
                 tooltip.orientation: StatusToolTip.Orientation.Bottom
-                tooltip.y: parent.height + 12
+                tooltip.y: parent.height + Theme.dp(12)
 
                 property bool showMoreMenu: false
                 onClicked: {
@@ -127,8 +127,8 @@ Item {
             }
 
             Rectangle {
-                height: 24
-                width: 1
+                height: Theme.dp(24)
+                width: Theme.dp(1)
                 color: Theme.palette.directColor7
                 Layout.alignment: Qt.AlignVCenter
                 visible: notificationButton.visible &&

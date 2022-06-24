@@ -7,9 +7,9 @@ import StatusQ.Core.Theme 0.1
 Rectangle {
     id: root
     width: layout.width + layout.anchors.margins
-    height: 30
+    height: Theme.dp(30)
     color: Theme.palette.primaryColor3
-    radius: 15
+    radius: Theme.dp(15)
 
     property alias titleText: titleText
 
@@ -18,21 +18,21 @@ Rectangle {
     signal clicked()
 
     property StatusImageSettings image: StatusImageSettings {
-        width: 20
-        height: 20
+        width: Theme.dp(20)
+        height: Theme.dp(20)
         isIdenticon: false
     }
 
     property StatusIconSettings icon: StatusIconSettings {
-        height: 20
-        width: 20
+        height: Theme.dp(20)
+        width: Theme.dp(20)
         rotation: 0
         isLetterIdenticon: false
-        letterSize: 10
+        letterSize: Theme.dp(10)
         color: Theme.palette.primaryColor1
         background: StatusIconBackgroundSettings {
-            width: 15
-            height: 15
+            width: Theme.dp(15)
+            height: Theme.dp(15)
             color: Theme.palette.primaryColor3
         }
     }
@@ -40,11 +40,11 @@ Rectangle {
     RowLayout {
         id: layout
         height: parent.height
-        anchors.margins: 6
+        anchors.margins: Theme.dp(6)
 
         StatusSmartIdenticon {
             id: iconOrImage
-            Layout.leftMargin: 4
+            Layout.leftMargin: Theme.dp(4)
             image: root.image
             icon: root.icon
             name: root.title
@@ -57,7 +57,7 @@ Rectangle {
             id: titleText
             color: Theme.palette.primaryColor1
             text: root.title
-            Layout.rightMargin: closeButtonVisible ? 0 : 5
+            Layout.rightMargin: closeButtonVisible ? 0 : Theme.dp(5)
         }
 
         StatusIcon {

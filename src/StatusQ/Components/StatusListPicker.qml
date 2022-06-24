@@ -227,8 +227,8 @@ Item {
         }
     }
 
-    width: 110
-    height: 38
+    width: Theme.dp(110)
+    height: Theme.dp(38)
 
     Component.onCompleted: d.initialize()
 
@@ -238,7 +238,7 @@ Item {
         bgColor: Theme.palette.primaryColor3
         contentColor: Theme.palette.primaryColor1
         text: picker.selectedItemsText
-        textPixelSize: 13
+        textPixelSize: Theme.dp(13)
         type: StatusPickerButton.Type.Down
 
         onClicked: {
@@ -261,7 +261,7 @@ Item {
         anchors.right: root.menuAlignment === StatusListPicker.MenuAlignment.Right ? btn.right : undefined
         anchors.horizontalCenter: root.menuAlignment === StatusListPicker.MenuAlignment.Center ? btn.horizontalCenter : undefined
         anchors.top: btn.bottom
-        anchors.topMargin: 4
+        anchors.topMargin: Theme.dp(4)
         visible: false
         color: Theme.palette.statusPopupMenu.backgroundColor
         radius: 8
@@ -269,8 +269,8 @@ Item {
         layer.effect: DropShadow {
             source: picker
             horizontalOffset: 0
-            verticalOffset: 4
-            radius: 12
+            verticalOffset: Theme.dp(4)
+            radius: Theme.dp(12)
             samples: 25
             spread: 0.2
             color: Theme.palette.dropShadow
@@ -279,29 +279,29 @@ Item {
         ListView {
             id: content            
 
-            property int itemHeight: 40
-            property int itemWidth: 360
+            property int itemHeight: Theme.dp(40)
+            property int itemWidth: Theme.dp(360)
 
             model: d.filteredModel
             width: itemWidth
             anchors.top: parent.top
-            anchors.topMargin: 8
+            anchors.topMargin: Theme.dp(8)
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 8
+            anchors.bottomMargin: Theme.dp(8)
             currentIndex: -1
             clip: true
             headerPositioning: ListView.OverlayHeader
             header: Rectangle {
                 id: header
                 width: content.itemWidth
-                height: searchInput.height + 24
+                height: searchInput.height + Theme.dp(24)
                 color: Theme.palette.statusPopupMenu.backgroundColor
                 z: 3 // Above delegate (z=1) and above section.delegate (z = 2)
 
                 StatusBaseInput {
                     id: searchInput
-                    implicitHeight: 36
-                    width: content.itemWidth - 2 * 18
+                    implicitHeight: Theme.dp(36)
+                    width: content.itemWidth - Theme.dp(2) * 18
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     topPadding: 0
@@ -371,12 +371,12 @@ Item {
                 height: content.itemHeight
 
                 StatusBaseText {
-                    anchors.leftMargin: 18
+                    anchors.leftMargin: Theme.dp(18)
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
                     text: section
                     color: Theme.palette.baseColor1
-                    font.pixelSize: 15
+                    font.pixelSize: Theme.dp(15)
                     elide: Text.ElideRight
                 }
             }// End of Category item

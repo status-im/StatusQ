@@ -21,17 +21,17 @@ StatusPopupMenu {
             delegate:  MenuItem {
                 id: variants
                 implicitWidth: parent ? parent.width : 0
-                implicitHeight: 38
+                implicitHeight: Theme.dp(38)
                 contentItem: StatusBaseText {
-                    rightPadding: 8
-                    leftPadding: 4
+                    rightPadding: Theme.dp(8)
+                    leftPadding: Theme.dp(4)
 
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
 
                     text: modelData
                     color: Theme.palette.directColor1
-                    font.pixelSize: 13
+                    font.pixelSize: Theme.dp(13)
                     elide: Text.ElideRight
                 }
 
@@ -51,17 +51,17 @@ StatusPopupMenu {
         MenuItem {
             id: ignoreWord
             implicitWidth: parent ? parent.width : 0
-            implicitHeight: 38
+            implicitHeight: Theme.dp(38)
             contentItem: StatusBaseText {
-                rightPadding: 8
-                leftPadding: 4
+                rightPadding: Theme.dp(8)
+                leftPadding: Theme.dp(4)
 
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignVCenter
 
                 text: qsTr("Add to dictionary")
                 color: Theme.palette.directColor1
-                font.pixelSize: 13
+                font.pixelSize: Theme.dp(13)
                 elide: Text.ElideRight
             }
 
@@ -78,17 +78,17 @@ StatusPopupMenu {
         MenuItem {
             id: disableSpellchecking
             implicitWidth: parent ? parent.width : 0
-            implicitHeight: 38
+            implicitHeight: Theme.dp(38)
             contentItem: StatusBaseText {
-                rightPadding: 8
-                leftPadding: 4
+                rightPadding: Theme.dp(8)
+                leftPadding: Theme.dp(4)
 
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignVCenter
 
                 text: qsTr("Disable Spellchecking")
                 color: Theme.palette.directColor1
-                font.pixelSize: 13
+                font.pixelSize: Theme.dp(13)
                 elide: Text.ElideRight
             }
 

@@ -12,7 +12,7 @@ import StatusQ.Core.Theme 0.1
 ListView {
     id: messageList
     anchors.fill: parent
-    anchors.margins: 15
+    anchors.margins: Theme.dp(15)
     clip: true
     delegate: StatusMessage {
         id: delegate
@@ -34,8 +34,8 @@ ListView {
             secondaryName: model.localName !== "" && model.ensName.startsWith("@") ? model.ensName: ""
             chatID: model.chatKey
             profileImage: StatusImageSettings {
-                width: 40
-                height: 40
+                width: Theme.dp(40)
+                height: Theme.dp(40)
                 source: model.profileImage
                 isIdenticon: model.isIdenticon
             }
@@ -55,8 +55,8 @@ ListView {
             amISender:  model.isReply ? model.replyAmISender : ""
             displayName:  model.isReply ? model.replySenderName: ""
             profileImage: StatusImageSettings {
-                width: 20
-                height: 20
+                width: Theme.dp(20)
+                height: Theme.dp(20)
                 source:  model.isReply ? model.replyProfileImage: ""
                 isIdenticon:  model.isReply ? model.replyIsIdenticon: ""
             }
@@ -67,23 +67,23 @@ ListView {
         quickActions: [
             StatusFlatRoundButton {
                 id: emojiBtn
-                width: 32
-                height: 32
+                width: Theme.dp(32)
+                height: Theme.dp(32)
                 icon.name: "reaction-b"
                 type: StatusFlatRoundButton.Type.Tertiary
                 tooltip.text: "Add reaction"
             },
             StatusFlatRoundButton {
                 id: replyBtn
-                width: 32
-                height: 32
+                width: Theme.dp(32)
+                height: Theme.dp(32)
                 icon.name: "reply"
                 type: StatusFlatRoundButton.Type.Tertiary
                 tooltip.text: "Reply"
             },
             StatusFlatRoundButton {
-                width: 32
-                height: 32
+                width: Theme.dp(32)
+                height: Theme.dp(32)
                 icon.name: "tiny/edit"
                 type: StatusFlatRoundButton.Type.Tertiary
                 tooltip.text: "Edit"
@@ -93,8 +93,8 @@ ListView {
             },
             StatusFlatRoundButton {
                 id: otherBtn
-                width: 32
-                height: 32
+                width: Theme.dp(32)
+                height: Theme.dp(32)
                 icon.name: "more"
                 type: StatusFlatRoundButton.Type.Tertiary
                 tooltip.text: "More"

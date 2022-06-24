@@ -10,7 +10,7 @@ import StatusQ.Core.Theme 0.1
 Page {
     id: root
     anchors.fill: parent
-    anchors.margins: 16
+    anchors.margins: Theme.dp(16)
     property ListModel contactsModel: null
     background: null
 
@@ -19,13 +19,13 @@ Page {
         width: parent.width
         height: tagSelector.height
         anchors.right: parent.right
-        anchors.rightMargin: 8
+        anchors.rightMargin: Theme.dp(8)
 
         StatusTagSelector {
             id: tagSelector
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-            Layout.leftMargin: 17
+            Layout.leftMargin: Theme.dp(17)
             maxHeight: root.height
             toLabelText: qsTr("To: ")
             warningText: qsTr("USER LIMIT REACHED")
@@ -73,7 +73,7 @@ Page {
         }
 
         StatusButton {
-            implicitHeight: 44
+            implicitHeight: Theme.dp(44)
             Layout.alignment: Qt.AlignTop
             enabled: (tagSelector.namesModel.count > 0)
             text: "Confirm"
@@ -82,14 +82,14 @@ Page {
 
     contentItem: Item {
         anchors.fill: parent
-        anchors.topMargin: 68
+        anchors.topMargin: Theme.dp(68)
 
         StatusBaseText {
             visible: (contactsModel.count === 0)
             anchors.centerIn: parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             color: Theme.palette.baseColor1
             text: qsTr("You can only send direct messages to your Contacts. \n\n
 Send a contact request to the person you would like to chat with, you will be\n able to

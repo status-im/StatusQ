@@ -16,19 +16,19 @@ Item {
     property string label: ""
     readonly property bool hasLabel: label !== ""
     property color bgColor: Theme.palette.baseColor2
-    readonly property int labelMargin: 7
+    readonly property int labelMargin: Theme.dp(7)
     property var model
     property alias selectMenu: selectMenu
     property color bgColorHover: bgColor
     property alias selectedItemComponent: selectedItemContainer.children
-    property int caretRightMargin: 16
+    property int caretRightMargin: Theme.dp(16)
     property alias select: inputRectangle
     property int menuAlignment: StatusSelect.MenuAlignment.Right
     property Item zeroItemsView: Item {}
     property string validationError: ""
     property alias validationErrorAlignment: validationErrorText.horizontalAlignment
-    property int validationErrorTopMargin: 11
-    implicitWidth: 448
+    property int validationErrorTopMargin: Theme.dp(11)
+    implicitWidth: Theme.dp(448)
 
     id: root
     height: inputRectangle.height + (hasLabel ? inputLabel.height + labelMargin : 0) + (!!validationError ? (validationErrorText.height + validationErrorTopMargin) : 0)
@@ -41,21 +41,21 @@ Item {
         anchors.leftMargin: 0
         anchors.top: parent.top
         anchors.topMargin: 0
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
         color: root.enabled ? Theme.palette.directColor1 : Theme.palette.baseColor1
     }
 
     Rectangle {
         property bool hovered: false
         id: inputRectangle
-        height: 56
+        height: Theme.dp(56)
         color: hovered ? bgColorHover : bgColor
-        radius: 8
+        radius: Theme.dp(8)
         anchors.top: root.hasLabel ? inputLabel.bottom : parent.top
         anchors.topMargin: root.hasLabel ? root.labelMargin : 0
         anchors.right: parent.right
         anchors.left: parent.left
-        border.width: !!validationError ? 1 : 0
+        border.width: !!validationError ? Theme.dp(1) : 0
         border.color: Theme.palette.dangerColor1
 
         Item {
@@ -68,8 +68,8 @@ Item {
             anchors.right: parent.right
             anchors.rightMargin: caretRightMargin
             anchors.verticalCenter: parent.verticalCenter
-            width: 24
-            height: 24
+            width: Theme.dp(24)
+            height: Theme.dp(24)
             icon: "chevron-down"
             color: Theme.palette.baseColor1
         }
@@ -82,12 +82,12 @@ Item {
         y: selectMenu.y
         visible: selectMenu.opened
         color: Theme.palette.statusSelect.menuItemBackgroundColor
-        radius: 8
+        radius: Theme.dp(8)
         border.color: Theme.palette.baseColor2
         layer.enabled: true
         layer.effect: DropShadow {
-            verticalOffset: 3
-            radius: 8
+            verticalOffset: Theme.dp(3)
+            radius: Theme.dp(8)
             samples: 15
             fast: true
             cached: true
@@ -133,7 +133,7 @@ Item {
         anchors.topMargin: validationErrorTopMargin
         anchors.right: parent.right
         anchors.left: parent.left
-        font.pixelSize: 12
+        font.pixelSize: Theme.dp(12)
         height: visible ? implicitHeight : 0
         color: Theme.palette.dangerColor1
         horizontalAlignment: TextEdit.AlignRight

@@ -53,12 +53,12 @@ Column {
        \qmlproperty string StatusBanner::textPixels
        This property holds the pixels size of the text inside the banner.
     */
-    property int textPixels: 15
+    property int textPixels: Theme.dp(15)
     /*!
        \qmlproperty string StatusBanner::statusBannerHeight
        This property holds the height of the banner rectangle.
     */
-    property int statusBannerHeight: 38
+    property int statusBannerHeight: Theme.dp(38)
 
     // "private" properties
     QtObject {
@@ -81,7 +81,7 @@ Column {
     Rectangle {
         id: topDiv
         color: d.bordersColor
-        height: 1
+        height: Theme.dp(1)
         width: parent.width
     }
 
@@ -105,7 +105,7 @@ Column {
     Rectangle {
         id: bottomDiv
         color: d.bordersColor
-        height: 1
+        height: Theme.dp(1)
         width: parent.width
     }
 

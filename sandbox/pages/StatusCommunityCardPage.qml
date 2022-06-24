@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.13
 
 import StatusQ.Components 0.1
+import StatusQ.Core.Theme 0.1
 
 import "../demoapp/data" 1.0
 
@@ -17,8 +18,8 @@ GridLayout {
 
     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
     columns: 2
-    columnSpacing: 28
-    rowSpacing: 28
+    columnSpacing: Theme.dp(28)
+    rowSpacing: Theme.dp(28)
 
     Repeater {
         model: Models.curatedCommunitiesModel

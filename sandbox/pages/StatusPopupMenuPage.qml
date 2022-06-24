@@ -9,8 +9,8 @@ import StatusQ.Popups 0.1
 
 GridLayout {
     columns: 1
-    columnSpacing: 5
-    rowSpacing: 5
+    columnSpacing: Theme.dp(5)
+    rowSpacing: Theme.dp(5)
 
     StatusButton {
         text: "Simple"

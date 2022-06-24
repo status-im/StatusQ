@@ -15,19 +15,19 @@ Rectangle {
 
     // TODO: what about dark theme?
     color: "#F7F7F7"
-    width: 366
-    height: 75
+    width: Theme.dp(366)
+    height: Theme.dp(75)
 
-    radius: 8
+    radius: Theme.dp(8)
 
     Loader {
         id: identicon
         sourceComponent: root.identicon === "" ?  statusIdenticon : userOrChannelIdenticon
         anchors.left: parent.left
-        anchors.leftMargin: 16
+        anchors.leftMargin: Theme.dp(16)
         anchors.verticalCenter: parent.verticalCenter
-        height: 40
-        width: 40
+        height: Theme.dp(40)
+        width: Theme.dp(40)
     }
 
     Component {
@@ -35,18 +35,18 @@ Rectangle {
         StatusSmartIdenticon {
             id: contactImage
             anchors.left: parent.left
-            anchors.leftMargin: 8
+            anchors.leftMargin: Theme.dp(8)
             anchors.verticalCenter: parent.verticalCenter
             image: StatusImageSettings {
-                width: 40
-                height: 40
+                width: Theme.dp(40)
+                height: Theme.dp(40)
                 source: root.identicon
                 isIdenticon: true
             }
             icon: StatusIconSettings {
-                width: 40
-                height: 40
-                letterSize: 15
+                width: Theme.dp(40)
+                height: Theme.dp(40)
+                letterSize: Theme.dp(15)
                 color: Theme.palette.miscColor5
             }
             name: root.name
@@ -57,8 +57,8 @@ Rectangle {
         id: statusIdenticon
         Image {
             source: "../../assets/img/status-logo-icon.svg"
-            width: 40
-            height: 40
+            width: Theme.dp(40)
+            height: Theme.dp(40)
             sourceSize.width: width * 2
             sourceSize.height: height * 2
             cache: true
@@ -74,29 +74,29 @@ Rectangle {
     StatusBaseText {
         id: name
         anchors.bottom: messagePreview.top
-        anchors.bottomMargin: 2
+        anchors.bottomMargin: Theme.dp(2)
         anchors.left: identicon.right
-        anchors.leftMargin: 8
+        anchors.leftMargin: Theme.dp(8)
         anchors.right: openButton.left
         anchors.rightMargin: 8
         elide: Text.ElideRight
         text: root.name
         font.weight: Font.Medium
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
         color: "#4b4b4b"
     }
 
     StatusBaseText {
         id: messagePreview
         anchors.bottom: identicon.bottom
-        anchors.bottomMargin: 2
+        anchors.bottomMargin: Theme.dp(2)
         anchors.left: identicon.right
-        anchors.leftMargin: 8
+        anchors.leftMargin: Theme.dp(8)
         anchors.right: openButton.left
-        anchors.rightMargin: 16
+        anchors.rightMargin: Theme.dp(16)
         elide: Text.ElideRight
         clip: true // This is needed because emojis don't ellide correctly
-        font.pixelSize: 14
+        font.pixelSize: Theme.dp(14)
         color: "#4b4b4b"
         text: root.message
     }
@@ -105,19 +105,19 @@ Rectangle {
         id: openButton
         anchors.right: parent.right
         height: parent.height
-        width: 85
+        width: Theme.dp(85)
         color: "transparent"
 
         Rectangle {
             height: parent.height
-            width: 1.2
+            width: Theme.dp(1.2)
             anchors.left: parent.left
             color: "#D9D9D9"
         }
 
         StatusBaseText {
             font.weight: Font.Medium
-            font.pixelSize: 14
+            font.pixelSize: Theme.dp(14)
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("Open")

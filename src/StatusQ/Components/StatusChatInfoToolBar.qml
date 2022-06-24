@@ -3,12 +3,13 @@ import QtGraphicalEffects 1.13
 import StatusQ.Components 0.1
 import StatusQ.Controls 0.1
 import StatusQ.Popups 0.1
+import StatusQ.Core.Theme 0.1
 
 Item {
     id: statusChatInfoToolBar
 
-    implicitWidth: 288
-    implicitHeight: 56
+    implicitWidth: Theme.dp(288)
+    implicitHeight: Theme.dp(56)
 
     property alias chatInfoButton: statusChatInfoButton
     property alias menuButton: statusMenuButton
@@ -27,7 +28,7 @@ Item {
         id: statusChatInfoButton
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
-        anchors.right: (implicitWidth > parent.width - 50) ? statusMenuButton.left : undefined
+        anchors.right: (implicitWidth > parent.width - Theme.dp(50)) ? statusMenuButton.left : undefined
         anchors.rightMargin: 5
         type: StatusChatInfoButton.Type.OneToOneChat
         onClicked: statusChatInfoToolBar.chatInfoButtonClicked()
@@ -39,8 +40,8 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
 
         visible: popupMenuSlot.active
-        width: visible ? 32 : 0
-        height: 32
+        width: visible ? Theme.dp(32) : 0
+        height: Theme.dp(32)
 
         type: StatusRoundButton.Type.Secondary
         icon.name: "add"
@@ -89,7 +90,7 @@ Item {
         onClicked: {
             statusChatInfoToolBar.addButtonClicked(mouse)
             statusMenuButton.state = "pressed"
-            popupMenuSlot.item.popup(statusMenuButton.width-popupMenuSlot.item.width, statusMenuButton.height + 4)
+            popupMenuSlot.item.popup(statusMenuButton.width-popupMenuSlot.item.width, statusMenuButton.height + Theme.dp(4))
         }
 
         Loader {

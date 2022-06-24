@@ -8,8 +8,8 @@ import StatusQ.Core.Theme 0.1
 Item {
     id: statusAppTwoPanelLayout
 
-    implicitWidth: 822
-    implicitHeight: 600
+    implicitWidth: Theme.dp(822)
+    implicitHeight: Theme.dp(600)
 
     property Item leftPanel
     property Item rightPanel
@@ -32,7 +32,7 @@ Item {
         Rectangle {
             id: leftPanelSlot
             height: parent.height
-            width: 304
+            width: Theme.dp(304)
             color: Theme.palette.baseColor4
         }
 

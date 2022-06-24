@@ -11,18 +11,18 @@ StatusModal {
     header.title: "Contact Requests"
     headerActionButton: StatusFlatRoundButton {
         type: StatusFlatRoundButton.Type.Secondary
-        width: 32
-        height: 32
+        width: Theme.dp(32)
+        height: Theme.dp(32)
 
-        icon.width: 20
-        icon.height: 20
+        icon.width: Theme.dp(20)
+        icon.height: Theme.dp(20)
         icon.name: "notification"
     }
 
     contentItem: StatusBaseText {
         anchors.centerIn: parent
         text: "Contact request will be shown here"
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
         color: Theme.palette.directColor1
     }
 

@@ -6,8 +6,8 @@ import StatusQ.Core.Theme 0.1
 MenuSeparator {
     height: visible && enabled ? implicitHeight : 0
     contentItem: Rectangle {
-        implicitWidth: 176
-        implicitHeight: 1
+        implicitWidth: Theme.dp(176)
+        implicitHeight: Theme.dp(1)
         color: Theme.palette.statusPopupMenu.separatorColor
     }
 }

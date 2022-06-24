@@ -68,13 +68,13 @@ Rectangle {
             audioMessageInfoText: statusMessage.audioMessageInfoText
         }
         RowLayout {
-            spacing: 8
+            spacing: Theme.dp(8)
             Layout.fillWidth: true
             StatusSmartIdenticon {
                 id: profileImage
                 Layout.alignment: Qt.AlignTop
-                Layout.topMargin: 10
-                Layout.leftMargin: 16
+                Layout.topMargin: Theme.dp(10)
+                Layout.leftMargin: Theme.dp(16)
                 image: messageDetails.profileImage
                 name: messageHeader.displayName
                 MouseArea {
@@ -87,7 +87,7 @@ Rectangle {
             Column {
                 spacing: 4
                 Layout.alignment: Qt.AlignTop
-                Layout.topMargin: 10
+                Layout.topMargin: Theme.dp(10)
                 Layout.fillWidth: true
                 StatusPinMessageDetails {
                     visible: messageDetails.isPinned && !editMode
@@ -192,9 +192,9 @@ Rectangle {
     StatusMessageQuickActions {
         id: quickActionsPanel
         anchors.right: parent.right
-        anchors.rightMargin: 20
+        anchors.rightMargin: Theme.dp(20)
         anchors.top: parent.top
-        anchors.topMargin: -8
+        anchors.topMargin: -Theme.dp(8)
         visible: hoverHandler.hovered && !editMode
     }
 }

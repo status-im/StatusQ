@@ -4,8 +4,8 @@ import StatusQ.Core.Theme 0.1
 
 SplitView {
     id: root
-    implicitWidth: 822
-    implicitHeight: 600
+    implicitWidth: Theme.dp(822)
+    implicitHeight: Theme.dp(600)
 
     handle: Item { }
 
@@ -15,8 +15,8 @@ SplitView {
     property bool showRightPanel
 
     Control {
-        SplitView.minimumWidth: 300
-        SplitView.preferredWidth: 300
+        SplitView.minimumWidth: Theme.dp(300)
+        SplitView.preferredWidth: Theme.dp(300)
         SplitView.fillHeight: true
         contentItem: (!!leftPanel) ? leftPanel : null
         background: Rectangle {
@@ -26,10 +26,10 @@ SplitView {
     }
 
     Control {
-        SplitView.minimumWidth: 300
+        SplitView.minimumWidth: Theme.dp(300)
         SplitView.fillWidth: true
         SplitView.fillHeight: true
-        leftPadding: -5
+        leftPadding: -Theme.dp(5)
         contentItem: (!!centerPanel) ? centerPanel : null
         background: Rectangle {
             anchors.fill: parent
@@ -38,8 +38,8 @@ SplitView {
     }
 
     Control {
-        SplitView.preferredWidth: root.showRightPanel ? 250 : 0
-        SplitView.minimumWidth: root.showRightPanel ? 58 : 0
+        SplitView.preferredWidth: root.showRightPanel ? Theme.dp(250) : 0
+        SplitView.minimumWidth: root.showRightPanel ? Theme.dp(58) : 0
         opacity: root.showRightPanel ? 1.0 : 0.0
         visible: (opacity > 0.1)
         contentItem: Loader {

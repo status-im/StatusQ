@@ -13,15 +13,15 @@ import StatusQ.Controls 0.1
 Slider {
     id: root
 
-    property int handleSize: 28
-    property int bgHeight: 4
+    property int handleSize: Theme.dp(28)
+    property int bgHeight: Theme.dp(4)
     property color handleColor: Theme.palette.white
     property color bgColor: Theme.palette.baseColor2
     property color fillColor: Theme.palette.primaryColor1
 
     property alias decoration: decorationContainer.sourceComponent
 
-    implicitWidth: 360
+    implicitWidth: Theme.dp(360)
     implicitHeight: Math.max(handle.implicitHeight,
                              background.implicitHeight + decorationContainer.height)
 
@@ -32,12 +32,12 @@ Slider {
 
         x: root.leftPadding
         y: root.topPadding
-        implicitWidth: 100
+        implicitWidth: Theme.dp(100)
         implicitHeight: bgHeight
         width: root.availableWidth
         height: implicitHeight
         color: root.bgColor
-        radius: 2
+        radius: Theme.dp(2)
 
         Loader {
             id: decorationContainer
@@ -49,7 +49,7 @@ Slider {
             width: root.visualPosition * parent.width
             height: parent.height
             color: root.fillColor
-            radius: 2
+            radius: Theme.dp(2)
         }
     } // background
 
@@ -65,7 +65,7 @@ Slider {
             width: parent.width
             height: parent.height
             visible: true
-            verticalOffset: 2
+            verticalOffset: Theme.dp(2)
             samples: 15
             fast: true
             cached: true

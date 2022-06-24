@@ -8,11 +8,11 @@ import StatusQ.Components 0.1
 StatusListItem {
     id: statusChatListCategoryItem
 
-    implicitWidth: 288
-    implicitHeight: 28
+    implicitWidth: Theme.dp(288)
+    implicitHeight: Theme.dp(28)
 
-    leftPadding: 8
-    rightPadding: 8
+    leftPadding: Theme.dp(8)
+    rightPadding: Theme.dp(8)
 
     property bool opened: true
     property bool highlighted: false
@@ -32,13 +32,13 @@ StatusListItem {
     statusListItemTitle.color: Theme.palette.directColor4
     statusListItemTitle.font.weight: Font.Medium
 
-    statusListItemComponentsSlot.spacing: 1
+    statusListItemComponentsSlot.spacing: Theme.dp(1)
 
     components: [
         StatusChatListCategoryItemButton {
             id: addButton
             icon.name: "add"
-            icon.width: 20
+            icon.width: Theme.dp(20)
             visible: statusChatListCategoryItem.showAddButton &&
                 (statusChatListCategoryItem.highlighted ||
                 statusChatListCategoryItem.sensor.containsMouse)
@@ -48,7 +48,7 @@ StatusListItem {
         StatusChatListCategoryItemButton {
             id: menuButton
             icon.name: "more"
-            icon.width: 21
+            icon.width: Theme.dp(21)
             visible: statusChatListCategoryItem.showMenuButton &&
                 (statusChatListCategoryItem.highlighted ||
                 statusChatListCategoryItem.sensor.containsMouse)
@@ -58,7 +58,7 @@ StatusListItem {
         StatusChatListCategoryItemButton {
             id: toggleButton
             icon.name: "chevron-down"
-            icon.width: 18
+            icon.width: Theme.dp(18)
             icon.rotation: statusChatListCategoryItem.opened ? 0 : 270
             onPressed: {
                 sensor.enabled = false;

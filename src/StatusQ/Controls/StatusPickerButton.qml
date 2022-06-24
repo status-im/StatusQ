@@ -6,14 +6,14 @@ import StatusQ.Core.Theme 0.1
 
 Button {
     id: root
-    implicitWidth: 446
-    implicitHeight: 44
+    implicitWidth: Theme.dp(446)
+    implicitHeight: Theme.dp(44)
 
     property color bgColor: Theme.palette.baseColor2
     property color contentColor: Theme.palette.baseColor1
     property var type: StatusPickerButton.Type.Next
-    property int lateralMargins: 16
-    property int textPixelSize: 15
+    property int lateralMargins: Theme.dp(16)
+    property int textPixelSize: Theme.dp(15)
 
     enum Type {
         Next,
@@ -25,7 +25,7 @@ Button {
         Rectangle {
             id: background
             anchors.fill: parent
-            radius: 8
+            radius: Theme.dp(8)
             color: root.bgColor
         }   
     }

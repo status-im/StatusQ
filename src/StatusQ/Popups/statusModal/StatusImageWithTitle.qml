@@ -18,23 +18,23 @@ Row {
     signal headerImageClicked
 
     property StatusImageSettings image: StatusImageSettings {
-        width: 40
-        height: 40
+        width: Theme.dp(40)
+        height: Theme.dp(40)
         isIdenticon: false
     }
 
     property StatusIconSettings icon: StatusIconSettings {
-        width: 40
-        height: 40
+        width: Theme.dp(40)
+        height: Theme.dp(40)
         isLetterIdenticon: false
     }
 
-    spacing: 8
+    spacing: Theme.dp(8)
 
     Loader {
         id: iconOrImage
         anchors.verticalCenter: parent.verticalCenter
-        width: active ? 40 : 0
+        width: active ? Theme.dp(40) : 0
         sourceComponent: {
             if (statusImageWithTitle.icon.isLetterIdenticon) {
                 return statusLetterIdenticon
@@ -80,10 +80,10 @@ Row {
                 objectName: "editAvatarImage"
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: -3
-                anchors.rightMargin: -2
-                width: 18
-                height: 18
+                anchors.bottomMargin: -Theme.dp(3)
+                anchors.rightMargin: -Theme.dp(2)
+                width: Theme.dp(18)
+                height: Theme.dp(18)
                 radius: width / 2
 
                 visible: statusImageWithTitle.headerImageEditable
@@ -94,7 +94,7 @@ Row {
 
                 StatusIcon {
                     anchors.centerIn: parent
-                    width: 11
+                    width: Theme.dp(11)
                     color: Theme.palette.indirectColor1
                     icon: "tiny/edit"
                 }
@@ -126,12 +126,12 @@ Row {
         Row {
             id: headerTitleRow
             width: parent.width
-            spacing: 4
+            spacing: Theme.dp(4)
             StatusBaseText {
                 id: headerTitle
                 objectName: "headerTitle"
                 font.family: Theme.palette.baseFont.name
-                font.pixelSize: 17
+                font.pixelSize: Theme.dp(17)
                 font.bold: true
                 elide: statusImageWithTitle.titleElide
                 color: Theme.palette.directColor1
@@ -142,13 +142,13 @@ Row {
                 objectName: "editAvatarbButton"
                 visible: statusImageWithTitle.editable
                 anchors.verticalCenter: headerTitle.verticalCenter
-                height: 24
-                width: visible ? 24 : 0
+                height: Theme.dp(24)
+                width: visible ? Theme.dp(24) : 0
                 type: StatusFlatRoundButton.Type.Secondary
                 icon.name: "pencil"
                 icon.color: Theme.palette.directColor1
-                icon.width: 12.5
-                icon.height: 12.5
+                icon.width: Theme.dp(13)
+                icon.height: Theme.dp(13)
 
                 onClicked: statusImageWithTitle.editButtonClicked()
             }
@@ -158,7 +158,7 @@ Row {
             id: headerSubTitle
             objectName: "headerSubTitle"
             font.family: Theme.palette.baseFont.name
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             color:Theme.palette.baseColor1
             width: parent.width
             elide: statusImageWithTitle.subTitleElide

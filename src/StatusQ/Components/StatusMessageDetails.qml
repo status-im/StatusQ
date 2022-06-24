@@ -1,6 +1,7 @@
 import QtQuick 2.13
 
 import StatusQ.Core 0.1
+import StatusQ.Core.Theme 0.1
 
 QtObject {
     id: msgDetails
@@ -10,8 +11,8 @@ QtObject {
     property string secondaryName: ""
     property string chatID: ""
     property StatusImageSettings profileImage: StatusImageSettings {
-        width: 40
-        height: 40
+        width: Theme.dp(40)
+        height: Theme.dp(40)
     }
     property bool isEdited: false
     property string messageText: ""

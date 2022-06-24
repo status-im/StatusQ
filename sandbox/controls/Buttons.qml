@@ -8,12 +8,12 @@ import StatusQ.Core 0.1
 import StatusQ.Core.Theme 0.1
 
 Column {
-    spacing: 10
+    spacing: Theme.dp(10)
     Grid {
         id: buttonGridWidth
-        columns: 3
-        columnSpacing: 38
-        rowSpacing: 10
+        columns: Theme.dp(3)
+        columnSpacing: Theme.dp(38)
+        rowSpacing: Theme.dp(10)
 
         horizontalItemAlignment: Grid.AlignHCenter
 
@@ -196,22 +196,22 @@ Column {
         // Rounded blue
 
         StatusFlatRoundButton {
-            width: 44
-            height: 44
+            width: Theme.dp(44)
+            height: Theme.dp(44)
 
             icon.name: "info"
         }
 
         StatusFlatRoundButton {
-            width: 44
-            height: 44
+            width: Theme.dp(44)
+            height: Theme.dp(44)
             icon.name: "info"
             enabled: false
         }
 
         StatusFlatRoundButton {
-            width: 44
-            height: 44
+            width: Theme.dp(44)
+            height: Theme.dp(44)
             icon.name: "info"
             loading: true
         }
@@ -220,24 +220,24 @@ Column {
 
         StatusFlatRoundButton {
             type: StatusFlatRoundButton.Type.Secondary
-            width: 44
-            height: 44
+            width: Theme.dp(44)
+            height: Theme.dp(44)
 
             icon.name: "info"
         }
 
         StatusFlatRoundButton {
             type: StatusFlatRoundButton.Type.Secondary
-            width: 44
-            height: 44
+            width: Theme.dp(44)
+            height: Theme.dp(44)
             icon.name: "info"
             enabled: false
         }
 
         StatusFlatRoundButton {
             type: StatusFlatRoundButton.Type.Secondary
-            width: 44
-            height: 44
+            width: Theme.dp(44)
+            height: Theme.dp(44)
             icon.name: "info"
             loading: true
         }

@@ -11,18 +11,18 @@ CheckBox {
     id: statusCheckBox
 
     indicator: Rectangle {
-        implicitWidth: 18
-        implicitHeight: 18
+        implicitWidth: Theme.dp(18)
+        implicitHeight: Theme.dp(18)
         x: statusCheckBox.leftPadding
         y: parent.height / 2 - height / 2
-        radius: 2
+        radius: Theme.dp(2)
         color: (statusCheckBox.down || statusCheckBox.checked) ? Theme.palette.primaryColor1
                                                                : Theme.palette.directColor8
 
         StatusIcon {
             icon: "checkbox"
-            width: 11
-            height: 8
+            width: Theme.dp(11)
+            height: Theme.dp(8)
             anchors.centerIn: parent
             anchors.horizontalCenterOffset: 1
             color: Theme.palette.white

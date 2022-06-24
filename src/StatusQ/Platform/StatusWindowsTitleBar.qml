@@ -13,21 +13,21 @@ Rectangle {
     signal minimised();
     signal maximized();
 
-    implicitHeight: 32
+    implicitHeight: Theme.dp(32)
     color: Theme.palette.baseColor5
 
     Row {
         id: titleLayout
         anchors.left: parent.left
-        anchors.leftMargin: 12
+        anchors.leftMargin: Theme.dp(12)
         anchors.verticalCenter: parent.verticalCenter
 
-        spacing: 4
+        spacing: Theme.dp(4)
 
         StatusIcon {
             anchors.verticalCenter: parent.verticalCenter
-            width: 16
-            height: 16
+            width: Theme.dp(16)
+            height: Theme.dp(16)
             icon: "windows_titlebar/status"
         }
 
@@ -47,7 +47,7 @@ Rectangle {
         height: parent.height
 
         Rectangle {
-            width: 48
+            width: Theme.dp(48)
             height: parent.height
 
             color: minimizeSensor.containsMouse ? (minimizeSensor.pressed ? Theme.palette.directColor9 : Theme.palette.directColor8)
@@ -55,8 +55,8 @@ Rectangle {
 
             StatusIcon {
                 anchors.centerIn: parent
-                width: 10
-                height: 1
+                width: Theme.dp(10)
+                height: Theme.dp(1)
                 icon: "windows_titlebar/minimise"
                 color: Theme.palette.directColor1
             }
@@ -70,7 +70,7 @@ Rectangle {
         }
 
         Rectangle {
-            width: 48
+            width: Theme.dp(48)
             height: parent.height
 
             color: maximizeSensor.containsMouse ? (maximizeSensor.pressed ? Theme.palette.directColor9 : Theme.palette.directColor8)
@@ -78,8 +78,8 @@ Rectangle {
 
             StatusIcon {
                 anchors.centerIn: parent
-                width: 10
-                height: 10
+                width: Theme.dp(10)
+                height: Theme.dp(10)
                 icon: "windows_titlebar/maximize"
                 color: Theme.palette.directColor1
             }
@@ -93,7 +93,7 @@ Rectangle {
         }
 
         Rectangle {
-            width: 48
+            width: Theme.dp(48)
             height: parent.height
 
             color: closeSensor.containsMouse ? (closeSensor.pressed ? "#DB1518" : "#ED4245")
@@ -101,8 +101,8 @@ Rectangle {
 
             StatusIcon {
                 anchors.centerIn: parent
-                width: 10
-                height: 10
+                width: Theme.dp(10)
+                height: Theme.dp(10)
                 icon: "windows_titlebar/close"
                 color: closeSensor.containsMouse ? Theme.palette.white : Theme.palette.directColor1
             }

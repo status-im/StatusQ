@@ -2,6 +2,7 @@ import QtQuick 2.14
 import QtQuick.Layouts 1.14
 
 import StatusQ.Core 0.1
+import StatusQ.Core.Theme 0.1
 import StatusQ.Controls 0.1
 
 /*!
@@ -50,7 +51,7 @@ Item {
         \qmlproperty bool StatusImageCrop::margins
         Space to keep around the control borders and crop area
     */
-    property int margins: 10
+    property int margins: Theme.dp(10)
 
     /*!
         \qmlproperty url StatusImageCropPanel::source
@@ -215,7 +216,7 @@ Item {
                 onMouseYChanged: updateDrag(Qt.point(mouse.x, mouse.y))
 
                 onWheel: {
-                    const delta = wheel.angleDelta.y / 120
+                    const delta = wheel.angleDelta.y / Theme.dp(120)
                     cropEditor.setCropRect(cropEditor.getZoomRect(cropEditor.zoomScale + delta * root.scrollZoomFactor))
                 }
 
@@ -242,13 +243,13 @@ Item {
             StatusIcon {
                 icon: "remove-circle"
 
-                Layout.preferredWidth: 20
-                Layout.preferredHeight: 20
+                Layout.preferredWidth: Theme.dp(20)
+                Layout.preferredHeight: Theme.dp(20)
             }
             StatusSlider {
                 Layout.fillWidth: true
-                Layout.topMargin: 20
-                Layout.bottomMargin: 25
+                Layout.topMargin: Theme.dp(20)
+                Layout.bottomMargin: Theme.dp(25)
                 Layout.alignment: Qt.AlignVCenter
 
                 enabled: root.interactive
@@ -262,8 +263,8 @@ Item {
             StatusIcon {
                 icon: "add-circle"
 
-                Layout.preferredWidth: 20
-                Layout.preferredHeight: 20
+                Layout.preferredWidth: Theme.dp(20)
+                Layout.preferredHeight: Theme.dp(20)
             }
         }
     }

@@ -12,14 +12,14 @@ import StatusQ.Popups 0.1
 Rectangle {
     id: statusAppNavBar
 
-    width: 78
-    implicitHeight: 600
+    width: Theme.dp(78)
+    implicitHeight: Theme.dp(600)
     color: Theme.palette.statusAppNavBar.backgroundColor
 
     property var sectionModel: []
     property string communityTypeRole: ""
     property int communityTypeValue: -1
-    property int navBarButtonSpacing: 12
+    property int navBarButtonSpacing: Theme.dp(12)
 
     property StatusNavBarTabButton navBarProfileButton
     property Component regularNavBarButton
@@ -70,7 +70,7 @@ Rectangle {
             height: (necessaryHightForCommunities > maxHightForCommunities)?
                         maxHightForCommunities : necessaryHightForCommunities
 
-            property int communityNavBarButtonHeight: 40
+            property int communityNavBarButtonHeight: Theme.dp(40)
 
             property int maxHightForCommunities: {
                 let numOfOtherThanCommunityBtns = navBarListView.model.count - 1
@@ -110,8 +110,8 @@ Rectangle {
                 visible: parent.necessaryHightForCommunities > parent.maxHightForCommunities
 
                 Rectangle {
-                    height: 1
-                    width: 30
+                    height: Theme.dp(1)
+                    width: Theme.dp(30)
                     color: Theme.palette.directColor7
                     anchors.top: parent.top
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -139,7 +139,7 @@ Rectangle {
 
                 Rectangle {
                     height: 1
-                    width: 30
+                    width: Theme.dp(30)
                     color: Theme.palette.directColor7
                     anchors.bottom: parent.bottom
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -153,7 +153,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.topMargin: 48
+        anchors.topMargin: Theme.dp(48)
         anchors.bottom: navBarProfileButtonSlot.top
         anchors.bottomMargin: navBarButtonSpacing
 
@@ -169,6 +169,6 @@ Rectangle {
         width: visible? statusAppNavBar.navBarProfileButton.width : 0
         visible: !!statusAppNavBar.navBarProfileButton
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: visible ? 32 : 0
+        anchors.bottomMargin: visible ? Theme.dp(32) : 0
     }
 }

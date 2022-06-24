@@ -6,13 +6,13 @@ Rectangle {
     id: statusRoundedIcon
 
     property StatusIconSettings icon: StatusIconSettings {
-        width: 24
-        height: 24
+        width: Theme.dp(24)
+        height: Theme.dp(24)
         rotation: 0
         color: Theme.palette.primaryColor1
         background: StatusIconBackgroundSettings {
-            width: 40
-            height: 40
+            width: Theme.dp(40)
+            height: Theme.dp(40)
             color: Theme.palette.primaryColor3
         }
     }

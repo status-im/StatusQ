@@ -13,18 +13,18 @@ RadioButton {
     width: indicator.implicitWidth
 
     indicator: Rectangle {
-        implicitWidth: 20
-        implicitHeight: 20
+        implicitWidth: Theme.dp(20)
+        implicitHeight: Theme.dp(20)
         x: 0
         y: 6
-        radius: 10
+        radius: Theme.dp(10)
         color: statusRadioButton.checked ? Theme.palette.primaryColor1
                                          : Theme.palette.directColor8
 
         Rectangle {
-            width: 12
-            height: 12
-            radius: 6
+            width: Theme.dp(12)
+            height: Theme.dp(12)
+            radius: Theme.dp(6)
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             color: statusRadioButton.checked ? Theme.palette.white : "transparent"

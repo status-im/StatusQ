@@ -13,11 +13,11 @@ TabButton {
 
     property alias identicon: identicon
 
-    implicitWidth: 40
-    implicitHeight: 40
+    implicitWidth: Theme.dp(40)
+    implicitHeight: Theme.dp(40)
 
-    icon.height: 24
-    icon.width: 24
+    icon.height: Theme.dp(24)
+    icon.width: Theme.dp(24)
     icon.color: Theme.palette.baseColor1
 
     contentItem: Item {
@@ -27,8 +27,8 @@ TabButton {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             image.source: statusIconTabButton.icon.source
-            image.width: 28
-            image.height: 28
+            image.width: Theme.dp(28)
+            image.height: Theme.dp(28)
             icon.height: statusIconTabButton.icon.height
             icon.width: statusIconTabButton.icon.width
             icon.name: statusIconTabButton.icon.name
@@ -41,7 +41,7 @@ TabButton {
     background: Rectangle {
         color: hovered || highlighted || ((!!icon.source.toString() || !!name) && checked) ? Theme.palette.primaryColor3 : "transparent"
         border.color: Theme.palette.primaryColor1
-        border.width: (!!icon.source.toString() || !!name) && checked ? 1 : 0
+        border.width: (!!icon.source.toString() || !!name) && checked ? Theme.dp(1) : 0
         radius: statusIconTabButton.width / 2
     }
 

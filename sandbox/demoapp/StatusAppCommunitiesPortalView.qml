@@ -21,11 +21,11 @@ ScrollView {
         property ListModel tagsModel: Models.tagsModel
 
         property string searchText: ""
-        property int layoutVMargin: 70
-        property int layoutHMargin: 64
-        property int titlePixelSize: 28
-        property int subtitlePixelSize: 17
-        property int stylePadding: 16
+        property int layoutVMargin: Theme.dp(70)
+        property int layoutHMargin: Theme.dp(64)
+        property int titlePixelSize: Theme.dp(28)
+        property int subtitlePixelSize: Theme.dp(17)
+        property int stylePadding: Theme.dp(16)
 
         function navigateToCommunity(communityId) {
             console.info("Clicked community ID: " + communityId)
@@ -38,7 +38,7 @@ ScrollView {
 
     ColumnLayout {
         id: column
-        spacing: 18
+        spacing: Theme.dp(18)
 
         StatusBaseText {
             Layout.topMargin: d.layoutVMargin
@@ -55,7 +55,7 @@ ScrollView {
             visible: d.tagsModel.count > 0
             Layout.leftMargin: d.layoutHMargin
             Layout.rightMargin: d.layoutHMargin
-            width: 1234 // by design
+            width: Theme.dp(1234) // by design
             spacing: d.stylePadding/2
 
             Repeater {
@@ -63,16 +63,16 @@ ScrollView {
                 delegate: StatusListItemTag {
                     border.color: Theme.palette.baseColor2
                     color: "transparent"
-                    height: 32
-                    radius: 36
+                    height: Theme.dp(32)
+                    radius: Theme.dp(36)
                     closeButtonVisible: false
                     icon.emoji: model.emoji
-                    icon.height: 32
-                    icon.width: icon.height
+                    icon.height: Theme.dp(32)
+                    icon.width: icon.heights
                     icon.color: "transparent"
                     icon.isLetterIdenticon: true
                     title: model.name
-                    titleText.font.pixelSize: 15
+                    titleText.font.pixelSize: Theme.dp(15)
                     titleText.color: Theme.palette.primaryColor1
                 }
             }
@@ -80,7 +80,7 @@ ScrollView {
 
         StatusBaseText {
             Layout.leftMargin: d.layoutHMargin
-            Layout.topMargin: 20
+            Layout.topMargin: Theme.dp(20)
             text: qsTr("Featured")
             font.weight: Font.Bold
             font.pixelSize: d.subtitlePixelSize
@@ -119,7 +119,7 @@ ScrollView {
 
         StatusBaseText {
             Layout.leftMargin: d.layoutHMargin
-            Layout.topMargin: 20
+            Layout.topMargin: Theme.dp(20)
             text: qsTr("Popular")
             font.weight: Font.Bold
             font.pixelSize: d.subtitlePixelSize

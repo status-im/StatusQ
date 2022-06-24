@@ -1,6 +1,7 @@
 import QtQuick 2.14
 
 import StatusQ.Components 0.1
+import StatusQ.Core.Theme 0.1
 
 Item {
     id: root
@@ -56,8 +57,8 @@ Item {
 
     StatusTagSelector {
         id: tagSelector
-        width: 650
-        height: 44
+        width: Theme.dp(650)
+        height: Theme.dp(44)
         anchors.centerIn: parent
         namesModel: root.asortedContacts
         toLabelText: qsTr("To: ")

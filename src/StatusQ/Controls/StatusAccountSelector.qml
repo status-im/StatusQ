@@ -16,7 +16,7 @@ Item {
     property var selectedAccount
     property string currency: "usd"
     property alias selectField: select
-    implicitWidth: 448
+    implicitWidth: Theme.dp(448)
     height: select.height +
             (selectedAccountDetails.visible ? selectedAccountDetails.height + selectedAccountDetails.anchors.topMargin : 0)
     // set to asset symbol to display asset's balance top right
@@ -91,16 +91,16 @@ Item {
         id: txtAssetBalance
         visible: root.assetFound !== undefined
         anchors.bottom: select.top
-        anchors.bottomMargin: -18
+        anchors.bottomMargin: -Theme.dp(18)
         anchors.right: txtAssetSymbol.left
         anchors.left: select.left
         anchors.leftMargin: select.width / 2.5
 
         color: !root.isValid ? Theme.palette.dangerColor1 : Theme.palette.baseColor1
         elide: Text.ElideRight
-        font.pixelSize: 13
+        font.pixelSize: Theme.dp(13)
         horizontalAlignment: Text.AlignRight
-        height: 18
+        height: Theme.dp(18)
 
         StatusToolTip {
             enabled: txtAssetBalance.truncated
@@ -123,7 +123,7 @@ Item {
         anchors.right: parent.right
 
         color: txtAssetBalance.color
-        font.pixelSize: 13
+        font.pixelSize: Theme.dp(13)
         height: txtAssetBalance.height
     }
     StatusSelect {
@@ -140,10 +140,10 @@ Item {
             StatusIcon {
                 id: selectedIconImg
                 anchors.left: parent.left
-                anchors.leftMargin: 16
+                anchors.leftMargin: Theme.dp(16)
                 anchors.verticalCenter: parent.verticalCenter
-                width: 20
-                height: 20
+                width: Theme.dp(20)
+                height: Theme.dp(20)
                 icon: "filled-account"
             }
 
@@ -151,13 +151,13 @@ Item {
                 id: selectedTextField
                 elide: Text.ElideRight
                 anchors.left: selectedIconImg.right
-                anchors.leftMargin: 8
+                anchors.leftMargin: Theme.dp(8)
                 anchors.right: parent.right
                 anchors.rightMargin: select.selectedItemRightMargin
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 verticalAlignment: Text.AlignVCenter
-                height: 22
+                height: Theme.dp(22)
                 color: Theme.palette.directColor1
             }
         }
@@ -167,20 +167,20 @@ Item {
         id: selectedAccountDetails
         visible: root.showAccountDetails
         anchors.top: select.bottom
-        anchors.topMargin: 8
+        anchors.topMargin: Theme.dp(8)
         anchors.left: parent.left
-        anchors.leftMargin: 2
+        anchors.leftMargin: Theme.dp(2)
 
         StatusBaseText {
             id: textSelectedAddress
-            font.pixelSize: 12
+            font.pixelSize: Theme.dp(12)
             elide: Text.ElideMiddle
-            width: 90
+            width: Theme.dp(90)
             color: Theme.palette.baseColor1
         }
         StatusBaseText {
             id: textSelectedAddressFiatBalance
-            font.pixelSize: 12
+            font.pixelSize: Theme.dp(12)
             color: Theme.palette.baseColor1
         }
     }
@@ -199,15 +199,15 @@ Item {
                 }
             }
 
-            height: walletType === root.watchWalletType ? 0 : (accountName.height + 14 + accountAddress.height + 14)
+            height: walletType === root.watchWalletType ? 0 : (accountName.height + Theme.dp(14) + accountAddress.height + Theme.dp(14))
 
             StatusIcon {
                 id: iconImg
                 anchors.left: parent.left
-                anchors.leftMargin: 16
+                anchors.leftMargin: Theme.dp(16)
                 anchors.verticalCenter: parent.verticalCenter
-                width: 20
-                height: 20
+                width: Theme.dp(20)
+                height: Theme.dp(20)
                 icon: "filled-account"
                 color: Utils.getThemeAccountColor(model.color, Theme.palette.userCustomizationColors) || Theme.palette.userCustomizationColors[0]
             }
@@ -215,19 +215,19 @@ Item {
             Column {
                 id: column
                 anchors.left: iconImg.right
-                anchors.leftMargin: 14
+                anchors.leftMargin: Theme.dp(14)
                 anchors.right: txtFiatBalance.left
-                anchors.rightMargin: 8
+                anchors.rightMargin: Theme.dp(8)
                 anchors.verticalCenter: parent.verticalCenter
 
                 StatusBaseText {
                     id: accountName
                     text: model.name
                     elide: Text.ElideRight
-                    font.pixelSize: 15
+                    font.pixelSize: Theme.dp(15)
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    height: 22
+                    height: Theme.dp(22)
                     color: Theme.palette.directColor1
                 }
 
@@ -235,29 +235,29 @@ Item {
                     id: accountAddress
                     text: address
                     elide: Text.ElideMiddle
-                    width: 80
+                    width: Theme.dp(80)
                     color: Theme.palette.baseColor1
-                    font.pixelSize: 12
-                    height: 16
+                    font.pixelSize: Theme.dp(12)
+                    height: Theme.dp(16)
                 }
             }
             StatusBaseText {
                 id: txtFiatBalance
                 anchors.right: fiatCurrencySymbol.left
-                anchors.rightMargin: 4
+                anchors.rightMargin: Theme.dp(4)
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 15
-                height: 22
+                font.pixelSize: Theme.dp(15)
+                height: Theme.dp(22)
                 text: currencyBalance
                 color: Theme.palette.directColor1
             }
             StatusBaseText {
                 id: fiatCurrencySymbol
                 anchors.right: parent.right
-                anchors.rightMargin: 16
+                anchors.rightMargin: Theme.dp(16)
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 15
-                height: 22
+                font.pixelSize: Theme.dp(15)
+                height: Theme.dp(22)
                 color: Theme.palette.baseColor1
                 text: root.currency.toUpperCase()
             }

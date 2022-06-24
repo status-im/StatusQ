@@ -8,8 +8,8 @@ import StatusQ.Core.Utils 0.1
 
 GridLayout {
     columns: 1
-    columnSpacing: 5
-    rowSpacing: 5
+    columnSpacing: Theme.dp(5)
+    rowSpacing: Theme.dp(5)
 
     StatusNavigationListItem {
         title: "Menu Item"
@@ -156,7 +156,7 @@ GridLayout {
         subTitle: "Subtitle"
         tertiaryTitle: "Tertiary title"
 
-        statusListItemTitle.font.pixelSize: 17
+        statusListItemTitle.font.pixelSize: Theme.dp(17)
         statusListItemTitle.font.weight: Font.Bold
     }
 
@@ -166,7 +166,7 @@ GridLayout {
         tertiaryTitle: "Tertiary title"
         icon.name: "info"
 
-        statusListItemTitle.font.pixelSize: 17
+        statusListItemTitle.font.pixelSize: Theme.dp(17)
         statusListItemTitle.font.weight: Font.Bold
     }
 
@@ -345,14 +345,14 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
         tagsModel : 2
         tagsDelegate: StatusListItemTag {
             color: "blue"
-            height: 24
-            radius: 6
+            height: Theme.dp(24)
+            radius: Theme.dp(6)
             closeButtonVisible: false
             icon.emoji: "😁"
             icon.emojiSize: Emoji.size.verySmall
             icon.isLetterIdenticon: true
             title: "helloworld.eth"
-            titleText.font.pixelSize: 12
+            titleText.font.pixelSize: Theme.dp(12)
             titleText.color: Theme.palette.indirectColor1
         }
     }
@@ -362,7 +362,7 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
         subTitle: "Emoji"
         icon.emoji: "😁"
         icon.color: "yellow"
-        icon.letterSize: 14
+        icon.letterSize: Theme.dp(14)
         icon.isLetterIdenticon: true
     }
 

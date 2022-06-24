@@ -10,8 +10,8 @@ Switch {
 
     indicator: Rectangle {
         id: oval
-        implicitWidth: 52
-        implicitHeight: 28
+        implicitWidth: Theme.dp(52)
+        implicitHeight: Theme.dp(28)
         x: statusSwitch.leftPadding
         y: parent.height / 2 - height / 2
         radius: 14
@@ -21,17 +21,17 @@ Switch {
 
         Rectangle {
             id: circle
-            y: 4
-            width: 20
-            height: 20
-            radius: 10
+            y: Theme.dp(4)
+            width: Theme.dp(20)
+            height: Theme.dp(20)
+            radius: Theme.dp(10)
             color: Theme.palette.white
             layer.enabled: true
             layer.effect: DropShadow {
                 width: parent.width
                 height: parent.height
                 visible: true
-                verticalOffset: 1
+                verticalOffset: Theme.dp(1)
                 fast: true
                 cached: true
                 color: Theme.palette.dropShadow

@@ -7,18 +7,18 @@ Rectangle {
 
     property int value
 
-    implicitHeight: statusBadge.value > 0 ? 18 + statusBadge.border.width : 10 + statusBadge.border.width
+    implicitHeight: statusBadge.value > 0 ? Theme.dp(18) + statusBadge.border.width : Theme.dp(10) + statusBadge.border.width
     implicitWidth: {
-        if (statusBadge.value > 99) {
-            return 28 + statusBadge.border.width
+        if (statusBadge.value > Theme.dp(99)) {
+            return Theme.dp(28) + statusBadge.border.width
         }
-        if (statusBadge.value > 9) {
-            return 26 + statusBadge.border.width
+        if (statusBadge.value > Theme.dp(9)) {
+            return Theme.dp(26) + statusBadge.border.width
         }
         if (statusBadge.value > 0) {
-            return 18 + statusBadge.border.width
+            return Theme.dp(18) + statusBadge.border.width
         }
-        return 10 + statusBadge.border.width
+        return Theme.dp(10) + statusBadge.border.width
     }
     radius: height / 2
     color: Theme.palette.primaryColor1
@@ -26,7 +26,7 @@ Rectangle {
     StatusBaseText {
         id: value
         visible: statusBadge.value > 0
-        font.pixelSize: statusBadge.value > 99 ? 10 : 12
+        font.pixelSize: statusBadge.value > Theme.dp(99) ? Theme.dp(10) : Theme.dp(12)
         font.weight: Font.Medium
         color: Theme.palette.statusBadge.foregroundColor
         anchors.centerIn: parent

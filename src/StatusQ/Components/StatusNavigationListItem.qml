@@ -9,14 +9,14 @@ StatusListItem {
     property bool selected: false
     property alias badge: statusBadge
 
-    implicitWidth: 286
-    implicitHeight: 48
+    implicitWidth: Theme.dp(286)
+    implicitHeight: Theme.dp(48)
 
-    icon.background.width: 20
-    icon.background.height: 20
+    icon.background.width: Theme.dp(20)
+    icon.background.height: Theme.dp(20)
     icon.background.color: "transparent"
 
-    statusListItemIcon.anchors.topMargin: 14
+    statusListItemIcon.anchors.topMargin: Theme.dp(14)
 
     color: {
         if (selected) {

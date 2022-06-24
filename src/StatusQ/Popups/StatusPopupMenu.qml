@@ -11,8 +11,8 @@ import StatusQ.Popups 0.1
 Menu {
     id: root
     closePolicy: Popup.CloseOnPressOutside | Popup.CloseOnEscape
-    topPadding: 8
-    bottomPadding: 8
+    topPadding: Theme.dp(8)
+    bottomPadding: Theme.dp(8)
 
     property int menuItemCount: 0
     property var subMenuItemIcons: []
@@ -42,14 +42,14 @@ Menu {
 
     background: Item {
         id: statusPopupMenuBackground
-        implicitWidth: 176
+        implicitWidth: Theme.dp(176)
 
         Rectangle {
             id: statusPopupMenuBackgroundContent
             implicitWidth: statusPopupMenuBackground.width
             implicitHeight: statusPopupMenuBackground.height
             color: Theme.palette.statusPopupMenu.backgroundColor
-            radius: 8
+            radius: Theme.dp(8)
             layer.enabled: true
             layer.effect: DropShadow {
                 width: statusPopupMenuBackgroundContent.width
@@ -58,8 +58,8 @@ Menu {
                 visible: statusPopupMenuBackgroundContent.visible
                 source: statusPopupMenuBackgroundContent
                 horizontalOffset: 0
-                verticalOffset: 4
-                radius: 12
+                verticalOffset: Theme.dp(4)
+                radius: Theme.dp(12)
                 samples: 25
                 spread: 0.2
                 color: Theme.palette.dropShadow

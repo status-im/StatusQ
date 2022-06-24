@@ -11,8 +11,8 @@ Loader {
     property bool noHover: false
     property bool noMouseArea: false
     property StatusImageSettings image: StatusImageSettings {
-        width: 140
-        height: 140
+        width: Theme.dp(140)
+        height: Theme.dp(140)
     }
 
     signal loaded()
@@ -24,7 +24,7 @@ Loader {
         id: root
 
         color: Theme.palette.baseColor2
-        radius: 16
+        radius: Theme.dp(16)
 
         width: image.width
         height: image.height
@@ -71,8 +71,8 @@ Loader {
         Component {
             id: loadingIndicator
             StatusLoadingIndicator {
-                width: 24
-                height: 24
+                width: Theme.dp(24)
+                height: Theme.dp(24)
                 color: Theme.palette.baseColor1
             }
         }

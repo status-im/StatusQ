@@ -6,20 +6,20 @@ import StatusQ.Core.Theme 0.1
 
 Item {
     id: root
-    width: 800
-    height: 100
+    width: Theme.dp(800)
+    height: Theme.dp(100)
 
     Row {
         id: selectedColor
         anchors.top: parent.top
         anchors.left: colorSelectionGrid.left
-        spacing: 10
+        spacing: Theme.dp(10)
         StatusBaseText {
             text: "SelectedColor is"
         }
         Rectangle {
-            width: 100
-            height: 20
+            width: Theme.dp(100)
+            height: Theme.dp(20)
             radius: width/2
             color: colorSelectionGrid.selectedColor
         }
@@ -28,7 +28,7 @@ Item {
     StatusColorSelectorGrid {
         id: colorSelectionGrid
         anchors.top: selectedColor.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: Theme.dp(10)
         anchors.horizontalCenter: parent.horizontalCenter
         titleText: "COLOR"
         selectedColorIndex: 2

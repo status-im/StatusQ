@@ -37,8 +37,8 @@ import StatusQ.Core.Theme 0.1
 
 Control {
     id: root
-    width: 343
-    height: !!secondaryText ? 68 : 48
+    width: Theme.dp(343)
+    height: Theme.dp(!!secondaryText ? 68 : 48)
     anchors.right: parent.right
 
     /*!
@@ -79,8 +79,8 @@ Control {
         This property holds a set of settings for the icon of the ToastMessage.
     */
     property StatusIconSettings icon: StatusIconSettings {
-        width: 23
-        height: 23
+        width: Theme.dp(23)
+        height: Theme.dp(23)
     }
 
     /*!
@@ -195,12 +195,12 @@ Control {
         id: background
         anchors.fill: parent
         color: Theme.palette.statusToastMessage.backgroundColor
-        radius: 8
+        radius: Theme.dp(8)
         border.color: Theme.palette.baseColor2
         layer.enabled: true
         layer.effect: DropShadow {
-            verticalOffset: 3
-            radius: 8
+            verticalOffset: Theme.dp(3)
+            radius: Theme.dp(8)
             samples: 15
             fast: true
             cached: true
@@ -210,9 +210,9 @@ Control {
 
     contentItem: Item {
         anchors.left: parent.left
-        anchors.leftMargin: 16
+        anchors.leftMargin: Theme.dp(16)
         anchors.right: parent.right
-        anchors.rightMargin: 4
+        anchors.rightMargin: Theme.dp(4)
         height: parent.height
         MouseArea {
             anchors.fill: parent
@@ -225,10 +225,10 @@ Control {
         }
         RowLayout {
             anchors.fill: parent
-            spacing: 16
+            spacing: Theme.dp(16)
             Rectangle {
-                implicitWidth: 32
-                implicitHeight: 32
+                implicitWidth: Theme.dp(32)
+                implicitHeight: Theme.dp(32)
                 Layout.alignment: Qt.AlignVCenter
                 radius: (root.width/2)
                 color: (root.type === StatusToastMessage.Type.Success) ?
@@ -266,7 +266,7 @@ Control {
                 Layout.alignment: Qt.AlignVCenter
                 StatusBaseText {
                     width: parent.width
-                    font.pixelSize: 13
+                    font.pixelSize: Theme.dp(13)
                     color: Theme.palette.directColor1
                     elide: Text.ElideRight
                     text: root.primaryText
@@ -275,7 +275,7 @@ Control {
                     width: parent.width
                     visible: (!root.linkUrl && !!root.secondaryText)
                     height: visible ? contentHeight : 0
-                    font.pixelSize: 13
+                    font.pixelSize: Theme.dp(13)
                     color: Theme.palette.baseColor1
                     text: root.secondaryText
                     elide: Text.ElideRight
@@ -283,7 +283,7 @@ Control {
                 StatusSelectableText {
                     visible: (!!root.linkUrl)
                     height: visible ? implicitHeight : 0
-                    font.pixelSize: 13
+                    font.pixelSize: Theme.dp(13)
                     hoveredLinkColor: Theme.palette.primaryColor1
                     text: "<p><a style=\"text-decoration:none\" href=\'" + root.linkUrl + " \'>" + root.secondaryText + "</a></p>"
                     onLinkActivated: {
@@ -295,8 +295,8 @@ Control {
                 type: StatusFlatRoundButton.Type.Secondary
                 icon.name: "close"
                 icon.color: Theme.palette.directColor1
-                implicitWidth: 30
-                implicitHeight: 30
+                implicitWidth: Theme.dp(30)
+                implicitHeight: Theme.dp(30)
                 onClicked: {
                     root.open = false;
                 }

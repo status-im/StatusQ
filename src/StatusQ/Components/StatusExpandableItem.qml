@@ -19,18 +19,18 @@ Rectangle {
     property bool expanded: false
 
     property StatusIconSettings icon: StatusIconSettings {
-        width: !!statusExpandableItem.icon.name.toString() ? 24 : 40
-        height: !!statusExpandableItem.icon.name.toString() ? 24 : 40
+        width: Theme.dp(!!statusExpandableItem.icon.name.toString() ? 24 : 40)
+        height: Theme.dp(!!statusExpandableItem.icon.name.toString() ? 24 : 40)
         color: Theme.palette.directColor1
         background: StatusIconBackgroundSettings {
-            width: 32
-            height: 32
+            width: Theme.dp(32)
+            height: Theme.dp(32)
             color: Theme.palette.primaryColor2
         }
     }
     property StatusImageSettings image: StatusImageSettings {
-        width: 40
-        height: 40
+        width: Theme.dp(40)
+        height: Theme.dp(40)
     }
 
     enum Type {
@@ -39,7 +39,7 @@ Rectangle {
         Tertiary // 2
     }
 
-    implicitWidth: 718
+    implicitWidth: Theme.dp(718)
 
     radius: (statusExpandableItem.type === StatusExpandableItem.Type.Primary) ? 8 : 0
     color: "transparent"
@@ -52,7 +52,7 @@ Rectangle {
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
-        height: 1
+        height: Theme.dp(1)
 
         color: Theme.palette.baseColor2
         visible: (statusExpandableItem.type === StatusExpandableItem.Type.Tertiary)
@@ -63,16 +63,16 @@ Rectangle {
         id: header
         anchors.top: parent.top
         width: parent.width
-        height: 64
-        radius: (statusExpandableItem.type === StatusExpandableItem.Type.Secondary) ? 8 : 0
+        height: Theme.dp(64)
+        radius: (statusExpandableItem.type === StatusExpandableItem.Type.Secondary) ? Theme.dp(8) : 0
         color: statusExpandableItem.type === StatusExpandableItem.Type.Secondary && sensor.containsMouse ? Theme.palette.baseColor2 : "transparent"
 
         StatusSmartIdenticon {
             id: identicon
             anchors.top: parent.top
-            anchors.topMargin: (statusExpandableItem.type === StatusExpandableItem.Type.Secondary) ? 12.5 : 25
+            anchors.topMargin: Theme.dp((statusExpandableItem.type === StatusExpandableItem.Type.Secondary) ? 12.5 : 25)
             anchors.left: parent.left
-            anchors.leftMargin: (statusExpandableItem.type === StatusExpandableItem.Type.Secondary) ? 16 : 11
+            anchors.leftMargin: Theme.dp((statusExpandableItem.type === StatusExpandableItem.Type.Secondary) ? 16 : 11)
             image: statusExpandableItem.image
             icon: statusExpandableItem.icon
             name: primaryText.text
@@ -83,20 +83,20 @@ Rectangle {
             id: primaryText
             anchors.top: (statusExpandableItem.type === StatusExpandableItem.Type.Primary)  ||
                         (statusExpandableItem.type === StatusExpandableItem.Type.Tertiary) ? parent.top : undefined
-            anchors.topMargin: (statusExpandableItem.type === StatusExpandableItem.Type.Tertiary) ? 29 : 17
+            anchors.topMargin: Theme.dp((statusExpandableItem.type === StatusExpandableItem.Type.Tertiary) ? 29 : 17)
             anchors.left: identicon.active ? identicon.right : parent.left
-            anchors.leftMargin: (statusExpandableItem.type === StatusExpandableItem.Type.Primary) ?  10 : 16
+            anchors.leftMargin: Theme.dp((statusExpandableItem.type === StatusExpandableItem.Type.Primary) ?  10 : 16)
 
             anchors.verticalCenter: (statusExpandableItem.type === StatusExpandableItem.Type.Secondary) ? identicon.verticalCenter : undefined
 
-            width: !!additionalText.text ? (button.visible ? parent.width - icon.background.width - button.width - additionalText.contentWidth - 110 :
-                                                          parent.width - icon.background.width - additionalText.contentWidth - 110) :
-                                        (button.visible ? parent.width - icon.background.width - button.width - 70 :
-                                                          parent.width - icon.background.width - 70)
+            width: !!additionalText.text ? (button.visible ? parent.width - icon.background.width - button.width - additionalText.contentWidth - Theme.dp(110) :
+                                                          parent.width - icon.background.width - additionalText.contentWidth - Theme.dp(110)) :
+                                        (button.visible ? parent.width - icon.background.width - button.width - Theme.dp(70) :
+                                                          parent.width - icon.background.width - Theme.dp(70))
 
             font.weight: (statusExpandableItem.type === StatusExpandableItem.Type.Primary) ? Font.Medium : Font.Normal
-            font.pixelSize: (statusExpandableItem.type === StatusExpandableItem.Type.Primary) ? 15 : 17
-            lineHeight: (statusExpandableItem.type === StatusExpandableItem.Type.Primary) ? 22 : 24
+            font.pixelSize: Theme.dp((statusExpandableItem.type === StatusExpandableItem.Type.Primary) ? 15 : 17)
+            lineHeight: Theme.dp((statusExpandableItem.type === StatusExpandableItem.Type.Primary) ? 22 : 24)
             lineHeightMode: Text.FixedHeight
             elide: Text.ElideRight
             color: (statusExpandableItem.type === StatusExpandableItem.Type.Tertiary) ? Theme.palette.baseColor1 : Theme.palette.directColor1
@@ -105,12 +105,12 @@ Rectangle {
         StatusBaseText {
             id: secondaryText
             anchors.top: primaryText.bottom
-            anchors.topMargin: 4
+            anchors.topMargin: Theme.dp(4)
             anchors.left: primaryText.left
             anchors.right: primaryText.right
 
-            font.pixelSize: 15
-            lineHeight: 22
+            font.pixelSize: Theme.dp(15)
+            lineHeight: Theme.dp(22)
             lineHeightMode: Text.FixedHeight
             elide: Text.ElideRight
             color: Theme.palette.directColor3
@@ -119,12 +119,12 @@ Rectangle {
         StatusBaseText {
             id: additionalText
             anchors.verticalCenter: primaryText.verticalCenter
-            anchors.verticalCenterOffset: 2
+            anchors.verticalCenterOffset: Theme.dp(2)
             anchors.right: expandImage.left
-            anchors.rightMargin: 16
+            anchors.rightMargin: Theme.dp(16)
 
-            font.pixelSize: 15
-            lineHeight: 24
+            font.pixelSize: Theme.dp(15)
+            lineHeight: Theme.dp(24)
             lineHeightMode: Text.FixedHeight
             elide: Text.ElideRight
             color: Theme.palette.baseColor1
@@ -133,9 +133,9 @@ Rectangle {
         StatusButton {
             id: button
             anchors.top: parent.top
-            anchors.topMargin: 19
+            anchors.topMargin: Theme.dp(19)
             anchors.right: parent.right
-            anchors.rightMargin: 16
+            anchors.rightMargin: Theme.dp(16)
             visible: !!text
         }
 
@@ -148,13 +148,13 @@ Rectangle {
             anchors.rightMargin: {
                 switch (statusExpandableItem.type) {
                     case StatusExpandableItem.Type.Primary:
-                      return 23
+                      return Theme.dp(23)
                       break;
                     case StatusExpandableItem.Type.Secondary:
-                      return 16
+                      return Theme.dp(16)
                       break;
                     default:
-                      return 6
+                      return Theme.dp(6)
 
                 }
             }
@@ -181,11 +181,11 @@ Rectangle {
     Loader {
         id: expandableRegion
         anchors.top: header.bottom
-        anchors.topMargin: 16
+        anchors.topMargin: Theme.dp(16)
         anchors.left: parent.left
-        anchors.leftMargin: (statusExpandableItem.type === StatusExpandableItem.Type.Primary) ? 48 : 0
+        anchors.leftMargin: (statusExpandableItem.type === StatusExpandableItem.Type.Primary) ? Theme.dp(48) : 0
         anchors.right: parent.right
-        anchors.rightMargin: (statusExpandableItem.type === StatusExpandableItem.Type.Primary) ? 16 : 0
+        anchors.rightMargin: (statusExpandableItem.type === StatusExpandableItem.Type.Primary) ? Theme.dp(16) : 0
         visible: false
     }
 
@@ -202,13 +202,13 @@ Rectangle {
         State {
             name: "EXPANDED"
             PropertyChanges {target: expandImage; icon: "chevron-up"}
-            PropertyChanges {target: statusExpandableItem; height: 82 + expandableRegion.height + 22}
+            PropertyChanges {target: statusExpandableItem; height: 82 + expandableRegion.height + Theme.dp(22)}
             PropertyChanges {target: expandableRegion; visible: true}
         },
         State {
             name: "COLLAPSED"
             PropertyChanges {target: expandImage; icon: "chevron-down"}
-            PropertyChanges {target: statusExpandableItem; height: 82}
+            PropertyChanges {target: statusExpandableItem; height: Theme.dp(82)}
             PropertyChanges {target: expandableRegion; visible: false}
         }
     ]

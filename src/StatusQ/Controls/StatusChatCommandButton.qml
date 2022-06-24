@@ -7,8 +7,8 @@ import StatusQ.Components 0.1
 
 Rectangle {
     id: root
-    implicitWidth: 168
-    implicitHeight: 95
+    implicitWidth: Theme.dp(168)
+    implicitHeight: Theme.dp(95)
 
     property string text: ""
     property bool highlighted: false
@@ -17,8 +17,8 @@ Rectangle {
     signal clicked(var mouse)
 
     property StatusIconSettings icon: StatusIconSettings {
-        width: 24
-        height: 24
+        width: Theme.dp(24)
+        height: Theme.dp(24)
         background: StatusIconBackgroundSettings {}
     }
 
@@ -28,7 +28,7 @@ Rectangle {
         return actualColor
     }
 
-    radius: 16
+    radius: Theme.dp(16)
 
     MouseArea {
         id: sensor
@@ -46,22 +46,22 @@ Rectangle {
             icon.height: root.icon.height
             icon.rotation: root.icon.rotation
             icon.color: Theme.palette.white
-            icon.background.width: 40
-            icon.background.height: 40
+            icon.background.width: Theme.dp(40)
+            icon.background.height: Theme.dp(40)
             icon.background.color: root.icon.color
             anchors.top: parent.top
-            anchors.topMargin: 8
+            anchors.topMargin: Theme.dp(8)
             anchors.left: parent.left
-            anchors.leftMargin: 8
+            anchors.leftMargin: Theme.dp(8)
         }
 
         StatusBaseText {
             text: root.text
             anchors.left: parent.left
-            anchors.leftMargin: 8
+            anchors.leftMargin: Theme.dp(8)
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 8
-            font.pixelSize: 13
+            anchors.bottomMargin: Theme.dp(8)
+            font.pixelSize: Theme.dp(13)
             font.weight: Font.Medium
             color: Theme.palette.white
         }

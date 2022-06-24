@@ -9,7 +9,7 @@ TabButton {
     id: statusSwitchTabButton
 
     contentItem: Item {
-        height: 36
+        height: Theme.dp(36)
         MouseArea {
             id: sensor
             hoverEnabled: true
@@ -26,7 +26,7 @@ TabButton {
                     Theme.palette.statusSwitchTab.selectedTextColor :
                     Theme.palette.statusSwitchTab.textColor
                 font.weight: Font.Medium
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 horizontalAlignment: Text.AlignHCenter
                 anchors.centerIn: parent
             }
@@ -35,17 +35,17 @@ TabButton {
 
     background: Rectangle {
         id: controlBackground
-        implicitHeight: 36
-        implicitWidth: 148
+        implicitHeight: Theme.dp(36)
+        implicitWidth: Theme.dp(148)
         color: statusSwitchTabButton.checked ?
             Theme.palette.statusSwitchTab.buttonBackgroundColor :
             "transparent"
-        radius: 8
+        radius: Theme.dp(8)
         layer.enabled: true
         layer.effect: DropShadow {
             horizontalOffset: 0
             verticalOffset: 0
-            radius: 10
+            radius: Theme.dp(10)
             samples: 25
             spread: 0
             color: Theme.palette.dropShadow

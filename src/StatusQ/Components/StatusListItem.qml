@@ -20,8 +20,8 @@ Rectangle {
     property string subTitle: ""
     property string tertiaryTitle: ""
     property string label: ""
-    property real leftPadding: 16
-    property real rightPadding: 16
+    property real leftPadding: Theme.dp(16)
+    property real rightPadding: Theme.dp(16)
     property bool enabled: true
     property bool highlighted: false
     property bool propagateTitleClicks: true
@@ -35,17 +35,17 @@ Rectangle {
     property bool loadingFailed: false
 
     property StatusIconSettings icon: StatusIconSettings {
-        height: isLetterIdenticon ? 40 : 20
-        width: isLetterIdenticon ? 40 : 20
+        height: Theme.dp(isLetterIdenticon ? 40 : 20)
+        width: Theme.dp(isLetterIdenticon ? 40 : 20)
         rotation: 0
         isLetterIdenticon: false
-        letterSize: 21
+        letterSize: Theme.dp(21)
         charactersLen: 1
         color: isLetterIdenticon ? background.color : type === StatusListItem.Type.Danger ?
             Theme.palette.dangerColor1 : Theme.palette.primaryColor1
         background: StatusIconBackgroundSettings {
-            width: 40
-            height: 40
+            width: Theme.dp(40)
+            height: Theme.dp(40)
             color: {
                 if (sensor.containsMouse) {
                     return type === StatusListItem.Type.Secondary ||
@@ -58,8 +58,8 @@ Rectangle {
         }
     }
     property StatusImageSettings image: StatusImageSettings {
-        width: 40
-        height: 40
+        width: Theme.dp(40)
+        height: Theme.dp(40)
         isIdenticon: false
     }
     property StatusIdenticonRingSettings ringSettings: StatusIdenticonRingSettings {
@@ -90,12 +90,12 @@ Rectangle {
         Danger
     }
 
-    implicitWidth: 448
+    implicitWidth: Theme.dp(448)
     implicitHeight: {
         if (bottomModel.length === 0) {
-            return Math.max(64, statusListItemTitleArea.height + 16)
+            return Math.max(64, statusListItemTitleArea.height + Theme.dp(16))
         }
-        return Math.max(64, statusListItemTitleArea.height + 90)
+        return Math.max(Theme.dp(64), statusListItemTitleArea.height + Theme.dp(90))
     }
     color: {
         if (sensor.containsMouse || statusListItem.highlighted) {
@@ -179,7 +179,7 @@ Rectangle {
 
             anchors.left: iconOrImage.active ? iconOrImage.right : parent.left
             anchors.right: statusListItemLabel.visible ? statusListItemLabel.left : statusListItemComponentsSlot.left
-            anchors.leftMargin: iconOrImage.active ? 16 : statusListItem.leftPadding
+            anchors.leftMargin: iconOrImage.active ? Theme.dp(16) : statusListItem.leftPadding
             anchors.rightMargin: statusListItem.rightPadding
             anchors.verticalCenter:  bottomModel.length === 0 ? parent.verticalCenter : undefined
 
@@ -209,7 +209,7 @@ Rectangle {
                 id: statusListItemTitle
                 opacity: titleLoadingOverlay.visible ? 0 : 1
                 text: statusListItem.title
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 height: visible ? contentHeight : 0
                 elide: Text.ElideRight
                 anchors.left: parent.left
@@ -254,12 +254,12 @@ Rectangle {
             StatusBaseText {
                 id: statusListItemTitleAsideText
                 anchors.left: statusListItemTitle.right
-                anchors.leftMargin: 4
+                anchors.leftMargin: Theme.dp(4)
                 anchors.verticalCenter: statusListItemTitle.verticalCenter
                 anchors.top: bottomModel.length === 0 ? undefined:  parent.top
                 anchors.topMargin: bottomModel.length === 0 ? undefined : 20
                 text: statusListItem.titleAsideText
-                font.pixelSize: 10
+                font.pixelSize: Theme.dp(10)
                 color: Theme.palette.baseColor1
                 visible: !!statusListItem.titleAsideText
             }
@@ -268,7 +268,7 @@ Rectangle {
                 id: titleIconsRow
                 anchors.left: !statusListItem.titleAsideText ? statusListItemTitle.right : statusListItemTitleAsideText.right
                 anchors.verticalCenter: statusListItemTitle.verticalCenter
-                anchors.leftMargin: 4
+                anchors.leftMargin: Theme.dp(4)
             }
 
             StatusBaseText {
@@ -293,7 +293,7 @@ Rectangle {
                 height: visible ? contentHeight : 0
                 text: statusListItem.tertiaryTitle
                 color: Theme.palette.baseColor1
-                font.pixelSize: 13
+                font.pixelSize: Theme.dp(13)
                 visible: !!statusListItem.tertiaryTitle
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             }
@@ -302,14 +302,14 @@ Rectangle {
                 id: statusListItemBadge
                 anchors.top: statusListItemTertiaryTitle.bottom
                 width: contentItem.width
-                implicitHeight: visible ? 22 : 0
+                implicitHeight: visible ? Theme.dp(22) : 0
             }
 
             Row {
                 id: statusListItemTagsSlotInline
                 anchors.top: statusListItemTertiaryTitle.bottom
                 width: parent.width
-                spacing: 10
+                spacing: Theme.dp(10)
                 clip: true
 
                 Repeater {
@@ -321,12 +321,12 @@ Rectangle {
 
         Row {
             id: statusListItemTagsSlot
-            anchors.topMargin: 16
+            anchors.topMargin: Theme.dp(16)
             anchors.top: iconOrImage.bottom
             anchors.left: parent.left
-            anchors.leftMargin: 16
+            anchors.leftMargin: Theme.dp(16)
             width: statusListItemBadge.width
-            spacing: 10
+            spacing: Theme.dp(10)
             anchors.verticalCenter: parent.verticalCenter
 
             Repeater {
@@ -339,12 +339,12 @@ Rectangle {
             id: statusListItemLabel
             anchors.verticalCenter: bottomModel.length === 0 ? parent.verticalCenter : undefined
             anchors.top: bottomModel.length === 0 ? undefined:  parent.top
-            anchors.topMargin: bottomModel.length === 0 ? undefined : 16
+            anchors.topMargin: bottomModel.length === 0 ? undefined : Theme.dp(16)
             anchors.right: statusListItemComponentsSlot.left
-            anchors.rightMargin: statusListItemComponentsSlot.width > 0 ? 10 : 0
+            anchors.rightMargin: statusListItemComponentsSlot.width > 0 ? Theme.dp(10) : 0
 
             text: statusListItem.label
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             color: Theme.palette.baseColor1
             visible: !!statusListItem.label
         }
@@ -355,8 +355,8 @@ Rectangle {
             anchors.rightMargin: statusListItem.rightPadding
             anchors.verticalCenter: bottomModel.length === 0 ? parent.verticalCenter : undefined
             anchors.top: bottomModel.length === 0 ? undefined:  parent.top
-            anchors.topMargin: bottomModel.length === 0 ? undefined : 12
-            spacing: 10
+            anchors.topMargin: bottomModel.length === 0 ? undefined : Theme.dp(12)
+            spacing: Theme.dp(10)
         }
     }
 }

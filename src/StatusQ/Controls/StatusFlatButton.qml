@@ -16,6 +16,6 @@ StatusBaseButton {
 
     border.color: type === StatusBaseButton.Type.Normal || hovered ? "transparent"
                                                           : Theme.palette.baseColor2
-    rightPadding: icon.name !== "" ? 18 : defaultRightPadding
-    leftPadding: icon.name !== "" ? 14 : defaultLeftPadding
+    rightPadding: icon.name !== "" ? Theme.dp(18) : defaultRightPadding
+    leftPadding: icon.name !== "" ? Theme.dp(14) : defaultLeftPadding
 }

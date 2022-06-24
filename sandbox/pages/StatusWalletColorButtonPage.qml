@@ -11,7 +11,7 @@ Column {
     spacing: 8
 
     Row {
-        spacing: 4
+        spacing: Theme.dp(4)
         StatusWalletColorButton {
             icon.color: Theme.palette.miscColor1
             selected: true

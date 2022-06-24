@@ -47,8 +47,8 @@ import StatusQ.Core.Theme 0.1
 
 Item {
     id: root
-    width: 162
-    height: 44
+    width: Theme.dp(162)
+    height: Theme.dp(44)
     /*!
         \qmlproperty alias StatusSeedPhraseInput::textEdit
         This property is an alias to the StatusInput's textEdit property.
@@ -118,7 +118,7 @@ Item {
             text: root.leftComponentText
             color: seedWordInput.input.edit.activeFocus ?
                    Theme.palette.primaryColor1 : Theme.palette.baseColor1
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
         }
         input.acceptReturn: true
         onTextChanged: {
@@ -170,24 +170,24 @@ Item {
     Item {
         id: suggListContainer
         width: seedSuggestionsList.width
-        height: (((seedSuggestionsList.count <= 5) ? seedSuggestionsList.count : 5) *34) + 16
+        height: Theme.dp((((seedSuggestionsList.count <= 5) ? seedSuggestionsList.count : 5) *34) + 16)
         anchors.left: parent.left
-        anchors.leftMargin: 16
+        anchors.leftMargin: Theme.dp(16)
         anchors.top: seedWordInput.bottom
-        anchors.topMargin: 4
+        anchors.topMargin: Theme.dp(4)
         visible: ((seedSuggestionsList.count > 0) && seedWordInput.input.edit.activeFocus)
         Rectangle {
             id: statusPopupMenuBackgroundContent
             anchors.fill: parent
             color: Theme.palette.statusPopupMenu.backgroundColor
-            radius: 8
+            radius: Theme.dp(8)
             layer.enabled: true
             layer.effect: DropShadow {
                 anchors.fill: parent
                 source: statusPopupMenuBackgroundContent
                 horizontalOffset: 0
-                verticalOffset: 4
-                radius: 12
+                verticalOffset: Theme.dp(4)
+                radius: Theme.dp(12)
                 samples: 25
                 spread: 0.2
                 color: Theme.palette.dropShadow
@@ -195,12 +195,12 @@ Item {
         }
         ListView {
             id: seedSuggestionsList
-            width: ((seedSuggestionsList.contentItem.childrenRect.width + 24) > root.width) ? root.width
-                    : (seedSuggestionsList.contentItem.childrenRect.width + 24)
+            width: ((seedSuggestionsList.contentItem.childrenRect.width + Theme.dp(24)) > root.width) ? root.width
+                    : (seedSuggestionsList.contentItem.childrenRect.width + Theme.dp(24))
             anchors.top: parent.top
-            anchors.topMargin: 8
+            anchors.topMargin: Theme.dp(8)
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 8
+            anchors.bottomMargin: Theme.dp(8)
 
             onCountChanged: {
                 seedSuggestionsList.currentIndex = 0
@@ -219,7 +219,7 @@ Item {
             delegate: Item {
                 id: txtDelegate
                 width: suggWord.contentWidth
-                height: 34
+                height: Theme.dp(34)
                 Rectangle {
                     width: seedSuggestionsList.width
                     height: parent.height
@@ -229,11 +229,11 @@ Item {
                 StatusBaseText {
                     id: suggWord
                     anchors.left: parent.left
-                    anchors.leftMargin: 14
+                    anchors.leftMargin: Theme.dp(14)
                     anchors.verticalCenter: parent.verticalCenter
                     text: seedWord
                     color: mouseArea.containsMouse || index === seedSuggestionsList.currentIndex ? Theme.palette.indirectColor1 : Theme.palette.directColor1
-                    font.pixelSize: 13
+                    font.pixelSize: Theme.dp(13)
                     elide: Text.ElideRight
                 }
                 MouseArea {

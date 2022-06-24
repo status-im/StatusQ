@@ -16,8 +16,8 @@ Rectangle {
     }
 
     width: buttonRow.width + _internal.containerMargin * 2
-    height: 36
-    radius: 8
+    height: Theme.dp(36)
+    radius: Theme.dp(8)
     color: Theme.palette.statusSelect.menuItemBackgroundColor
 
     layer.enabled: true
@@ -25,11 +25,11 @@ Rectangle {
         width: buttonsContainer.width
         height: buttonsContainer.height
         x: buttonsContainer.x
-        y: buttonsContainer.y + 10
+        y: buttonsContainer.y + Theme.dp(10)
         horizontalOffset: 0
-        verticalOffset: 2
+        verticalOffset: Theme.dp(2)
         source: buttonsContainer
-        radius: 10
+        radius: Theme.dp(10)
         samples: 15
         color: Theme.palette.dropShadow
     }

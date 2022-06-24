@@ -57,8 +57,8 @@ import StatusQ.Core.Theme 0.1
 Item {
     id: root
 
-    implicitWidth: 400
-    implicitHeight: 400 / aspectRatio
+    implicitWidth: Theme.dp(400)
+    implicitHeight: Theme.dp(400) / aspectRatio
 
     /*!
        \qmlproperty url StatusImageCrop::source
@@ -81,7 +81,7 @@ Item {
         \qmlproperty int StatusImageCrop::radius
         Valid only when windowStyle is Rounded
     */
-    property int radius: 8
+    property int radius: Theme.dp(8)
     /*!
         \qmlproperty color StatusImageCrop::wallColor
         Color used outside the crop-rect. Tells user which part won't be available after cropping

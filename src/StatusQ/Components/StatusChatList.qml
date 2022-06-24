@@ -11,8 +11,8 @@ import StatusQ.Controls 0.1
 Column {
     id: statusChatList
 
-    spacing: 4
-    width: 288
+    spacing: Theme.dp(4)
+    width: Theme.dp(288)
 
     property string categoryId: ""
     property var model: null

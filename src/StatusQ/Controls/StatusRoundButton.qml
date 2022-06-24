@@ -8,8 +8,8 @@ Rectangle {
     id: statusRoundButton
 
     property StatusIconSettings icon: StatusIconSettings {
-        width: 23
-        height: 23
+        width: Theme.dp(23)
+        height: Theme.dp(23)
         rotation: 0
 
         property color hoverColor: {
@@ -110,8 +110,8 @@ Rectangle {
                                                                                                                                    statusRoundButton.icon.color
     }
 
-    implicitWidth: 44
-    implicitHeight: 44
+    implicitWidth: Theme.dp(44)
+    implicitHeight: Theme.dp(44)
     radius: width / 2;
 
     color: {

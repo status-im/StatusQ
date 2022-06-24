@@ -44,7 +44,7 @@ RowLayout {
     StatusBaseText {
         text: qsTr("Hold")
         color: Theme.palette.directColor6
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
     }
 
     Repeater {
@@ -58,7 +58,7 @@ RowLayout {
     StatusBaseText {
         text: qsTr("or")
         color: Theme.palette.directColor6
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
     }
 
     Loader {
@@ -73,7 +73,7 @@ RowLayout {
     StatusBaseText {
         text: qsTr("to post")
         color: Theme.palette.directColor6
-        font.pixelSize: 15
+        font.pixelSize: Theme.dp(15)
     }
 
     QtObject {
@@ -99,8 +99,8 @@ RowLayout {
             property color hoverColor
             property color textColor
 
-            width: content.width + 4
-            height: content.height + 4
+            width: content.width + Theme.dp(4)
+            height: content.height + Theme.dp(4)
 
             radius: height/2
 
@@ -118,8 +118,8 @@ RowLayout {
 
                 StatusRoundedImage {
                     id: roundedImage
-                    Layout.maximumHeight: text.height + 2
-                    Layout.maximumWidth: text.height + 2
+                    Layout.maximumHeight: text.height + Theme.dp(2)
+                    Layout.maximumWidth: text.height + Theme.dp(2)
                     image.source: tokenImageSource
                 }
 
@@ -127,11 +127,11 @@ RowLayout {
                     id: text
                     text: amount + " " + token
                     color: textColor
-                    font.pixelSize: 15
+                    font.pixelSize: Theme.dp(15)
                 }
 
                 Item {
-                    implicitWidth: 2
+                    implicitWidth: Theme.dp(2)
                 }
             }
 

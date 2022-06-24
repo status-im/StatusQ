@@ -20,7 +20,7 @@ Item {
     height: childrenRect.height
 
     ColumnLayout {
-        spacing: 4
+        spacing: Theme.dp(4)
         Loader {
             id: chatInputLoader
             // To-Do: Move to StatusChatInput once its moved to StatusQ
@@ -28,7 +28,7 @@ Item {
                 width: editText.width
                 input.placeholderText: ""
                 input.text: msgText
-                input.implicitHeight: 40
+                input.implicitHeight: Theme.dp(40)
             }
         }
         RowLayout {

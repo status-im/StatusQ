@@ -11,12 +11,12 @@ StatusBaseText {
 
     Layout.alignment: Qt.AlignVCenter
     color: Theme.palette.baseColor1
-    font.pixelSize: 10
+    font.pixelSize: Theme.dp(10)
     visible: !!text
     StatusToolTip {
         id: tooltip
         visible: hhandler.hovered && !!text
-        maxWidth: 350
+        maxWidth: Theme.dp(350)
     }
     HoverHandler {
         id: hhandler

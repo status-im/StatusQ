@@ -99,12 +99,12 @@ Item {
         \qmlproperty real StatusBaseInput::leftPadding
         This property sets the leftComponentLoader's left padding.
     */
-    property real leftPadding: 16
+    property real leftPadding: Theme.dp(16)
     /*!
         \qmlproperty real StatusBaseInput::rightPadding
         This property sets the right padding.
     */
-    property real rightPadding: 16
+    property real rightPadding: Theme.dp(16)
     /*!
         \qmlproperty list StatusBaseInput::validators
         This property sets the list of validators to be considered.
@@ -325,7 +325,7 @@ Item {
                 visible: !!root.label
                 elide: Text.ElideRight
                 text: root.label
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 color: statusBaseInput.enabled ? Theme.palette.directColor1 : Theme.palette.baseColor1
             }
 
@@ -334,7 +334,7 @@ Item {
                 visible: !!root.secondaryLabel
                 elide: Text.ElideRight
                 text: root.secondaryLabel
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 color: Theme.palette.baseColor1
             }
 
@@ -348,7 +348,7 @@ Item {
                 visible: root.charLimit > 0
 
                 text: "%1 / %2".arg(statusBaseInput.text.length).arg(root.charLimit)
-                font.pixelSize: 12
+                font.pixelSize: Theme.dp(12)
                 color: statusBaseInput.enabled ? Theme.palette.baseColor1 : Theme.palette.directColor6
             }
         }
@@ -377,7 +377,7 @@ Item {
 
             visible: !!text && !statusBaseInput.valid
 
-            font.pixelSize: 12
+            font.pixelSize: Theme.dp(12)
             color: Theme.palette.dangerColor1
 
             horizontalAlignment: Text.AlignRight

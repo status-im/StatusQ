@@ -24,11 +24,11 @@ MouseArea {
 
     Row {
         id: layout
-        spacing: 8
+        spacing: Theme.dp(8)
 
         Rectangle {
-            width: 12
-            height: 12
+            width: Theme.dp(12)
+            height: Theme.dp(12)
             radius: width / 2
             antialiasing: true
 
@@ -56,8 +56,8 @@ MouseArea {
         }
 
         Rectangle {
-            width: 12
-            height: 12
+            width: Theme.dp(12)
+            height: Theme.dp(12)
             radius: width / 2
             antialiasing: true
 
@@ -65,11 +65,11 @@ MouseArea {
                                                                        : inactive)
             border.color:miniSensor.pressed ? "#986E29" : (rootWindow.active ? "#D79F3D"
                                                                              : inactiveBorder)
-            border.width: Theme.palette.name === "light" ? 0.5 : 0
+            border.width: Theme.palette.name === "light" ? Theme.dp(0.5) : 0
 
             Image {
                 anchors.centerIn: parent
-                anchors.verticalCenterOffset: -0.25
+                anchors.verticalCenterOffset: -Theme.dp(0.25)
                 visible: statusMacTrafficLights.containsMouse
                 source: miniSensor.pressed ? "../../assets/img/icons/traffic_lights/minimise_pressed.png"
                                            : "../../assets/img/icons/traffic_lights/minimise.png"
@@ -85,8 +85,8 @@ MouseArea {
         }
 
         Rectangle {
-            width: 12
-            height: 12
+            width: Theme.dp(12)
+            height: Theme.dp(12)
             radius: width / 2
             antialiasing: true
 
@@ -98,6 +98,8 @@ MouseArea {
 
             Image {
                 anchors.centerIn: parent
+                width: Theme.dp(sourceSize.width)
+                height: Theme.dp(sourceSize.height)
                 visible: statusMacTrafficLights.containsMouse
                 source:   maxiSensor.pressed ?"../../assets/img/icons/traffic_lights/maximize_pressed.png"
                                              :"../../assets/img/icons/traffic_lights/maximize.png"

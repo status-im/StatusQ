@@ -54,8 +54,8 @@ Item {
             rootColor = Qt.hsva(color.hsvHue, 1, 1, 1)
     }
 
-    implicitWidth: 340
-    implicitHeight: 340
+    implicitWidth: Theme.dp(340)
+    implicitHeight: Theme.dp(340)
 
     QtObject {
         id: d

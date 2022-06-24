@@ -5,15 +5,15 @@ import StatusQ.Core.Theme 0.1
 import StatusQ.Components 0.1
 
 Column {
-    spacing: 12
-    width: 800
+    spacing: Theme.dp(12)
+    width: Theme.dp(800)
     anchors.top:parent.top
-    leftPadding: 20
-    rightPadding: 20
+    leftPadding: Theme.dp(20)
+    rightPadding: Theme.dp(20)
 
     Rectangle {
         width: parent.width
-        height: 30
+        height: Theme.dp(30)
         color: Theme.palette.baseColor2
         StatusBaseText {
             anchors.verticalCenter: parent.verticalCenter
@@ -60,7 +60,7 @@ Column {
 
     Rectangle {
         width: parent.width
-        height: 30
+        height: Theme.dp(30)
         color:  Theme.palette.baseColor2
         StatusBaseText {
             anchors.verticalCenter: parent.verticalCenter
@@ -103,7 +103,7 @@ Column {
 
     Rectangle {
         width: parent.width
-        height: 30
+        height: Theme.dp(30)
         color:  Theme.palette.baseColor2
         StatusBaseText {
             anchors.verticalCenter: parent.verticalCenter
@@ -134,15 +134,15 @@ Column {
         id: notImplemented
         Rectangle {
             anchors.centerIn: parent
-            width: 654
+            width: Theme.dp(654)
             height: infoText.implicitHeight
             color: Theme.palette.baseColor5
             StatusBaseText {
                 id: infoText
                 anchors.centerIn: parent
                 color: Theme.palette.directColor4
-                font.pixelSize: 15
-                lineHeight: 22
+                font.pixelSize: Theme.dp(15)
+                lineHeight: Theme.dp(22)
                 lineHeightMode: Text.FixedHeight
                 font.weight: Font.Medium
                 text: qsTr("Not Implemented")

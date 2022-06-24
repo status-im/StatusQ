@@ -11,16 +11,16 @@ Rectangle {
     property alias subTitleComponent: statusDescriptionListItemSubTitle
     property string value: ""
     property StatusIconSettings icon: StatusIconSettings {
-        width: 23
-        height: 23
+        width: Theme.dp(23)
+        height: Theme.dp(23)
     }
     property alias tooltip: statusToolTip
     property alias iconButton: statusFlatRoundButton
     property alias sensor: sensor
 
-    implicitWidth: 448
-    implicitHeight: 56
-    radius: 8
+    implicitWidth: Theme.dp(448)
+    implicitHeight: Theme.dp(56)
+    radius: Theme.dp(8)
 
     color: Theme.palette.statusListItem.backgroundColor
 
@@ -35,12 +35,12 @@ Rectangle {
             id: statusDescriptionListItemTitle
             anchors.top: parent.top
             anchors.left: parent.left
-            anchors.leftMargin: 16
-            anchors.topMargin: 5
+            anchors.leftMargin: Theme.dp(16)
+            anchors.topMargin: Theme.dp(5)
 
             color: Theme.palette.baseColor1
             text: statusDescriptionListItem.title
-            font.pixelSize: 13
+            font.pixelSize: Theme.dp(13)
             font.weight: Font.Medium
         }
 
@@ -48,12 +48,12 @@ Rectangle {
             id: statusDescriptionListItemSubTitle
             anchors.top: statusDescriptionListItemTitle.bottom
             anchors.left: parent.left
-            anchors.leftMargin: 16
-            anchors.topMargin: 4
+            anchors.leftMargin: Theme.dp(16)
+            anchors.topMargin: Theme.dp(4)
 
             text: statusDescriptionListItem.subTitle
             color: Theme.palette.directColor1
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             font.weight: Font.Normal
         }
 
@@ -62,10 +62,10 @@ Rectangle {
             visible: !!statusDescriptionListItem.icon.name
             anchors.verticalCenter: statusDescriptionListItemSubTitle.verticalCenter
             anchors.left: statusDescriptionListItemSubTitle.right
-            anchors.leftMargin: 4
+            anchors.leftMargin: Theme.dp(4)
 
-            width: 32
-            height: 32
+            width: Theme.dp(32)
+            height: Theme.dp(32)
 
             icon.name: statusDescriptionListItem.icon.name
             icon.width: statusDescriptionListItem.icon.width
@@ -78,15 +78,15 @@ Rectangle {
 
         Row {
             anchors.right: parent.right
-            anchors.rightMargin: 16
+            anchors.rightMargin: Theme.dp(16)
             anchors.verticalCenter: parent.verticalCenter
             visible: !!statusDescriptionListItem.value
-            spacing: 8
+            spacing: Theme.dp(8)
 
             StatusBaseText {
                 text: statusDescriptionListItem.value
                 color: Theme.palette.baseColor1
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 anchors.verticalCenter: parent.verticalCenter
             }
 

@@ -15,9 +15,9 @@ Rectangle {
     property bool hovered: false
     property string audioSource: ""
 
-    width: 320
-    height: 32
-    radius: 20
+    width: Theme.dp(320)
+    height: Theme.dp(32)
+    radius: Theme.dp(20)
 
     color: hovered ? Theme.palette.directColor8 : Theme.palette.baseColor2
 
@@ -30,13 +30,13 @@ Rectangle {
     RowLayout {
         id: preview
         visible: isPreview
-        spacing: 5
+        spacing: Theme.dp(5)
         anchors.centerIn: parent
         StatusIcon {
             id: icon
             Layout.alignment: Qt.AlignVCenter
-            Layout.preferredWidth: 14
-            Layout.preferredHeight: 14
+            Layout.preferredWidth: Theme.dp(14)
+            Layout.preferredHeight: Theme.dp(14)
             icon: "audio"
             color: Theme.palette.baseColor1
         }
@@ -44,16 +44,16 @@ Rectangle {
             Layout.alignment: Qt.AlignVCenter
             color: Theme.palette.baseColor1
             text: audioMessageInfoText
-            font.pixelSize: 13
+            font.pixelSize: Theme.dp(13)
         }
     }
 
     StatusFlatRoundButton {
         id: playButton
-        width: 15
-        height: 15
+        width: Theme.dp(15)
+        height: Theme.dp(15)
         anchors.left: parent.left
-        anchors.leftMargin: 16
+        anchors.leftMargin: Theme.dp(16)
         anchors.verticalCenter: parent.verticalCenter
         visible: !isPreview
 
@@ -73,12 +73,12 @@ Rectangle {
     }
     
     Rectangle {
-        height: 2
-        width: 240
+        height: Theme.dp(2)
+        width: Theme.dp(240)
         color: Theme.palette.directColor5
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: playButton.right
-        anchors.leftMargin: 10
+        anchors.leftMargin: Theme.dp(10)
         visible: !isPreview
         Rectangle {
             id: progress
@@ -94,10 +94,10 @@ Rectangle {
 
         Rectangle {
             id: handle
-            width: 10
-            height: 10
+            width: Theme.dp(10)
+            height: Theme.dp(10)
             color: Theme.palette.directColor1
-            radius: 10
+            radius: Theme.dp(10)
             anchors.verticalCenter: parent.verticalCenter
             x: progress.width
             state: "default"

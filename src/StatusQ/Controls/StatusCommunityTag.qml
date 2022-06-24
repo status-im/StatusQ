@@ -13,11 +13,11 @@ Rectangle {
 
     signal clicked()
 
-    implicitHeight: 32
-    implicitWidth: row.width + 20
+    implicitHeight: Theme.dp(32)
+    implicitWidth: row.width + Theme.dp(20)
     radius: height / 2
     border.color: Theme.palette.baseColor2
-    border.width: 1
+    border.width: Theme.dp(1)
     color: mouseArea.containsMouse ? Theme.palette.primaryColor2 : "transparent"
 
     MouseArea {
@@ -38,13 +38,13 @@ Rectangle {
         }
 
         Item {
-            width: 5
+            width: Theme.dp(5)
             height: width
         }
 
         StatusBaseText {
             anchors.verticalCenter: parent.verticalCenter
-            font.pixelSize: 13
+            font.pixelSize: Theme.dp(13)
             color: root.enabled ? Theme.palette.primaryColor1 : Theme.palette.baseColor1
             text: root.name
         }

@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.0
 
 import StatusQ.Core 0.1
+import StatusQ.Core.Theme 0.1
 /*!
    \qmltype StatusIdenticonRing
    \inherits Item
@@ -59,7 +60,7 @@ Item {
     */
     property StatusIdenticonRingSettings settings: StatusIdenticonRingSettings {
         initalAngleRad: 0
-        ringPxSize: 1.5
+        ringPxSize: Theme.dp(1.5)
     }
 
     visible: settings.ringSpecModel !== undefined

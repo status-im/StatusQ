@@ -19,13 +19,13 @@ Loader {
 
     sourceComponent: RowLayout {
         id: replyLayout
-        spacing: 8
+        spacing: Theme.dp(8)
         Shape {
             id: replyCorner
             Layout.alignment: Qt.AlignTop
-            Layout.leftMargin: 35
+            Layout.leftMargin: Theme.dp(35)
             Layout.topMargin: profileImage.height/2
-            Layout.preferredWidth: 20
+            Layout.preferredWidth: Theme.dp(20)
             Layout.preferredHeight: messageLayout.height - replyCorner.Layout.topMargin
             asynchronous: true
             antialiasing: true
@@ -35,13 +35,13 @@ Loader {
                 fillColor: "transparent"
                 capStyle: ShapePath.RoundCap
                 joinStyle: ShapePath.RoundJoin
-                startX: 20
+                startX: Theme.dp(20)
                 startY: 0
-                PathLine { x: 10; y: 0 }
+                PathLine { x: Theme.dp(10); y: 0 }
                 PathArc {
-                    x: 0; y: 10
-                    radiusX: 13
-                    radiusY: 13
+                    x: 0; y: Theme.dp(10)
+                    radiusX: Theme.dp(13)
+                    radiusY: Theme.dp(13)
                     direction: PathArc.Counterclockwise
                 }
                 PathLine { x: 0; y: messageLayout.height}
@@ -51,7 +51,7 @@ Loader {
             id: messageLayout
             Layout.fillWidth: true
             Layout.alignment: Qt.AlignTop
-            Layout.topMargin: 4
+            Layout.topMargin: Theme.dp(4)
             RowLayout {
                 StatusSmartIdenticon {
                     id: profileImage
@@ -70,7 +70,7 @@ Loader {
                     color: Theme.palette.baseColor1
                     selectionColor: Theme.palette.primaryColor3
                     selectedTextColor: Theme.palette.directColor1
-                    font.pixelSize: 13
+                    font.pixelSize: Theme.dp(13)
                     font.weight: Font.Medium
                     selectByMouse: true
                     readOnly: true
@@ -80,40 +80,40 @@ Loader {
             StatusTextMessage {
                 Layout.fillWidth: true
                 textField.text: replyDetails.messageText
-                textField.font.pixelSize: 13
+                textField.font.pixelSize: Theme.dp(13)
                 textField.color: Theme.palette.baseColor1
-                textField.height: 18
+                textField.height: Theme.dp(18)
                 clip: true
                 visible: !!replyDetails.messageText
             }
             StatusImageMessage {
                 Layout.fillWidth: true
                 Layout.preferredHeight: imageAlias.paintedHeight
-                imageWidth: 56
+                imageWidth: Theme.dp(56)
                 source: replyDetails.contentType === StatusMessage.ContentType.Image ? replyDetails.messageContent : ""
                 visible: replyDetails.contentType === StatusMessage.ContentType.Image
                 shapeType: StatusImageMessage.ShapeType.ROUNDED
             }
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 48
+                Layout.preferredHeight: Theme.dp(48)
                 Layout.alignment: Qt.AlignLeft
                 visible: replyDetails.contentType === StatusMessage.ContentType.Sticker
                 StatusSticker {
-                    image.width: 48
-                    image.height: 48
+                    image.width: Theme.dp(48)
+                    image.height: Theme.dp(48)
                     image.source: replyDetails.messageContent
                 }
             }
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 22
+                Layout.preferredHeight: Theme.dp(22)
                 visible: replyDetails.contentType === StatusMessage.ContentType.Audio
                 StatusAudioMessage {
                     id: audioMessage
                     anchors.left: parent.left
-                    width: 125
-                    height: 22
+                    width: Theme.dp(125)
+                    height: Theme.dp(22)
                     isPreview: true
                     audioSource: replyDetails.messageContent
                     audioMessageInfoText: chatReply.audioMessageInfoText

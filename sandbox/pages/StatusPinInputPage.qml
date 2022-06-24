@@ -8,7 +8,7 @@ import StatusQ.Controls.Validators 0.1
 
 Column {
     id: root
-    spacing: 25
+    spacing: Theme.dp(25)
     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
     // PIN input that accepts only numbers
@@ -16,7 +16,7 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         color: Theme.palette.directColor1
         text: "Enter Keycard PIN"
-        font.pixelSize: 30
+        font.pixelSize: Theme.dp(30)
         font.bold: true
     }
 
@@ -30,23 +30,23 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         color: Theme.palette.dangerColor1
         text: "Only numbers allowed"
-        font.pixelSize: 16
+        font.pixelSize: Theme.dp(16)
     }
 
     StatusBaseText {
         anchors.horizontalCenter: parent.horizontalCenter
         color: Theme.palette.directColor1
         text: "Introduced PIN: " + numbersPinInput.pinInput
-        font.pixelSize: 12
+        font.pixelSize: Theme.dp(12)
     }
 
     // PIN input that accepts input depending on the regular expression definition
     StatusBaseText {
-        topPadding: 100
+        topPadding: Theme.dp(100)
         anchors.horizontalCenter: parent.horizontalCenter
         color: Theme.palette.directColor1
         text: "Enter another Keycard PIN"
-        font.pixelSize: 30
+        font.pixelSize: Theme.dp(30)
         font.bold: true
     }
 
@@ -54,8 +54,8 @@ Column {
         id: regexPinInput
         anchors.horizontalCenter: parent.horizontalCenter
         validator: StatusRegularExpressionValidator { regularExpression: /[0-9A-Za-z@]+/ }
-        circleDiameter: 22
-        circleSpacing: 22
+        circleDiameter: Theme.dp(22)
+        circleSpacing: Theme.dp(22)
         pinLen: 7
     }
 
@@ -63,13 +63,13 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         color: Theme.palette.dangerColor1
         text: "Only alphanumeric characters and '@' allowed"
-        font.pixelSize: 16
+        font.pixelSize: Theme.dp(16)
     }
 
     StatusBaseText {
         anchors.horizontalCenter: parent.horizontalCenter
         color: Theme.palette.directColor1
         text: "Introduced PIN: " + regexPinInput.pinInput
-        font.pixelSize: 12
+        font.pixelSize: Theme.dp(12)
     }
 }

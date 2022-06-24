@@ -10,12 +10,12 @@ StatusSlider {
     id: root
 
     property var model: []
-    property int fontSize: 12
-    property int labelMargin: 2
+    property int fontSize: Theme.dp(12)
+    property int labelMargin: Theme.dp(2)
 
     fillColor: bgColor
     handleColor: Theme.palette.primaryColor1
-    handleSize: 14
+    handleSize: Theme.dp(14)
     from: 0
     to: model.length - 1
     stepSize: 1
@@ -36,7 +36,7 @@ StatusSlider {
                 radius: root.handleSize / 2
                 color: root.bgColor
                 border.color: Theme.palette.statusAppLayout.backgroundColor
-                border.width: 2
+                border.width: Theme.dp(2)
 
                 StatusBaseText {
                     anchors.top: parent.bottom

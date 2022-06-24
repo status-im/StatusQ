@@ -53,8 +53,8 @@ Rectangle {
 
     QtObject {
         id: d
-        property int tagMargins: 8
-        property int tagIconsSize: 20
+        property int tagMargins: Theme.dp(8)
+        property int tagIconsSize: Theme.dp(20)
 
         function getTagColor(isReadonly) {
             if(isReadonly) {
@@ -67,16 +67,16 @@ Rectangle {
     }
 
     width: tagRow.implicitWidth + 2 * d.tagMargins
-    height: 30
+    height: Theme.dp(30)
     color: d.getTagColor(root.isReadonly)
-    radius: 8
+    radius: Theme.dp(8)
     Row {
         id: tagRow
         height: parent.height
         anchors.left: parent.left
         anchors.leftMargin: d.tagMargins
         anchors.rightMargin: d.tagMargins
-        spacing: 2
+        spacing: Theme.dp(2)
 
         StatusIcon {
             visible: root.icon
@@ -90,7 +90,7 @@ Rectangle {
             id: nameText
             anchors.verticalCenter: parent.verticalCenter
             color: Theme.palette.indirectColor1
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
             text: root.text
         }
         StatusIcon {

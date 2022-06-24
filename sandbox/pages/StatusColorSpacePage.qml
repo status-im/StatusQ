@@ -90,14 +90,14 @@ Item {
 
         Rectangle {
             color: colorSpace.color
-            implicitHeight: 48
-            radius: 10
+            implicitHeight: Theme.dp(48)
+            radius: Theme.dp(10)
             Layout.fillWidth: true
 
             StatusBaseText {
                 anchors.centerIn: parent
                 color: Theme.palette.white
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 text: "Quick brown fox jumps over the lazy dog"
             }
         }

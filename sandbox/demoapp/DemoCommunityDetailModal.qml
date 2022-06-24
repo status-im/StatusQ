@@ -19,24 +19,24 @@ StatusModal {
         width: root.width
 
         StatusModalDivider {
-            bottomPadding: 8
+            bottomPadding: Theme.dp(8)
         }
 
         StatusBaseText {
             text: "A community of cat lovers, meow!"
             verticalAlignment: Text.AlignVCenter
-            font.pixelSize: 15
-            height: 46
+            font.pixelSize: Theme.dp(15)
+            height: Theme.dp(46)
             color: Theme.palette.directColor1
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.leftMargin: 16
-            anchors.rightMargin: 16
+            anchors.leftMargin: Theme.dp(16)
+            anchors.rightMargin: Theme.dp(16)
         }
 
         StatusModalDivider {
-            topPadding: 8
-            bottomPadding: 8
+            topPadding: Theme.dp(8)
+            bottomPadding: Theme.dp(8)
         }
 
         StatusDescriptionListItem {
@@ -49,13 +49,13 @@ StatusModal {
         }
 
         StatusModalDivider {
-            topPadding: 8
-            bottomPadding: 8
+            topPadding: Theme.dp(8)
+            bottomPadding: Theme.dp(8)
         }
 
         StatusListItem {
             anchors.horizontalCenter: parent.horizontalCenter
-            statusListItemTitle.font.pixelSize: 17
+            statusListItemTitle.font.pixelSize: Theme.dp(17)
             title: "Members"
             icon.name: "group-chat"
             label: "184"
@@ -79,13 +79,13 @@ StatusModal {
         }
 
         StatusModalDivider {
-            topPadding: 8
-            bottomPadding: 8
+            topPadding: Theme.dp(8)
+            bottomPadding: Theme.dp(8)
         }
 
         StatusListItem {
             anchors.horizontalCenter: parent.horizontalCenter
-            statusListItemTitle.font.pixelSize: 17
+            statusListItemTitle.font.pixelSize: Theme.dp(17)
             title: "Edit community"
             icon.name: "edit"
             type: StatusListItem.Type.Secondary
@@ -93,7 +93,7 @@ StatusModal {
 
         StatusListItem {
             anchors.horizontalCenter: parent.horizontalCenter
-            statusListItemTitle.font.pixelSize: 17
+            statusListItemTitle.font.pixelSize: Theme.dp(17)
             title: "Transfer ownership"
             icon.name: "exchange"
             type: StatusListItem.Type.Secondary
@@ -101,7 +101,7 @@ StatusModal {
 
         StatusListItem {
             anchors.horizontalCenter: parent.horizontalCenter
-            statusListItemTitle.font.pixelSize: 17
+            statusListItemTitle.font.pixelSize: Theme.dp(17)
             title: "Leave community"
             icon.name: "arrow-right"
             icon.rotation: 180

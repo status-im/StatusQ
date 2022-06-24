@@ -7,24 +7,24 @@ import StatusQ.Core.Theme 0.1
 
 MenuItem {
     id: root
-    implicitHeight: 38
+    implicitHeight: Theme.dp(38)
 
     property string value: ""
 
     property StatusImageSettings image: StatusImageSettings {
-        height: 16
-        width: 16
+        height: Theme.dp(16)
+        width: Theme.dp(16)
         isIdenticon: false
     }
 
     property StatusIconSettings iconSettings: StatusIconSettings {
-        height: 16
-        width: 16
+        height: Theme.dp(16)
+        width: Theme.dp(16)
         isLetterIdenticon: (root.image.source.toString() === ""
                             && root.iconSettings.name.toString() === "")
         background: StatusIconBackgroundSettings {}
         color: (name === "channel") ? Theme.palette.directColor1 : "transparent"
-        letterSize: charactersLen > 1 ? 8 : 11
+        letterSize: Theme.dp(charactersLen > 1 ? 8 : 11)
     }
 
     property alias ringSettings: identicon.ringSettings
@@ -35,7 +35,7 @@ MenuItem {
 
     contentItem: RowLayout {
         anchors.left: parent.left
-        anchors.leftMargin: 12
+        anchors.leftMargin: Theme.dp(12)
         Item {
             Layout.preferredWidth: root.iconSettings.width
             Layout.preferredHeight: root.iconSettings.height

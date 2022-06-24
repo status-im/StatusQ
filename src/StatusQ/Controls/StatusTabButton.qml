@@ -27,8 +27,8 @@ TabButton {
 
     property alias badge: statusBadge
 
-    leftPadding: 12
-    rightPadding: 12
+    leftPadding: Theme.dp(12)
+    rightPadding: Theme.dp(12)
 
     background: Item { }
 
@@ -51,14 +51,14 @@ TabButton {
                 Layout.fillWidth: true
                 elide: Qt.ElideRight
                 font.weight: Font.Medium
-                font.pixelSize: 15
+                font.pixelSize: Theme.dp(15)
                 color: root.checked || root.hovered ? Theme.palette.directColor1 : Theme.palette.baseColor1
                 text: root.text
             }
 
             StatusBadge {
                 id: statusBadge
-                Layout.leftMargin: 10
+                Layout.leftMargin: Theme.dp(10)
                 visible: value > 0
             }
         }
@@ -67,9 +67,9 @@ TabButton {
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             visible: root.enabled && (root.checked || root.hovered)
-            implicitWidth: 24
-            implicitHeight: 2
-            radius: 4
+            implicitWidth: Theme.dp(24)
+            implicitHeight: Theme.dp(2)
+            radius: Theme.dp(4)
             color: root.checked ? Theme.palette.primaryColor1 : Theme.palette.primaryColor2
         }
     }

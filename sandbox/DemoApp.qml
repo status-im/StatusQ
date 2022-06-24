@@ -14,9 +14,9 @@ import "demoapp/data" 1.0
 
 Rectangle {
     id: demoApp
-    height: 602
-    width: 1002
-    border.width: 1
+    height: Theme.dp(602)
+    width: Theme.dp(1002)
+    border.width: Theme.dp(1)
     border.color: Theme.palette.baseColor2
 
     property string titleStyle: "osx"
@@ -50,7 +50,7 @@ Rectangle {
     StatusMacTrafficLights {
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.margins: 13
+        anchors.margins: Theme.dp(13)
         z: statusAppLayout.z + 1
         visible: titleStyle === "osx"
     }
@@ -112,7 +112,7 @@ Rectangle {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
                 onClicked: {
                     if(model.sectionType === appSectionType.chat)
                     {
@@ -143,7 +143,7 @@ Rectangle {
                 badge.value: model.notificationsCount
                 badge.visible: model.hasNotification
                 badge.border.color: hovered ? Theme.palette.statusBadge.hoverBorderColor : Theme.palette.statusBadge.borderColor
-                badge.border.width: 2
+                badge.border.width: Theme.dp(2)
                 onClicked: {
                     if(model.sectionType === appSectionType.community)
                     {
@@ -175,7 +175,7 @@ Rectangle {
                     StatusMenuItem {
                         text: qsTr("Leave Community")
                         icon.name: "arrow-right"
-                        icon.width: 14
+                        icon.width: Theme.dp(14)
                         iconRotation: 180
                         type: StatusMenuItem.Type.Danger
                     }

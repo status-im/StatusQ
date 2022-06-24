@@ -19,7 +19,7 @@ Item {
     property url source: ""
     property bool allCornersRounded: false
     property bool isLeftCorner: true
-    property int imageWidth: 350
+    property int imageWidth: Theme.dp(350)
     property int shapeType: -1
 
     property string loadingImageText: ""
@@ -55,22 +55,22 @@ Item {
                     anchors.left: parent.left
                     width: imageMessage.width
                     height: imageMessage.height
-                    radius: 16
+                    radius: Theme.dp(16)
                 }
                 Rectangle {
                     anchors.bottom: parent.bottom
                     anchors.left: parent.left
-                    width: 32
-                    height: 32
-                    radius: 4
+                    width: Theme.dp(32)
+                    height: Theme.dp(32)
+                    radius: Theme.dp(4)
                     visible: shapeType === StatusImageMessage.ShapeType.LEFT_ROUNDED //!isLeftCorner && !allCornersRounded
                 }
                 Rectangle {
                     anchors.bottom: parent.bottom
                     anchors.right: parent.right
-                    width: 32
-                    height: 32
-                    radius: 4
+                    width: Theme.dp(32)
+                    height: Theme.dp(32)
+                    radius: Theme.dp(4)
                     visible: shapeType === StatusImageMessage.ShapeType.RIGHT_ROUNDED  //isLeftCorner && !allCornersRounded
                 }
             }
@@ -98,9 +98,9 @@ Item {
                  || imageMessage.status === Image.Error
         width: parent.width
         height: width
-        border.width: 1
+        border.width: Theme.dp(1)
         border.color: Theme.palette.baseColor2
-        radius: 8
+        radius: Theme.dp(8)
 
         StatusBaseText {
             anchors.centerIn: parent
@@ -108,7 +108,7 @@ Item {
             color: imageMessage.status === Image.Error?
                        Theme.palette.dangerColor1 :
                        Theme.palette.directColor1
-            font.pixelSize: 15
+            font.pixelSize: Theme.dp(15)
         }
     }
 }

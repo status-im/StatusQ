@@ -10,8 +10,8 @@ ColumnLayout {
         Layout.fillHeight: true
 
         columns: 6
-        columnSpacing: 5
-        rowSpacing: 5
+        columnSpacing: Theme.dp(5)
+        rowSpacing: Theme.dp(5)
 
         StatusLoadingIndicator {
             color: Theme.palette.directColor4
@@ -53,7 +53,7 @@ ColumnLayout {
             StatusLetterIdenticon {
                 name: "A"
                 color: Theme.palette.userCustomizationColors[index]
-                letterSize: 16
+                letterSize: Theme.dp(16)
             }
         }
     }

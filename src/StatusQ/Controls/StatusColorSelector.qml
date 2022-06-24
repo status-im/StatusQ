@@ -1,6 +1,7 @@
 import QtQuick 2.13
 import QtQuick.Controls 2.13
 import StatusQ.Controls 0.1
+import StatusQ.Core.Theme 0.1
 
 Item {
   id: root
@@ -8,7 +9,7 @@ Item {
   property string label: "Color"
   property var model
   height: accountColorInput.height
-  implicitWidth: 448
+  implicitWidth: Theme.dp(448)
 
   StatusSelect {
       id: accountColorInput
@@ -20,9 +21,9 @@ Item {
           MenuItem {
               property bool isFirstItem: index === 0
               property bool isLastItem: index === root.model.length - 1
-              height: 52
+              height: Theme.dp(52)
               width: parent.width
-              padding: 10
+              padding: Theme.dp(10)
               onTriggered: function () {
                   const selectedColor = root.model[index]
                   root.selectedColor = selectedColor
