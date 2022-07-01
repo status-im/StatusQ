@@ -14,18 +14,7 @@ Column {
 
     property int selectedColorIndex: 0
     property string selectedColor: ""
-    property var model:[ StatusColors.colors['black'],
-                         StatusColors.colors['grey'],
-                         StatusColors.colors['blue2'],
-                         StatusColors.colors['purple'],
-                         StatusColors.colors['cyan'],
-                         StatusColors.colors['violet'],
-                         StatusColors.colors['red2'],
-                         StatusColors.colors['yellow'],
-                         StatusColors.colors['green2'],
-                         StatusColors.colors['moss'],
-                         StatusColors.colors['brown'],
-                         StatusColors.colors['brown2'] ]
+    property var model: Theme.palette.userCustomizationColors
 
     signal colorSelected(color color)
 
@@ -33,6 +22,7 @@ Column {
 
     StatusBaseText {
         id: title
+        width: parent.width
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 13
         color: Theme.palette.baseColor1
@@ -43,6 +33,7 @@ Column {
         columns: 6
         rowSpacing: 16
         columnSpacing: 32
+
         Repeater {
             model: root.model
             delegate: StatusColorRadioButton {

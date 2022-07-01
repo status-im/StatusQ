@@ -148,6 +148,8 @@ ThemePalette {
     miscColor12: getColor('green6')
 
     userCustomizationColors: [
+        getColor('black', 0.8), // update me when figma is ready
+        getColor('grey3'), // update me when figma is ready
         "#AAC6FF",
         "#887AF9",
         "#51D0F0",
@@ -158,8 +160,6 @@ ThemePalette {
         "#10A88E",
         "#AD4343",
         "#EAD27B",
-        "silver", // update me when figma is ready
-        "darkgrey", // update me when figma is ready
     ]
 
     identiconRingColors: ["#000000", "#726F6F", "#C4C4C4", "#E7E7E7", "#FFFFFF", "#00FF00",
