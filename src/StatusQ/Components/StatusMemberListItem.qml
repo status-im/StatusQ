@@ -53,10 +53,10 @@ StatusListItem {
     */
     property string pubKey: ""
     /*!
-       \qmlproperty string StatusMemberListItem::isContact
+       \qmlproperty string StatusMemberListItem::isMutualContact
        This property holds if the member represented is contact.
     */
-    property bool isContact: false
+    property bool isMutualContact: false
     /*!
        \qmlproperty string StatusMemberListItem::isVerified
        This property holds if the member represented is verified contact.
@@ -111,7 +111,7 @@ StatusListItem {
     // root object settings:
     title: (root.nickName === "") ? root.userName : root.nickName
     statusListItemTitleIcons.sourceComponent: StatusContactVerificationIcons {
-        isMutualContact: root.isContact
+        isMutualContact: root.isMutualContact
         trustIndicator: {
             if (root.isVerified) return StatusContactVerificationIcons.TrustedType.Verified
             else if (root.isUntrustworthy) return StatusContactVerificationIcons.TrustedType.Untrustworthy

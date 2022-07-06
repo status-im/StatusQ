@@ -272,7 +272,7 @@ StatusAppThreePanelLayout {
                 pubKey: model.pubKey
                 isVerified: model.isVerified
                 isUntrustworthy: model.isUntrustworthy
-                isContact: model.isContact
+                isMutualContact: model.isMutualContact
                 image.source: model.icon
                 image.isIdenticon: false
                 status: model.onlineStatus

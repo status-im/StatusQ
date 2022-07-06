@@ -177,7 +177,7 @@ Item {
                                        "localNickname": entry.localNickname,
                                        "isVerified": entry.isVerified,
                                        "isUntrustworthy": entry.isUntrustworthy,
-                                       "isContact": entry.isMutualContact,
+                                       "isMutualContact": entry.isMutualContact,
                                        "ringSpecModel": entry.ringSpecModel,
                                        "icon": entry.icon,
                                        "onlineStatus": entry.onlineStatus,
@@ -409,7 +409,7 @@ Item {
                 pubKey: root.compressedKeyGetter(model.pubKey)
                 isVerified: model.isVerified
                 isUntrustworthy: model.isUntrustworthy
-                isContact: model.isContact
+                isMutualContact: model.isMutualContact
                 image.source: model.icon
                 image.isIdenticon: false
                 icon.color: Theme.palette.userCustomizationColors[root.colorIdForPubkeyGetter(model.pubKey)]
