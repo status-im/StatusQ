@@ -15,7 +15,7 @@ Image {
     onIconChanged: {
         if (icon !== "") {
             source = "../../assets/img/icons/" + icon + ".svg";
-            objectName= icon + "-icon"
+            objectName = icon + "-icon"
         }
     }
 
