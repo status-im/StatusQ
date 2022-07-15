@@ -8,7 +8,7 @@ import StatusQ.Core.Theme 0.1
 Rectangle {
     id: buttonsContainer
 
-    property list<Item> quickActions
+    property list<Item> items
 
     QtObject {
         id: _internal
@@ -43,9 +43,9 @@ Rectangle {
         height: parent.height - 2 * _internal.containerMargin
     }
 
-    onQuickActionsChanged: {
-        for (let idx in quickActions) {
-            quickActions[idx].parent = buttonRow
+    onItemsChanged: {
+        for (let idx in items) {
+            items[idx].parent = buttonRow
         }
     }
 }

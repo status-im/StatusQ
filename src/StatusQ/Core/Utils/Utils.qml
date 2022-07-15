@@ -1,6 +1,8 @@
 pragma Singleton
 
 import QtQuick 2.13
+import StatusQ.Core.Theme 0.1
+import "./xss.js" as XSS
 
 QtObject {
 
@@ -149,6 +151,71 @@ QtObject {
             context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
             context.stroke();
         }
+    }
+
+    function linkifyAndXSS(inputText) {
+        //URLs starting with http://, https://, or ftp://
+        var replacePattern1 = /(\b(https?|ftp|statusim):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+        var replacedText = inputText.replace(replacePattern1, "<a href='$1'>$1</a>");
+
+        //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+        var replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+        replacedText = replacedText.replace(replacePattern2, "$1<a href='http://$2'>$2</a>");
+
+        return XSS.filterXSS(replacedText)
+    }
+
+    function filterXSS(inputText) {
+        return XSS.filterXSS(inputText)
+    }
+
+    function getMessageWithStyle(msg, hoveredLink = "") {
+        return `<style type="text/css">` +
+                    `img, a, del, code, blockquote { margin: 0; padding: 0; }` +
+                    `code {` +
+                        `font-family: ${Theme.palette.codeFont.name};` +
+                        `font-weight: 400;` +
+                        `font-size: 14;` +
+                        `padding: 2px 4px;` +
+                        `border-radius: 4px;` +
+                        `background-color: ${Theme.palette.baseColor2};` +
+                        `color: ${Theme.palette.directColor1};` +
+                        `white-space: pre;` +
+                    `}` +
+                    `p {` +
+                        `line-height: 22px;` +
+                    `}` +
+                    `a {` +
+                        `color: ${Theme.palette.primaryColor1};` +
+                    `}` +
+                    `a.mention {` +
+                        `color: ${Theme.palette.mentionColor1};` +
+                        `background-color: ${Theme.palette.mentionColor4};` +
+                        `text-decoration: none;` +
+                        `padding: 0px 2px;` +
+                    `}` +
+                    (hoveredLink !== "" ? `a.mention[href="${hoveredLink}"] { background-color: ${Theme.palette.mentionColor2}; }` : ``) +
+                    `del {` +
+                        `text-decoration: line-through;` +
+                    `}` +
+                    `table.blockquote td {` +
+                        `padding-left: 10px;` +
+                        `color: ${Theme.palette.baseColor1};` +
+                    `}` +
+                    `table.blockquote td.quoteline {` +
+                        `background-color: ${Theme.palette.baseColor1};` +
+                        `height: 100%;` +
+                        `padding-left: 0;` +
+                    `}` +
+                    `.emoji {` +
+                        `vertical-align: bottom;` +
+                    `}` +
+                    `span.isEdited {` +
+                        `color: ${Theme.palette.baseColor1};` +
+                        `margin-left: 5px` +
+                    `}` +
+                `</style>` +
+                `${msg}`
     }
 }
 
