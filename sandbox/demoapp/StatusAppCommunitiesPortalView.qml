@@ -66,11 +66,11 @@ StatusScrollView {
                     height: 32
                     radius: 36
                     closeButtonVisible: false
-                    icon.emoji: model.emoji
-                    icon.height: 32
-                    icon.width: icon.height
-                    icon.color: "transparent"
-                    icon.isLetterIdenticon: true
+                    asset.emoji: model.emoji
+                    asset.height: 32
+                    asset.width: icon.height
+                    asset.color: "transparent"
+                    asset.isLetterIdenticon: true
                     title: model.name
                     titleText.font.pixelSize: 15
                     titleText.color: Theme.palette.primaryColor1

@@ -81,7 +81,7 @@ MenuItem {
                 height: 16
                 color: {
                     let subMenuItemIcon = statusPopupMenu.subMenuItemIcons[statusPopupMenuItem.subMenuIndex]
-                    return subMenuItemIcon && subMenuItemIcon.color ? subMenuItemIcon.color : statusPopupMenuItem.action.iconSettings.background.color
+                    return subMenuItemIcon && subMenuItemIcon.color ? subMenuItemIcon.color : statusPopupMenuItem.action.iconSettings.bgColor
                 }
                 name: statusPopupMenuItem.text
                 letterSize: 11
@@ -97,13 +97,13 @@ MenuItem {
             implicitHeight: 24
             StatusRoundedImage {
                 anchors.centerIn: parent
-                width: statusPopupMenuItem.action.image.width
-                height: statusPopupMenuItem.action.image.height
+                width: statusPopupMenuItem.action.icon.imgWidth
+                height: statusPopupMenuItem.action.icon.imgHeight
                 image.source: statusPopupMenuItem.subMenu ?
                     statusPopupMenu.subMenuItemIcons[statusPopupMenuItem.subMenuIndex].source :
-                    statusPopupMenuItem.action.image.source
+                    statusPopupMenuItem.action.icon.imgSource
                 border.width: (statusPopupMenuItem.subMenu && statusPopupMenu.subMenuItemIcons[statusPopupMenuItem.subMenuIndex].isIdenticon) || 
-                    statusPopupMenuItem.action.image.isIdenticon ? 1 : 0
+                    statusPopupMenuItem.action.icon.imgIsIdenticon ? 1 : 0
                 border.color: Theme.palette.directColor7
             }
         }
@@ -128,10 +128,10 @@ MenuItem {
         active: {
             if (enabled) {
                 let hasIconSettings = !!statusPopupMenuItem.action.icon.name ||
-                  (statusPopupMenuItem.action.iconSettings && 
-                    (!!statusPopupMenuItem.action.iconSettings.name || !!statusPopupMenuItem.action.iconSettings.isLetterIdenticon))
+                  (statusPopupMenuItem.action.assetSettings &&
+                    (!!statusPopupMenuItem.action.assetSettings.name || !!statusPopupMenuItem.action.assetSettings.isLetterIdenticon))
 
-                let hasImageSettings = statusPopupMenuItem.action.image && !!statusPopupMenuItem.action.image.source.toString()
+                let hasImageSettings = statusPopupMenuItem.action.assetSettings && !!statusPopupMenuItem.action.assetSettings.imgSource.toString()
 
                 return enabled && (parent.subMenu && !!statusPopupMenu.subMenuItemIcons[parent.subMenuIndex]) || hasIconSettings || hasImageSettings
             }

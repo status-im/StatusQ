@@ -102,10 +102,10 @@ StatusPopupMenu {
                     sourceComponent: StatusSearchPopupMenuItem {
                         value: model.value
                         text: model.text
-                        image.source: model.imageSource
-                        iconSettings.name: model.iconName
-                        iconSettings.color: model.isUserIcon ? Theme.palette.userCustomizationColors[model.colorId] : model.iconColor
-                        iconSettings.charactersLen: model.isUserIcon ? 2 : 1
+                        assetSettings.imgSource: model.imageSource
+                        assetSettings.name: model.iconName
+                        assetSettings.color: model.isUserIcon ? Theme.palette.userCustomizationColors[model.colorId] : model.iconColor
+                        assetSettings.charactersLen: model.isUserIcon ? 2 : 1
                         ringSettings.ringSpecModel: model.colorHash
                         onTriggered: {
                             searchPopup.resetSearchSelection()

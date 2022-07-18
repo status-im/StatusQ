@@ -56,7 +56,11 @@ Loader {
                 StatusSmartIdenticon {
                     id: profileImage
                     Layout.alignment: Qt.AlignTop
-                    image: replyDetails.profileImage
+                    asset.imgSource: replyDetails.profileImage.imgSource
+                    asset.imgWidth: replyDetails.profileImage.imgWidth
+                    asset.imgHeight: replyDetails.profileImage.imgHeight
+                    asset.imgStatus: replyDetails.profileImage.imgStatus
+                    asset.imgIsIdenticon: replyDetails.profileImage.imgIsIdenticon
                     name: replyDetails.displayName
                     MouseArea {
                         cursorShape: Qt.PointingHandCursor

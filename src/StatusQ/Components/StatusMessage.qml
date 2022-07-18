@@ -75,7 +75,11 @@ Rectangle {
                 Layout.alignment: Qt.AlignTop
                 Layout.topMargin: 10
                 Layout.leftMargin: 16
-                image: messageDetails.profileImage
+                asset.imgSource: messageDetails.profileImage.imgSource
+                asset.imgWidth: messageDetails.profileImage.imgWidth
+                asset.imgHeight: messageDetails.profileImage.imgHeight
+                asset.imgStatus: messageDetails.profileImage.imgStatus
+                asset.imgIsIdenticon: messageDetails.profileImage.imgIsIdenticon
                 name: messageHeader.displayName
                 MouseArea {
                     cursorShape: Qt.PointingHandCursor

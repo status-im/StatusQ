@@ -8,15 +8,13 @@ QtObject {
     property bool headerImageEditable: false
     property bool editable: false
     property Component popupMenu
-    property StatusImageSettings image: StatusImageSettings {
-        width: 40
-        height: 40
-        isIdenticon: false
-    }
 
-    property StatusIconSettings icon: StatusIconSettings {
+    property StatusAssetSettings asset: StatusAssetSettings {
         width: 40
         height: 40
         isLetterIdenticon: false
+        imgWidth: 40
+        imgHeight: 40
+        imgIsIdenticon: false
     }
 }

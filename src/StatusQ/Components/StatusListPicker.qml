@@ -292,7 +292,7 @@ Item {
                     bottomPadding: 0
                     placeholderText: root.placeholderSearchText
                     text: root.searchText
-                    input.icon.name: "search"
+                    input.asset.name: "search"
 
                     onTextChanged: root.searchText = text
                 }
@@ -301,11 +301,11 @@ Item {
                 width: content.itemWidth
                 height: content.itemHeight
                 color: mouseArea.containsMouse ? Theme.palette.baseColor4 : "transparent"
-                image: StatusImageSettings {
-                    source: model.imageSource ? model.imageSource : ""
-                    width: 15
-                    height: 15
-                    isIdenticon: false
+                asset: StatusAssetSettings {
+                    imgSource: model.imageSource ? model.imageSource : ""
+                    imgWidth: 15
+                    imgHeight: 15
+                    imgIsIdenticon: false
                 }
                 name: model.name
                 shortName: model.shortName

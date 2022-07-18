@@ -17,16 +17,13 @@ Row {
     signal editButtonClicked
     signal headerImageClicked
 
-    property StatusImageSettings image: StatusImageSettings {
-        width: 40
-        height: 40
-        isIdenticon: false
-    }
-
-    property StatusIconSettings icon: StatusIconSettings {
+    property StatusAssetSettings asset: StatusAssetSettings {
         width: 40
         height: 40
         isLetterIdenticon: false
+        imgWidth: 40
+        imgHeight: 40
+        imgIsIdenticon: false
     }
 
     spacing: 8
@@ -36,21 +33,21 @@ Row {
         anchors.verticalCenter: parent.verticalCenter
         width: active ? 40 : 0
         sourceComponent: {
-            if (statusImageWithTitle.icon.isLetterIdenticon) {
+            if (statusImageWithTitle.asset.isLetterIdenticon) {
                 return statusLetterIdenticon
             }
             return statusRoundedImageCmp
         }
-        active: statusImageWithTitle.icon.isLetterIdenticon ||
-                !!statusImageWithTitle.image.source.toString()
+        active: statusImageWithTitle.asset.isLetterIdenticon ||
+                !!statusImageWithTitle.asset.imgSource.toString()
     }
 
     Component {
         id: statusLetterIdenticon
         StatusLetterIdenticon {
-            width: statusImageWithTitle.icon.width
-            height: statusImageWithTitle.icon.height
-            color: statusImageWithTitle.icon.background.color
+            width: statusImageWithTitle.asset.width
+            height: statusImageWithTitle.asset.height
+            color: statusImageWithTitle.asset.bgColor
             name: statusImageWithTitle.title
         }
     }
@@ -58,18 +55,18 @@ Row {
     Component {
         id: statusRoundedImageCmp
         Item {
-            width: statusImageWithTitle.image.width
-            height: statusImageWithTitle.image.height
+            width: statusImageWithTitle.asset.imgWidth
+            height: statusImageWithTitle.asset.imgHeight
             StatusRoundedImage {
                 id: statusRoundedImage
                 objectName: "headerImage"
-                image.source:  statusImageWithTitle.image.source
-                width: statusImageWithTitle.image.width
-                height: statusImageWithTitle.image.height
-                color: statusImageWithTitle.image.isIdenticon ?
+                image.source:  statusImageWithTitle.asset.imgSource
+                width: statusImageWithTitle.asset.imgWidth
+                height: statusImageWithTitle.asset.imgHeight
+                color: statusImageWithTitle.asset.imgIsIdenticon ?
                            Theme.palette.statusRoundedImage.backgroundColor :
                            "transparent"
-                border.width: statusImageWithTitle.image.isIdenticon ? 1 : 0
+                border.width: statusImageWithTitle.asset.imgIsIdenticon ? 1 : 0
                 border.color: Theme.palette.directColor7
                 showLoadingIndicator: true
             }

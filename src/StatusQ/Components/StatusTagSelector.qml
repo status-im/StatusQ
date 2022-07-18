@@ -412,9 +412,9 @@ Item {
                 isVerified: model.isVerified
                 isUntrustworthy: model.isUntrustworthy
                 isContact: model.isContact
-                image.source: model.icon
-                image.isIdenticon: false
-                icon.color: Theme.palette.userCustomizationColors[root.colorIdForPubkeyGetter(model.pubKey)]
+                asset.imgSource: model.icon
+                asset.imgIsIdenticon: false
+                asset.color: Theme.palette.userCustomizationColors[root.colorIdForPubkeyGetter(model.pubKey)]
                 status: model.onlineStatus
                 statusListItemIcon.badge.border.color: sensor.containsMouse ? Theme.palette.baseColor2 : Theme.palette.baseColor4
                 ringSettings.ringSpecModel: root.ringSpecModelGetter(model.pubKey)

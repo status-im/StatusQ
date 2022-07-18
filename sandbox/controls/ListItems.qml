@@ -17,18 +17,18 @@ GridLayout {
 
     StatusNavigationListItem {
         title: "Menu Item"
-        icon.name: "info"
+        asset.name: "info"
     }
 
     StatusNavigationListItem {
         title: "Menu Item"
-        icon.name: "info"
+        asset.name: "info"
         badge.value: 1
     }
     StatusNavigationListItem {
         title: "Menu Item (selected) with very long text"
         selected: true
-        icon.name: "info"
+        asset.name: "info"
         badge.value: 1
     }
 
@@ -68,18 +68,18 @@ GridLayout {
     StatusChatListItem {
         name: "community-channel-emoji"
         type: StatusChatListItem.Type.CommunityChat
-        icon.emoji: "😁"
+        asset.emoji: "😁"
     }
 
     StatusChatListItem {
         name: "community-channel-with-image"
-        image.source: "qrc:/demoapp/data/profile-image-1.jpeg"
+        asset.imgSource: "qrc:/demoapp/data/profile-image-1.jpeg"
         type: StatusChatListItem.Type.CommunityChat
     }
 
     StatusChatListItem {
         name: "Weird Crazy Otter"
-        image.source: "qrc:/demoapp/data/profile-image-1.jpeg"
+        asset.imgSource: "qrc:/demoapp/data/profile-image-1.jpeg"
         type: StatusChatListItem.Type.OneToOneChat
     }
 
@@ -179,15 +179,15 @@ GridLayout {
     StatusListItem {
         title: "Title"
         subTitle: "Subtitle"
-        image.source: "qrc:/demoapp/data/profile-image-1.jpeg"
+        icon.imgSource: "qrc:/demoapp/data/profile-image-1.jpeg"
     }
 
     StatusListItem {
         title: "Title"
         subTitle: "Subtitle"
-        image.source: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0Bh
+        icon.imgSource: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0Bh
 CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2ImYgiNITTlTdG1nUZ5a92VITQxITFiJmIIjSE0htAYQrMHAAD//+wwFVpz+yqXAAAAAElFTkSuQmCC"
-        image.isIdenticon: true
+        icon.imgIsIdenticon: true
     }
 
     StatusListItem {
@@ -311,10 +311,10 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
     StatusListItem {
         title: "List Item with Badge"
         subTitle: "Subtitle"
-        image.source: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0Bh
+        icon.imgSource: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0Bh
 CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2ImYgiNITTlTdG1nUZ5a92VITQxITFiJmIIjSE0htAYQrMHAAD//+wwFVpz+yqXAAAAAElFTkSuQmCC"
-        image.isIdenticon: true
-        badge.image.source: "qrc:/demoapp/data/profile-image-1.jpeg"
+        icon.imgIsIdenticon: true
+        badge.icon.imgSource: "qrc:/demoapp/data/profile-image-1.jpeg"
         badge.primaryText: "CryptoKitties"
         badge.secondaryText: "#test"
     }
@@ -397,9 +397,9 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
         pubKey: "0x043a7ed0e8752236a4688563652fd0296453cef00a5dcddbe252dc74f72cc1caa97a2b65e4a1a52d9c30a84c9966beaaaf6b333d659cbdd2e486b443ed1012cf04"
         isVerified: true
         isContact: true
-        image.source: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0BhCExPynn1gWf9bx498P7/
+        icon.imgSource: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0BhCExPynn1gWf9bx498P7/
                       nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2ImYgiNITTlTdG1nUZ5a92VITQxITFiJmIIjSE0htAYQrMHAAD//+wwFVpz+yqXAAAAAElFTkSuQmCC"
-        image.isIdenticon: true
+        icon.imgIsIdenticon: true
         status: 1 // FIXME: use enum
         ringSettings.ringSpecModel:
             ListModel {
@@ -435,9 +435,9 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
         userName: "annabelle"
         pubKey: "0x043a7ed0e8752236a4688563652fd0296453cef00a5dcddbe252dc74f72cc1caa97a2b65e4a1a52d9c30a84c9966beaaaf6b333d659cbdd2e486b443ed1012cf04"
         isContact: true
-        image.source: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0BhCExPynn1gWf9bx498P7/
+        icon.imgSource: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0BhCExPynn1gWf9bx498P7/
                        nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2ImYgiNITTlTdG1nUZ5a92VITQxITFiJmIIjSE0htAYQrMHAAD//+wwFVpz+yqXAAAAAElFTkSuQmCC"
-        image.isIdenticon: true
+        icon.imgIsIdenticon: true
     }
 
     StatusMemberListItem {

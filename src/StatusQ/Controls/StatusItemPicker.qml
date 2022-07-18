@@ -39,10 +39,10 @@ Rectangle {
     id: root
 
     /*!
-       \qmlproperty string StatusItemPicker::image
-       This property holds the image settings information.
+       \qmlproperty string StatusItemPicker::asset
+       This property holds the asset(image/icon) settings information.
     */
-    property StatusImageSettings image
+    property StatusAssetSettings asset
 
     /*!
        \qmlproperty string StatusItemPicker::name
@@ -112,10 +112,10 @@ Rectangle {
         StatusIcon {
             id: imageItem
             anchors.verticalCenter: parent.verticalCenter
-            source: root.image.source ? root.image.source : ""
-            width: root.image.width
-            height: root.image.height
-            visible: root.image.source !== undefined
+            source: root.asset.source ? root.asset.source : ""
+            width: root.asset.width
+            height: root.asset.height
+            visible: root.asset.source !== undefined
         }
 
         StatusBaseText {

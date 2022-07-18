@@ -10,7 +10,7 @@ Rectangle {
     property string subTitle: ""
     property alias subTitleComponent: statusDescriptionListItemSubTitle
     property string value: ""
-    property StatusIconSettings icon: StatusIconSettings {
+    property StatusAssetSettings icon: StatusAssetSettings {
         width: 23
         height: 23
     }

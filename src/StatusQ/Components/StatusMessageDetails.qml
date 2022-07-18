@@ -9,9 +9,9 @@ QtObject {
     property string displayName: ""
     property string secondaryName: ""
     property string chatID: ""
-    property StatusImageSettings profileImage: StatusImageSettings {
-        width: 40
-        height: 40
+    property StatusAssetSettings profileImage: StatusAssetSettings {
+        imgWidth: 40
+        imgHeight: 40
     }
     property bool isEdited: false
     property string messageText: ""

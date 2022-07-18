@@ -14,13 +14,13 @@ Button {
     property var type: StatusPickerButton.Type.Next
 
     /*!
-       \qmlproperty StatusImageSettings StatusPickerButton::image
+       \qmlproperty StatusAssetSettings StatusPickerButton::image
        This property holds the image settings information.
     */
-    property StatusImageSettings image: StatusImageSettings {
-        width: 20
-        height: 20
-        isIdenticon: false
+    property StatusAssetSettings image: StatusAssetSettings {
+        imgWidth: 20
+        imgHeight: 20
+        imgIsIdenticon: false
     }
 
     enum Type {

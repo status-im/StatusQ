@@ -37,17 +37,15 @@ Rectangle {
             anchors.left: parent.left
             anchors.leftMargin: 8
             anchors.verticalCenter: parent.verticalCenter
-            image: StatusImageSettings {
-                width: 40
-                height: 40
-                source: root.identicon
-                isIdenticon: true
-            }
-            icon: StatusIconSettings {
+            asset: StatusAssetSettings {
                 width: 40
                 height: 40
                 letterSize: 15
                 color: Theme.palette.miscColor5
+                imgWidth: 40
+                imgHeight: 40
+                imgSource: root.identicon
+                imgIsIdenticon: true
             }
             name: root.name
         }
