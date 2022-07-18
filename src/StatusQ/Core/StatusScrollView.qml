@@ -28,29 +28,45 @@ import StatusQ.Controls 0.1
    For a list of components available see StatusQ.
 */
 Flickable {
-    id: flickable
+    id: root
 
+    // NOTE: this should be replaced with margins since Qt 5.15
     property int padding: 8
     property int topPadding: padding
     property int bottomPadding: padding
     property int leftPadding: padding
     property int rightPadding: padding
 
-    property Item background: Item {}
+    property Item background: null
 
-    readonly property int availableWidth : width - leftPadding - rightPadding
-    readonly property int availableHeight : height - topPadding - bottomPadding
+    readonly property int availableWidth: width - leftPadding - rightPadding
+    readonly property int availableHeight: height - topPadding - bottomPadding
+
+    onBackgroundChanged: {
+        if (background) {
+            background.anchors.fill = root;
+        }
+    }
 
     // NOTE: in Qt6 clip true will be default
     clip: true
-    contentX: leftPadding
-    contentY: topPadding
-    contentWidth: contentItem.childrenRect.width - leftPadding - rightPadding
-    contentHeight: contentItem.childrenRect.height - topPadding - bottomPadding
+    topMargin: topPadding
+    bottomMargin: bottomPadding
+    leftMargin: leftPadding
+    rightMargin: rightPadding
+    contentWidth: contentItem.childrenRect.width
+    contentHeight: contentItem.childrenRect.height
     boundsBehavior: Flickable.StopAtBounds
-    maximumFlickVelocity: 0
+    maximumFlickVelocity: 2000
     synchronousDrag: true
 
-    ScrollBar.horizontal: StatusScrollBar { policy: ScrollBar.AsNeeded }
-    ScrollBar.vertical: StatusScrollBar { policy: ScrollBar.AsNeeded }
+    ScrollBar.horizontal: StatusScrollBar {
+        policy: ScrollBar.AsNeeded
+        visible: resolveVisibility(policy, root.width, root.contentWidth)
+    }
+
+    ScrollBar.vertical: StatusScrollBar {
+        policy: ScrollBar.AsNeeded
+        visible: resolveVisibility(policy, root.height, root.contentHeight)
+    }
 }
