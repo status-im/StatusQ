@@ -56,6 +56,8 @@ Flickable {
     rightMargin: rightPadding
     contentWidth: contentItem.childrenRect.width
     contentHeight: contentItem.childrenRect.height
+    implicitWidth: contentWidth + leftPadding + rightPadding
+    implicitHeight: contentHeight + topPadding + bottomPadding
     boundsBehavior: Flickable.StopAtBounds
     maximumFlickVelocity: 2000
     synchronousDrag: true
