@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include <QWindow>
 #include <QDebug>
+#include <QDirIterator>
 
 #include "statuswindow.h"
 #include "spellchecker.h"
@@ -12,6 +13,13 @@ SandboxApp::SandboxApp(int &argc, char **argv)
       m_handler(new Handler(this))
 {
     connect(m_handler, &Handler::restartQml, this, &SandboxApp::restartEngine, Qt::QueuedConnection);
+
+#ifdef QT_DEBUG
+    connect(&m_watcher, &QFileSystemWatcher::directoryChanged, [this](const QString&) {
+        restartEngine();
+    });
+
+#endif
 }
 
 void SandboxApp::startEngine()
@@ -21,6 +29,16 @@ void SandboxApp::startEngine()
 
 #ifdef QT_DEBUG
     const QUrl url = QUrl::fromLocalFile(applicationDirPath() + "/../main.qml");
+    m_watcher.addPath(applicationDirPath() + "/../");
+//    m_watcher.addPath(applicationDirPath() + "/../../src");
+    QDirIterator it(applicationDirPath() + "/../", QDir::Dirs | QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        qDebug() << it.filePath();
+        if (!it.filePath().isEmpty())
+           qDebug() << m_watcher.addPath(it.filePath());
+        it.next();
+    }
+
 #else
     const QUrl url(QStringLiteral("qrc:/main.qml"));
 #endif
