@@ -110,7 +110,6 @@ Item {
         id: selectMenu
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
         width: parent.width
-        clip: true
 
         Repeater {
             id: menuItems
