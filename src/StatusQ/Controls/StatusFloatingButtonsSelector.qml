@@ -105,8 +105,8 @@ Row {
             implicitHeight: 32
             topPadding: 8
             bottomPadding: 0
-            defaultLeftPadding: 4
-            defaultRightPadding: 4
+            leftPadding: 4
+            rightPadding: 4
             hoverColor: Theme.palette.statusFloatingButtonHighlight
             normalColor: Theme.palette.baseColor3
             icon.name: "more"
