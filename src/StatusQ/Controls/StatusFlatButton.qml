@@ -8,14 +8,14 @@ StatusBaseButton {
     normalColor: "transparent"
     hoverColor:  type === StatusBaseButton.Type.Normal ? Theme.palette.primaryColor3
                                                        : Theme.palette.dangerColor3
-    disaledColor: "transparent"
+    disabledColor: "transparent"
 
     textColor: type === StatusBaseButton.Type.Normal ? Theme.palette.primaryColor1
                                                      : Theme.palette.dangerColor1
     disabledTextColor: Theme.palette.baseColor1
 
-    border.color: type === StatusBaseButton.Type.Normal || hovered ? "transparent"
+    borderColor: type === StatusBaseButton.Type.Normal || hovered ? "transparent"
                                                           : Theme.palette.baseColor2
-    rightPadding: icon.name !== "" ? 18 : defaultRightPadding
-    leftPadding: icon.name !== "" ? 14 : defaultLeftPadding
+    rightPadding: icon.name !== "" ? 18 : rightPadding
+    leftPadding: icon.name !== "" ? 14 : leftPadding
 }

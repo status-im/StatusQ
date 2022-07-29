@@ -341,7 +341,7 @@ Column {
     // Button with emoji
     StatusButton {
         text: "Button with Emoji"
-        icon.emoji: "🖼️️"
+        asset.emoji: "🖼️️"
     }
 
     RowLayout {

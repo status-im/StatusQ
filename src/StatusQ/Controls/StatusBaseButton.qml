@@ -1,11 +1,11 @@
 import QtQuick 2.14
+import QtQuick.Controls 2.14
 import StatusQ.Core 0.1
 import StatusQ.Core.Theme 0.1
 import StatusQ.Components 0.1
 import StatusQ.Core.Utils 0.1
-
-Rectangle {
-    id: statusBaseButton
+Button {
+    id: root
 
     enum Size {
         Tiny,
@@ -18,102 +18,76 @@ Rectangle {
         Danger
     }
 
-    property StatusAssetSettings icon: StatusAssetSettings {
-        width: 24
-        height: 24
-    }
+    property StatusAssetSettings asset: StatusAssetSettings { }
 
     property bool loading: false
 
-    property alias hovered: sensor.containsMouse
+    property color normalColor
+    property color hoverColor
+    property color disabledColor
+
+    property color textColor
+    property color disabledTextColor
+    property color borderColor: "transparent"
 
     property int size: StatusBaseButton.Size.Large
     property int type: StatusBaseButton.Type.Normal
 
-    property alias text: label.text
-    property alias font: label.font
-
-    property real defaultLeftPadding: size === StatusBaseButton.Size.Large ? 24 : 12
-    property real defaultRightPadding: size === StatusBaseButton.Size.Large ? 24 : 12
-    property real defaultTopPadding: {
-        switch (size) {
+    implicitWidth: (contentItem.width + root.leftPadding + root.rightPadding)
+    implicitHeight: (contentItem.height + root.topPadding + root.bottomPadding)
+    leftPadding: (horizontalPadding > 0) ? horizontalPadding : ((size === StatusBaseButton.Size.Large) ? 24 : 12)
+    rightPadding: leftPadding
+    topPadding: {
+        if (verticalPadding > 0) {
+            verticalPadding;
+        } else {
+            switch (size) {
             case StatusBaseButton.Size.Tiny:
-              return 5
+                return 5;
             case StatusBaseButton.Size.Small:
-              return 10
+                return 10;
             case StatusBaseButton.Size.Large:
             default:
-              return 11
+                return 11;
+            }
         }
     }
-    property real defaultBottomPadding: {
-        switch (size) {
-            case StatusBaseButton.Size.Tiny:
-              return 5
-            case StatusBaseButton.Size.Small:
-              return 10
-            case StatusBaseButton.Size.Large:
-            default:
-              return 11
+    bottomPadding: topPadding
+    enabled: !loading
+    font.pixelSize: size === StatusBaseButton.Size.Large ? 15 : 13 // by design
+
+    background: Rectangle {
+        radius: root.size !== StatusBaseButton.Size.Tiny ? 8 : 6
+        border.color: root.borderColor
+        color: {
+            if (root.enabled)
+                return root.hovered || highlighted ? hoverColor : normalColor;
+            return disabledColor
         }
-    }
-
-
-    property real leftPadding: defaultLeftPadding
-    property real rightPadding: defaultRightPadding
-    property real topPadding: defaultTopPadding
-    property real bottomPadding: defaultBottomPadding
-
-    property color normalColor
-    property color hoverColor
-    property color disaledColor
-
-    property color textColor
-    property color disabledTextColor
-
-    signal pressed(var mouse)
-    signal released(var mouse)
-    signal clicked(var mouse)
-    signal pressAndHold(var mouse)
-
-    property bool highlighted: false
-
-
-    /// Implementation
-    implicitWidth: layout.width + statusBaseButton.leftPadding + statusBaseButton.rightPadding
-    implicitHeight: layout.height + statusBaseButton.topPadding + statusBaseButton.bottomPadding
-
-
-    radius: size !== StatusBaseButton.Size.Tiny ? 8 : 6
-
-    color: {
-        if (statusBaseButton.enabled)
-            return sensor.containsMouse || highlighted ? hoverColor
-                                                       : normalColor;
-        return disaledColor
+        MouseArea {
+            id: mouseArea
+            anchors.fill: parent
+            acceptedButtons: Qt.NoButton
+            cursorShape: loading ? Qt.ArrowCursor : Qt.PointingHandCursor;
+        }
     }
 
     QtObject {
         id: d
-        readonly property color textColor: statusBaseButton.enabled ? statusBaseButton.textColor : statusBaseButton.disabledTextColor
+        readonly property color textColor: root.enabled ? root.textColor : root.disabledTextColor
     }
 
-    MouseArea {
-        id: sensor
-        anchors.fill: parent
-        cursorShape: loading ? Qt.ArrowCursor
-                             : Qt.PointingHandCursor
-
-        hoverEnabled: true
-        enabled: !loading && statusBaseButton.enabled
+    contentItem: Item {
+        width: layout.width
+        height: layout.height
 
         Loader {
             anchors.centerIn: parent
             active: loading
             sourceComponent: StatusLoadingIndicator {
                 color: d.textColor
-            } // Indicator
-        } // Loader
+            }
+        }
 
         Row {
             id: layout
@@ -121,56 +95,30 @@ Rectangle {
             spacing: 4
             StatusIcon {
                 id: statusIcon
-                width: statusBaseButton.icon.width
-                height: statusBaseButton.icon.height
-                icon: statusBaseButton.icon.name
-                rotation: statusBaseButton.icon.rotation
+                width: root.icon.width
+                height: root.icon.height
+                icon: root.icon.name
+                rotation: root.asset.rotation
                 anchors.verticalCenter: parent.verticalCenter
-                opacity: !loading && statusBaseButton.icon.name !== ""
-                visible: statusBaseButton.icon.name !== ""
+                opacity: !loading && root.icon.name !== ""
+                visible: root.icon.name !== ""
                 color: d.textColor
-            } // Icon
+            }
             StatusEmoji {
-                width: statusBaseButton.icon.width
-                height: statusBaseButton.icon.height
+                width: root.icon.width
+                height: root.icon.height
                 anchors.verticalCenter: parent.verticalCenter
-                visible: statusBaseButton.icon.emoji
-                emojiId: Emoji.iconId(statusBaseButton.icon.emoji, statusBaseButton.icon.emojiSize) || ""
-            } // Emoji
+                visible: root.asset.emoji
+                emojiId: Emoji.iconId(root.asset.emoji, root.asset.emojiSize) || ""
+            }
             StatusBaseText {
                 id: label
                 opacity: !loading
                 anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: size === StatusBaseButton.Size.Large ? 15 : 13 // by design
-
+                font: root.font
+                text: root.text
                 color: d.textColor
-            } // Text
-        } // Ro
-
-
-        onPressed: {
-            if (!loading) {
-                statusBaseButton.pressed(mouse)
             }
         }
-
-        onReleased: {
-            if (!loading) {
-                statusBaseButton.released(mouse)
-            }
-        }
-
-        onClicked: {
-            if (!loading) {
-                statusBaseButton.clicked(mouse)
-            }
-        }
-
-        onPressAndHold: {
-            if (!loading) {
-                statusBaseButton.pressAndHold(mouse)
-            }
-        }
-    } // Sensor
-
+    }
 }
