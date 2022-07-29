@@ -47,9 +47,8 @@ StatusModal {
                                 colorHash = "") {
         searchSelectionButton.primaryText = text
         searchSelectionButton.secondaryText = secondaryText
-        searchSelectionButton.iconSettings.imgSource = imageSource
         searchSelectionButton.iconSettings.imgIsIdenticon = isIdenticon
-        searchSelectionButton.iconSettings.name = iconName
+        searchSelectionButton.iconSettings.name = iconName || imageSource
         searchSelectionButton.iconSettings.color = isUserIcon ? Theme.palette.userCustomizationColors[colorId] : iconColor
         searchSelectionButton.iconSettings.isLetterIdenticon = !iconName && !imageSource
         searchSelectionButton.iconSettings.charactersLen = isUserIcon ? 2 : 1
@@ -130,15 +129,12 @@ StatusModal {
 
                     property string primaryText: ""
                     property string secondaryText: ""
-                    property StatusAssetSettings assetSettings: StatusAssetSettings {
+                    property StatusAssetSettings asset: StatusAssetSettings {
                         width: 16
                         height: 16
                         name: ""
                         isLetterIdenticon: false
                         letterSize: charactersLen > 1 ? 8 : 11
-                        imgWidth: 16
-                        imgHeight: 16
-                        imgSource: ""
                         imgIsIdenticon: false
                     }
 
@@ -182,12 +178,11 @@ StatusModal {
                                     id: identicon
                                     Layout.preferredWidth: active ? 16 : 0
                                     Layout.preferredHeight: 16
-                                    asset: searchOptionsMenuButton.iconSettings
+                                    asset: searchOptionsMenuButton.asset
                                     name: searchOptionsMenuButton.primaryText
                                     active: searchOptionsMenuButton.primaryText !== defaultSearchLocationText &&
-                                            (searchOptionsMenuButton.iconSettings.name ||
-                                             searchOptionsMenuButton.iconSettings.isLetterIdenticon ||
-                                             !!searchOptionsMenuButton.iconSettings.imgSource.toString())
+                                            (searchOptionsMenuButton.asset.name ||
+                                             searchOptionsMenuButton.asset.isLetterIdenticon)
                                 }
 
                                 StatusBaseText {
@@ -283,10 +278,10 @@ StatusModal {
                         asset.color: model.isUserIcon ? Theme.palette.userCustomizationColors[model.colorId] : model.color
                         asset.charactersLen: model.isUserIcon ? 2 : 1
                         titleAsideText: root.formatTimestampFn(model.time)
-                        asset.imgSource: model.image
+                        asset.name: model.image
                         badge.primaryText: model.badgePrimaryText
                         badge.secondaryText: model.badgeSecondaryText
-                        badge.asset.imgSource: model.badgeImage
+                        badge.asset.name: model.badgeImage
                         badge.asset.isLetterIdenticon: model.badgeIsLetterIdenticon
                         badge.asset.color: model.badgeIconColor
                         ringSettings.ringSpecModel: model.colorHash

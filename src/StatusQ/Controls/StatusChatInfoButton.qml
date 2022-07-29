@@ -24,8 +24,6 @@ Rectangle {
         width: 36
         height: 36
         charactersLen: 2
-        imgWidth: 36
-        imgHeight: 36
     }
     property alias ringSettings: identicon.ringSettings
 

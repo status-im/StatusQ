@@ -30,9 +30,6 @@ QtObject {
     property color bgColor: "transparent"
 
     //image
-    property real imgWidth
-    property real imgHeight
-    property url imgSource
     property int imgStatus
     property bool imgIsIdenticon: false
 }

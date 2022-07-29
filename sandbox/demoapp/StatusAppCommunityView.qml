@@ -33,7 +33,7 @@ StatusAppThreePanelLayout {
 
             chatInfoButton.title: "CryptoKitties"
             chatInfoButton.subTitle: "128 Members"
-            chatInfoButton.asset.imgSource: "qrc:/demoapp/data/profile-image-1.jpeg"
+            chatInfoButton.asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
             chatInfoButton.asset.color: Theme.palette.miscColor6
             chatInfoButton.onClicked:  { chatInfoButtonClicked(); }
 
@@ -273,7 +273,7 @@ StatusAppThreePanelLayout {
                 isVerified: model.isVerified
                 isUntrustworthy: model.isUntrustworthy
                 isContact: model.isContact
-                asset.imgSource: model.icon
+                asset.name: model.icon
                 asset.imgIsIdenticon: false
                 status: model.onlineStatus
             }

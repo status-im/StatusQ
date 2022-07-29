@@ -67,8 +67,8 @@ StatusScrollView {
                     radius: 36
                     closeButtonVisible: false
                     asset.emoji: model.emoji
+                    asset.width: 32
                     asset.height: 32
-                    asset.width: icon.height
                     asset.color: "transparent"
                     asset.isLetterIdenticon: true
                     title: model.name

@@ -19,14 +19,12 @@ Rectangle {
     property bool expanded: false
 
     property StatusAssetSettings asset: StatusAssetSettings {
-        width: !!statusExpandableItem.asset.name.toString() ? 24 : 40
-        height: !!statusExpandableItem.asset.name.toString() ? 24 : 40
+        width: statusExpandableItem.asset.name.toString().indexOf(".") === -1 ? 24 : 40
+        height: statusExpandableItem.asset.name.toString().indexOf(".") === -1 ? 24 : 40
         color: Theme.palette.directColor1
         bgWidth: 32
         bgHeight: 32
         bgColor: Theme.palette.primaryColor2
-        imgWidth: 40
-        imgHeight: 40
     }
 
     enum Type {

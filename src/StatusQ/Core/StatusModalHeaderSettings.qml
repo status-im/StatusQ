@@ -13,8 +13,6 @@ QtObject {
         width: 40
         height: 40
         isLetterIdenticon: false
-        imgWidth: 40
-        imgHeight: 40
         imgIsIdenticon: false
     }
 }

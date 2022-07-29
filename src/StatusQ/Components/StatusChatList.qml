@@ -107,10 +107,10 @@ Column {
                     highlightWhenCreated: !!model.highlight
                     selected: (model.active && statusChatList.highlightItem)
 
-                    asset.emoji: model.emoji
+                    asset.emoji: !!model.emoji ? model.emoji : ""
                     asset.color: !!model.color ? model.color : Theme.palette.userCustomizationColors[model.colorId]
                     asset.imgIsIdenticon: false
-                    asset.imgSource: model.icon
+                    asset.name: model.icon
                     ringSettings.ringSpecModel: model.colorHash
 
                     sensor.cursorShape: dragSensor.cursorShape
@@ -203,7 +203,7 @@ Column {
 
                     asset.color: draggable.chatListItem.icon.color
                     asset.imgIsIdenticon: draggable.chatListItem.image.isIdenticon
-                    asset.imgSource: draggable.chatListItem.image.source
+                    asset.name: draggable.chatListItem.image.source
                 }
             }
         }

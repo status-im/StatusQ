@@ -199,7 +199,7 @@ Rectangle {
         id: statusAppCommunityView
         StatusAppCommunityView {
             communityDetailModalTitle: demoCommunityDetailModal.header.title
-            communityDetailModalImage: demoCommunityDetailModal.header.image.source
+            communityDetailModalImage: demoCommunityDetailModal.header.asset.name
             onChatInfoButtonClicked: {
                 demoCommunityDetailModal.open();
             }

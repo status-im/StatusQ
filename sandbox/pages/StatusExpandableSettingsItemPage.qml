@@ -74,7 +74,7 @@ Column {
 
         type: StatusExpandableItem.Type.Secondary
         expandable: true
-        asset.source: "qrc:/demoapp/data/profile-image-1.jpeg"
+        asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
         primaryText: "CryptoKitties"
         additionalText: "1456 USD"
         expandableComponent: notImplemented
@@ -85,7 +85,7 @@ Column {
 
         type: StatusExpandableItem.Type.Secondary
         expandable: true
-        asset.source: "qrc:/demoapp/data/profile-image-1.jpeg"
+        asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
         primaryText: "Adding Really long text to test scenario of having very long text along with tertiary text"
         additionalText: "564.90 USD"
         expandableComponent: notImplemented

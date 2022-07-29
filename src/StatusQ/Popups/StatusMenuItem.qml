@@ -13,10 +13,10 @@ Action {
     property int type: StatusMenuItem.Type.Normal
     property real iconRotation: 0
     property StatusAssetSettings assetSettings: StatusAssetSettings {
-        isLetterIdenticon: false
+        width: 16
+        height: 16
         color: "transparent"
-        imgHeight: 16
-        imgWidth: 16
+        isLetterIdenticon: false
         imgIsIdenticon: false
     }
 

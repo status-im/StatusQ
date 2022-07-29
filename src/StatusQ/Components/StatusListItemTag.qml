@@ -27,8 +27,6 @@ Rectangle {
         bgWidth: 15
         bgHeight: 15
         bgColor: Theme.palette.primaryColor3
-        imgWidth: 20
-        imgHeight: 20
         imgIsIdenticon: false
     }
 
@@ -40,11 +38,10 @@ Rectangle {
         StatusSmartIdenticon {
             id: iconOrImage
             Layout.leftMargin: 4
-            asset: root.icon
+            asset: root.asset
             name: root.title
             active: root.asset.isLetterIdenticon ||
-                    !!root.asset.name ||
-                    !!root.asset.imgSource.toString()
+                    !!root.asset.name
         }
 
         StatusBaseText {

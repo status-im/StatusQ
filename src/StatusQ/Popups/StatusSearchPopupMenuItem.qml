@@ -14,12 +14,9 @@ MenuItem {
     property StatusAssetSettings assetSettings: StatusAssetSettings {
         height: 16
         width: 16
-        isLetterIdenticon: (root.image.source.toString() === ""
-                            && root.assetSettings.name.toString() === "")
+        isLetterIdenticon: (name.toString() === "")
         color: (name === "channel") ? Theme.palette.directColor1 : "transparent"
         letterSize: charactersLen > 1 ? 8 : 11
-        imgWidth: 16
-        imgHeight: 16
         imgIsIdenticon: false
     }
 

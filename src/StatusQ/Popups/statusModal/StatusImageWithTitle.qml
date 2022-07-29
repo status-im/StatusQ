@@ -21,8 +21,6 @@ Row {
         width: 40
         height: 40
         isLetterIdenticon: false
-        imgWidth: 40
-        imgHeight: 40
         imgIsIdenticon: false
     }
 
@@ -39,7 +37,7 @@ Row {
             return statusRoundedImageCmp
         }
         active: statusImageWithTitle.asset.isLetterIdenticon ||
-                !!statusImageWithTitle.asset.imgSource.toString()
+                !!statusImageWithTitle.asset.name
     }
 
     Component {
@@ -55,18 +53,16 @@ Row {
     Component {
         id: statusRoundedImageCmp
         Item {
-            width: statusImageWithTitle.asset.imgWidth
-            height: statusImageWithTitle.asset.imgHeight
+            width: statusImageWithTitle.asset.width
+            height: statusImageWithTitle.asset.height
             StatusRoundedImage {
                 id: statusRoundedImage
                 objectName: "headerImage"
-                image.source:  statusImageWithTitle.asset.imgSource
-                width: statusImageWithTitle.asset.imgWidth
-                height: statusImageWithTitle.asset.imgHeight
-                color: statusImageWithTitle.asset.imgIsIdenticon ?
-                           Theme.palette.statusRoundedImage.backgroundColor :
-                           "transparent"
-                border.width: statusImageWithTitle.asset.imgIsIdenticon ? 1 : 0
+                image.source: statusImageWithTitle.asset.name
+                width: statusImageWithTitle.asset.width
+                height: statusImageWithTitle.asset.height
+                color: Theme.palette.statusRoundedImage.backgroundColor
+                border.width: 1
                 border.color: Theme.palette.directColor7
                 showLoadingIndicator: true
             }

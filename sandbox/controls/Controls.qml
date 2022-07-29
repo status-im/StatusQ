@@ -124,7 +124,7 @@ GridLayout {
         title: "Iuri Matias"
         subTitle: "Contact"
         asset.color: Theme.palette.miscColor7
-        asset.imgSource: "qrc:/demoapp/data/profile-image-1.jpeg"
+        asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
         type: StatusChatInfoButton.Type.OneToOneChat
         muted: true
         pinnedMessagesCount: 1
@@ -137,7 +137,7 @@ GridLayout {
             title: "Iuri Matias elided"
             subTitle: "Contact"
             asset.color: Theme.palette.miscColor7
-            asset.imgSource: "qrc:/demoapp/data/profile-image-1.jpeg"
+            asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
             type: StatusChatInfoButton.Type.OneToOneChat
             muted: true
             pinnedMessagesCount: 1
@@ -152,7 +152,7 @@ GridLayout {
             title: "Iuri Matias big not elided"
             subTitle: "Contact"
             asset.color: Theme.palette.miscColor7
-            asset.imgSource: "qrc:/demoapp/data/profile-image-1.jpeg"
+            asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
             type: StatusChatInfoButton.Type.OneToOneChat
             muted: true
             pinnedMessagesCount: 1

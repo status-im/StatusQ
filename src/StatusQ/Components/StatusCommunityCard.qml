@@ -361,8 +361,8 @@ Rectangle {
                         radius: 20
                         closeButtonVisible: false
                         asset.emoji: model.emoji
+                        asset.width: 24
                         asset.height: 24
-                        asset.width: icon.height
                         asset.color: "transparent"
                         asset.isLetterIdenticon: true
                         title: model.name

@@ -302,9 +302,9 @@ Item {
                 height: content.itemHeight
                 color: mouseArea.containsMouse ? Theme.palette.baseColor4 : "transparent"
                 asset: StatusAssetSettings {
-                    imgSource: model.imageSource ? model.imageSource : ""
-                    imgWidth: 15
-                    imgHeight: 15
+                    name: model.imageSource ? model.imageSource : ""
+                    width: 15
+                    height: 15
                     imgIsIdenticon: false
                 }
                 name: model.name

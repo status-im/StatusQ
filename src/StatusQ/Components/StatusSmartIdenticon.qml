@@ -15,30 +15,27 @@ Loader {
     property StatusAssetSettings asset: StatusAssetSettings {
         width: 40
         height: 40
-        imgWidth: 40
-        imgHeight: 40
     }
 
     property StatusIdenticonRingSettings ringSettings: StatusIdenticonRingSettings {
         initalAngleRad: 0
-        ringPxSize: Math.max(1.5, root.asset.imgWidth/ 24.0)
+        ringPxSize: Math.max(1.5, root.asset.width/ 24.0)
         distinctiveColors: Theme.palette.identiconRingColors
     }
 
-    sourceComponent: root.asset.isLetterIdenticon ? letterIdenticon :
-                     !!root.asset.imgSource.toString() ? roundedImage :
-                     !!root.asset.name.toString() ? roundedIcon : letterIdenticon
+    sourceComponent: (root.asset.isLetterIdenticon || root.asset.name.toString() === "") ? letterIdenticon :
+                     root.asset.name.indexOf(".") === -1 ? roundedIcon : roundedImage
 
     Component {
         id: roundedImage
         Item {
-            width: root.asset.imgWidth
-            height: root.asset.imgHeight
+            width: root.asset.width
+            height: root.asset.height
             StatusRoundedImage {
                 id: statusRoundImage
                 width: parent.width
                 height: parent.height
-                image.source: root.asset.imgSource
+                image.source: root.asset.name
                 showLoadingIndicator: true
                 border.width: root.asset.imgIsIdenticon ? 1 : 0
                 border.color: Theme.palette.directColor7
@@ -48,12 +45,13 @@ Loader {
             }
             Loader {
                 anchors.centerIn: parent
-                active: root.asset.imgStatus === Image.Error
+                active: root.asset.imgStatus === Image.Error ||
+                        statusRoundImage.image.status === Image.Error
                 sourceComponent: letterIdenticon
                 onLoaded: {
                     item.color = Theme.palette.miscColor5
-                    item.width = root.asset.imgWidth
-                    item.height = root.asset.imgHeight
+                    item.width = root.asset.width
+                    item.height = root.asset.height
                 }
             }
         }
@@ -79,7 +77,7 @@ Loader {
             width: root.asset.width
             height: root.asset.height
             color: root.asset.color
-            name: root.asset.name
+            name: root.name
             emoji: root.asset.emoji
             emojiSize: root.asset.emojiSize
             letterSize: root.asset.letterSize

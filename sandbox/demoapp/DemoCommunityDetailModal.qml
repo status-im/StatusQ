@@ -13,7 +13,7 @@ StatusModal {
 
     header.title: "Cryptokitties"
     header.subTitle: "Public Community"
-    header.asset.imgSource: "qrc:/demoapp/data/profile-image-1.jpeg"
+    header.asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
 
     contentItem: Column {
         width: root.width

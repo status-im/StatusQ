@@ -102,8 +102,8 @@ StatusPopupMenu {
                     sourceComponent: StatusSearchPopupMenuItem {
                         value: model.value
                         text: model.text
-                        assetSettings.imgSource: model.imageSource
-                        assetSettings.name: model.iconName
+                        //assetSettings.imgSource: model.imageSource
+                        assetSettings.name: model.iconName || model.imageSource
                         assetSettings.color: model.isUserIcon ? Theme.palette.userCustomizationColors[model.colorId] : model.iconColor
                         assetSettings.charactersLen: model.isUserIcon ? 2 : 1
                         ringSettings.ringSpecModel: model.colorHash

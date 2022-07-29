@@ -412,7 +412,7 @@ Item {
                 isVerified: model.isVerified
                 isUntrustworthy: model.isUntrustworthy
                 isContact: model.isContact
-                asset.imgSource: model.icon
+                asset.name: model.icon
                 asset.imgIsIdenticon: false
                 asset.color: Theme.palette.userCustomizationColors[root.colorIdForPubkeyGetter(model.pubKey)]
                 status: model.onlineStatus

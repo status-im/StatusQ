@@ -108,14 +108,14 @@ GridLayout {
 
             StatusMenuItem { 
                 text: "vitalik.eth"
-                assetSettings.imgSource: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0Bh
+                assetSettings.name: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVR4nOzW0QmDQBAG4SSkl7SUQlJGCrElq9F3QdjjVhh/5nv3cFhY9vUIYQiNITSG0Bh
 CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2ImYgiNITTlTdG1nUZ5a92VITQxITFiJmIIjSE0htAYQrMHAAD//+wwFVpz+yqXAAAAAElFTkSuQmCC"
                 assetSettings.imgIsIdenticon: true
             }
 
             StatusMenuItem { 
                 text: "Pascal"
-                assetSettings.imgSource: "qrc:/demoapp/data/profile-image-1.jpeg"
+                assetSettings.name: "qrc:/demoapp/data/profile-image-1.jpeg"
             }
         }
 

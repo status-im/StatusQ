@@ -40,11 +40,9 @@ Rectangle {
             asset: StatusAssetSettings {
                 width: 40
                 height: 40
+                name: root.identicon
                 letterSize: 15
                 color: Theme.palette.miscColor5
-                imgWidth: 40
-                imgHeight: 40
-                imgSource: root.identicon
                 imgIsIdenticon: true
             }
             name: root.name

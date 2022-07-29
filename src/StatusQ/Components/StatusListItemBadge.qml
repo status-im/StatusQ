@@ -18,8 +18,6 @@ Control {
         width: 16
         isLetterIdenticon: false
         color: "transparent"
-        imgWidth: 16
-        imgHeight: 16
         imgIsIdenticon: false
     }
 
@@ -40,10 +38,10 @@ Control {
             anchors.horizontalCenterOffset: -spacing
             spacing: 2
             StatusRoundedImage {
-                implicitWidth: root.asset.imgWidth
-                implicitHeight: root.asset.imgHeight
+                implicitWidth: root.asset.width
+                implicitHeight: root.asset.height
                 visible: !root.asset.isLetterIdenticon
-                image.source: root.asset.imgSource
+                image.source: root.asset.name
                 border.color: Theme.palette.baseColor1
                 border.width: root.asset.imgIsIdenticon ? 1 : 0
             }

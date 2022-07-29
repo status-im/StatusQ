@@ -34,9 +34,9 @@ ListView {
             secondaryName: model.localName !== "" && model.ensName.startsWith("@") ? model.ensName: ""
             chatID: model.chatKey
             profileImage: StatusAssetSettings {
-                imgWidth: 40
-                imgHeight: 40
-                imgSource: model.profileImage
+                width: 40
+                height: 40
+                name: model.profileImage
                 imgIsIdenticon: model.isIdenticon
             }
             messageText: model.message
@@ -55,9 +55,9 @@ ListView {
             amISender:  model.isReply ? model.replyAmISender : ""
             displayName:  model.isReply ? model.replySenderName: ""
             profileImage: StatusAssetSettings {
-                imgWidth: 20
-                imgHeight: 20
-                imgSource:  model.isReply ? model.replyProfileImage: ""
+                width: 20
+                height: 20
+                name:  model.isReply ? model.replyProfileImage: ""
                 imgIsIdenticon:  model.isReply ? model.replyIsIdenticon: ""
             }
             messageText:  model.isReply ? model.replyMessageText: ""

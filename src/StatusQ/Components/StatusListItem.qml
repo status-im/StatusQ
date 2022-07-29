@@ -42,7 +42,7 @@ Rectangle {
         isLetterIdenticon: false
         letterSize: 21
         charactersLen: 1
-        color: isLetterIdenticon ? background.color : type === StatusListItem.Type.Danger ?
+        color: isLetterIdenticon ? bgColor : type === StatusListItem.Type.Danger ?
             Theme.palette.dangerColor1 : Theme.palette.primaryColor1
         bgWidth: 40
         bgHeight: 40
@@ -55,8 +55,8 @@ Rectangle {
             return type === StatusListItem.Type.Danger ?
                         Theme.palette.dangerColor3 : Theme.palette.primaryColor3
         }
-        imgWidth: 40
-        imgHeight: 40
+//        imgWidth: 40
+//        imgHeight: 40
         imgIsIdenticon: false
     }
 
@@ -143,7 +143,6 @@ Rectangle {
             name: statusListItem.title
             active: statusListItem.asset.isLetterIdenticon ||
                     !!statusListItem.asset.name ||
-                    !!statusListItem.asset.imgSource.toString() ||
                     !!statusListItem.asset.emoji
             badge.border.color: statusListItem.color
             ringSettings: statusListItem.ringSettings
