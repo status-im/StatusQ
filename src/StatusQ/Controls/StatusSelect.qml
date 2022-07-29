@@ -95,35 +95,39 @@ Item {
         }
     }
 
-    StatusPopupMenu {
+    ListView {
         id: selectMenu
-        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
-        width: parent.width
-        clip: true
-
-        Repeater {
-            id: menuItems
-            model: root.model
-            property int zeroItemsViewHeight
-            delegate: selectMenu.delegate
-            onItemAdded: {
-                root.zeroItemsView.visible = false
-                root.zeroItemsView.height = 0
-            }
-            onItemRemoved: {
-                if (count === 0) {
-                    root.zeroItemsView.visible = true
-                    root.zeroItemsView.height = zeroItemsViewHeight
-                }
-            }
-            Component.onCompleted: {
-                zeroItemsViewHeight = root.zeroItemsView.height
-                root.zeroItemsView.visible = count === 0
-                root.zeroItemsView.height = count !== 0 ? 0 : root.zeroItemsView.height
-                selectMenu.insertItem(0, root.zeroItemsView)
-            }
-        }
     }
+
+//    StatusPopupMenu {
+//        id: selectMenu
+//        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+//        width: parent.width
+//        clip: true
+
+//        Repeater {
+//            id: menuItems
+//            model: root.model
+//            property int zeroItemsViewHeight
+//            delegate: selectMenu.delegate
+//            onItemAdded: {
+//                root.zeroItemsView.visible = false
+//                root.zeroItemsView.height = 0
+//            }
+//            onItemRemoved: {
+//                if (count === 0) {
+//                    root.zeroItemsView.visible = true
+//                    root.zeroItemsView.height = zeroItemsViewHeight
+//                }
+//            }
+//            Component.onCompleted: {
+//                zeroItemsViewHeight = root.zeroItemsView.height
+//                root.zeroItemsView.visible = count === 0
+//                root.zeroItemsView.height = count !== 0 ? 0 : root.zeroItemsView.height
+//                selectMenu.insertItem(0, root.zeroItemsView)
+//            }
+//        }
+//    }
 
     StatusBaseText {
         id: validationErrorText

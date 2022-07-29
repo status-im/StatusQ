@@ -13,7 +13,7 @@ Loader {
     property StatusMessageDetails replyDetails
     property string audioMessageInfoText: ""
 
-    signal replyProfileClicked()
+    signal replyProfileClicked(var sender, var mouse)
 
     active: visible
 
@@ -56,13 +56,16 @@ Loader {
                 StatusSmartIdenticon {
                     id: profileImage
                     Layout.alignment: Qt.AlignTop
-                    image: replyDetails.profileImage
-                    name: replyDetails.displayName
+                    name: replyDetails.sender.userName
+                    image: replyDetails.sender.profileImage.imageSettings
+                    icon: replyDetails.sender.profileImage.iconSettings
+                    ringSettings: replyDetails.sender.profileImage.ringSettings
+
                     MouseArea {
                         cursorShape: Qt.PointingHandCursor
                         acceptedButtons: Qt.LeftButton | Qt.RightButton
                         anchors.fill: parent
-                        onClicked: replyProfileClicked()
+                        onClicked: replyProfileClicked(this, mouse)
                     }
                 }
                 TextEdit {
@@ -74,7 +77,7 @@ Loader {
                     font.weight: Font.Medium
                     selectByMouse: true
                     readOnly: true
-                    text: replyDetails.displayName
+                    text: replyDetails.amISender ? qsTr("You") : replyDetails.sender.displayName
                 }
             }
             StatusTextMessage {
@@ -85,6 +88,7 @@ Loader {
                 textField.height: 18
                 clip: true
                 visible: !!replyDetails.messageText
+                allowShowMore: false
             }
             StatusImageMessage {
                 Layout.fillWidth: true
