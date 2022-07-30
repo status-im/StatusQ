@@ -19,6 +19,8 @@ Item {
     property alias contentItem: comboBox.contentItem
 
     property alias currentIndex: comboBox.currentIndex
+    property alias currentValue: comboBox.currentValue
+
     property alias label: labelItem.text
     property alias validationError: validationErrorItem.text
 
