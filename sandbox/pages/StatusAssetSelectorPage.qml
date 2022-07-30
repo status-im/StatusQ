@@ -13,37 +13,42 @@ Column {
     spacing: 8
 
     StatusAssetSelector {
-        getCurrencyBalanceString: function (currencyBalance) {
-            return currencyBalance.toFixed(2) + " USD"
+        id: selector1
+        assets: assetsModel
+        getCurrencyBalanceString: (currencyBalance) => {
+                                      return currencyBalance.toFixed(2) + " USD"
+                                  }
+        tokenAssetSourceFn: (symbol) => {
+                                return `../../assets/img/icons/SNT.png`
+                            }
+    }
+
+    ListModel {
+        id: assetsModel
+        ListElement {
+            address: "0x1234"
+            name: "Status Network Token"
+            balance: "20"
+            symbol: "SNT"
+            totalCurrencyBalance: 9992.01
+            totalBalance: 9992.01
         }
-        tokenAssetSourceFn: function (symbol) {
-            return "../../assets/img/icons/snt.svg"
+        ListElement {
+            address: "0x5678"
+            name: "DAI Token"
+            balance: "15"
+            symbol: "DAI"
+            totalCurrencyBalance: 20.00001
+            totalBalance: 20.00001
         }
-        assets: ListModel {
-            ListElement {
-                address: "0x1234"
-                name: "Status Network Token"
-                balance: "20"
-                symbol: "SNT"
-                totalCurrencyBalance: 9992.01
-                totalBalance: 9992.01
-            }
-            ListElement {
-                address: "0x1234"
-                name: "DAI Token"
-                balance: "15"
-                symbol: "DAI"
-                totalCurrencyBalance: 20.00001
-                totalBalance: 20.00001
-            }
-            ListElement {
-                address: "0x1234"
-                name: "ABYSS Token"
-                balance: "25"
-                symbol: "ABYSS"
-                totalCurrencyBalance: 24.1
-                totalBalance: 24.1
-            }
+        ListElement {
+            address: "0x8901"
+            name: "ABYSS Token"
+            balance: "25"
+            symbol: "ABYSS"
+            totalCurrencyBalance: 24.1
+            totalBalance: 24.1
+            balances: [ ]
         }
     }
 }

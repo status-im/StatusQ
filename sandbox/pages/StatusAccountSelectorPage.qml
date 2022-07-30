@@ -8,9 +8,14 @@ import StatusQ.Core.Theme 0.1
 import StatusQ.Controls 0.1
 import StatusQ.Popups 0.1
 
-
-Row {
+Column {
     spacing: 8
+
+    StatusAccountSelector {
+        id: selector1
+        width: 300
+        accounts: accountsModel
+    }
 
     ListModel {
         id: accountsModel
@@ -59,11 +64,5 @@ Row {
             currencyBalance:  "0"
             assets: []
         }
-    }
-
-    StatusAccountSelector {
-        id: selector1
-        width: 300
-        accounts: accountsModel
     }
 }
