@@ -143,7 +143,10 @@ Item {
                 width: comboBox.width
                 highlighted: comboBox.highlightedIndex === index
                 font: comboBox.font
-                text: modelData
+                text: control.textRole ? (Array.isArray(control.model)
+                                          ? modelData[control.textRole]
+                                          : model[control.textRole])
+                                       : modelData
             }
         }
 
