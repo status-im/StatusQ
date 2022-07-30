@@ -178,7 +178,7 @@ Item {
         }
 
         delegate: StatusItemDelegate {
-            highlighted: index === comboBox.comboBox.highlightedIndex
+            highlighted: index === comboBox.control.highlightedIndex
             width: comboBox.width
             padding: 16
 
