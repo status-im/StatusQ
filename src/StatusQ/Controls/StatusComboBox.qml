@@ -17,6 +17,7 @@ Item {
     property alias delegate: comboBox.delegate
     property alias contentItem: comboBox.contentItem
 
+    property alias currentIndex: comboBox.currentIndex
     property alias label: labelItem.text
     property alias validationError: validationErrorItem.text
 
