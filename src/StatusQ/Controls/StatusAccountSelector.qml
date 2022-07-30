@@ -185,7 +185,7 @@ Item {
             onClicked: {
                 // WARNING: Settings comboBox value from delegate is wrong.
                 //          ComboBox must have a single role as "value"
-                //          This should be refactored later. Probably roleBalue should be 'address'.
+                //          This should be refactored later. Probably roleValue should be 'address'.
                 //          All other needed values should be retrived from model by the user of component.
                 root.selectedAccount = { address, name, color: model.color, assets, currencyBalance };
             }

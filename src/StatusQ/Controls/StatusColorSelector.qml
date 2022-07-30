@@ -9,7 +9,7 @@ StatusComboBox {
 
     control.popup.horizontalPadding: 0
 
-    contentItem: Item { }
+    contentItem: null
 
     control.background: Rectangle {
         implicitWidth: 448
@@ -17,10 +17,13 @@ StatusComboBox {
         color: root.control.currentValue
     }
 
-    delegate: Rectangle {
+    delegate: StatusItemDelegate {
         width: parent.width
-        implicitHeight: 52
-        color: modelData
+        background: Rectangle {
+            width: parent.width
+            implicitHeight: 52
+            color: modelData
+        }
     }
 }
 

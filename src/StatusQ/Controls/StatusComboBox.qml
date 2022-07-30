@@ -121,21 +121,14 @@ Item {
                     }
                 }
 
-                contentItem: ListView { // TODO: Replace with StatusListView
+                contentItem: StatusListView {
                     id: listView
-
-                    clip: true
 
                     implicitWidth: contentWidth
                     implicitHeight: contentHeight
 
                     model: comboBox.popup.visible ? comboBox.delegateModel : null
                     currentIndex: comboBox.highlightedIndex
-
-                    boundsBehavior: Flickable.StopAtBounds
-                    synchronousDrag: true
-
-                    ScrollIndicator.vertical: ScrollIndicator { }
                 }
             }
 
@@ -143,7 +136,10 @@ Item {
                 width: comboBox.width
                 highlighted: comboBox.highlightedIndex === index
                 font: comboBox.font
-                text: modelData
+                text: control.textRole ? (Array.isArray(control.model)
+                                          ? modelData[control.textRole]
+                                          : model[control.textRole])
+                                       : modelData
             }
         }
 
