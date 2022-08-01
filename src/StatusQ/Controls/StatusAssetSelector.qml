@@ -10,6 +10,7 @@ import StatusQ.Components 0.1
 
 Item {
     id: root
+
     property var assets
     property var selectedAsset
     property string defaultToken: ""
@@ -17,140 +18,140 @@ Item {
     property var tokenAssetSourceFn: function (symbol) {
         return ""
     }
+
     // Define this in the usage to get balance in currency selected by user
     property var getCurrencyBalanceString: function (currencyBalance) { return "" }
-    implicitWidth: 106
-    implicitHeight: 32
 
     function resetInternal() {
         assets = null
         selectedAsset = null
     }
 
+    implicitWidth: 106
+    implicitHeight: comboBox.implicitHeight
+
     onSelectedAssetChanged: {
         if (selectedAsset && selectedAsset.symbol) {
-            iconImg.image.source = tokenAssetSourceFn(selectedAsset.symbol.toUpperCase())
-            selectedTextField.text = selectedAsset.symbol.toUpperCase()
+            d.iconSource = tokenAssetSourceFn(selectedAsset.symbol.toUpperCase())
+            d.text = selectedAsset.symbol.toUpperCase()
         }
     }
 
-    StatusSelect {
-        id: select
+    QtObject {
+        id: d
+        property string iconSource: ""
+        property string text: ""
+    }
+
+    StatusComboBox {
+        id: comboBox
+
         width: parent.width
-        bgColor: "transparent"
-        bgColorHover: Theme.palette.directColor8
+        height: parent.height
+
+        control.padding: 4
+        control.popup.width: 342
+        control.popup.x: width - control.popup.width
+
         model: root.assets
-        caretRightMargin: 0
-        select.radius: 6
-        select.height: root.height
-        selectMenu.width: 342
-        selectedItemComponent: Item {
-            anchors.fill: parent
+
+        control.background: Rectangle {
+            color: comboBox.control.hovered ? Theme.palette.directColor8 : "transparent"
+            radius: 6
+        }
+
+        contentItem: RowLayout {
+            spacing: 4
+
             StatusRoundedImage {
-                id: iconImg
-                anchors.left: parent.left
-                anchors.leftMargin: 4
-                width: 24
-                height: 24
-                anchors.verticalCenter: parent.verticalCenter
+                Layout.preferredWidth: 24
+                Layout.preferredHeight: 24
+                image.source: d.iconSource
                 image.onStatusChanged: {
-                    if (iconImg.image.status === Image.Error) {
-                        iconImg.image.source = defaultToken
+                    if (image.status === Image.Error) {
+                        image.source = defaultToken
                     }
                 }
             }
             StatusBaseText {
-                id: selectedTextField
-                anchors.left: iconImg.right
-                anchors.leftMargin: 4
-                anchors.verticalCenter: parent.verticalCenter
                 font.pixelSize: 15
-                height: 22
-                width: 50
+                Layout.maximumWidth: 50
                 elide: Text.ElideRight
                 verticalAlignment: Text.AlignVCenter
                 color: Theme.palette.directColor1
+                text: d.text
             }
         }
-        selectMenu.delegate: menuItem
-    }
 
-    Component {
-        id: menuItem
-        MenuItem {
-            id: itemContainer
-            property bool isFirstItem: index === 0
-            property bool isLastItem: index === assets.rowCount() - 1
+        delegate: StatusItemDelegate {
+            width: comboBox.control.popup.width
+            highlighted: index === comboBox.control.highlightedIndex
+            padding: 16
 
-            width: parent.width
-            height: 72
-            StatusRoundedImage {
-                id: iconImg
-                anchors.left: parent.left
-                anchors.leftMargin: 16
-                anchors.verticalCenter: parent.verticalCenter
-                image.source: root.tokenAssetSourceFn(symbol.toUpperCase())
-                image.onStatusChanged: {
-                    if (iconImg.image.status === Image.Error) {
-                        iconImg.image.source = defaultToken
-                    }
-                }
+            onClicked: {
+                // TODO: move this out of StatusQ, this involves dependency on BE code
+                // WARNING: Wrong ComboBox value processing. Check `StatusAccountSelector` for more info.
+                root.userSelectedToken = symbol
+                root.selectedAsset = {name: name, symbol: symbol, totalBalance: totalBalance, totalCurrencyBalance: totalCurrencyBalance, balances: balances}
             }
-            Column {
-                anchors.left: iconImg.right
-                anchors.leftMargin: 12
-                anchors.verticalCenter: parent.verticalCenter
 
-                StatusBaseText {
-                    text: symbol.toUpperCase()
-                    font.pixelSize: 15
-                    color: Theme.palette.directColor1
-                }
-
-                StatusBaseText {
-                    text: name
-                    color: Theme.palette.baseColor1
-                    font.pixelSize: 15
-                }
-            }
-            Column {
-                anchors.right: parent.right
-                anchors.rightMargin: 16
-                anchors.verticalCenter: parent.verticalCenter
-                StatusBaseText {
-                    font.pixelSize: 15
-                    text: parseFloat(totalBalance).toFixed(4) + " " + symbol
-                }
-                StatusBaseText {
-                    font.pixelSize: 15
-                    anchors.right: parent.right
-                    text: getCurrencyBalanceString(totalCurrencyBalance)
-                    color: Theme.palette.baseColor1
-                }
-            }
-            background: Rectangle {
-                color: itemContainer.highlighted ? Theme.palette.statusSelect.menuItemHoverBackgroundColor : Theme.palette.statusSelect.menuItemBackgroundColor
-            }
-            // To-do move this out of StatusQ, this involves dependency on BE code
+            // TODO: move this out of StatusQ, this involves dependency on BE code
+            // WARNING: Wrong ComboBox value processing. Check `StatusAccountSelector` for more info.
             Component.onCompleted: {
-                if(userSelectedToken === "") {
-                    if(index === 0) {
-                        selectedAsset = { name: name, symbol: symbol, totalBalance: totalBalance, totalCurrencyBalance: totalCurrencyBalance, balances: balances}
-                    }
-                } else {
-                    if(symbol === userSelectedToken) {
-                        selectedAsset = { name: name, symbol: symbol, totalBalance: totalBalance, totalCurrencyBalance: totalCurrencyBalance, balances: balances}
+                if ((userSelectedToken === "" && index === 0) || symbol === userSelectedToken)
+                    root.selectedAsset = { name: name, symbol: symbol, totalBalance: totalBalance, totalCurrencyBalance: totalCurrencyBalance, balances: balances}
+            }
+
+            contentItem: RowLayout {
+                spacing: 0
+
+                StatusRoundedImage {
+                    image.source: root.tokenAssetSourceFn(symbol.toUpperCase())
+                    image.onStatusChanged: {
+                        if (image.status === Image.Error) {
+                            image.source = defaultToken
+                        }
                     }
                 }
-            }
-            MouseArea {
-                cursorShape: Qt.PointingHandCursor
-                anchors.fill: itemContainer
-                onClicked: {
-                    userSelectedToken = symbol
-                    // To-do move this out of StatusQ, this involves dependency on BE code
-                    selectedAsset = {name: name, symbol: symbol, totalBalance: totalBalance, totalCurrencyBalance: totalCurrencyBalance, balances: balances}
-                    select.selectMenu.close()
+
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: 12
+                    spacing: 0
+
+                    RowLayout {
+                        Layout.fillWidth: true
+
+                        StatusBaseText {
+                            Layout.fillWidth: true
+                            text: symbol.toUpperCase()
+                            font.pixelSize: 15
+                            color: Theme.palette.directColor1
+                        }
+                        StatusBaseText {
+                            Layout.fillWidth: true
+                            horizontalAlignment: Text.AlignRight
+                            font.pixelSize: 15
+                            text: parseFloat(totalBalance).toFixed(4) + " " + symbol
+                        }
+
+                    }
+                    RowLayout {
+                        Layout.fillWidth: true
+                        StatusBaseText {
+                            Layout.fillWidth: true
+                            text: name
+                            color: Theme.palette.baseColor1
+                            font.pixelSize: 15
+                        }
+                        StatusBaseText {
+                            Layout.fillWidth: true
+                            horizontalAlignment: Text.AlignRight
+                            font.pixelSize: 15
+                            text: getCurrencyBalanceString(totalCurrencyBalance)
+                            color: Theme.palette.baseColor1
+                        }
+                    }
                 }
             }
         }
