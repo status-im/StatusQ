@@ -55,8 +55,6 @@ StatusModal {
     leftButtons: StatusRoundButton {
         id: backButton
         icon.name: "arrow-right"
-        icon.width: 20
-        icon.height: 16
         rotation: 180
         visible: replaceItem || stackLayout.currentIndex > 0
         onClicked: {
