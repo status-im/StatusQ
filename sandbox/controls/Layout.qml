@@ -23,7 +23,7 @@ Column {
                 width: Math.min(implicitWidth, parent.width)
                 title: "Some contact"
                 subTitle: "Contact"
-                icon.color: Theme.palette.miscColor7
+                asset.color: Theme.palette.miscColor7
                 type: StatusChatInfoButton.Type.OneToOneChat
              }
         }
@@ -39,7 +39,7 @@ Column {
                 width: Math.min(implicitWidth, parent.width)
                 title: "Some contact"
                 subTitle: "Contact"
-                icon.color: Theme.palette.miscColor7
+                asset.color: Theme.palette.miscColor7
                 type: StatusChatInfoButton.Type.PublicChat
                 pinnedMessagesCount: 1
                 muted: true
@@ -60,7 +60,7 @@ Column {
                 width: Math.min(implicitWidth, parent.width)
                 title: "Some contact"
                 subTitle: "Contact"
-                icon.color: Theme.palette.miscColor7
+                asset.color: Theme.palette.miscColor7
                 type: StatusChatInfoButton.Type.OneToOneChat
                 pinnedMessagesCount: 1
              }

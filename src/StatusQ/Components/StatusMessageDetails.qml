@@ -9,7 +9,7 @@ QtObject {
     property string displayName: ""
     property string secondaryName: ""
     property string chatID: ""
-    property StatusImageSettings profileImage: StatusImageSettings {
+    property StatusAssetSettings profileImage: StatusAssetSettings {
         width: 40
         height: 40
     }

@@ -47,9 +47,8 @@ StatusModal {
                                 colorHash = "") {
         searchSelectionButton.primaryText = text
         searchSelectionButton.secondaryText = secondaryText
-        searchSelectionButton.image.source = imageSource
-        searchSelectionButton.image.isIdenticon = isIdenticon
-        searchSelectionButton.iconSettings.name = iconName
+        searchSelectionButton.iconSettings.imgIsIdenticon = isIdenticon
+        searchSelectionButton.iconSettings.name = iconName || imageSource
         searchSelectionButton.iconSettings.color = isUserIcon ? Theme.palette.userCustomizationColors[colorId] : iconColor
         searchSelectionButton.iconSettings.isLetterIdenticon = !iconName && !imageSource
         searchSelectionButton.iconSettings.charactersLen = isUserIcon ? 2 : 1
@@ -130,19 +129,13 @@ StatusModal {
 
                     property string primaryText: ""
                     property string secondaryText: ""
-                    property StatusIconSettings iconSettings: StatusIconSettings {
+                    property StatusAssetSettings asset: StatusAssetSettings {
                         width: 16
                         height: 16
                         name: ""
                         isLetterIdenticon: false
                         letterSize: charactersLen > 1 ? 8 : 11
-                    }
-
-                    property StatusImageSettings image: StatusImageSettings {
-                        width: 16
-                        height: 16
-                        source: ""
-                        isIdenticon: false
+                        imgIsIdenticon: false
                     }
 
                     property alias ringSettings: identicon.ringSettings
@@ -185,13 +178,11 @@ StatusModal {
                                     id: identicon
                                     Layout.preferredWidth: active ? 16 : 0
                                     Layout.preferredHeight: 16
-                                    image: searchOptionsMenuButton.image
-                                    icon: searchOptionsMenuButton.iconSettings
+                                    asset: searchOptionsMenuButton.asset
                                     name: searchOptionsMenuButton.primaryText
                                     active: searchOptionsMenuButton.primaryText !== defaultSearchLocationText &&
-                                            (searchOptionsMenuButton.iconSettings.name ||
-                                             searchOptionsMenuButton.iconSettings.isLetterIdenticon ||
-                                             !!searchOptionsMenuButton.image.source.toString())
+                                            (searchOptionsMenuButton.asset.name ||
+                                             searchOptionsMenuButton.asset.isLetterIdenticon)
                                 }
 
                                 StatusBaseText {
@@ -283,16 +274,16 @@ StatusModal {
                         statusListItemSubTitle.height: model.content !== "" ? 20 : 0
                         statusListItemSubTitle.elide: Text.ElideRight
                         statusListItemSubTitle.color: Theme.palette.directColor1
-                        icon.isLetterIdenticon: (model.image === "")
-                        icon.color: model.isUserIcon ? Theme.palette.userCustomizationColors[model.colorId] : model.color
-                        icon.charactersLen: model.isUserIcon ? 2 : 1
+                        asset.isLetterIdenticon: (model.image === "")
+                        asset.color: model.isUserIcon ? Theme.palette.userCustomizationColors[model.colorId] : model.color
+                        asset.charactersLen: model.isUserIcon ? 2 : 1
                         titleAsideText: root.formatTimestampFn(model.time)
-                        image.source: model.image
+                        asset.name: model.image
                         badge.primaryText: model.badgePrimaryText
                         badge.secondaryText: model.badgeSecondaryText
-                        badge.image.source: model.badgeImage
-                        badge.icon.isLetterIdenticon: model.badgeIsLetterIdenticon
-                        badge.icon.color: model.badgeIconColor
+                        badge.asset.name: model.badgeImage
+                        badge.asset.isLetterIdenticon: model.badgeIsLetterIdenticon
+                        badge.asset.color: model.badgeIconColor
                         ringSettings.ringSpecModel: model.colorHash
 
                         onClicked: {

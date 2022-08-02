@@ -13,7 +13,7 @@ Image {
     fillMode: Image.PreserveAspectFit
 
     onIconChanged: {
-        if (icon !== "") {
+        if (icon !== "" && icon.indexOf(".") === -1) {
             source = "../../assets/img/icons/" + icon + ".svg";
             objectName = icon + "-icon"
         }

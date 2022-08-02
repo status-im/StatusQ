@@ -33,11 +33,11 @@ ListView {
             displayName: model.userName
             secondaryName: model.localName !== "" && model.ensName.startsWith("@") ? model.ensName: ""
             chatID: model.chatKey
-            profileImage: StatusImageSettings {
+            profileImage: StatusAssetSettings {
                 width: 40
                 height: 40
-                source: model.profileImage
-                isIdenticon: model.isIdenticon
+                name: model.profileImage
+                imgIsIdenticon: model.isIdenticon
             }
             messageText: model.message
             hasMention: model.hasMention
@@ -54,11 +54,11 @@ ListView {
         replyDetails: StatusMessageDetails {
             amISender:  model.isReply ? model.replyAmISender : ""
             displayName:  model.isReply ? model.replySenderName: ""
-            profileImage: StatusImageSettings {
+            profileImage: StatusAssetSettings {
                 width: 20
                 height: 20
-                source:  model.isReply ? model.replyProfileImage: ""
-                isIdenticon:  model.isReply ? model.replyIsIdenticon: ""
+                name:  model.isReply ? model.replyProfileImage: ""
+                imgIsIdenticon:  model.isReply ? model.replyIsIdenticon: ""
             }
             messageText:  model.isReply ? model.replyMessageText: ""
             contentType: model.replyContentType

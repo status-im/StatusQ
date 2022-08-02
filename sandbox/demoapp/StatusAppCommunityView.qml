@@ -33,8 +33,8 @@ StatusAppThreePanelLayout {
 
             chatInfoButton.title: "CryptoKitties"
             chatInfoButton.subTitle: "128 Members"
-            chatInfoButton.image.source: "qrc:/demoapp/data/profile-image-1.jpeg"
-            chatInfoButton.icon.color: Theme.palette.miscColor6
+            chatInfoButton.asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
+            chatInfoButton.asset.color: Theme.palette.miscColor6
             chatInfoButton.onClicked:  { chatInfoButtonClicked(); }
 
             popupMenu: StatusPopupMenu {
@@ -189,7 +189,7 @@ StatusAppThreePanelLayout {
                    width: Math.min(implicitWidth, parent.width)
                    title: "general"
                    subTitle: "Community Chat"
-                   icon.color: Theme.palette.miscColor6
+                   asset.color: Theme.palette.miscColor6
                    type: StatusChatInfoButton.Type.CommunityChat
                 }
             }
@@ -273,8 +273,8 @@ StatusAppThreePanelLayout {
                 isVerified: model.isVerified
                 isUntrustworthy: model.isUntrustworthy
                 isContact: model.isContact
-                image.source: model.icon
-                image.isIdenticon: false
+                asset.name: model.icon
+                asset.imgIsIdenticon: false
                 status: model.onlineStatus
             }
         }

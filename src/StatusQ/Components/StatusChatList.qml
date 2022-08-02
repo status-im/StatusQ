@@ -107,10 +107,10 @@ Column {
                     highlightWhenCreated: !!model.highlight
                     selected: (model.active && statusChatList.highlightItem)
 
-                    icon.emoji: model.emoji
-                    icon.color: !!model.color ? model.color : Theme.palette.userCustomizationColors[model.colorId]
-                    image.isIdenticon: false
-                    image.source: model.icon
+                    asset.emoji: !!model.emoji ? model.emoji : ""
+                    asset.color: !!model.color ? model.color : Theme.palette.userCustomizationColors[model.colorId]
+                    asset.imgIsIdenticon: false
+                    asset.name: model.icon
                     ringSettings.ringSpecModel: model.colorHash
 
                     sensor.cursorShape: dragSensor.cursorShape
@@ -201,9 +201,9 @@ Column {
                     notificationsCount: model.notificationsCount
                     selected: draggable.chatListItem.selected
 
-                    icon.color: draggable.chatListItem.icon.color
-                    image.isIdenticon: draggable.chatListItem.image.isIdenticon
-                    image.source: draggable.chatListItem.image.source
+                    asset.color: draggable.chatListItem.icon.color
+                    asset.imgIsIdenticon: draggable.chatListItem.image.isIdenticon
+                    asset.name: draggable.chatListItem.image.source
                 }
             }
         }

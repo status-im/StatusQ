@@ -123,8 +123,8 @@ GridLayout {
     StatusChatInfoButton {
         title: "Iuri Matias"
         subTitle: "Contact"
-        icon.color: Theme.palette.miscColor7
-        image.source: "qrc:/demoapp/data/profile-image-1.jpeg"
+        asset.color: Theme.palette.miscColor7
+        asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
         type: StatusChatInfoButton.Type.OneToOneChat
         muted: true
         pinnedMessagesCount: 1
@@ -136,8 +136,8 @@ GridLayout {
         StatusChatInfoButton {
             title: "Iuri Matias elided"
             subTitle: "Contact"
-            icon.color: Theme.palette.miscColor7
-            image.source: "qrc:/demoapp/data/profile-image-1.jpeg"
+            asset.color: Theme.palette.miscColor7
+            asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
             type: StatusChatInfoButton.Type.OneToOneChat
             muted: true
             pinnedMessagesCount: 1
@@ -151,8 +151,8 @@ GridLayout {
         StatusChatInfoButton {
             title: "Iuri Matias big not elided"
             subTitle: "Contact"
-            icon.color: Theme.palette.miscColor7
-            image.source: "qrc:/demoapp/data/profile-image-1.jpeg"
+            asset.color: Theme.palette.miscColor7
+            asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
             type: StatusChatInfoButton.Type.OneToOneChat
             muted: true
             pinnedMessagesCount: 1
@@ -164,21 +164,21 @@ GridLayout {
         title: "group"
         subTitle: "Group Chat"
         pinnedMessagesCount: 1
-        icon.color: Theme.palette.miscColor7
+        asset.color: Theme.palette.miscColor7
         type: StatusChatInfoButton.Type.GroupChat
     }
 
     StatusChatInfoButton {
         title: "public-chat"
         subTitle: "Public Chat"
-        icon.color: Theme.palette.miscColor7
+        asset.color: Theme.palette.miscColor7
         type: StatusChatInfoButton.Type.PublicChat
     }
 
     StatusChatInfoButton {
         title: "community-channel"
         subTitle: "Community Chat"
-        icon.color: Theme.palette.miscColor7
+        asset.color: Theme.palette.miscColor7
         type: StatusChatInfoButton.Type.CommunityChat
     }
 

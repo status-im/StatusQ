@@ -75,7 +75,11 @@ Rectangle {
                 Layout.alignment: Qt.AlignTop
                 Layout.topMargin: 10
                 Layout.leftMargin: 16
-                image: messageDetails.profileImage
+                asset.name: messageDetails.profileImage.name
+                asset.width: messageDetails.profileImage.width
+                asset.height: messageDetails.profileImage.height
+                asset.imgStatus: messageDetails.profileImage.imgStatus
+                asset.imgIsIdenticon: messageDetails.profileImage.imgIsIdenticon
                 name: messageHeader.displayName
                 MouseArea {
                     cursorShape: Qt.PointingHandCursor
@@ -128,7 +132,7 @@ Rectangle {
                 }
                 StatusSticker {
                     visible: messageDetails.contentType === StatusMessage.ContentType.Sticker && !editMode
-                    image.source: messageDetails.messageContent
+                    asset.name: messageDetails.messageContent
                     onLoaded: statusMessage.stickerLoaded()
                 }
                 Loader {

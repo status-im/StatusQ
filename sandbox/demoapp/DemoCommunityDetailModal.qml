@@ -13,7 +13,7 @@ StatusModal {
 
     header.title: "Cryptokitties"
     header.subTitle: "Public Community"
-    header.image.source: "qrc:/demoapp/data/profile-image-1.jpeg"
+    header.asset.name: "qrc:/demoapp/data/profile-image-1.jpeg"
 
     contentItem: Column {
         width: root.width
@@ -57,7 +57,7 @@ StatusModal {
             anchors.horizontalCenter: parent.horizontalCenter
             statusListItemTitle.font.pixelSize: 17
             title: "Members"
-            icon.name: "group-chat"
+            asset.name: "group-chat"
             label: "184"
             components: [
                 StatusIcon {
@@ -72,7 +72,7 @@ StatusModal {
             anchors.horizontalCenter: parent.horizontalCenter
             statusListItemTitle.font.pixelSize: 17
             title: "Notifications"
-            icon.name: "notification"
+            asset.name: "notification"
             components: [
                 StatusSwitch {}
             ]
@@ -87,7 +87,7 @@ StatusModal {
             anchors.horizontalCenter: parent.horizontalCenter
             statusListItemTitle.font.pixelSize: 17
             title: "Edit community"
-            icon.name: "edit"
+            asset.name: "edit"
             type: StatusListItem.Type.Secondary
         }
 
@@ -95,7 +95,7 @@ StatusModal {
             anchors.horizontalCenter: parent.horizontalCenter
             statusListItemTitle.font.pixelSize: 17
             title: "Transfer ownership"
-            icon.name: "exchange"
+            asset.name: "exchange"
             type: StatusListItem.Type.Secondary
         }
 
@@ -103,8 +103,8 @@ StatusModal {
             anchors.horizontalCenter: parent.horizontalCenter
             statusListItemTitle.font.pixelSize: 17
             title: "Leave community"
-            icon.name: "arrow-right"
-            icon.rotation: 180
+            asset.name: "arrow-right"
+            asset.rotation: 180
             type: StatusListItem.Type.Secondary
         }
     }

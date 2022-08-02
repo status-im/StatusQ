@@ -56,7 +56,11 @@ Loader {
                 StatusSmartIdenticon {
                     id: profileImage
                     Layout.alignment: Qt.AlignTop
-                    image: replyDetails.profileImage
+                    asset.name: replyDetails.profileImage.name
+                    asset.width: replyDetails.profileImage.width
+                    asset.height: replyDetails.profileImage.height
+                    asset.imgStatus: replyDetails.profileImage.imgStatus
+                    asset.imgIsIdenticon: replyDetails.profileImage.imgIsIdenticon
                     name: replyDetails.displayName
                     MouseArea {
                         cursorShape: Qt.PointingHandCursor
@@ -100,9 +104,9 @@ Loader {
                 Layout.alignment: Qt.AlignLeft
                 visible: replyDetails.contentType === StatusMessage.ContentType.Sticker
                 StatusSticker {
-                    image.width: 48
-                    image.height: 48
-                    image.source: replyDetails.messageContent
+                    asset.width: 48
+                    asset.height: 48
+                    asset.source: replyDetails.messageContent
                 }
             }
             Item {
