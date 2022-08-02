@@ -52,10 +52,8 @@ StatusModal {
                                                 ? replaceLoader.item.title : stackTitle
     padding: 16
 
-    leftButtons: StatusRoundButton {
+    leftButtons: StatusBackButton {
         id: backButton
-        icon.name: "arrow-right"
-        rotation: 180
         visible: replaceItem || stackLayout.currentIndex > 0
         onClicked: {
             if (replaceItem) {
