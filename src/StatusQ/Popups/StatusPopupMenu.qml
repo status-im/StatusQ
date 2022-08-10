@@ -10,19 +10,55 @@ import StatusQ.Popups 0.1
 
 Menu {
     id: root
+
+//    Component.onCompleted:  {
+//        let parents = "";
+//        let p = parent;
+//        while (p) {
+//            parents += " <- " + p;
+//            p = p.parent;
+//        }
+////        console.log("<-- StatusPopupMenu created", this, parents);
+//    }
+
     closePolicy: Popup.CloseOnPressOutside | Popup.CloseOnEscape
     topPadding: 8
     bottomPadding: 8
 
-    property int menuItemCount: 0
-    property var subMenuItemIcons: []
+//    property int menuItemCount: 0
+//    property var subMenuItemIcons: []
+
+    //    source: model.imageSource,                                // -> StatusRoundedImage.image.source
+    //    icon: model.iconName,                                     // -> StatusIcon.icon
+    //    isIdenticon: model.isIdenticon,                           // -> StatusRoundImage.border.width
+    //    color: model.iconColor,                                   // -> StatusLetterIdenticon.color,
+    //    isLetterIdenticon: !model.imageSource && !model.iconName  // -> decide indicator component
+
+    property StatusImageSettings imageSettings: StatusImageSettings {
+        height: 16
+        width: 16
+        isIdenticon: false
+    }
+
+    property StatusIconSettings iconSettings: StatusIconSettings {
+        width: 18
+        height: 18
+        rotation: 0
+        isLetterIdenticon: false
+        background: StatusIconBackgroundSettings {}
+        color: "transparent"
+    }
+
+    property StatusFontSettings fontSettings: StatusFontSettings {}
+
+    property bool hideDisabledItems: false
 
     property var openHandler
     property var closeHandler
 
-    dim: false
-
     signal menuItemClicked(int menuIndex)
+
+    dim: false
 
     onOpened: {
         if (typeof openHandler === "function") {
@@ -37,7 +73,7 @@ Menu {
     }
 
     delegate: StatusMenuItemDelegate {
-        statusPopupMenu: root
+//        statusPopupMenu: root
     }
 
     background: Item {

@@ -28,6 +28,8 @@ StatusPopupMenu {
     MenuItem { implicitHeight: 0.00001 }
     Instantiator {
         model: root.locationModel
+
+        // NOTE: Use DelegateChooser here
         delegate: Loader {
             sourceComponent: (!!model.subItems && model.subItems.count > 0) ? subMenus : subMenuItemComponent
             onLoaded: {
@@ -38,13 +40,20 @@ StatusPopupMenu {
                     item.parentIconName = model.iconName;
                     item.parentImageSource = model.imageSource;
                     item.parentIdenticonColor = !!model.iconColor ? model.iconColor : Theme.palette.primaryColor1;
-                    root.subMenuItemIcons.push({
-                                    source: model.imageSource,
-                                    icon: model.iconName,
-                                    isIdenticon: model.isIdenticon,
-                                    color: model.iconColor,
-                                    isLetterIdenticon: !model.imageSource && !model.iconName
-                                   });
+
+                    item.imageSettings.source = model.imageSource;
+                    item.imageSettings.isIdenticon = model.isIdenticon;
+                    item.iconSettings.name = model.iconName;
+                    item.iconSettings.color = model.iconColor;
+                    item.iconSettings.isLetterIdenticon = !model.imageSource && !model.iconName;
+
+//                    root.subMenuItemIcons.push({
+//                                    source: model.imageSource,      // -> StatusRoundedImage.image.source
+//                                    icon: model.iconName,           // -> StatusIcon.icon
+//                                    isIdenticon: model.isIdenticon, // -> StatusRoundImage.border.width
+//                                    color: model.iconColor,         // -> StatusLetterIdenticon.color,
+//                                    isLetterIdenticon: !model.imageSource && !model.iconName // -> decide indicator component
+//                                   });
                     root.insertMenu(index + numDefaultItems, item);
                 } else {
                     item.value = model.value

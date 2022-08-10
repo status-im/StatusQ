@@ -22,8 +22,8 @@ GridLayout {
         onClicked: complexMenu.popup()
     }
 
-
     StatusButton {
+        id: customPopupButton
         text: "Menu with custom images and icons"
         onClicked: customMenu.popup()
     }
@@ -51,7 +51,7 @@ GridLayout {
 
     StatusPopupMenu {
         id: complexMenu
-        subMenuItemIcons: [{ icon: 'info' }]
+//        subMenuItemIcons: [{ icon: 'info' }]
 
         StatusMenuItem { 
             text: "One" 
@@ -68,10 +68,13 @@ GridLayout {
         StatusMenuItem { 
             text: "Three"
             iconSettings.name: "info"
+            enabled: false
         }
 
         StatusPopupMenu {
             title: "Four"
+            iconSettings.name: "info"
+
             StatusMenuItem { 
                 text: "One"
                 iconSettings.name: "info"
@@ -85,17 +88,24 @@ GridLayout {
 
     StatusPopupMenu {
         id: customMenu
+        width: customPopupButton.width
 
-        subMenuItemIcons: [
-            { icon: "chat" },
-            { 
-                source: "qrc:/demoapp/data/profile-image-1.jpeg"
-            },
-            { 
-                isLetterIdenticon: true, 
-                color: "red" 
-            }
-        ]
+//        subMenuItemIcons: [
+//            {
+//                icon: "chat"
+//            },
+//            {
+//                source: "qrc:/demoapp/data/profile-image-1.jpeg"
+//            },
+//            {
+//                isLetterIdenticon: true,
+//                color: "red"
+//            }
+//        ]
+
+        MenuItem {
+            text: "Default MenuItem, action: " + action
+        }
 
         StatusMenuItem {
             text: "Anywhere"
@@ -104,7 +114,8 @@ GridLayout {
         StatusMenuSeparator {}
 
         StatusPopupMenu {
-            title: "Chat" 
+            title: "Chat"
+            iconSettings.name: "chat"
 
             StatusMenuItem { 
                 text: "vitalik.eth"
@@ -121,6 +132,7 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
 
         StatusPopupMenu {
             title: "Cryptokitties"
+            imageSettings.source: "qrc:/demoapp/data/profile-image-1.jpeg"
 
             StatusMenuItem { 
                 text: "welcome" 
@@ -144,6 +156,8 @@ CExPynn1gWf9bx498P7/nzPcxEzGExhBdJGYihtAYQlO+tUZvqrPbqeudo5iJGEJjCE15a3VtodH3q2I
 
         StatusPopupMenu {
             title: "Another community"
+            iconSettings.isLetterIdenticon: true
+            iconSettings.color: "red"
 
             StatusMenuItem { 
                 text: "welcome" 
