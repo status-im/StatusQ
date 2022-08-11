@@ -47,6 +47,7 @@ StatusListItem {
         },
         StatusChatListCategoryItemButton {
             id: menuButton
+            objectName: "statusChatListCategoryItemButtonMore"
             icon.name: "more"
             icon.width: 21
             visible: statusChatListCategoryItem.showMenuButton &&
