@@ -29,8 +29,9 @@ RadioButton {
     indicator: Rectangle {
         implicitWidth: size === StatusRadioButton.Size.Large ? 20 : 14
         implicitHeight: size === StatusRadioButton.Size.Large ? 20 : 14
-        x: 0
-        y: 6
+
+        anchors.verticalCenter: parent.verticalCenter
+
         radius: 10
         color: statusRadioButton.checked ? Theme.palette.primaryColor1
                                          : Theme.palette.directColor8
@@ -39,8 +40,7 @@ RadioButton {
             width: size === StatusRadioButton.Size.Large ? 12 : 8
             height: size === StatusRadioButton.Size.Large ? 12 : 8
             radius: 6
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.centerIn: parent
             color: statusRadioButton.checked ? Theme.palette.white : "transparent"
             visible: statusRadioButton.checked
         }
