@@ -217,7 +217,7 @@ Item {
             if(root.orderByReadonly) {
                 for(var i = 0; i < namesModel.count; i++) {
                     var entry = namesModel.get(i)
-                    if(entry.isReadonly) {
+                    if(entry.tagIcon === "crown") {
                         namesModel.move(i, 0, 1)
                     }
                 }

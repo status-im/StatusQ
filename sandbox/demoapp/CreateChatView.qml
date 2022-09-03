@@ -70,6 +70,12 @@ Page {
             Component.onCompleted: {
                 textEdit.forceActiveFocus();
                 sortModel(root.contactsModel);
+                //add admin tag
+                namesModel.append({
+                            "pubKey": "0x043a7ed78362567894688563652fd0296453cef00a5dcddbe252dc74f72cc1caa97a2b65e4a1a52d9c30a84c9966beaaaf6b333d659cbdd2e486b443ed1012cf04",
+                            "name": "carmen.eth",
+                            "tagIcon": "crown",
+                            "isReadonly": true});
             }
         }
 
@@ -77,7 +83,7 @@ Page {
             implicitWidth: 106
             implicitHeight: 44
             Layout.alignment: Qt.AlignTop
-            enabled: (tagSelector.namesModel.count > 0)
+            enabled: (tagSelector.namesModel.count > 1)
             text: "Confirm"
         }
 
