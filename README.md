@@ -2,6 +2,9 @@
 
 > An emerging reusable QML UI component library for Status applications.
 
+:bangbang: | This repository is set to read-only. `StatusQ` library is further developed in the [status-desktop](https://github.com/status-im/status-desktop) repository.
+:---: | :---
+
 ## Usage
 
 StatusQ introduces a module namespace that semantically groups components so they can be easily imported.
